@@ -775,6 +775,14 @@
      palette that was never checked against the text. */
   .hero-rain{display:none}
 
+  /* The phone-width underline under the hero em is a background-image too
+     (a brass gradient cloned per wrapped line), so it needs the same
+     explicit switch-off; the ::after variant needs nothing - its solid
+     background is forced like any other. The body prefix is load-bearing:
+     the phone rule sits later in the sheet at equal specificity, and both
+     medias can be true at once on a narrow high-contrast screen. */
+  body .hero .h-xl em{background:none}
+
   /* The eighteen icons are small diagrams, not ornaments - each one says
      something with the relationship between a steady blue and one orange
      exception, and flattened to a single system colour it says nothing at
@@ -1091,6 +1099,22 @@ section.snug{padding:clamp(52px,5.5vw,72px) 0}
   animation:swipe .9s cubic-bezier(.16,.84,.44,1) 1.05s forwards;
 }
 @keyframes swipe{to{transform:scaleX(1)}}
+/* On narrow screens the nowrap above turns from a guarantee into a clip:
+   the English services phrase ("Complete Business Coverage.") is wider than
+   a phone, and body's overflow-x:hidden swallows the overflow - seen live
+   2026-08-21. Below 760px the em is allowed to wrap, and the underline
+   moves from the single absolute ::after bar - which cannot split across
+   lines - to a background rule cloned onto every wrapped line. The cost,
+   accepted deliberately: no swipe animation on phones, the rule is just
+   there. Desktop is untouched. */
+@media (max-width:760px){
+  .hero .h-xl em{
+    white-space:normal;
+    background:linear-gradient(var(--brass),var(--brass)) 0 100%/100% .10em no-repeat;
+    -webkit-box-decoration-break:clone;box-decoration-break:clone;
+  }
+  .hero .h-xl em::after{content:none}
+}
 
 /* ---- the hero's binary rain ----
    isolation:isolate gives the hero its own stacking context, so the canvas can
