@@ -185,26 +185,8 @@
     </symbol>
 
     <!-- 05 רווח והפסד לפי מרכזי רווח -->
-    <symbol id="ico05" viewBox="0 0 120 120">
-      <ellipse cx="60" cy="102" rx="42" ry="3.5" fill="url(#shd)"/>
-      <polygon points="38,36 44,35.5 44,95.5 38,96" fill="#24518F"/>
-      <polygon points="22,36 38,36 44,35.5 28,35.5" fill="#A8C8F5"/>
-      <rect x="22" y="36" width="16" height="60" rx="3" fill="url(#gBlue)"/>
-      <polygon points="60,70 66,69.5 66,95.5 60,96" fill="#8F2F1D"/>
-      <polygon points="44,70 60,70 66,69.5 50,69.5" fill="#F7AD9A"/>
-      <rect x="44" y="70" width="16" height="26" rx="3" fill="url(#gOrg)"/>
-      <polygon points="82,28 88,27.5 88,95.5 82,96" fill="#24518F"/>
-      <polygon points="66,28 82,28 88,27.5 72,27.5" fill="#A8C8F5"/>
-      <rect x="66" y="28" width="16" height="68" rx="3" fill="url(#gBlue)"/>
-      <polygon points="104,76 110,75.5 110,95.5 104,96" fill="#8F2F1D"/>
-      <polygon points="88,76 104,76 110,75.5 94,75.5" fill="#F7AD9A"/>
-      <rect x="88" y="76" width="16" height="20" rx="3" fill="url(#gOrg)"/>
-      <rect x="14" y="96" width="98" height="3.5" rx="1.75" fill="#8A8794" opacity=".55"/>
-      <rect x="12" y="50.5" width="100" height="4" rx="2" fill="#8A8794" opacity=".95"/>
-    </symbol>
-
     <!-- 06 רווח והפסד רב-חברתי -->
-    <symbol id="ico06" viewBox="0 0 120 120">
+    <symbol id="ico05" viewBox="0 0 120 120">
       <ellipse cx="60" cy="103" rx="42" ry="3.5" fill="url(#shd)"/>
       <g>
         <polygon points="42,32 48,31.5 48,46.5 42,47" fill="#24518F"/>
@@ -239,7 +221,7 @@
     </symbol>
 
     <!-- 07 שירות -->
-    <symbol id="ico07" viewBox="0 0 120 120">
+    <symbol id="ico06" viewBox="0 0 120 120">
       <polygon points="70,22 76,21.5 76,34.5 70,35" fill="#605D67"/>
       <rect x="16" y="22" width="54" height="13" rx="4" fill="url(#gGrey)"/>
       <circle cx="88" cy="28.5" r="6.5" fill="url(#sGrn)"/>
@@ -258,7 +240,7 @@
     </symbol>
 
     <!-- 08 ייצור -->
-    <symbol id="ico08" viewBox="0 0 120 120">
+    <symbol id="ico07" viewBox="0 0 120 120">
       <line x1="12" y1="78" x2="110" y2="78" stroke="#8A8794" stroke-width="3"
             stroke-dasharray="5 6" stroke-linecap="round" opacity=".95"/>
       <polyline points="16,72 34,72 34,58 52,58" fill="none" stroke="#3D7EDB"
@@ -274,7 +256,7 @@
     </symbol>
 
     <!-- 09 ניצולת שעות עובדים -->
-    <symbol id="ico09" viewBox="0 0 120 120">
+    <symbol id="ico08" viewBox="0 0 120 120">
       <ellipse cx="60" cy="82" rx="40" ry="3.5" fill="url(#shd)"/>
       <polygon points="104,50 110,49.5 110,73.5 104,74" fill="#8F2F1D"/>
       <rect x="16" y="50" width="88" height="24" rx="6" fill="url(#gBlue)"/>
@@ -287,7 +269,7 @@
     </symbol>
 
     <!-- 10 WMS -->
-    <symbol id="ico10" viewBox="0 0 120 120">
+    <symbol id="ico09" viewBox="0 0 120 120">
       <rect x="10" y="18" width="6" height="84" rx="2" fill="url(#gGrey)"/>
       <rect x="104" y="18" width="6" height="84" rx="2" fill="url(#gGrey)"/>
       <g fill="#8A8794" opacity=".55">
@@ -450,6 +432,21 @@
       </g>
       <g fill="url(#sVio)">
         <circle cx="92" cy="30" r="6"/><circle cx="102" cy="62" r="6"/><circle cx="84" cy="92" r="6"/>
+      </g>
+    </symbol>
+
+    <!-- The one glyph here that is not one of the eighteen: a magnifier
+         marking a module card as openable. It is deliberately outside the
+         numbering and deliberately currentColor - the eighteen say something
+         with their blue-against-orange and are opted out of forced colours,
+         while this one is plain furniture and should take whatever colour
+         the visitor's palette gives it, like any other piece of UI. -->
+    <symbol id="icoZoom" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="10.5" cy="10.5" r="6.5"/>
+        <path d="M15.4 15.4 21 21"/>
+        <path d="M10.5 7.8v5.4M7.8 10.5h5.4"/>
       </g>
     </symbol>
   </defs>
@@ -753,9 +750,10 @@
    Contrast themes actually switched on. */
 @media (forced-colors:active){
   /* the surfaces. One border each, where a shadow used to be. */
-  .pill,.btn,.burger,.route-cta,.rose-read,.mini,.pipe-node,.card,.layer,
+  .pill,.btn,.burger,.route-cta,.hc-video,.hc-holder,.pipe-node,.card,.layer,
   .path,.onward,.voice,.plate,.person,.avatar,.ledger .cellx,.strip .s,
   .summon .inner,.modal-card,.modal-x,.skip,
+  .shot-frame,.shot-nav button,
   .field input,.field textarea{border:1px solid;border-radius:inherit}
   .bar{border-block-end:1px solid}
 
@@ -800,8 +798,9 @@
    pages. The design system reserves orange for exceptions and gives
    primary emphasis to --brand-purple, but that rule exists to keep a
    report readable - there are no negative values on a marketing page for
-   it to protect. Orange also holds the two-series contrast in the compass
-   rose against --sky, which a purple accent muddied.
+   it to protect. Orange also held the two-series contrast in the compass
+   rose against --sky, which a purple accent muddied - the rose has since
+   been replaced by the building mark, but the comparison it settled stands.
    The purple variant and its review switch were removed here; they are in
    git history at commit c76dd32 if the question is ever reopened.
    Note --brass stays the vivid brand orange for fills, borders and
@@ -1090,7 +1089,7 @@ section.snug{padding:clamp(52px,5.5vw,72px) 0}
    The gradient went with the height. At a tenth of an em a two-colour fade
    has no room to read as a fade; it reads as a muddy edge, and the brand
    is better served by one confident colour. The blue survives everywhere
-   else it was doing that job - .bar::after, the rose, the charts. */
+   else it was doing that job - .bar::after, the charts. */
 .hero .h-xl em::after{
   content:"";position:absolute;inset-inline:0;bottom:0;height:.10em;z-index:-1;
   background:var(--brass);
@@ -1130,110 +1129,86 @@ section.snug{padding:clamp(52px,5.5vw,72px) 0}
           mask-image:linear-gradient(to bottom,transparent 0,#000 16%,#000 56%,transparent 100%);
 }
 /* The home hero's rain is texture and fades out before the section ends. This
-   one has to arrive somewhere, so it cannot fade out - but at full strength it
-   ran straight through the headline and the lead. The mask dips instead of
-   ending: strong at the top where the fall reads, almost gone across the band
-   the text occupies, and back to full around the vessels. The rain arrives and
-   the words still win. */
+   one has to arrive somewhere, so it only fades in at the top and then holds.
+
+   It used to dip in the middle - almost gone across the band the text occupies
+   - because at full strength it ran straight through the headline and the
+   lead. That dip paid for the words with the fall: it dimmed the full width,
+   including the half of the hero with no words in it, and the drops arrived at
+   the vessels too faint to read. The quiet zone in the rain script does that
+   job by position now (see makeRain), so the mask no longer has to. */
 .hero-rain.to-floor{
-  -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,#000 15%,rgba(0,0,0,.16) 29%,rgba(0,0,0,.16) 66%,#000 82%);
-          mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,#000 15%,rgba(0,0,0,.16) 29%,rgba(0,0,0,.16) 66%,#000 82%);
+  -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,#000 15%,#000 100%);
+          mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,#000 15%,#000 100%);
 }
 .ctas{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 
-/* the hero's right column: the rose, with the readout chip pinned to its
-   top corner and the mini-dashboard floating below and overlapping it.
-   Three planes, no boxes - the whole point of the treatment in one view. */
+/* the hero's right column: the compass mark building itself, with the
+   recorded phone dashboard riding up over it. Two planes, no boxes.
+   The readout chip that used to be pinned to the rose's top corner is gone
+   with the rose - it carried an animated "81% ▲" that read as a measurement
+   and was not one, against an about-page stance that says the dashboard is
+   a mirror and we do not flatter data.
+   overflow:visible on the svg is load-bearing: the needle overshoots its
+   own bounding box on the elastic settle, and the mark's real bounding box
+   already starts left of the viewBox origin. */
 .hero-viz{position:relative;display:grid;justify-items:center;width:100%;max-width:440px;margin-inline:auto}
-.rose{position:relative;aspect-ratio:1;width:100%;margin-inline:auto}
-.rose canvas{width:100%;height:100%;display:block}
-.rose-read{
-  position:absolute;inset-inline-start:0;top:4%;
-  background:color-mix(in srgb,var(--panel) 88%,transparent);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border:0;border-radius:var(--edge-sm);
-  padding:12px 16px;box-shadow:var(--ring),var(--elev-2);
-}
-.rose-read .k{font-size:.66rem;font-weight:600;letter-spacing:.12em;color:var(--ink-faint);margin-bottom:2px}
-.rose-read .v{font-size:1.3rem;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--ink)}
-.rose-read .v small{font-size:.7rem;font-weight:600;color:var(--sky-ink);margin-inline-start:5px}
+.markbuild{position:relative;aspect-ratio:1;width:100%;max-width:232px;margin-inline:auto;display:grid;place-items:center}
+.markbuild .mb-svg{width:100%;height:100%;display:block;overflow:visible}
 
-/* ---- hero mini-dashboard ----
-   Deliberately carries NO numeric readings. A sparkline is a shape and
-   reads as an illustration; a figure with a trend arrow reads as a fact,
-   and inventing business figures on the page would contradict the stance
-   card on the about page ("הדשבורד הוא מראה, לא מסנן"). The tabs switch
-   the shape, the caption names the window, and the footnote says outright
-   that the display is illustrative. */
-.mini{
-  position:relative;z-index:2;width:min(100%,380px);
-  margin-top:-34px;
-  background:var(--panel);border:0;border-radius:var(--edge);
-  box-shadow:var(--ring),var(--elev-3);
-  padding:16px 18px 14px;
-}
-.mini-tabs{display:flex;gap:4px;background:var(--panel-2);border-radius:var(--radius-pill);padding:4px;margin-bottom:14px}
-.mini-tab{
-  flex:1;font-family:var(--sans);font-size:.8rem;font-weight:600;
-  color:var(--ink-dim);background:none;border:0;cursor:pointer;
-  padding:8px 6px;border-radius:var(--radius-pill);white-space:nowrap;
-  transition:color var(--dur-base) var(--ease-standard),background var(--dur-base) var(--ease-standard),box-shadow var(--dur-base) var(--ease-standard);
-}
-.mini-tab:hover{color:var(--ink)}
-.mini-tab[aria-selected="true"]{
-  color:var(--ink);background:var(--panel);
-  box-shadow:0 1px 2px rgba(20,19,28,.06),0 4px 10px -4px rgba(20,19,28,.12);
-}
-.mini-cap{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:6px}
-.mini-cap .t{font-size:.86rem;font-weight:700;color:var(--ink)}
-.mini-cap .w{font-size:.72rem;color:var(--ink-faint)}
-/* scaled by its own ratio rather than stretched, so the 2.4px stroke and
-   the endpoint dot stay round at every container width */
-.mini-plot{display:block;width:100%;height:auto;aspect-ratio:320/82;overflow:visible}
-.mini-plot .grid{stroke:var(--hair);stroke-width:1}
-/* Area fill: --brass-soft down to nothing, with a mid stop so the ramp is
-   a smooth wash rather than the straight two-stop fade it was. The token
-   already carries its own 10% alpha, so stop-opacity here shapes that
-   rather than setting it - the colour stays tied to the accent. */
-.mini-plot .s0{stop-color:var(--brass-soft);stop-opacity:1}
-.mini-plot .s1{stop-color:var(--brass-soft);stop-opacity:.55}
-.mini-plot .s2{stop-color:var(--brass-soft);stop-opacity:0}
-.mini-plot .area{fill:url(#miniFade);opacity:0;transition:opacity .5s var(--ease-standard)}
-.mini-plot .line{
-  fill:none;stroke:var(--brass);stroke-width:2.4;
-  stroke-linecap:round;stroke-linejoin:round;
-  stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);
-}
-.mini-plot .cap-dot{fill:var(--brass);opacity:0;transition:opacity .3s var(--ease-standard) .55s}
-.mini.drawn .area{opacity:1}
-.mini.drawn .cap-dot{opacity:1}
-.mini.drawn .line{animation:draw .85s var(--ease-standard) forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
-.mini-foot{margin:10px 0 0;font-size:.68rem;color:var(--ink-faint);letter-spacing:.04em}
+/* ---- the hero's recorded phone dashboard ----
+   Replaces the mini sparkline card. The source is 592x1552 - a phone screen -
+   so it is sized by width and left to find its own height. No max-height
+   crop, for the same reason .shot-frame uses contain rather than cover: a
+   cropped dashboard is a misleading one.
 
-/* ---- live status line ----
-   WhatsApp green is reused here as a status colour rather than a brand
-   one. It sits outside the token system on purpose, same as .wa-glyph. */
-.mini-live{
-  display:flex;align-items:center;gap:8px;
-  font-size:.7rem;font-weight:500;letter-spacing:.02em;
-  color:var(--ink-faint);margin:0 0 8px;
+   It rides up over the mark above it the way the sparkline card did. The
+   right column of this hero is planes, not boxes, and the overlap is what
+   says so. */
+.heroclip{
+  position:relative;margin:-18px 0 0;width:100%;max-width:190px;
+  display:grid;justify-items:center;
 }
-.mini-pulse{
-  position:relative;flex:none;width:7px;height:7px;border-radius:50%;
-  background:#25D366;
+.hc-video{
+  display:block;width:100%;aspect-ratio:592/1552;
+  border-radius:var(--edge);background:var(--panel);
+  box-shadow:var(--ring),var(--elev-2);
 }
-/* the halo is a pseudo-element rather than an animated box-shadow so the
-   dot itself never changes size and the row cannot reflow under it */
-.mini-pulse::after{
-  content:"";position:absolute;inset:0;border-radius:50%;
-  background:#25D366;
-  animation:miniPulse 2.4s var(--ease-standard) infinite;
+/* Both of these outrank the browser's own [hidden]{display:none}, which
+   loses to a display declaration at equal specificity - the trap this sheet
+   has already been caught by. Saying it once here is cheaper than finding
+   the language switch leaves two panels stacked. */
+.hc-video[hidden]{display:none}
+.hc-holder[hidden]{display:none}
+/* Deliberately not the full 592x1552 of the clip it stands in for: holding a
+   phone's worth of empty grey open says "broken", where a compact panel says
+   "not yet". Same judgement as .shot-holder, same reason. */
+.hc-holder{
+  display:grid;place-items:center;align-content:center;gap:12px;
+  width:100%;aspect-ratio:592/860;padding:30px 20px;text-align:center;
+  border-radius:var(--edge);background:var(--panel);
+  box-shadow:var(--ring),var(--elev-2);
 }
-@keyframes miniPulse{
-  0%{transform:scale(1);opacity:.55}
-  70%,100%{transform:scale(3);opacity:0}
+.hc-holder svg{width:32px;height:32px;color:var(--ink-faint)}
+.hc-holder p{margin:0;color:var(--ink-dim);font-size:.9rem;line-height:1.6;max-width:26ch}
+.hc-cap{
+  margin:12px 0 0;font-family:var(--ui);font-size:.78rem;letter-spacing:.03em;
+  color:var(--ink-dim);text-align:center;
 }
+.hc-cap[hidden]{display:none}
+/* VARIANT B - the two side by side, above the stacking breakpoint.
+   Stacked, the clip's own 1:2.62 pushes the visual column to 800px against
+   532px of copy beside it. Set side by side the column is 526px, shorter
+   than the rose it replaced, and the 440px of width the column always had
+   is finally used. Below 960 the hero stacks anyway and this reverts to one
+   over the other, which is the only thing that fits a phone.
+   After the base rules on purpose: same specificity, later wins. */
+@media (min-width:961px){
+  .hero-viz{grid-template-columns:auto auto;align-items:center;gap:clamp(16px,2vw,28px)}
+  .markbuild{max-width:196px}
+  .heroclip{margin:0;max-width:176px}
+}
+
 
 /* ---- the pipeline ----
    Three floating nodes and two live links. Every label on it is a phrase
@@ -1299,6 +1274,9 @@ section.snug{padding:clamp(52px,5.5vw,72px) 0}
 .stance .note-mark{color:var(--brass-ink);font-weight:700;margin-inline-end:.35em}
 .head-block{margin-bottom:52px;max-width:44rem}
 .head-block .h-l{margin-bottom:0}
+/* one line under a section heading. Used by the modules grid to say the
+   cards open, which belongs here once rather than on each of the ten. */
+.head-sub{margin:14px 0 0;color:var(--ink-dim);font-size:.95rem;line-height:1.6}
 
 /* ---- cards ----
    The borderless unit this whole restyle is built on: a surface, a soft
@@ -1371,6 +1349,115 @@ section.snug{padding:clamp(52px,5.5vw,72px) 0}
 .mods .layer:hover{
   transform:translateY(-3px) translateX(0);
   box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--brass) 26%,transparent),var(--elev-2);
+}
+
+/* ---- a module card opens its screenshot ----
+   The ten cards are <button> now, not <div>. That is what makes them
+   reachable by keyboard at all, and it is why the resets below exist: a
+   button brings its own font, colour, alignment and centring, all of which
+   would undo .layer. The grid columns are declared again here because the
+   button's own display would otherwise replace the one .layer sets. */
+button.layer{
+  font:inherit;color:inherit;text-align:start;width:100%;
+  cursor:pointer;-webkit-appearance:none;appearance:none;
+  display:grid;grid-template-columns:auto 1fr;
+}
+/* The magnifier is taken out of the flow rather than given a third column.
+   Measured both ways: a column costs 33px of text width and pushed three of
+   the ten cards onto an extra line, so the grid grew to advertise itself.
+   Absolute costs nothing. */
+/* The magnifier sits below the module icon, in the only part of the card
+   that is empty on every one of the ten. Measured four ways: its own grid
+   column cost 33px of text width and pushed three cards onto an extra line;
+   as a flex item in the title row it pushed the category chip down instead;
+   absolutely positioned at the top corner it sat on top of that chip at
+   phone and tablet widths. Here it costs nothing and can collide with
+   nothing - the icon column is 42px wide and 42px of it is used. */
+.mods button.layer{position:relative}
+.mod-peek{
+  position:absolute;inset-inline-start:21px;bottom:17px;
+  width:19px;height:19px;
+  color:var(--ink-faint);
+  transition:color var(--dur-base) var(--ease-standard),
+             transform var(--dur-base) var(--ease-standard);
+}
+.mods button.layer:hover .mod-peek,
+.mods button.layer:focus-visible .mod-peek{color:var(--brass-ink);transform:scale(1.12)}
+@media (prefers-reduced-motion:reduce){
+  .mods button.layer:hover .mod-peek{transform:none}
+}
+
+/* ---- the screenshot viewer ----
+   Wider than the form dialog it shares .modal with: a dashboard is only
+   readable at something near its own width, and 1060px is what the page
+   grid allows (.wrap is 1120 with 28px of padding). */
+/* .modal.shot-modal and not .shot-modal: the base .modal rule sets a 560px
+   width and sits later in this sheet, so at equal specificity it would win
+   and the dashboard would open at half the width it needs. Two classes beat
+   one wherever the rules happen to sit. */
+.modal.shot-modal{width:min(1060px,calc(100vw - 30px))}
+.modal-card.shot-card{padding:26px 26px 22px}   /* same order trap as the width above */
+.shot-count{
+  font-family:var(--ui);font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-faint);margin:0 0 6px;
+}
+.shot-modal .modal-head{margin-bottom:16px}
+/* The frame holds the aspect ratio the manifest reported before the file
+   arrives, so opening a module does not shove the dialog taller a moment
+   later. Both children fill it. */
+.shot-frame{
+  position:relative;border-radius:var(--edge-sm);overflow:hidden;
+  background:var(--panel-2);box-shadow:var(--ring);
+}
+/* The image is what gives up height on a short screen, so the caption and
+   the Next button are never pushed below the fold. contain and not cover:
+   a cropped dashboard is a misleading one. The ceiling is set high enough
+   that a 16:9 dashboard is untouched on a normal screen - capping it there
+   would letterbox every visitor to spare the few on short laptops. */
+.shot-frame img{display:block;width:100%;height:auto;max-height:min(66vh,660px);object-fit:contain}
+/* The placeholder is drawn, not downloaded. A file would need one per
+   language, would be soft on a retina screen, and - being a background
+   image in every practical form - would vanish under forced colours, which
+   is a trap this sheet has already been caught by twice. */
+/* Deliberately not the 16:9 of the screenshot it stands in for: holding a
+   full dashboard's worth of empty grey open says "broken", where a compact
+   panel says "not yet". */
+.shot-holder{
+  display:grid;place-items:center;gap:12px;align-content:center;
+  min-height:230px;padding:40px 24px;text-align:center;
+}
+.shot-holder svg{width:34px;height:34px;color:var(--ink-faint)}
+.shot-holder p{margin:0;color:var(--ink-dim);font-size:.94rem;max-width:34ch;line-height:1.6}
+.shot-cap{margin:14px 0 0;color:var(--ink-dim);font-size:.95rem;line-height:1.65}
+/* Says the figures are demo data. It is small, but it is not fine print to
+   be buried: the site's own position on the about page is that a dashboard
+   is a mirror and we do not flatter data, and that does not survive a
+   screenshot that looks live and is not. */
+.shot-demo{
+  margin:10px 0 0;font-family:var(--ui);font-size:.78rem;letter-spacing:.03em;
+  color:var(--ink-faint);display:flex;align-items:center;gap:7px;
+}
+/* display:flex above outranks the browser's own [hidden]{display:none}, so
+   hiding this from script needs saying here or the note stays on screen. */
+.shot-demo[hidden]{display:none}
+.shot-demo::before{
+  content:"";width:6px;height:6px;border-radius:50%;flex:none;
+  background:var(--brass);
+}
+.shot-nav{display:flex;gap:10px;margin-top:18px;justify-content:space-between}
+.shot-nav button{
+  font-family:var(--ui);font-size:.86rem;font-weight:600;cursor:pointer;
+  padding:9px 16px;border-radius:999px;border:0;
+  background:var(--panel-2);color:var(--ink-dim);
+  transition:color var(--dur-base) var(--ease-standard),
+             background var(--dur-base) var(--ease-standard),
+             box-shadow var(--dur-base) var(--ease-standard);
+}
+.shot-nav button:hover{color:var(--ink);background:var(--panel);box-shadow:var(--ring),var(--elev-1)}
+.shot-modal h2[tabindex="-1"]:focus{outline:none}
+@media (max-width:520px){
+  .modal-card.shot-card{padding:20px 16px 16px}
+  .shot-nav button{padding:9px 12px}
 }
 .mods .layer .hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:3px}
 .mods .layer strong{margin-bottom:0}
@@ -1712,6 +1799,16 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
 .modal-row{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
 .req{color:var(--brass-ink)}
 .modal-done{text-align:center;padding:10px 0 4px}
+/* The honeypot. Moved off-screen rather than display:none - a bot that skips
+   hidden fields would sail past display:none, and this has to look fillable to
+   it. aria-hidden and tabindex="-1" in the markup keep it away from anyone
+   real, including a screen reader. */
+.hp{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
+    clip-path:inset(50%);white-space:nowrap;border:0}
+/* The failure twin of .tick. Deliberately not brass: brass is the colour this
+   site says yes in, and a failed send should not look like a celebration. The
+   palette has no red, so this goes quiet rather than inventing one. */
+.modal-done .tick.fail{background:var(--ink-dim);font-weight:700}
 .modal-done .tick{
   width:52px;height:52px;border-radius:50%;margin:0 auto 16px;
   display:grid;place-items:center;font-size:1.4rem;color:var(--white);
@@ -1796,8 +1893,8 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
    Libre keeps the headlines in both languages - it has a Latin cut too. */
 :root{--ui:'Jost','Heebo',system-ui,sans-serif}
 :root[lang="en"]{--sans:'Heebo','Jost',system-ui,-apple-system,'Segoe UI',sans-serif}
-.eyebrow,.pill,.route,.btn,.link-arrow,.mini-tab,.tag,.lang-opt,
-.rose-read .k,.ledger .cellx .kk,.rail-col .t{font-family:var(--ui)}
+.eyebrow,.pill,.route,.btn,.link-arrow,.tag,.lang-opt,
+.ledger .cellx .kk,.rail-col .t{font-family:var(--ui)}
 /* English runs a hair looser than Hebrew at the same size: Heebo's Latin
    x-height is large and the approved line-heights were measured on
    Hebrew, which has no ascenders to speak of. */
@@ -1854,6 +1951,21 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
   .ledger{grid-template-columns:repeat(2,1fr)}
   .hero-grid{grid-template-columns:1fr}
   .hero-viz{order:-1;max-width:360px}
+  /* The mark comes down harder than the rose did once the hero stacks, and
+     this rule sits AFTER the base .markbuild on purpose - equal specificity,
+     later wins. Measured at 375px before it existed: the box rendered 335px
+     wide directly above the headline, so the first thing on the page was a
+     logo as wide as the screen. The rose got away with that size because it
+     was a dense instrument you read; a flat mark at the same size is a
+     billboard. The clamp lands on 216px at 375px and holds 320px from tablet
+     up, where a stacked column is wide enough to carry it. */
+  .markbuild{max-width:clamp(216px,58vw,320px)}
+  /* Stacked, the clip's height is what pushes the visual column down the
+     page, and this column comes FIRST on a phone - every pixel here is
+     scrolling before the visitor reaches a word. Measured at 375px: 190px
+     of clip is 586px of column and a 1316px hero. 160px brings the column
+     back to roughly the 620px the rose and its card occupied. */
+  .heroclip{max-width:clamp(160px,42vw,200px)}
   .tier{grid-template-columns:1fr;gap:16px}
   .tier-name{position:static}
   /* the pipeline turns vertical: the links become upright rails and the
@@ -1910,12 +2022,6 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
   .hero .h-xl em::after{transform:scaleX(1)}
   /* the rain is decoration with no state to preserve - it just goes */
   .hero-rain{display:none}
-  /* the sparkline is hidden by its own dash offset until the draw-on runs.
-     The blanket rule above collapses that animation rather than removing
-     it, so the end state is still reached - but this makes the line
-     unconditionally visible rather than resting on fill-mode. */
-  .mini-plot .line{stroke-dashoffset:0}
-  .mini-plot .area,.mini-plot .cap-dot{opacity:1}
 }
 </style>
 
@@ -2008,50 +2114,46 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
           </div>
         </div>
         <div class="hero-viz">
-          <div class="rose">
-            <canvas id="rose" aria-label="שושנת רוחות אנליטית - ייצוג של מדדי העסק סביב ציר אחד" data-i18n-al="home.rose.aria"></canvas>
-            <div class="rose-read">
-              <div class="k" data-i18n="home.rose.k">כיסוי מודולים</div>
-              <div class="v"><span id="roseNum">0</span>%<small id="roseTrend">▲ יציב</small></div>
-            </div>
+          <!-- ─── the compass mark, built rather than shown ───
+               The four paths below are the header lockup's own, lifted
+               verbatim from the same master artwork and carrying the same
+               --logo-* fills, so the two marks can never drift apart. The
+               only thing this copy adds is choreography, and that lives in
+               drawMark() rather than in CSS: the needle's spin and elastic
+               settle are not expressible as a keyframe pair. -->
+          <div class="markbuild" id="markBuild">
+            <svg class="mb-svg" viewBox="104 79.5 120 120" role="img"
+                 aria-label="סמל המצפן של Compass BI נבנה מארבעת חלקיו והמחט מתייצבת על צפון"
+                 data-i18n-al="home.mark.aria">
+              <g class="mb-sweep"  opacity="0"><path fill="var(--logo-ring)" d="M140.53,179.86c22.37,12.85,50.92,5.13,63.77-17.24l10.29,5.91c-16.11,28.06-51.92,37.74-79.97,21.62S96.89,138.23,113,110.18l10.29,5.91C110.44,138.46,118.16,167.01,140.53,179.86z"/></g>
+              <g class="mb-inner"  opacity="0"><path fill="var(--logo-core)" d="M193.04,139.62c0.09-16.04-12.84-29.11-28.87-29.2c-15.94-0.09-28.94,12.69-29.18,28.59l-10.6-0.06c0.28-21.76,18.05-39.25,39.84-39.13c21.89,0.12,39.54,17.97,39.42,39.86c-0.12,21.79-17.81,39.37-39.57,39.4l0.06-10.6C180.03,168.42,192.95,155.56,193.04,139.62z"/></g>
+              <g class="mb-arc"    opacity="0"><path fill="var(--logo-arc)" d="M222.86,139.49c0,0.1-0.01,0.2-0.01,0.3l-11.94,0c0-0.1,0.02-0.2,0.02-0.3c0-25.93-21.02-46.96-46.96-46.96c-0.1,0-0.2,0.01-0.3,0.02V80.61c0.1,0,0.2-0.01,0.3-0.01C196.5,80.6,222.86,106.97,222.86,139.49z"/></g>
+              <g class="mb-needle" opacity="0"><polygon fill="var(--logo-needle)" points="157.17,141.83 163.68,121.2 170.18,141.83 163.68,149.09"/></g>
+            </svg>
           </div>
 
-          <!-- mini-dashboard. The sparkline shapes are illustrative and carry
-               no figures on purpose - see the .mini note in the stylesheet. -->
-          <div class="mini" id="mini">
-            <div class="mini-tabs" role="tablist" aria-label="תצוגות לדוגמה" data-i18n-al="home.mini.aria">
-              <button class="mini-tab" type="button" role="tab" id="tab-sales" aria-selected="true"  aria-controls="miniPanel" data-series="sales" data-i18n="mini.sales">מכירות</button>
-              <button class="mini-tab" type="button" role="tab" id="tab-stock" aria-selected="false" aria-controls="miniPanel" data-series="stock" data-i18n="mini.stock">מלאי</button>
-              <button class="mini-tab" type="button" role="tab" id="tab-pnl"   aria-selected="false" aria-controls="miniPanel" data-series="pnl" data-i18n="mini.pnl">רווח והפסד</button>
-            </div>
-            <div id="miniPanel" role="tabpanel" aria-labelledby="tab-sales">
-              <div class="mini-cap">
-                <span class="t" id="miniTitle">מכירות</span>
-                <span class="w" data-i18n="home.mini.window">12 החודשים האחרונים</span>
-              </div>
-              <div class="mini-live" data-i18n="home.mini.live"><span class="mini-pulse"></span>סנכרון חי מ-Priority · תדירות יומית</div>
-              <svg class="mini-plot" viewBox="0 0 320 82" role="img" aria-labelledby="miniAlt">
-                <title id="miniAlt" data-i18n="home.mini.alt">גרף מגמה להמחשה</title>
-                <defs>
-                  <!-- the stops are coloured from CSS, not from stop-color
-                       attributes: a presentation attribute cannot resolve
-                       var(), so the fill would fall back to black. -->
-                  <linearGradient id="miniFade" x1="0" y1="0" x2="0" y2="1">
-                    <stop class="s0" offset="0%"/>
-                    <stop class="s1" offset="55%"/>
-                    <stop class="s2" offset="100%"/>
-                  </linearGradient>
-                </defs>
-                <line class="grid" x1="0" y1="20.5" x2="320" y2="20.5"/>
-                <line class="grid" x1="0" y1="45.5" x2="320" y2="45.5"/>
-                <line class="grid" x1="0" y1="70.5" x2="320" y2="70.5"/>
-                <path class="area" id="miniArea" d=""/>
-                <path class="line" id="miniLine" d=""/>
-                <circle class="cap-dot" id="miniDot" r="3.4" cx="0" cy="0"/>
+          <!-- ─── the phone dashboard, recorded ───
+               What stood here was a sparkline card carrying no figures at
+               all. This carries plenty, so it carries the demo note too.
+               Hebrew only by design - see syncClip() for why, and for the
+               placeholder an English reader gets instead. -->
+          <figure class="heroclip" id="heroClip">
+            <video class="hc-video" id="heroClipVideo"
+                   data-src="assets/hero-clip.mp4"
+                   poster="assets/hero-clip-poster.jpg"
+                   preload="metadata" muted loop playsinline
+                   aria-label="הקלטה של לוח המחוונים של Compass BI בטלפון - רווח, מכירות, חובות והמחאות, מתעדכנים זה לצד זה"
+                   data-i18n-al="home.clip.aria"></video>
+            <div class="hc-holder" id="heroClipHolder" hidden>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <rect x="6" y="2.5" width="12" height="19" rx="2.5"/>
+                <path d="M10.5 19h3"/>
               </svg>
-              <p class="mini-foot" data-i18n="home.mini.foot">תצוגה להמחשה</p>
+              <p data-i18n="home.clip.soon">הקלטה באנגלית של לוח המחוונים בנייד עוד לא צולמה.</p>
             </div>
-          </div>
+            <figcaption class="hc-cap" data-i18n="home.clip.cap" id="heroClipCap">לוח המחוונים בנייד</figcaption>
+            <p class="shot-demo" data-i18n="shot.demo">הנתונים בתצוגות הם נתוני הדגמה</p>
+          </figure>
         </div>
       </div>
     </section>
@@ -2140,7 +2242,7 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
           </div>
         </div>
         <div style="margin-top:30px" class="reveal">
-          <button class="link-arrow" data-go="services" data-i18n="home.sol.link">לכל שכבות התשתית והמודולים <span aria-hidden="true">←</span></button>
+          <button class="link-arrow" data-go="services" data-i18n="home.sol.link">לכל התשתית והמודולים <span aria-hidden="true">←</span></button>
         </div>
       </div>
     </section>
@@ -2451,7 +2553,7 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
       <canvas class="hero-rain to-floor" data-catch aria-hidden="true"></canvas>
       <div class="wrap" style="max-width:840px">
         <div class="pill rise" data-i18n="svc.hero.pill"><span class="dot"></span>שירותים</div>
-        <h1 class="h-xl rise" data-i18n="svc.hero.h1">תשתית אחת, שמונה שכבות, <em>כיסוי מלא לעסק</em>.</h1>
+        <h1 class="h-xl rise" data-i18n="svc.hero.h1">תשתית אחת, <em>כיסוי מלא לעסק</em>.</h1>
         <p class="lead rise" data-i18n="svc.hero.lead">מהחיבור הראשוני ל-Priority ועד סוכן AI שעונה בשפה חופשית - כל מה שצריך כדי להפוך נתונים לתשובות.</p>
       </div>
     </section>
@@ -2507,6 +2609,7 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
         <div class="head-block reveal">
           <div class="eyebrow" data-i18n="svc.mods.eyebrow">מודולים</div>
           <h2 class="h-l" data-i18n="svc.mods.h">כיסוי אנליטי לכל תחום בעסק - מוכן להפעלה</h2>
+          <p class="head-sub" data-i18n="svc.mods.sub">לחצו על מודול כדי לראות דשבורד אמיתי</p>
         </div>
         <!-- Category pills are a new sorting layer over the ten approved
              modules; not one word of the module names or their outcome
@@ -2514,16 +2617,15 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
              brief: "הנהלה" would have held a single card, which reads as
              an orphan rather than as a group. -->
         <div class="mods reveal">
-          <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico01"/></svg><div><div class="hd"><strong data-i18n="svc.mod.1.h">מכירות וגבייה</strong><span class="tag sale" data-i18n="svc.tag.sales">מכירות</span></div><span data-i18n="svc.mod.1.p">מי קונה, מי לא רווחי, מי מאחר בתשלום - בזמן אמת.</span></div></div>
-          <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico02"/></svg><div><div class="hd"><strong data-i18n="svc.mod.2.h">לידים</strong><span class="tag sale" data-i18n="svc.tag.sales">מכירות</span></div><span data-i18n="svc.mod.2.p">מהיכן מגיעות הפניות, מה קורה איתן, ואיזה מקור באמת סוגר עסקאות.</span></div></div>
-          <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico03"/></svg><div><div class="hd"><strong data-i18n="svc.mod.3.h">מלאי והמלצות רכש</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.3.p">מה חסר, מה תקוע על המדף, ומה צריך להזמין החודש.</span></div></div>
-          <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico04"/></svg><div><div class="hd"><strong data-i18n="svc.mod.4.h">בקרת תקציב</strong><span class="tag fin" data-i18n="svc.tag.fin">פיננסים</span></div><span data-i18n="svc.mod.4.p">איפה אתם חורגים מהתקציב ואיפה נשאר לכם - בזמן שעוד אפשר לתקן.</span></div></div>
-          <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico05"/></svg><div><div class="hd"><strong data-i18n="svc.mod.5.h">רווח והפסד לפי מרכזי רווח</strong><span class="tag fin" data-i18n="svc.tag.fin">פיננסים</span></div><span data-i18n="svc.mod.5.p">איזה מרכז רווח באמת מרוויח, ואיזה נראה טוב רק בגלל הממוצע.</span></div></div>
-          <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico06"/></svg><div><div class="hd"><strong data-i18n="svc.mod.6.h">רווח והפסד רב-חברתי</strong><span class="tag fin" data-i18n="svc.tag.fin">פיננסים</span></div><span data-i18n="svc.mod.6.p">רווחיות לכל חברה בקבוצה ותמונה מאוחדת - בלי לאחד דוחות באקסל.</span></div></div>
-          <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico07"/></svg><div><div class="hd"><strong data-i18n="svc.mod.7.h">שירות</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.7.p">כמה קריאות פתוחות, כמה זמן הן לוקחות, ומי מהטכנאים עומד ביעדים.</span></div></div>
-          <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico08"/></svg><div><div class="hd"><strong data-i18n="svc.mod.8.h">ייצור</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.8.p">קצב הייצור בפועל מול התכנון - לכל מכונה, לכל משמרת.</span></div></div>
-          <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico09"/></svg><div><div class="hd"><strong data-i18n="svc.mod.9.h">ניצולת שעות עובדים</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.9.p">כמה משעות העבודה באמת מביאות ערך, ואיפה הן הולכות לאיבוד.</span></div></div>
-          <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico10"/></svg><div><div class="hd"><strong data-i18n="svc.mod.10.h">WMS</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.10.p">מה באמת קורה במחסן, ומה נשאר פתוח להיום.</span></div></div>
+          <button class="layer" type="button" data-mod="1" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico01"/></svg><div><div class="hd"><strong data-i18n="svc.mod.1.h">מכירות וגבייה</strong><span class="tag sale" data-i18n="svc.tag.sales">מכירות</span></div><span data-i18n="svc.mod.1.p">מי קונה, מי לא רווחי, מי מאחר בתשלום - בזמן אמת.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
+          <button class="layer" type="button" data-mod="2" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico02"/></svg><div><div class="hd"><strong data-i18n="svc.mod.2.h">לידים</strong><span class="tag sale" data-i18n="svc.tag.sales">מכירות</span></div><span data-i18n="svc.mod.2.p">מהיכן מגיעות הפניות, מה קורה איתן, ואיזה מקור באמת סוגר עסקאות.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
+          <button class="layer" type="button" data-mod="3" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico03"/></svg><div><div class="hd"><strong data-i18n="svc.mod.3.h">מלאי והמלצות רכש</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.3.p">מה חסר, מה תקוע על המדף, ומה צריך להזמין החודש.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
+          <button class="layer" type="button" data-mod="4" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico04"/></svg><div><div class="hd"><strong data-i18n="svc.mod.4.h">בקרת תקציב</strong><span class="tag fin" data-i18n="svc.tag.fin">פיננסים</span></div><span data-i18n="svc.mod.4.p">איפה אתם חורגים מהתקציב ואיפה נשאר לכם - בזמן שעוד אפשר לתקן.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
+          <button class="layer" type="button" data-mod="5" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico05"/></svg><div><div class="hd"><strong data-i18n="svc.mod.5.h">רווח והפסד</strong><span class="tag fin" data-i18n="svc.tag.fin">פיננסים</span></div><span data-i18n="svc.mod.5.p">רווחיות לכל מרכז רווח, לכל חברה ולקבוצה כולה - בתמונה אחת, בלי לאחד דוחות באקסל.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
+          <button class="layer" type="button" data-mod="6" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico06"/></svg><div><div class="hd"><strong data-i18n="svc.mod.6.h">שירות</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.6.p">כמה קריאות פתוחות, כמה זמן הן לוקחות, ומי מהטכנאים עומד ביעדים.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
+          <button class="layer" type="button" data-mod="7" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico07"/></svg><div><div class="hd"><strong data-i18n="svc.mod.7.h">ייצור</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.7.p">קצב הייצור בפועל מול התכנון - לכל מכונה, לכל משמרת.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
+          <button class="layer" type="button" data-mod="8" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico08"/></svg><div><div class="hd"><strong data-i18n="svc.mod.8.h">ניצולת שעות עובדים</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.8.p">כמה משעות העבודה באמת מביאות ערך, ואיפה הן הולכות לאיבוד.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
+          <button class="layer" type="button" data-mod="9" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico09"/></svg><div><div class="hd"><strong data-i18n="svc.mod.9.h">WMS</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.9.p">מה באמת קורה במחסן, ומה נשאר פתוח להיום.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
         </div>
       </div>
     </section>
@@ -2610,17 +2712,28 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
               <label for="f-msg" data-i18n="form.message">איך נוכל לעזור?</label>
               <textarea id="f-msg" name="message" placeholder="ספרו לנו קצת על הצורך שלכם..." data-i18n-ph="form.message.ph"></textarea>
             </div>
+            <div class="hp" aria-hidden="true"><label for="f-web">Website</label><input type="text" id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
             <button class="btn btn-fill btn-block" type="submit" data-i18n="form.submit">שליחת הפנייה</button>
             <p class="note" data-i18n="form.note">שדות המסומנים ב-<span class="req">*</span> נדרשים. הפרטים משמשים ליצירת קשר בלבד.</p>
           </form>
 
           <div class="modal-done" id="pageDone" hidden style="text-align:start;margin-top:8px">
-            <h3 style="font-family:var(--serif);font-size:1.25rem;margin:0 0 10px" data-i18n="form.done.h">הפרטים מוכנים לשליחה</h3>
-            <p style="color:var(--ink-dim);font-size:.93rem;line-height:1.7;margin:0 0 16px" data-i18n="contact.done.p">נפתח אצלכם חלון מייל עם ההודעה - לחצו "שלח" והפנייה תגיע אלינו.</p>
+            <h3 style="font-family:var(--serif);font-size:1.25rem;margin:0 0 10px" data-i18n="form.done.h">קיבלנו את הפנייה</h3>
+            <p style="color:var(--ink-dim);font-size:.93rem;line-height:1.7;margin:0 0 16px" data-i18n="contact.done.p">נחזור אליכם תוך יום עסקים. אם זה דחוף, אלה הדרכים המהירות:</p>
             <div class="fallback">
               <span data-i18n="form.fallback.mail">אימייל · <a href="mailto:elishai@compassbi.co.il">elishai@compassbi.co.il</a></span>
               <span data-i18n="form.fallback.phone">טלפון · <a href="tel:+972545778838">054-577-8838</a></span>
             </div>
+          </div>
+
+          <div class="modal-done" id="pageFail" hidden style="text-align:start;margin-top:8px">
+            <h3 style="font-family:var(--serif);font-size:1.25rem;margin:0 0 10px" data-i18n="form.fail.h">השליחה לא עברה</h3>
+            <p style="color:var(--ink-dim);font-size:.93rem;line-height:1.7;margin:0 0 16px" data-i18n="form.fail.p">משהו השתבש בדרך אלינו, והפנייה לא נשלחה. אפשר לנסות שוב, ואלה הדרכים הישירות:</p>
+            <div class="fallback">
+              <span data-i18n="form.fallback.mail">אימייל · <a href="mailto:elishai@compassbi.co.il">elishai@compassbi.co.il</a></span>
+              <span data-i18n="form.fallback.phone">טלפון · <a href="tel:+972545778838">054-577-8838</a></span>
+            </div>
+            <button class="btn btn-fill btn-block" type="button" data-retry="page" data-i18n="form.retry" style="margin-top:16px">לנסות שוב</button>
           </div>
         </div>
 
@@ -2743,18 +2856,66 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
         <textarea id="t-msg" name="message" placeholder="ספרו לנו קצת על הצורך שלכם..." data-i18n-ph="form.message.ph"></textarea>
       </div>
 
+      <div class="hp" aria-hidden="true"><label for="t-web">Website</label><input type="text" id="t-web" name="website" tabindex="-1" autocomplete="off"></div>
       <button class="btn btn-fill btn-block" type="submit" data-i18n="form.submit">שליחת הפנייה</button>
       <p class="note" data-i18n="form.note">שדות המסומנים ב-<span class="req">*</span> נדרשים. הפרטים משמשים ליצירת קשר בלבד.</p>
     </form>
 
     <div class="modal-done" id="talkDone" hidden>
       <div class="tick" aria-hidden="true">✓</div>
-      <h3 data-i18n="form.done.h">הפרטים מוכנים לשליחה</h3>
-      <p data-i18n="modal.done.p">נפתח אצלכם חלון מייל עם ההודעה - לחצו "שלח" והפנייה תגיע אלינו.<br>אם החלון לא נפתח, אלה הדרכים להשיג אותנו:</p>
+      <h3 data-i18n="form.done.h">קיבלנו את הפנייה</h3>
+      <p data-i18n="modal.done.p">נחזור אליכם תוך יום עסקים.<br>אם זה דחוף, אלה הדרכים המהירות:</p>
       <div class="fallback">
         <span data-i18n="form.fallback.mail">אימייל · <a href="mailto:elishai@compassbi.co.il">elishai@compassbi.co.il</a></span>
         <span data-i18n="form.fallback.phone">טלפון · <a href="tel:+972545778838">054-577-8838</a></span>
       </div>
+    </div>
+
+    <!-- Shown only when the send actually failed. It exists because the old
+         flow revealed the success panel unconditionally, which told a visitor
+         we had their enquiry when nothing had left the browser. -->
+    <div class="modal-done" id="talkFail" hidden>
+      <div class="tick fail" aria-hidden="true">!</div>
+      <h3 data-i18n="form.fail.h">השליחה לא עברה</h3>
+      <p data-i18n="form.fail.p">משהו השתבש בדרך אלינו, והפנייה לא נשלחה. אפשר לנסות שוב, ואלה הדרכים הישירות:</p>
+      <div class="fallback">
+        <span data-i18n="form.fallback.mail">אימייל · <a href="mailto:elishai@compassbi.co.il">elishai@compassbi.co.il</a></span>
+        <span data-i18n="form.fallback.phone">טלפון · <a href="tel:+972545778838">054-577-8838</a></span>
+      </div>
+      <button class="btn btn-fill btn-block" type="button" data-retry="talk" data-i18n="form.retry" style="margin-top:16px">לנסות שוב</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============ the screenshot viewer ============
+     Same native <dialog> as the contact form, for the same reason: focus
+     trapping, Esc and an inert background come from the platform rather
+     than from us maintaining them.
+
+     Everything inside is filled in by script. The title and the caption are
+     read off the module card that was clicked rather than kept in a second
+     dictionary - the card already carries both strings in the right
+     language, so this cannot drift out of translation. The strings the
+     script does own are the ones with no card to read them from, and they
+     live in EN under shot.* like the other fourteen it prints itself. -->
+<dialog class="modal shot-modal" id="shotModal" aria-labelledby="shotTitle">
+  <div class="modal-card shot-card">
+    <div class="modal-head">
+      <p class="shot-count" id="shotCount"></p>
+      <h2 id="shotTitle" tabindex="-1"></h2>
+      <button class="modal-x" id="shotClose" type="button" aria-label="סגירה" data-i18n-al="shot.close">✕</button>
+    </div>
+    <div class="shot-frame" id="shotFrame"></div>
+    <p class="shot-cap" id="shotCap"></p>
+    <!-- These three carry their Hebrew in the markup like every other fixed
+         string on the page, so applyStrings swaps them on a language change
+         without the viewer having to do anything. Only the strings with no
+         element to live in - the counter, the placeholder line and the alt
+         text - are seeded in HE and printed by the script. -->
+    <p class="shot-demo" data-i18n="shot.demo">הנתונים בתצוגות הם נתוני הדגמה</p>
+    <div class="shot-nav">
+      <button type="button" id="shotPrev" data-i18n="shot.prev">הקודם</button>
+      <button type="button" id="shotNext" data-i18n="shot.next">הבא</button>
     </div>
   </div>
 </dialog>
@@ -2766,6 +2927,27 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
 (function(){
   "use strict";
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- which screenshots exist ----------
+     Written by _gen.shots.py and spliced in by _build.sh, because a static
+     page cannot look in assets/ to find out. Shape:
+
+         SHOTS.he[3] = [1100, 619, 2200]   module 3 has a Hebrew screenshot
+         SHOTS.en[3] === undefined         module 3 has no English one yet
+
+     The first two are the 1x pixel size, carried so the frame can reserve the
+     right aspect ratio before the file arrives and the page does not jump
+     when it lands. The third is the width of the @2x file as it was actually
+     written: an export narrower than 2200 is never upscaled, so this is the
+     honest srcset descriptor rather than the one we asked for.
+
+     A module missing from the current language gets the placeholder instead -
+     never a broken frame, and never a Hebrew dashboard shown to an English
+     reader. */
+  var SHOTS = {he:{},en:{}};
+  // Assigned once the viewer is wired up; setLang calls it so a language
+  // switch with the viewer open rewrites what is inside it.
+  var shotRefill = null;
 
   /* ---------- the English copy deck ----------
      Taken verbatim from site-copy-en.html (US & Global Enterprise Market,
@@ -2789,21 +2971,13 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
 
     /* --- home: hero --- */
     "home.hero.pill":"<span class='dot'></span>Analytics Infrastructure for Priority ERP",
-    "home.hero.h1":"Your data already lives in Priority ERP.<br>It’s time it starts <em>talking</em>.",
+    "home.hero.h1":"Your data already lives in Priority ERP.<br>It’s time it started <em>talking</em>.",
     "home.hero.lead":"Enterprise data warehouse, executive dashboards, automated alerts, and AI agents — built for businesses running on Priority ERP.<br><strong>Connect in a single day. Go live in weeks.</strong>",
     "home.hero.link":"How It Works <span aria-hidden='true'>→</span>",
-    "home.rose.aria":"Analytics compass rose — the metrics of the business represented around a single axis",
-    "home.rose.k":"Module Coverage",
-    "rose.trend.up":"▲ Growing",
-    "rose.trend.flat":"● Steady",
-    "home.mini.aria":"Sample views",
-    "mini.sales":"Sales",
-    "mini.stock":"Inventory",
-    "mini.pnl":"P&amp;L",
-    "home.mini.window":"Last 12 Months",
-    "home.mini.live":"<span class='mini-pulse'></span>Live sync from Priority ERP · Daily cadence",
-    "home.mini.alt":"Illustrative trend chart",
-    "home.mini.foot":"Visual mock for illustration",
+    "home.mark.aria":"The Compass BI mark assembles from its four parts and the needle settles on north",
+    "home.clip.aria":"A recording of the Compass BI dashboard on a phone - profit, sales, debts and invoices side by side",
+    "home.clip.cap":"The dashboard on a phone",
+    "home.clip.soon":"An English capture of the phone dashboard has not been recorded yet.",
 
     /* --- home: the problem --- */
     "home.problem.eyebrow":"Sound Familiar?",
@@ -2831,7 +3005,7 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     "home.sol.2.p":"A crystal-clear operational picture for every leadership tier — updated live, not from a static report printed yesterday.",
     "home.sol.3.h":"Anomaly Detection &amp; Proactive Alerts",
     "home.sol.3.p":"The moment a key metric deviates from expected thresholds, you know instantly — not during monthly close.",
-    "home.sol.link":"Explore All Infrastructure Layers &amp; Modules <span aria-hidden='true'>→</span>",
+    "home.sol.link":"Explore the Full Infrastructure &amp; Modules <span aria-hidden='true'>→</span>",
 
     /* --- home: brands and testimonials --- */
     "home.brands.eyebrow":"Trusted by Industry Leaders",
@@ -2932,7 +3106,7 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
 
     /* --- services --- */
     "svc.hero.pill":"<span class='dot'></span>Services",
-    "svc.hero.h1":"One Infrastructure. Eight Layers. <em>Complete Business Coverage.</em>",
+    "svc.hero.h1":"One Infrastructure. <em>Complete Business Coverage.</em>",
     "svc.hero.lead":"From initial Priority ERP connection to conversational AI agents answering queries in plain English — everything needed to turn raw data into decisive action.",
     "svc.tiers.eyebrow":"Analytics Infrastructure",
     "svc.tiers.h":"Three Interconnected Tiers Built On Top of One Another",
@@ -2960,6 +3134,7 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     "svc.tier.3.l4.p":"Autonomously scans your data to detect anomalies, patterns, and emerging risks without waiting for a prompt.",
     "svc.mods.eyebrow":"Ready-to-Deploy Modules",
     "svc.mods.h":"Full Analytical Coverage for Every Business Domain — Ready to Launch",
+    "svc.mods.sub":"Open a module to see a real dashboard",
     "svc.tag.sales":"Sales",
     "svc.tag.ops":"Operations",
     "svc.tag.fin":"Finance",
@@ -2971,18 +3146,16 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     "svc.mod.3.p":"What is out of stock, what is sitting dead on shelves, and exact reorder recommendations for the month.",
     "svc.mod.4.h":"Budget &amp; Variance Control",
     "svc.mod.4.p":"Where you are exceeding budget and where margins remain — while there is still time to course-correct.",
-    "svc.mod.5.h":"P&amp;L by Profit Centers",
-    "svc.mod.5.p":"Which business unit is genuinely driving profit, and which only looks good due to blended company averages.",
-    "svc.mod.6.h":"Multi-Company Consolidated P&amp;L",
-    "svc.mod.6.p":"Individual subsidiary profitability and consolidated group financials — without manual Excel stitching.",
-    "svc.mod.7.h":"Customer Support &amp; Service",
-    "svc.mod.7.p":"Open ticket volume, resolution times, SLA compliance, and technician performance against targets.",
-    "svc.mod.8.h":"Manufacturing &amp; Shop Floor",
-    "svc.mod.8.p":"Actual production throughput vs. scheduling — per machine, per shift.",
-    "svc.mod.9.h":"Labor Utilization &amp; Billable Hours",
-    "svc.mod.9.p":"How much work time delivers direct value, and where operational hours are slipping through the cracks.",
-    "svc.mod.10.h":"Warehouse Management (WMS)",
-    "svc.mod.10.p":"Real-time warehouse activity, open fulfillment queues, and daily throughput.",
+    "svc.mod.5.h":"P&amp;L",
+    "svc.mod.5.p":"Profitability by profit center, by company and for the group as a whole — in one view, without stitching reports in Excel.",
+    "svc.mod.6.h":"Customer Support &amp; Service",
+    "svc.mod.6.p":"Open ticket volume, resolution times, SLA compliance, and technician performance against targets.",
+    "svc.mod.7.h":"Manufacturing &amp; Shop Floor",
+    "svc.mod.7.p":"Actual production throughput vs. scheduling — per machine, per shift.",
+    "svc.mod.8.h":"Labor Utilization &amp; Billable Hours",
+    "svc.mod.8.p":"How much work time delivers direct value, and where operational hours are slipping through the cracks.",
+    "svc.mod.9.h":"Warehouse Management (WMS)",
+    "svc.mod.9.p":"Real-time warehouse activity, open fulfillment queues, and daily throughput.",
     "svc.tracks.eyebrow":"How to Get Started",
     "svc.tracks.h":"Two Implementation Tracks, One Powerful Infrastructure",
     "svc.track.1.h":"Core Track <span class='path-sub'>Ready for Rapid Deployment</span>",
@@ -3023,9 +3196,15 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     "form.message.ph":"Tell us a bit about your data and analytics needs...",
     "form.submit":"Send Message",
     "form.note":"Fields marked with <span class='req'>*</span> are required. Information is used solely to contact you.",
-    "form.done.h":"Your message is ready to send",
-    "contact.done.p":"An email client window has opened with your inquiry — click \"Send\" to deliver it directly to us.",
-    "modal.done.p":"An email client window has opened with your inquiry — click \"Send\" to deliver it directly to our team.<br>If the email window did not open, here is how to reach us directly:",
+    "form.done.h":"We've got your enquiry",
+    "contact.done.p":"We'll come back to you within one business day. If it's urgent, here are the fast routes:",
+    "modal.done.p":"We'll come back to you within one business day.<br>If it's urgent, here are the fast routes:",
+    "form.fail.h":"That didn't send",
+    "form.fail.p":"Something went wrong on the way to us and the enquiry was not sent. You can try again, and these reach us directly:",
+    "form.retry":"Try again",
+    "form.sending":"Sending\u2026",
+    "form.done.h.mailto":"Your message is ready to send",
+    "form.done.p.mailto":"An email window has opened with your message \u2014 click Send and it reaches us.",
     "form.fallback.mail":"Email · <a href='mailto:elishai@compassbi.co.il'>elishai@compassbi.co.il</a>",
     "form.fallback.phone":"Phone · <a href='tel:+972545778838'>+972-54-577-8838</a>",
 
@@ -3036,6 +3215,15 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     "mail.f.email":"Email",
     "mail.body.default":"I'd like to hear more about Compass BI.",
     "mail.subject":"Website enquiry",
+
+    /* --- the screenshot viewer --- */
+    "shot.close":"Close",
+    "shot.count":"Module {n} of {t}",
+    "shot.soon":"This module's preview is on its way",
+    "shot.demo":"Figures shown are demo data",
+    "shot.prev":"Previous",
+    "shot.next":"Next",
+    "shot.alt":"Screenshot: {name} dashboard, demo data",
 
     /* --- footer --- */
     "footer.desc":"Analytics infrastructure for Priority ERP — dashboards, automations, and AI agents, with no in-house BI team required.",
@@ -3048,7 +3236,7 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     /* --- head tags --- */
     "meta.title":"Compass BI — Analytics Infrastructure for Priority ERP",
     "meta.desc":"Data warehouse, executive dashboards, alerts and AI agents for businesses running on Priority ERP. A complete BI infrastructure as a monthly service — with no in-house BI team and no infrastructure investment.",
-    "meta.og.title":"Your data already lives in Priority ERP. It’s time it starts talking.",
+    "meta.og.title":"Your data already lives in Priority ERP. It’s time it started talking.",
     "meta.og.desc":"Data warehouse, dashboards, alerts and AI agents — for businesses running on Priority ERP. Connect in a single day, go live in weeks.",
     "meta.og.locale":"en_US",
     "meta.og.alt":"Compass BI — Analytics Infrastructure for Priority ERP"
@@ -3072,13 +3260,22 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
 
   // Strings the script prints itself. They have no element to be read off,
   // so the Hebrew is seeded here and the English sits in EN like any other.
-  HE["rose.trend.up"]     = "\u25B2 עולה";
-  HE["rose.trend.flat"]   = "\u25CF יציב";
   HE["mail.f.name"]       = "שם";
   HE["mail.f.phone"]      = "טלפון";
   HE["mail.f.company"]    = "חברה";
   HE["mail.f.email"]      = "אימייל";
   HE["mail.body.default"] = "אשמח לשמוע עוד על Compass BI.";
+  // The screenshot viewer. {n}/{t} are filled in at print time; the module
+  // name and its outcome line are NOT here - they are read off the card that
+  // was clicked, which already carries them in the current language.
+  HE["form.sending"] = "שולח\u2026";
+  // Used only while ENDPOINT is empty: the page composed a mail, it did not
+  // receive anything, and it must not say otherwise.
+  HE["form.done.h.mailto"] = "הפרטים מוכנים לשליחה";
+  HE["form.done.p.mailto"] = "נפתח אצלכם חלון מייל עם ההודעה - לחצו \"שלח\" והפנייה תגיע אלינו.";
+  HE["shot.count"] = "מודול {n} מתוך {t}";
+  HE["shot.soon"]  = "התצוגה של המודול הזה בהכנה";
+  HE["shot.alt"]   = "צילום מסך: דשבורד {name}, נתוני הדגמה";
   HE["mail.subject"]      = "פנייה מהאתר";
 
   // head tags. [selector, attribute or null for textContent, key]
@@ -3132,7 +3329,7 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
   }
 
   /* boot === true on the first pass: the router, the canvases and the
-     mini-dashboard have not been created yet, so there is nothing to
+     phone clip have not been created yet, so there is nothing to
      repaint and placeBearing would measure an element that is not there. */
   /* Puts a sentence into the live region. Clearing first and writing back on
      a timeout is deliberate: a reader announces a *change* of text, so writing
@@ -3164,8 +3361,9 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
       history.replaceState(null, "", u.pathname + u.search + u.hash);
     }catch(e){}
     placeBearing();
-    if(mini) drawMini(miniSeries);
+    syncClip();
     repaint();
+    if(shotRefill) shotRefill();
     // Every word on the page has just been replaced underneath a visitor who
     // cannot see it happen. Focus stays on the switch - they pressed it on
     // purpose - so the live region carries the news instead. The sentence is
@@ -3408,9 +3606,18 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
   });
 
   /* ---------- enquiry forms ----------
-     No backend here, so a submitted form composes a mail to the office instead of
-     silently pretending to send. To wire this to a real endpoint, replace the body
-     of deliver() with your fetch(...) POST and drop the mailto line. */
+     Posts to a Google Apps Script web app that writes the lead into the
+     pipeline sheet and mails the office - see _form-endpoint.gs, which also
+     carries the deployment steps. Paste the /exec URL into ENDPOINT below and
+     nowhere else.
+
+     This is the one request the site makes to anyone but its own origin, and
+     it is made only when a visitor submits, never on load.
+
+     ENDPOINT empty is a working state, not a broken one: the page falls back
+     to composing a mail, exactly as it did before there was a backend. What
+     it no longer does is claim success either way. */
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbxjLyWhzvqqoN_KSY_yvNNI7oRTln678lNjXOQgZQN_pwsf6_iCU7XTwFUHAgcus3id/exec";
   var INBOX = "elishai@compassbi.co.il";
 
   function compose(f){
@@ -3431,11 +3638,42 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     };
   }
 
-  function deliver(f){
+  function mailtoFallback(f){
     var m = compose(f);
     window.location.href = "mailto:" + INBOX +
       "?subject=" + encodeURIComponent(m.subject) +
       "&body="    + encodeURIComponent(m.body);
+  }
+
+  /* Resolves true only when the lead is actually on the other side. The old
+     version returned nothing and the caller showed the success panel anyway,
+     so a phone with no mail app was told the enquiry had been sent. */
+  function deliver(f){
+    if(!ENDPOINT){ mailtoFallback(f); return Promise.resolve(true); }
+
+    var get = function(n){ var el = f.querySelector('[name="'+n+'"]'); return el ? el.value.trim() : ""; };
+    var body = JSON.stringify({
+      name: get("name"), phone: get("phone"), company: get("company"),
+      email: get("email"), message: get("message"),
+      website: get("website"),                       // the honeypot, see .hp
+      lang: lang,
+      source: f.id === "talkForm" ? "modal" : "page",
+      page: (location.hash || "#home").replace(/^#\/?/, "")
+    });
+
+    /* text/plain and not application/json on purpose: application/json makes
+       the browser send a CORS preflight, Apps Script never answers OPTIONS,
+       and the send would fail before arriving. The server parses it as JSON
+       regardless. Documented at the top of _form-endpoint.gs too, because
+       whoever finds this next will be tempted to "fix" it. */
+    return fetch(ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type": "text/plain;charset=utf-8"},
+      body: body
+    }).then(function(r){
+      if(!r.ok) return false;
+      return r.json().then(function(j){ return !!(j && j.ok); }, function(){ return false; });
+    }).catch(function(){ return false; });
   }
 
   // mark the first empty required field instead of relying on a silent no-op
@@ -3499,25 +3737,64 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     return null;
   }
 
-  function wireForm(formId, doneId){
-    var f = document.getElementById(formId), done = document.getElementById(doneId);
-    if(!f || !done) return;
+  /* With no endpoint the page can only compose a mail, so the confirmation
+     says that instead of claiming we received anything. The data-i18n key is
+     what changes, not the text: applyStrings re-reads the attribute on a
+     language switch, so overwriting the text alone would be undone. */
+  function markMailtoCopy(done){
+    var h = done.querySelector("h3"), pp = done.querySelector("p");
+    if(h){  h.setAttribute("data-i18n","form.done.h.mailto");  h.innerHTML = S("form.done.h.mailto"); }
+    if(pp){ pp.setAttribute("data-i18n","form.done.p.mailto"); pp.innerHTML = S("form.done.p.mailto"); }
+  }
+
+  function land(panel){
+    panel.hidden = false;
+    panel.setAttribute("tabindex","-1");
+    panel.focus();
+  }
+
+  function wireForm(formId, doneId, failId){
+    var f = document.getElementById(formId),
+        done = document.getElementById(doneId),
+        fail = document.getElementById(failId);
+    if(!f || !done || !fail) return;
+    var btn = f.querySelector('[type="submit"]'), busy = false;
+
     f.addEventListener("submit", function(e){
       e.preventDefault();
+      if(busy) return;                       // a second click while in flight
       var bad = firstInvalid(f);
-      if(bad){
-        flagInvalid(bad);
-        return;
-      }
-      deliver(f);
-      f.hidden = true;
-      done.hidden = false;
-      done.setAttribute("tabindex","-1");
-      done.focus();
+      if(bad){ flagInvalid(bad); return; }
+
+      busy = true;
+      var label = btn ? btn.innerHTML : "";
+      if(btn){ btn.disabled = true; btn.innerHTML = S("form.sending"); }
+
+      if(!ENDPOINT) markMailtoCopy(done);
+
+      deliver(f).then(function(ok){
+        busy = false;
+        if(btn){ btn.disabled = false; btn.innerHTML = label; }
+        f.hidden = true;
+        land(ok ? done : fail);
+        // The panel is a heading and a paragraph, not a live region, so the
+        // outcome is announced rather than left to be discovered.
+        say(S(ok ? (ENDPOINT ? "form.done.h" : "form.done.h.mailto") : "form.fail.h"));
+      });
+    });
+
+    // Back to the form with what was typed still in it - a failed send is not
+    // a reason to make someone fill it in again.
+    var retry = fail.querySelector("[data-retry]");
+    if(retry) retry.addEventListener("click", function(){
+      fail.hidden = true;
+      f.hidden = false;
+      var first = f.querySelector("input, textarea");
+      if(first) first.focus();
     });
   }
-  wireForm("talkForm", "talkDone");
-  wireForm("pageForm", "pageDone");
+  wireForm("talkForm", "talkDone", "talkFail");
+  wireForm("pageForm", "pageDone", "pageFail");
 
   /* ---------- the "דברו איתנו" dialog ---------- */
   var talk = document.getElementById("talkModal");
@@ -3531,6 +3808,7 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
         document.getElementById("burger").setAttribute("aria-expanded","false");
         talkForm.hidden = false;          // reset to the form on every open
         talkDone.hidden = true;
+        document.getElementById("talkFail").hidden = true;
         if(typeof talk.showModal === "function") talk.showModal();
         else talk.setAttribute("open","");
         var first = talk.querySelector("#t-name");
@@ -3544,98 +3822,167 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     talk.addEventListener("close", function(){ talkForm.reset(); });
   }
 
-  /* ---------- hero mini-dashboard ----------
-     Shapes, not readings. The series below exist to give each tab a
-     distinct silhouette - rising, falling, stepping - and nothing on the
-     card prints a value, so there is no invented figure for a visitor to
-     read as ours. Keep it that way if the data ever gets edited. */
-  var MINI = {
-    sales:{v:[38,44,41,50,47,56,53,62,58,68,66,76]},  // steady climb
-    stock:{v:[72,57,66,49,60,43,54,38,50,35,47,33]},  // draw-down and restock
-    pnl:  {v:[54,49,41,35,33,39,47,55,59,57,66,73]}   // dip, then recovery
-  };
-  var mini      = document.getElementById("mini");
-  var miniLine  = document.getElementById("miniLine");
-  var miniArea  = document.getElementById("miniArea");
-  var miniDot   = document.getElementById("miniDot");
-  var miniTitle = document.getElementById("miniTitle");
-  var miniPanel = document.getElementById("miniPanel");
+  /* ---------- the screenshot viewer ----------
+     Ten module cards, each opening its dashboard. The cards are <button>
+     rather than <div> so this is reachable without a mouse at all, and the
+     dialog is the platform's <dialog>, which is where Esc, the focus trap
+     and the inert background come from.
 
-  // viewBox is 320x82. Time runs LEFT TO RIGHT even though the page is RTL.
-  // Tried it the other way and it reads as a decline: "up and to the right"
-  // is what a rising line means to everyone, and more to the point Power BI
-  // draws its time axis LTR inside Hebrew reports too - as does the #pulse
-  // chart on the about page. A chart on a page selling Power BI should not
-  // disagree with Power BI.
-  function miniPath(vals){
-    var W = 320, H = 82, padY = 9;
-    var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
-    var span = (hi - lo) || 1;
-    var pts = vals.map(function(v,i){
-      return [ W * (i/(vals.length-1)),
-               padY + (H - padY*2) * (1 - (v-lo)/span) ];
-    });
-    var d = "M" + pts[0][0].toFixed(1) + " " + pts[0][1].toFixed(1);
-    for(var i=1;i<pts.length;i++){
-      var p = pts[i-1], c = pts[i], mx = (p[0]+c[0])/2;
-      d += " C" + mx.toFixed(1) + " " + p[1].toFixed(1) + "," +
-                  mx.toFixed(1) + " " + c[1].toFixed(1) + "," +
-                  c[0].toFixed(1) + " " + c[1].toFixed(1);
-    }
-    return {d:d, end:pts[pts.length-1]};
-  }
+     Nothing is fetched until a card is clicked. That is the entire reason
+     the screenshots are files beside the page instead of data URIs: inlined,
+     all ten would download before the first paint for every visitor,
+     including the ones who never open one. */
+  var shot = document.getElementById("shotModal");
+  if(shot){
+    var shotCards = [].slice.call(document.querySelectorAll(".mods [data-mod]"));
+    var shotFrame = document.getElementById("shotFrame");
+    var shotTitle = document.getElementById("shotTitle");
+    var shotCap   = document.getElementById("shotCap");
+    var shotCount = document.getElementById("shotCount");
+    var shotDemo  = shot.querySelector(".shot-demo");
+    var shotAt    = 0;      // index into shotCards
+    var shotFrom  = null;   // the card that opened it, to hand focus back to
 
-  var miniSeries = "sales";
-  function drawMini(key){
-    if(!mini || !miniLine) return;
-    if(!MINI[key]) key = "sales";
-    miniSeries = key;                 // so a language switch can redraw the same tab
-    var s = MINI[key];
-    var p = miniPath(s.v);
-    miniLine.setAttribute("d", p.d);
-    miniArea.setAttribute("d", p.d + " L320 82 L0 82 Z");
-    miniDot.setAttribute("cx", p.end[0].toFixed(1));
-    miniDot.setAttribute("cy", p.end[1].toFixed(1));
-    miniTitle.textContent = S("mini." + key);
-    // dasharray drives the draw-on; measure the path we just set
-    var len = 600;
-    try { len = Math.ceil(miniLine.getTotalLength()) || 600; } catch(e){}
-    miniLine.style.setProperty("--len", len);
-    // restart the animation: drop the class, force a reflow, put it back
-    mini.classList.remove("drawn");
-    void mini.offsetWidth;
-    mini.classList.add("drawn");
-  }
+    var shotFill = function(i, announce){
+      shotAt = (i + shotCards.length) % shotCards.length;
+      var card = shotCards[shotAt];
+      var n    = +card.getAttribute("data-mod");
+      // Read off the card rather than from a dictionary of our own: it
+      // already holds both strings in the language now showing, so the
+      // viewer cannot fall out of translation with the grid behind it.
+      var name = card.querySelector(".hd strong").textContent;
+      var desc = card.querySelector(".hd + span").textContent;
 
-  if(mini){
-    var miniTabs = [].slice.call(mini.querySelectorAll(".mini-tab"));
-    var selectTab = function(tab, focus){
-      miniTabs.forEach(function(o){
-        var on = o === tab;
-        o.setAttribute("aria-selected", on ? "true" : "false");
-        o.tabIndex = on ? 0 : -1;
-      });
-      miniPanel.setAttribute("aria-labelledby", tab.id);
-      if(focus) tab.focus();
-      drawMini(tab.dataset.series);
+      shotTitle.textContent = name;
+      shotCap.textContent   = desc;
+      shotCount.textContent = S("shot.count")
+        .replace("{n}", shotAt + 1).replace("{t}", shotCards.length);
+
+      var dims = SHOTS[lang] && SHOTS[lang][n];
+      if(dims){
+        var base = "assets/mod-" + (n < 10 ? "0" : "") + n + (lang === "en" ? ".en" : "");
+        var img = document.createElement("img");
+        // width/height are the 1x pixel size and are what holds the frame's
+        // proportions open while the file is still in flight.
+        img.width = dims[0]; img.height = dims[1];
+        img.alt = S("shot.alt").replace("{name}", name);
+        img.decoding = "async";
+        img.src = base + ".webp";
+        img.srcset = base + ".webp " + dims[0] + "w, " + base + "@2x.webp " + dims[2] + "w";
+        img.sizes = "(max-width:520px) calc(100vw - 62px)," +
+                    "(max-width:1090px) calc(100vw - 82px),1008px";
+        shotFrame.replaceChildren(img);
+      }else{
+        // No screenshot in this language yet. Drawn, not downloaded - see the
+        // .shot-holder note in the stylesheet - and never the other
+        // language's file standing in for it.
+        var box = document.createElement("div");
+        box.className = "shot-holder";
+        box.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+                        '<use href="#icoZoom"/></svg><p></p>';
+        box.querySelector("p").textContent = S("shot.soon");
+        shotFrame.replaceChildren(box);
+      }
+      // No screenshot means no figures on screen, and a note about the
+      // figures then describes nothing. It comes back with the image.
+      shotDemo.hidden = !dims;
+      if(announce) say(name);
     };
-    miniTabs.forEach(function(tab, i){
-      tab.tabIndex = tab.getAttribute("aria-selected") === "true" ? 0 : -1;
-      tab.addEventListener("click", function(){ selectTab(tab, false); });
-      tab.addEventListener("keydown", function(e){
-        // the arrow that advances is the one pointing along the reading
-        // direction, so which key does what swaps with the language
-        var fwd = document.documentElement.getAttribute("dir") === "ltr" ? "ArrowRight" : "ArrowLeft";
-        var d = e.key === fwd ? 1 : (e.key === "ArrowLeft" || e.key === "ArrowRight") ? -1 : 0;
-        if(!d) return;
-        e.preventDefault();
-        selectTab(miniTabs[(i + d + miniTabs.length) % miniTabs.length], true);
+
+    // Kept where setLang can reach it: switching language with the viewer
+    // open has to rewrite what is inside it, including swapping to the other
+    // language's file when that module has one.
+    shotRefill = function(){ if(shot.open) shotFill(shotAt, false); };
+
+    shotCards.forEach(function(card){
+      card.addEventListener("click", function(){
+        shotFrom = card;
+        shotFill(shotCards.indexOf(card), false);
+        if(typeof shot.showModal === "function") shot.showModal();
+        else shot.setAttribute("open","");
+        // The heading, not the close button: a reader lands on the name of
+        // the module it just opened. Same pattern the router uses per view.
+        shotTitle.focus({preventScroll:true});
       });
     });
-    drawMini("sales");
+
+    var shotPrev = document.getElementById("shotPrev");
+    var shotNext = document.getElementById("shotNext");
+    shotPrev.addEventListener("click", function(){ shotFill(shotAt - 1, true); });
+    shotNext.addEventListener("click", function(){ shotFill(shotAt + 1, true); });
+
+    // Arrow keys follow the reading direction rather than the key's name:
+    // in Hebrew the next card is the one to the left.
+    shot.addEventListener("keydown", function(e){
+      if(e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      var ltr = document.documentElement.getAttribute("dir") !== "rtl";
+      e.preventDefault();
+      shotFill(shotAt + ((e.key === "ArrowRight") === ltr ? 1 : -1), true);
+    });
+
+    document.getElementById("shotClose").addEventListener("click", function(){ shot.close(); });
+    shot.addEventListener("click", function(e){ if(e.target === shot) shot.close(); });
+    shot.addEventListener("close", function(){
+      // Drop the image rather than leave it decoded behind a closed dialog.
+      // Reopening costs nothing: the file is in the HTTP cache by then.
+      shotFrame.replaceChildren();
+      if(shotFrom) shotFrom.focus({preventScroll:true});
+    });
   }
 
-  /* ---------- canvas: the analytic compass rose ---------- */
+  /* ---------- the hero's recorded phone dashboard ----------
+     Replaces the sparkline card that stood here. That card was shapes and
+     no readings on purpose; this one is a real capture and does print
+     figures, so it carries the same demo-data note the screenshot viewer
+     shows - the about page's "a dashboard is a mirror" does not survive a
+     screen that looks live and is not.
+
+     HEBREW ONLY. The recording is of the Hebrew UI, and the project rule is
+     that an asset missing in one language falls back to a placeholder and
+     never to the other language's - a Hebrew dashboard in front of an
+     English reader is worse than an honest "not yet". Two consequences
+     below: the placeholder swaps in, and src is only ever attached on the
+     Hebrew side, so an English visitor never downloads the 900KB either. */
+  var clipFig    = document.getElementById("heroClip");
+  var clipVideo  = document.getElementById("heroClipVideo");
+  var clipHolder = document.getElementById("heroClipHolder");
+  var clipDemo   = clipFig && clipFig.querySelector(".shot-demo");
+  var clipCap    = document.getElementById("heroClipCap");
+
+  function syncClip(){
+    if(!clipVideo) return;
+    var he = lang !== "en";
+    clipVideo.hidden  = !he;
+    clipHolder.hidden = he;
+    if(clipDemo) clipDemo.hidden = !he;   // no figures on screen, no note needed
+    if(clipCap)  clipCap.hidden  = !he;
+    if(!he){
+      // Detach rather than pause: a paused <video> keeps its buffer, and the
+      // point of the language gate is that the file is never fetched at all.
+      try{ clipVideo.pause(); }catch(e){}
+      if(clipVideo.getAttribute("src")){
+        clipVideo.removeAttribute("src");
+        clipVideo.load();
+      }
+      return;
+    }
+    if(!clipVideo.getAttribute("src")){
+      clipVideo.setAttribute("src", clipVideo.getAttribute("data-src"));
+    }
+    // A viewer who asked for less motion keeps the poster and the caption:
+    // the dashboard still arrives, the movement does not. Same contract the
+    // rain, the mark and the old rose hold.
+    if(reduce){ try{ clipVideo.pause(); }catch(e){} return; }
+    var p = clipVideo.play();
+    // Autoplay can still be refused (a data-saver profile, an OS setting).
+    // The poster is already on screen, so there is nothing to repair - this
+    // only stops an unhandled rejection in the console.
+    if(p && p.catch) p.catch(function(){});
+  }
+  syncClip();
+
+
+  /* ---------- canvas helpers, shared by the pulse graph and the rain ---------- */
   function tone(name){
     return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   }
@@ -3653,105 +4000,123 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     return {ctx:ctx, w:r.width, h:r.height};
   }
 
-  // stable pseudo-random bar heights — the "readings" around the rose
-  var BARS = 56, readings = [];
-  for(var i=0;i<BARS;i++){
-    var s = Math.sin(i*12.9898)*43758.5453;
-    readings.push(.34 + (s - Math.floor(s)) * .66);
+  /* ---------- the compass mark, built ----------
+     Reimplemented from the standalone logo animation (PICS/Compass BI Logo
+     Animation (standalone) 2.html), which arrived as a 1.1MB self-extracting
+     bundle carrying React, ReactDOM and Babel-standalone to compile its JSX
+     in the browser. None of that could come near a page that makes no
+     third-party request at runtime, and none of it needed to: the animation
+     draws the four paths this site already inlines in the header lockup, in
+     the same coordinate space. What follows is its choreography and nothing
+     else.
+
+     TWO CLOCKS, on purpose. The original is AUTHORED against a 0-4.15s
+     timeline and PLAYED in 2.0s, because its scene table warps each scene
+     separately - the build compresses 2.4s into 0.9s, the needle 1.75s into
+     1.1s. Keeping both clocks means every number below can still be read
+     against the source it came from; collapsing them into one would have
+     produced a table of magic constants that matches nothing.
+
+     WHAT WAS DROPPED. The original also runs a camera (a 1.62 -> 0.965 scale
+     settle) and, after the needle, slides the mark aside to wipe in the
+     wordmark and a "Your BI Partner" slogan. Both are for a 1920x1080 stage
+     ending on a full lockup. Here the mark sits in a square box a screen
+     below the header's own lockup, so the camera has nothing to travel over
+     and the wordmark would be the logo twice on one screen. The build and
+     the needle are the whole of what runs. */
+  var MB_MC = {x:163.7, y:139.8};                       // mark centre, logo units
+  var MB_SCENES = [{play:0.90, nat:2.40}, {play:1.10, nat:1.75}];
+  var MB_END = 4.15;                                    // authored seconds
+
+  var MB_E = {
+    outCubic:   function(t){ t -= 1; return t*t*t + 1; },
+    outQuart:   function(t){ t -= 1; return 1 - t*t*t*t; },
+    inOutQuart: function(t){ return t < .5 ? 8*t*t*t*t : 1 - 8*(t-1)*(t-1)*(t-1)*(t-1); },
+    outBack:    function(t){ var c1 = 1.70158, c3 = c1 + 1;
+                             return 1 + c3*Math.pow(t-1,3) + c1*Math.pow(t-1,2); },
+    outElastic: function(t){ if(t === 0 || t === 1) return t;
+                             var c4 = (Math.PI*2)/3;
+                             return Math.pow(2,-10*t) * Math.sin((t*10 - .75)*c4) + 1; }
+  };
+
+  // one authored segment: flat before start, flat after end, eased between
+  function mbSeg(from,to,start,end,ease){
+    return function(T){
+      if(T <= start) return from;
+      if(T >= end) return to;
+      return from + (to - from) * ease((T - start)/(end - start));
+    };
   }
 
-  var rose = document.getElementById("rose");
-  var roseNum = document.getElementById("roseNum");
-  var roseTrend = document.getElementById("roseTrend");
-  var t0 = performance.now();
+  // Built once, not per frame. Every pair of numbers here is the original's.
+  var MB = {
+    sweepRot: mbSeg(-168, 0, 0.12, 1.55, MB_E.inOutQuart),
+    sweepOp:  mbSeg(0, 1, 0.12, 0.70, MB_E.outCubic),
+    innerRot: mbSeg(148, 0, 0.55, 1.95, MB_E.inOutQuart),
+    innerOp:  mbSeg(0, 1, 0.55, 1.10, MB_E.outCubic),
+    arcRot:   mbSeg(-96, 0, 1.45, 2.45, MB_E.outBack),
+    arcOp:    mbSeg(0, 1, 1.45, 1.80, MB_E.outCubic),
+    needleOp: mbSeg(0, 1, 2.42, 2.70, MB_E.outCubic),
+    needleSc: mbSeg(0.15, 1, 2.42, 3.10, MB_E.outBack),
+    spin:     mbSeg(545, 11, 2.42, 3.35, MB_E.outQuart),
+    settle:   mbSeg(11, 0, 3.35, 4.15, MB_E.outElastic)
+  };
 
-  function drawRose(now){
-    if(!rose.offsetParent) return;
-    var f = fit(rose), ctx = f.ctx, w = f.w, h = f.h;
-    var cx = w/2, cy = h/2, R = Math.min(w,h)/2 - 6;
-    var t = reduce ? 3200 : (now - t0);
-    var spin = reduce ? .42 : (t/26000) * Math.PI * 2;
-
-    var ink = tone("--ink"), dim = tone("--ink-faint"), brass = tone("--brass"), sky = tone("--sky"), hair = tone("--hair");
-
-    ctx.clearRect(0,0,w,h);
-
-    // outer bezel
-    ctx.strokeStyle = hair; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2); ctx.stroke();
-    ctx.beginPath(); ctx.arc(cx,cy,R*.90,0,Math.PI*2); ctx.stroke();
-
-    // degree ticks on the bezel
-    for(var d=0; d<72; d++){
-      var a = spin + d/72 * Math.PI*2;
-      var major = d % 9 === 0;
-      var r1 = R*.90, r2 = R*(major ? .82 : .865);
-      ctx.strokeStyle = major ? ink : dim;
-      ctx.globalAlpha = major ? .75 : .3;
-      ctx.lineWidth = major ? 1.6 : 1;
-      ctx.beginPath();
-      ctx.moveTo(cx+Math.cos(a)*r1, cy+Math.sin(a)*r1);
-      ctx.lineTo(cx+Math.cos(a)*r2, cy+Math.sin(a)*r2);
-      ctx.stroke();
+  // played seconds -> authored seconds, one scene at a time
+  function mbWarp(p){
+    var acc = 0, auth = 0;
+    for(var i=0;i<MB_SCENES.length;i++){
+      var s = MB_SCENES[i];
+      if(p < acc + s.play) return auth + (p - acc) * (s.nat / s.play);
+      acc += s.play; auth += s.nat;
     }
-    ctx.globalAlpha = 1;
-
-    // the readings ring — a radial bar chart
-    var inner = R*.40, span = R*.36;
-    for(var b=0;b<BARS;b++){
-      var ang = -spin*1.6 + b/BARS * Math.PI*2;
-      var wob = reduce ? 0 : Math.sin(t/1300 + b*.42) * .07;
-      var val = Math.min(1, Math.max(.12, readings[b] + wob));
-      var len = span * val;
-      var hot = val > .74;
-      ctx.strokeStyle = hot ? brass : sky;
-      ctx.globalAlpha = hot ? .95 : .40 + val*.35;
-      ctx.lineWidth = Math.max(2, (Math.PI*2*inner/BARS) * .46);
-      ctx.lineCap = "round";
-      ctx.beginPath();
-      ctx.moveTo(cx+Math.cos(ang)*inner, cy+Math.sin(ang)*inner);
-      ctx.lineTo(cx+Math.cos(ang)*(inner+len), cy+Math.sin(ang)*(inner+len));
-      ctx.stroke();
-    }
-    ctx.globalAlpha = 1;
-
-    // inner dial
-    ctx.strokeStyle = hair; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.arc(cx,cy,inner-9,0,Math.PI*2); ctx.stroke();
-
-    // the needle — settles on a bearing, then re-seeks
-    var cyc = reduce ? .5 : (t/9000) % 1;
-    var ease = cyc < .5 ? (1 - Math.pow(1-cyc/.5, 3)) : 1 - (1 - Math.pow(1-(cyc-.5)/.5, 3));
-    var bear = -Math.PI/2 + ease * (Math.PI*1.42);
-    var nl = inner - 16;
-    var grd = ctx.createLinearGradient(cx+Math.cos(bear+Math.PI)*nl, cy+Math.sin(bear+Math.PI)*nl, cx+Math.cos(bear)*nl, cy+Math.sin(bear)*nl);
-    grd.addColorStop(0, sky); grd.addColorStop(.5, hair); grd.addColorStop(1, brass);
-    ctx.strokeStyle = grd; ctx.lineWidth = 3; ctx.lineCap = "round";
-    ctx.beginPath();
-    ctx.moveTo(cx+Math.cos(bear+Math.PI)*nl*.62, cy+Math.sin(bear+Math.PI)*nl*.62);
-    ctx.lineTo(cx+Math.cos(bear)*nl, cy+Math.sin(bear)*nl);
-    ctx.stroke();
-
-    // needle head
-    ctx.fillStyle = brass;
-    ctx.beginPath();
-    ctx.arc(cx+Math.cos(bear)*nl, cy+Math.sin(bear)*nl, 4.5, 0, Math.PI*2);
-    ctx.fill();
-
-    // hub
-    ctx.fillStyle = tone("--ground");
-    ctx.beginPath(); ctx.arc(cx,cy,11,0,Math.PI*2); ctx.fill();
-    ctx.strokeStyle = brass; ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.arc(cx,cy,11,0,Math.PI*2); ctx.stroke();
-    ctx.fillStyle = brass;
-    ctx.beginPath(); ctx.arc(cx,cy,3,0,Math.PI*2); ctx.fill();
-
-    // live readout tied to the needle
-    if(roseNum){
-      roseNum.textContent = Math.round(62 + ease*31);
-      roseTrend.textContent = S(cyc < .5 ? "rose.trend.up" : "rose.trend.flat");
-    }
+    return MB_END;
   }
+
+  var mbBox = document.getElementById("markBuild");
+  var mbSweep  = mbBox && mbBox.querySelector(".mb-sweep");
+  var mbInner  = mbBox && mbBox.querySelector(".mb-inner");
+  var mbArc    = mbBox && mbBox.querySelector(".mb-arc");
+  var mbNeedle = mbBox && mbBox.querySelector(".mb-needle");
+  var mbT0 = null, mbSettled = false;
+
+  function mbRot(deg){
+    return "rotate(" + deg.toFixed(3) + " " + MB_MC.x + " " + MB_MC.y + ")";
+  }
+
+  function drawMark(now){
+    if(!mbBox || !mbSweep) return;
+
+    // offsetParent is null on the three views that are not home. Leaving the
+    // view disarms the clock, so coming back plays the build again rather
+    // than revealing a mark that finished assembling out of sight.
+    if(!mbBox.offsetParent){ mbT0 = null; mbSettled = false; return; }
+    if(mbSettled) return;
+    if(mbT0 === null) mbT0 = now;
+
+    // A viewer who asked for less motion gets the settled mark, once. Same
+    // contract the rain and the rose held: the artwork still arrives, the
+    // movement does not.
+    var T = reduce ? MB_END : mbWarp((now - mbT0) / 1000);
+
+    mbSweep.setAttribute("opacity", MB.sweepOp(T));
+    mbSweep.setAttribute("transform", mbRot(MB.sweepRot(T)));
+    mbInner.setAttribute("opacity", MB.innerOp(T));
+    mbInner.setAttribute("transform", mbRot(MB.innerRot(T)));
+    mbArc.setAttribute("opacity", MB.arcOp(T));
+    mbArc.setAttribute("transform", mbRot(MB.arcRot(T)));
+
+    var sc = MB.needleSc(T);
+    mbNeedle.setAttribute("opacity", MB.needleOp(T));
+    mbNeedle.setAttribute("transform",
+      mbRot(T < 3.35 ? MB.spin(T) : MB.settle(T)) +
+      " translate(" + MB_MC.x + " " + MB_MC.y + ")" +
+      " scale(" + sc.toFixed(4) + ")" +
+      " translate(" + (-MB_MC.x) + " " + (-MB_MC.y) + ")");
+
+    if(T >= MB_END) mbSettled = true;
+  }
+
 
   /* ---------- canvas: the trend graph on the about view ---------- */
   var ACT = [58,62,60,67,71,69,76,82,79,88,93,97];
@@ -3833,10 +4198,58 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
   var PAIL_HOLD = 700;    // ms it stays full and lit before it empties
   var PAIL_DRAIN = 0.06;  // level lost per step while emptying
 
+  /* ---------- the quiet zone ----------
+     A digit that lands between two words stops being texture and starts being
+     noise, and it lowers the contrast of the sentence it sits behind. The
+     first fix here was the vertical dip on the services mask: dim the whole
+     field across the band the text occupies. It works, and it pays for the
+     words with the fall - the rain is dimmed across the full width, including
+     the half of the hero that has no words in it.
+
+     This attenuates by position instead. The copy's own boxes are measured off
+     the DOM, so the zone follows a reflow, a language switch and a headline
+     that wraps to another line; everywhere else the rain keeps full strength.
+     In the two-column hero that means the fall stays intact beside the mark,
+     and in the stacked phone layout the same rule quiets the band the copy
+     occupies and leaves the rest alone. */
+  var QUIET = 0.06;    // alpha multiplier over a word
+  var FEATHER = 46;    // px the attenuation ramps over, so the zone is not a rectangle
+  var QUIET_TTL = 900; // ms before the boxes are measured again
+
   function makeRain(cv, catches){
-    var cols = [], pails = [], box = null;
+    var cols = [], pails = [], box = null, zones = [], zoneAt = -1e9;
 
     function rowOf(px){ return Math.floor(px / RAIN_CELL); }
+
+    /* Boxes are kept in canvas space, which is CSS pixels: fit() applies the
+       device-pixel transform, so everything drawn here is already in the same
+       units as getBoundingClientRect. A zero-width rect means the view is
+       hidden - it is dropped rather than quieting the top-left corner. */
+    function measureZones(now){
+      zoneAt = now;
+      var host = cv.parentNode, cr = cv.getBoundingClientRect();
+      zones = [];
+      [].slice.call(host.querySelectorAll(".pill, h1, .lead, .ctas")).forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if(r.width < 1 || r.height < 1) return;
+        zones.push({l:r.left - cr.left, t:r.top - cr.top, r:r.right - cr.left, b:r.bottom - cr.top});
+      });
+    }
+
+    // 1 out in the open, QUIET over a word, ramped across FEATHER between them.
+    // The distance is Chebyshev rather than euclidean: the halo then follows the
+    // shape of the text block instead of bulging at its corners.
+    function quiet(x, y){
+      var f = 1;
+      for(var i = 0; i < zones.length; i++){
+        var z = zones[i];
+        var d = Math.max(z.l - x, 0, x - z.r, z.t - y, 0, y - z.b);
+        if(d >= FEATHER) continue;
+        var k = QUIET + (1 - QUIET) * (d / FEATHER);
+        if(k < f) f = k;
+      }
+      return f;
+    }
 
     function seed(col){
       col.y = -Math.floor(Math.random() * (col.stop + RAIN_TAIL));
@@ -3911,7 +4324,10 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
 
     function draw(){
       var m = fit(cv);
-      if(!box || Math.abs(m.w - box.w) > 1 || Math.abs(m.h - box.h) > 1) layout(m);
+      if(!box || Math.abs(m.w - box.w) > 1 || Math.abs(m.h - box.h) > 1){
+        layout(m);
+        measureZones(performance.now());
+      }
       var ctx = m.ctx;
       var ink = tone("--ink"), sky = tone("--sky"), brass = tone("--brass");
       ctx.clearRect(0, 0, m.w, m.h);
@@ -3926,9 +4342,13 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
           // characters that reroll every step read as noise, not as falling
           var g = col.glyphs[row];
           if(g === undefined) g = col.glyphs[row] = (Math.random() < 0.5 ? "0" : "1");
-          ctx.globalAlpha = t === 0 ? RAIN_HEAD : RAIN_BODY * (1 - t / RAIN_TAIL);
+          var y = row * RAIN_CELL;
+          var a = (t === 0 ? RAIN_HEAD : RAIN_BODY * (1 - t / RAIN_TAIL))
+                * quiet(x + RAIN_CELL / 2, y + RAIN_CELL / 2);
+          if(a < 0.02) continue;                    // nothing to see, and it costs a fill
+          ctx.globalAlpha = a;
           ctx.fillStyle = t === 0 ? brass : sky;
-          ctx.fillText(g, x, row * RAIN_CELL);
+          ctx.fillText(g, x, y);
         }
       }
       for(var q = 0; q < pails.length; q++) drawPail(ctx, pails[q], ink, sky, brass);
@@ -3936,6 +4356,10 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     }
 
     function step(now){
+      // Re-measured on a timer rather than from setLang: the copy also moves
+      // when a headline rewraps or a font finishes loading, and at ~11 beats a
+      // second four rect reads per second is not a cost worth wiring around.
+      if(now - zoneAt > QUIET_TTL) measureZones(now);
       for(var k = 0; k < cols.length; k++){
         var col = cols[k];
         col.y += col.fast ? 2 : 1;
@@ -3987,12 +4411,12 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
 
   /* ---------- render loop ---------- */
   function frame(now){
-    drawRose(now);
+    drawMark(now);
     if(!reduce) requestAnimationFrame(frame);
   }
   // paint once synchronously — rAF never fires while the tab is backgrounded,
   // which would otherwise leave both canvases blank until the viewer focuses them
-  function repaint(){ drawRose(performance.now()); drawPulse(); }
+  function repaint(){ drawMark(performance.now()); drawPulse(); }
   repaint();
   if(!reduce) requestAnimationFrame(frame);
   document.addEventListener("visibilitychange", function(){

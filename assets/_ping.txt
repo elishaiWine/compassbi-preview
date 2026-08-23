@@ -1,0 +1,10 @@
+Reachability probe for the assets/ folder.
+
+The site loads its dashboard screenshots from assets/ beside index.html
+rather than inlined into it, so deploying means copying index.html AND
+this folder. This file exists to confirm the host serves the folder at
+all - fetch it, and a 200 with this text means assets/ is reachable:
+
+  https://elishaiwine.github.io/compassbi-preview/assets/_ping.txt
+
+Safe to delete once real screenshots live here.
