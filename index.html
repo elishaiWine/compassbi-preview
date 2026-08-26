@@ -47,7 +47,7 @@
 <style>[data-lang-pending] .shell{opacity:0}</style>
 <script>
 (function(){
-  var l = "he", q = /[?&]lang=(en|he)\b/i.exec(location.search),
+  var l = "en", q = /[?&]lang=(en|he)\b/i.exec(location.search),
       h = (location.hash || "").replace(/^#\/?/, "").toLowerCase();
   if(q) l = q[1].toLowerCase();
   else if(h === "en" || h === "he") l = h;
@@ -1114,6 +1114,24 @@ section.snug{padding:clamp(52px,5.5vw,72px) 0}
   }
   .hero .h-xl em::after{content:none}
 }
+/* One exception to the wrapping the block above allows. A hyphenated compound
+   is a legal break point, so the em splits it mid-word: "End-to-End" in the
+   English About headline came out as "Your End-to-" over "End BI Partner",
+   with the cloned rule drawn under both halves. .nb keeps such a compound
+   whole. Below ~500px is the only place it matters; wider than that the
+   headline is one line anyway.
+
+   This is NOT the 2026-08-21 rule returning. That one was white-space:nowrap
+   on the whole em, where an open-ended translated phrase could outgrow a
+   phone and get swallowed by body's overflow-x:hidden. This is a fixed short
+   token - measured at 188px against a 335px line box at 375px, and holding at
+   320px - with the em around it still free to wrap. Put anything longer inside
+   .nb and it has to be measured again.
+
+   A non-breaking hyphen (U+2011) was tried first and rejected: it measures
+   identically in Frank Ruhl Libre and in Georgia, which means the face has no
+   glyph for it and the hyphen would silently fall back mid-word. */
+.hero .h-xl em .nb{white-space:nowrap}
 
 /* ---- the hero's binary rain ----
    isolation:isolate gives the hero its own stacking context, so the canvas can
@@ -2334,7 +2352,7 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     <section class="hero" style="padding-bottom:34px">
       <div class="wrap" style="max-width:860px">
         <div class="pill rise" data-i18n="about.hero.pill"><span class="dot"></span>מי אנחנו</div>
-        <h1 class="h-xl rise" data-i18n="about.hero.h1">שותף ה-BI <em>המלא</em> שלכם</h1>
+        <h1 class="h-xl rise" data-i18n="about.hero.h1"><em>שותף</em> ה-BI שלכם</h1>
         <p class="lead rise" data-i18n="about.hero.lead">תשתית, טכנולוגיה וניהול שוטף מסביב לשעון, בעלות חודשית ידועה מראש. בלי לגייס צוות BI פנימי, בלי להשקיע בתשתיות, ובלי להמתין לדוח שמישהו יספיק להכין.</p>
       </div>
     </section>
@@ -2390,7 +2408,7 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
           <div class="cellx">
             <div class="kk" data-i18n="about.tech.2.k">שכבת התצוגה</div>
             <div class="vv" data-i18n="about.tech.2.v">Power BI</div>
-            <div class="dd" data-i18n="about.tech.2.d">מוביל בדירוג Gartner למעלה מעשור, וברירת המחדל בפרויקטי BI חדשים.</div>
+            <div class="dd" data-i18n="about.tech.2.d">פלטפורמת BI מובילה, בשימוש נרחב בארגונים.</div>
           </div>
           <div class="cellx">
             <div class="kk" data-i18n="about.tech.3.k">אופן האספקה</div>
@@ -2584,7 +2602,7 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
             <div class="layers">
               <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico12"/></svg><div><strong data-i18n="svc.tier.2.l1.h">דשבורדים</strong><span data-i18n="svc.tier.2.l1.p">תמונת מצב ברורה ומעודכנת לכל דרג בארגון.</span></div></div>
               <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico13"/></svg><div><strong data-i18n="svc.tier.2.l2.h">מסכי זמן אמת</strong><span data-i18n="svc.tier.2.l2.p">מעקב חי אחרי מה שקורה בעסק עכשיו - לא אתמול.</span></div></div>
-              <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico14"/></svg><div><strong data-i18n="svc.tier.2.l3.h">דוחות שוטפים בדחיפה</strong><span data-i18n="svc.tier.2.l3.p">הדוחות מגיעים אליכם ביוזמתם - לא צריך לחפש אותם.</span></div></div>
+              <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico14"/></svg><div><strong data-i18n="svc.tier.2.l3.h">דוחות שוטפים בדחיפה</strong><span data-i18n="svc.tier.2.l3.p">הדוחות מגיעים אליכם באופן אוטומטי - לא צריך לחפש אותם.</span></div></div>
             </div>
           </div>
 
@@ -2618,7 +2636,7 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
              an orphan rather than as a group. -->
         <div class="mods reveal">
           <button class="layer" type="button" data-mod="1" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico01"/></svg><div><div class="hd"><strong data-i18n="svc.mod.1.h">מכירות וגבייה</strong><span class="tag sale" data-i18n="svc.tag.sales">מכירות</span></div><span data-i18n="svc.mod.1.p">מי קונה, מי לא רווחי, מי מאחר בתשלום - בזמן אמת.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
-          <button class="layer" type="button" data-mod="2" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico02"/></svg><div><div class="hd"><strong data-i18n="svc.mod.2.h">לידים</strong><span class="tag sale" data-i18n="svc.tag.sales">מכירות</span></div><span data-i18n="svc.mod.2.p">מהיכן מגיעות הפניות, מה קורה איתן, ואיזה מקור באמת סוגר עסקאות.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
+          <button class="layer" type="button" data-mod="2" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico02"/></svg><div><div class="hd"><strong data-i18n="svc.mod.2.h">לידים</strong><span class="tag sale" data-i18n="svc.tag.sales">מכירות</span></div><span data-i18n="svc.mod.2.p">מהיכן מגיעות הפניות, איך הן מטופלות, ואיזה מקור באמת סוגר עסקאות.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
           <button class="layer" type="button" data-mod="3" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico03"/></svg><div><div class="hd"><strong data-i18n="svc.mod.3.h">מלאי והמלצות רכש</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.3.p">מה חסר, מה תקוע על המדף, ומה צריך להזמין החודש.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
           <button class="layer" type="button" data-mod="4" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico04"/></svg><div><div class="hd"><strong data-i18n="svc.mod.4.h">בקרת תקציב</strong><span class="tag fin" data-i18n="svc.tag.fin">פיננסים</span></div><span data-i18n="svc.mod.4.p">איפה אתם חורגים מהתקציב ואיפה נשאר לכם - בזמן שעוד אפשר לתקן.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
           <button class="layer" type="button" data-mod="5" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico05"/></svg><div><div class="hd"><strong data-i18n="svc.mod.5.h">רווח והפסד</strong><span class="tag fin" data-i18n="svc.tag.fin">פיננסים</span></div><span data-i18n="svc.mod.5.p">רווחיות לכל מרכז רווח, לכל חברה ולקבוצה כולה - בתמונה אחת, בלי לאחד דוחות באקסל.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
@@ -2972,7 +2990,7 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     /* --- home: hero --- */
     "home.hero.pill":"<span class='dot'></span>Analytics Infrastructure for Priority ERP",
     "home.hero.h1":"Your data already lives in Priority ERP.<br>It’s time it started <em>talking</em>.",
-    "home.hero.lead":"Enterprise data warehouse, executive dashboards, automated alerts, and AI agents — built for businesses running on Priority ERP.<br><strong>Connect in a single day. Go live in weeks.</strong>",
+    "home.hero.lead":"Enterprise data warehouse, executive dashboards, automated alerts and AI agents — built for businesses running on Priority ERP.<br><strong>Connect in a day. Go live in weeks.</strong>",
     "home.hero.link":"How It Works <span aria-hidden='true'>→</span>",
     "home.mark.aria":"The Compass BI mark assembles from its four parts and the needle settles on north",
     "home.clip.aria":"A recording of the Compass BI dashboard on a phone - profit, sales, debts and invoices side by side",
@@ -2982,12 +3000,12 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     /* --- home: the problem --- */
     "home.problem.eyebrow":"Sound Familiar?",
     "home.problem.h":"Priority ERP is packed with data. What it lacks is a clear picture of your business.",
-    "home.problem.1.h":"Data Scattered Across Siloed Reports",
-    "home.problem.1.p":"Sales, inventory, manufacturing, and budget — each trapped in its own isolated report. Getting the full picture means exporting three separate reports to Excel and manually stitching them together into a single spreadsheet.",
-    "home.problem.2.h":"No Internal BI Engineering Capacity",
-    "home.problem.2.p":"Building an in-house BI infrastructure demands specialized engineering talent, immense time, and heavy budgets — while you have a business to run.",
-    "home.problem.3.h":"Operational Bottlenecks Surface Too Late",
-    "home.problem.3.p":"Costly variances and bottlenecks are only discovered at monthly close, long after the financial damage is done — because no one was alerted in real time.",
+    "home.problem.1.h":"Data Scattered Across Reports",
+    "home.problem.1.p":"Sales, inventory, manufacturing and budget — each in a separate report. Getting the full picture means exporting three reports to Excel and combining them into one spreadsheet.",
+    "home.problem.2.h":"No One in the Organization to Build BI",
+    "home.problem.2.p":"Building BI in-house requires time, professional expertise and budget — while you have a business to run.",
+    "home.problem.3.h":"Exceptions Are Discovered Too Late",
+    "home.problem.3.p":"An exception is discovered in the monthly summary, after it has already cost money.",
 
     /* --- home: the solution --- */
     "home.solution.eyebrow":"How We Solve It",
@@ -2996,28 +3014,28 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     "home.pipe.1.nm":"Priority ERP",
     "home.pipe.1.sub":"The core system your enterprise already runs on",
     "home.pipe.2.nm":"Enterprise Data Warehouse",
-    "home.pipe.2.sub":"All internal and external data sources unified in one place",
+    "home.pipe.2.sub":"All your data sources in one place",
     "home.pipe.3.nm":"Power BI &amp; AI Agents",
-    "home.pipe.3.sub":"Actionable dashboards, proactive alerts, and intelligent AI agents",
+    "home.pipe.3.sub":"Dashboards, alerts and AI agents",
     "home.sol.1.h":"Enterprise Data Warehouse",
-    "home.sol.1.p":"All data from Priority ERP and third-party applications is unified, cleansed, and structured in a governed single repository.",
+    "home.sol.1.p":"All data from Priority ERP and complementary applications is unified and organized in one place.",
     "home.sol.2.h":"Real-Time Executive Dashboards",
-    "home.sol.2.p":"A crystal-clear operational picture for every leadership tier — updated live, not from a static report printed yesterday.",
-    "home.sol.3.h":"Anomaly Detection &amp; Proactive Alerts",
-    "home.sol.3.p":"The moment a key metric deviates from expected thresholds, you know instantly — not during monthly close.",
+    "home.sol.2.p":"A clear picture of the business for every level of the organization — updated in real time, not from a report printed yesterday.",
+    "home.sol.3.h":"Exception Monitoring &amp; Alerts",
+    "home.sol.3.p":"The moment a metric moves outside its expected range, you know about it — not in the monthly summary.",
     "home.sol.link":"Explore the Full Infrastructure &amp; Modules <span aria-hidden='true'>→</span>",
 
     /* --- home: brands and testimonials --- */
     "home.brands.eyebrow":"Trusted by Industry Leaders",
     "home.brands.p":"Dozens of executives make critical business decisions every day with Compass BI.",
     "home.voices.eyebrow":"Client Stories",
-    "home.voices.h":"What Long-Term Partners Say About Working With Us",
-    "home.voice.1.q":"We have total visibility over our entire sales operation, field agent performance, and global procurement — all in real time. We no longer waste hours searching for and producing reports; we just open the screen and see the answers.",
+    "home.voices.h":"What Long-Term Partners Say About Working with Us",
+    "home.voice.1.q":"We have total visibility over our entire sales operation, field agent performance and global procurement — all in real time. We no longer waste hours searching for and producing reports; we just open the screen and see the answers.",
     "home.voice.1.nm":"Meir Shirazi",
     "home.voice.1.rl":"CEO &amp; Owner",
     "home.voice.1.co":"N.S.M. Ltd.",
     "home.voice.1.since":"6 Years of Partnership",
-    "home.voice.2.q":"The system dramatically reduced our lead time for product forecasting and purchase orders, and provides instant stock status for every SKU — complete with automated reorder recommendations when needed.",
+    "home.voice.2.q":"The system has reduced our preparation time for product forecasting and purchase orders, while displaying real-time inventory status for each item — complete with automated procurement recommendations when needed.",
     "home.voice.2.nm":"Yaakov Gur Arie",
     "home.voice.2.rl":"VP Operations &amp; Sales",
     "home.voice.2.co":"Drive Systems Ltd.",
@@ -3026,21 +3044,21 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     "home.voice.3.rl":"Vice President",
     "home.voice.3.co":"M. Pines Ltd.",
     "home.voice.3.since":"Partner Since 2017",
-    "home.cta.h":"Want to See What You Can Unlock From Your Priority ERP?",
-    "home.cta.p":"In an introductory discovery session, we'll walk through live dashboards, review your system setup, and show you what is realistically possible — before making any commitments.",
+    "home.cta.h":"Want to See What Your Priority ERP Can Unlock?",
+    "home.cta.p":"In a discovery call, we'll walk through live dashboards, review your system setup and show you what is realistically possible — before making any commitments.",
 
     /* --- about --- */
     "about.hero.pill":"<span class='dot'></span>Who We Are",
-    "about.hero.h1":"Your <em>Complete</em> BI Partner",
-    "about.hero.lead":"Data infrastructure, enterprise technology, and 24/7 proactive management at a predictable monthly subscription. No recruiting internal BI teams, no capital infrastructure expense, and no waiting around for reports.",
+    "about.hero.h1":"Your <em><span class='nb'>End-to-End</span></em> BI Partner",
+    "about.hero.lead":"Data infrastructure, enterprise technology and 24/7 proactive management at a predictable monthly subscription. No need to build an in-house BI team, no capital infrastructure expense and no waiting around for reports.",
     "about.strip.1":"Years of BI Expertise",
     "about.strip.2":"Ongoing Management &amp; Monitoring",
     "about.strip.3.b":"Dozens",
     "about.strip.3":"Executives Deciding on Compass BI Daily",
     "about.approach.eyebrow":"Our Approach",
-    "about.approach.h":"A System Built to Turn Raw Data into Actionable Management Recommendations",
-    "about.approach.p1":"We built Compass BI based on decades of enterprise-scale experience and tailored it for mid-market and growing organizations. Delivered as a managed SaaS, it dramatically accelerates reporting turnaround times and slashes operational IT overhead.",
-    "about.approach.p2":"At the core is a governed enterprise data warehouse, topped with ready-to-deploy, customizable modules. We also train your internal team to build self-service reports, while taking 100% end-to-end responsibility for ongoing system maintenance and data integrity.",
+    "about.approach.h":"A System That Turns Data into Management Recommendations",
+    "about.approach.p1":"We built Compass BI on experience from global organizations and adapted it for organizations of all sizes. Delivered as SaaS, it significantly shortens reporting time and reduces operating costs.",
+    "about.approach.p2":"At the core is an enterprise data warehouse, with ready-to-use modules that can be adapted to your needs. We take full responsibility for maintaining the system over time and also train your team to build its own reports.",
     "about.graph.aria":"Sample trend chart — sales against budget",
     "about.graph.k":"Sales vs. Budget",
     "about.graph.w":"Last 12 Months",
@@ -3053,128 +3071,128 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     "about.tech.1.d":"Governed enterprise data warehouse processing millions of records on every scheduled run.",
     "about.tech.2.k":"Visualization Layer",
     "about.tech.2.v":"Power BI",
-    "about.tech.2.d":"Recognized by Gartner as a Magic Quadrant leader for over a decade, and the gold standard for enterprise BI.",
+    "about.tech.2.d":"A leading BI platform, widely used for enterprise analytics.",
     "about.tech.3.k":"Delivery Model",
     "about.tech.3.v":"Cloud SaaS",
-    "about.tech.3.d":"Zero on-premise server maintenance and no upfront infrastructure CapEx.",
+    "about.tech.3.d":"Zero on-premises server maintenance and no upfront infrastructure CapEx.",
     "about.tech.4.k":"Pricing Model",
     "about.tech.4.v":"Flat Monthly Subscription",
-    "about.tech.4.d":"Proactive management, optimization, and ongoing maintenance included — fully predictable costs.",
+    "about.tech.4.d":"Proactive management, optimization and ongoing maintenance included — fully predictable costs.",
     "about.why.eyebrow":"Why It Matters",
-    "about.why.h":"Deep Priority ERP Specialization — Not Just \"Another BI Tool\"",
+    "about.why.h":"Deep Priority ERP Specialization — Not Just \"Another BI System\"",
     "about.why.1.h":"Rapid Implementation",
     "about.why.1.p":"Because we know Priority ERP's underlying data architecture inside out, onboarding takes weeks — not months of exploratory scoping.",
     "about.why.2.h":"We Speak Your Business Language",
-    "about.why.2.p":"We speak the exact operational, commercial, and financial terms your teams already use daily within Priority ERP.",
-    "about.why.3.h":"Dedicated Long-Term Partnership",
-    "about.why.3.p":"Post-launch, we continuously optimize, maintain, and roll out new analytical modules as your business scales.",
-    "about.why.4.h":"Zero Dependency on In-House BI Staff",
-    "about.why.4.p":"You don't need to hire dedicated data engineers or BI developers to get immediate answers from your data.",
-    "about.stance.h":"<span class='note-mark' aria-hidden='true'>*</span>A Dashboard is a Mirror, Not a Filter",
-    "about.stance.p":"We never alter, mask, or cosmetically manipulate numbers. A dashboard does not merely track business performance — it highlights data-entry discrepancies at the source. When a figure looks anomalous, the issue is often in upstream data entry.",
+    "about.why.2.p":"We speak the exact operational, commercial and financial terms your teams already use daily within Priority ERP.",
+    "about.why.3.h":"Close Ongoing Support, not a One-Time Project",
+    "about.why.3.p":"After go-live, we continue to update, maintain and add modules as your needs evolve.",
+    "about.why.4.h":"No Need for an In-House BI Team",
+    "about.why.4.p":"You don't need to hire a BI analyst or developer to get answers from your data.",
+    "about.stance.h":"<span class='note-mark' aria-hidden='true'>*</span>A Dashboard is a Mirror, not a Filter",
+    "about.stance.p":"By default, we don't beautify or correct data. The dashboard does more than monitor your business — it surfaces anomalies in the data itself. If something looks off, the issue usually stems from the original data entry.",
     "about.team.eyebrow":"The Team",
     "about.team.h":"The Experts Managing Your BI",
     "about.work.eyebrow":"How We Work",
-    "about.work.h":"Go Live with Your First Module, Then Scale From There",
+    "about.work.h":"Go Live with Your First Module, Then Scale from There",
     "about.work.1.h":"Connect to Priority ERP",
-    "about.work.1.p":"Direct, secure integration with your existing ERP environment, with zero disruption to daily business operations.",
+    "about.work.1.p":"Direct connection to your existing system, without changing your day-to-day business processes.",
     "about.work.2.h":"Select the First Module",
-    "about.work.2.p":"Together, we identify your most urgent analytical blind spot or operational priority and start there.",
+    "about.work.2.p":"Together, we identify the most urgent need and start there.",
     "about.work.3.h":"Go Live",
-    "about.work.3.p":"Your first production module is up and running in weeks, and your leadership team is already working with it.",
-    "about.onward.h":"From There, Two Parallel Paths",
-    "about.onward.1.h":"Deepen",
-    "about.onward.1.p":"Layer anomaly detection, threshold alerts, and conversational AI agents onto active modules.",
-    "about.onward.2.h":"Expand",
-    "about.onward.2.p":"Roll out additional departmental modules, prioritized by your evolving business roadmap.",
+    "about.work.3.p":"The first module goes live within weeks, getting your team up and running immediately.",
+    "about.onward.h":"Following the first phase, we proceed in two directions:",
+    "about.onward.1.h":"Optimize live module",
+    "about.onward.1.p":"Enhance exception control, alerts and AI agents for the live module.",
+    "about.onward.2.h":"Expand capabilities",
+    "about.onward.2.p":"Roll out additional modules, one by one, according to your priorities.",
     "about.cta.h":"Want to See How This Works for a Business Like Yours?",
-    "about.cta.p":"Tell us a bit about your operational setup and we'll demonstrate a relevant, live use case.",
+    "about.cta.p":"Tell us a little about your business and we'll show you a relevant example in a live demo.",
 
     /* --- about: the crew (markup generated by _gen.crew.sh) --- */
     "crew.1.nm":"Elishai Wine",
     "crew.1.rl":"CEO &amp; Founder",
-    "crew.1.bio":"BI Specialist and Systems Analyst with 20+ years of experience. Led the Enterprise BI team at Strauss Group, managed Priority ERP implementation at EDP, and serves as a senior BI consultant and lecturer. Former Israeli Air Force combat navigator.",
+    "crew.1.bio":"BI specialist and systems analyst with more than 20 years of experience. Led the BI team at Strauss Group, managed the Priority ERP implementation at EDP and works as a senior BI consultant and lecturer. Former Israeli Air Force combat navigator.",
     "crew.2.nm":"Shai Dori",
     "crew.2.rl":"CTO &amp; Founder",
-    "crew.2.bio":"Senior BI Architect and Lead Developer with 20+ years of experience. Led complex enterprise BI development teams across premier organizations, specializing in delivering high-performance, mission-critical analytics under tight deadlines.",
+    "crew.2.bio":"BI developer and senior programmer with more than 20 years of experience. Led complex BI development teams at leading companies, specializing in delivering high-quality solutions under tight deadlines.",
     "crew.3.nm":"Daniel Kanonich",
     "crew.3.rl":"Business Development Manager (BDM)",
-    "crew.3.bio":"Commercial Engineer with extensive international experience in project leadership, business development, financial modeling, and operational strategy across the US, Brazil, Argentina, and Chile.",
+    "crew.3.bio":"Commercial engineer with extensive experience in project management and business development, with a focus on finance and operations. International experience in the US, Brazil, Argentina and Chile.",
     "crew.4.nm":"Osnat Pankowski",
     "crew.4.rl":"Project Manager",
-    "crew.4.bio":"Over 15 years of experience orchestrating enterprise BI, business strategy, marketing, and advanced analytics initiatives from blueprint to completion in leading enterprises. Certified Power BI instructor.",
+    "crew.4.bio":"More than 15 years of experience managing BI, strategy, marketing and analytics projects. Led large BI projects from planning through completion at leading organizations. Power BI instructor.",
 
     /* --- services --- */
     "svc.hero.pill":"<span class='dot'></span>Services",
     "svc.hero.h1":"One Infrastructure. <em>Complete Business Coverage.</em>",
-    "svc.hero.lead":"From initial Priority ERP connection to conversational AI agents answering queries in plain English — everything needed to turn raw data into decisive action.",
+    "svc.hero.lead":"From connecting to Priority ERP to an AI agent that answers questions in plain language — everything you need to turn your data into answers.",
     "svc.tiers.eyebrow":"Analytics Infrastructure",
-    "svc.tiers.h":"Three Interconnected Tiers Built On Top of One Another",
+    "svc.tiers.h":"Three Tiers Built on Top of One Another",
     "svc.tier.1.nm":"Infrastructure",
     "svc.tier.1.sub":"Single Source of Truth",
     "svc.tier.1.l1.h":"Enterprise Data Warehouse",
-    "svc.tier.1.l1.p":"All data from Priority ERP and auxiliary systems is unified, cleansed, and structured in a governed data warehouse — forming the robust foundation everything else is built on.",
+    "svc.tier.1.l1.p":"All data from Priority ERP and complementary applications is unified and organized in one place — the foundation everything else is built on.",
     "svc.tier.2.nm":"Visualization",
     "svc.tier.2.sub":"Data Delivered Directly to You",
     "svc.tier.2.l1.h":"Executive Dashboards",
-    "svc.tier.2.l1.p":"Crystal-clear, role-tailored visibility for every leadership level in the organization.",
+    "svc.tier.2.l1.p":"A clear and up-to-date picture for every level of the organization.",
     "svc.tier.2.l2.h":"Real-Time Operational Views",
-    "svc.tier.2.l2.p":"Live monitoring of current business activities as they happen — not yesterday's static snapshot.",
+    "svc.tier.2.l2.p":"Live monitoring of what is happening in the business now — not yesterday.",
     "svc.tier.2.l3.h":"Automated Push Reports",
-    "svc.tier.2.l3.p":"Scheduled reports delivered proactively to your inbox and mobile — no manual searching needed.",
+    "svc.tier.2.l3.p":"Reports are delivered to you automatically — no need to look for them.",
     "svc.tier.3.nm":"Intelligence",
     "svc.tier.3.sub":"The System Thinks With You",
-    "svc.tier.3.l1.h":"Anomaly Detection &amp; Threshold Alerts",
-    "svc.tier.3.l1.p":"Instant automated notification whenever a key performance indicator veers off course.",
+    "svc.tier.3.l1.h":"Exception Control",
+    "svc.tier.3.l1.p":"Instant alerts the moment a metric deviates from its norm.",
     "svc.tier.3.l2.h":"Interactive AI Agent",
-    "svc.tier.3.l2.p":"Ask complex analytical questions and get contextual answers in plain conversational English.",
-    "svc.tier.3.l3.h":"Automated Workflows",
-    "svc.tier.3.l3.p":"Recurring analytical and operational workflows running autonomously with zero manual intervention.",
+    "svc.tier.3.l2.p":"Ask questions and get answers in plain language.",
+    "svc.tier.3.l3.h":"Automations",
+    "svc.tier.3.l3.p":"Repetitive processes that run automatically, with zero manual intervention.",
     "svc.tier.3.l4.h":"Proactive AI Analyst",
-    "svc.tier.3.l4.p":"Autonomously scans your data to detect anomalies, patterns, and emerging risks without waiting for a prompt.",
+    "svc.tier.3.l4.p":"Proactively identifies anomalies and unusual patterns without waiting for you to ask.",
     "svc.mods.eyebrow":"Ready-to-Deploy Modules",
-    "svc.mods.h":"Full Analytical Coverage for Every Business Domain — Ready to Launch",
+    "svc.mods.h":"Analytical Coverage for Every Business Domain — Ready to Launch",
     "svc.mods.sub":"Open a module to see a real dashboard",
     "svc.tag.sales":"Sales",
     "svc.tag.ops":"Operations",
     "svc.tag.fin":"Finance",
     "svc.mod.1.h":"Sales &amp; Collections",
-    "svc.mod.1.p":"Who is buying, who is unprofitable, and who is overdue on payment — in real time.",
-    "svc.mod.2.h":"Leads &amp; Pipeline",
-    "svc.mod.2.p":"Where inquiries originate, how they convert, and which acquisition channels actually drive closed revenue.",
+    "svc.mod.1.p":"Who is buying, who is unprofitable and who is overdue on payment — in real time.",
+    "svc.mod.2.h":"Lead Tracking",
+    "svc.mod.2.p":"Where inquiries come from, how they are processed and which source generates real revenue.",
     "svc.mod.3.h":"Inventory &amp; Procurement Forecasting",
-    "svc.mod.3.p":"What is out of stock, what is sitting dead on shelves, and exact reorder recommendations for the month.",
+    "svc.mod.3.p":"What is missing, what is stuck on the shelf and what needs to be ordered this month.",
     "svc.mod.4.h":"Budget &amp; Variance Control",
-    "svc.mod.4.p":"Where you are exceeding budget and where margins remain — while there is still time to course-correct.",
+    "svc.mod.4.p":"Track where you are over budget and where you have surplus — while you can still make adjustments.",
     "svc.mod.5.h":"P&amp;L",
     "svc.mod.5.p":"Profitability by profit center, by company and for the group as a whole — in one view, without stitching reports in Excel.",
     "svc.mod.6.h":"Customer Support &amp; Service",
-    "svc.mod.6.p":"Open ticket volume, resolution times, SLA compliance, and technician performance against targets.",
+    "svc.mod.6.p":"How many service calls are open, how long they take and which technicians are meeting their targets.",
     "svc.mod.7.h":"Manufacturing &amp; Shop Floor",
-    "svc.mod.7.p":"Actual production throughput vs. scheduling — per machine, per shift.",
+    "svc.mod.7.p":"Actual production rate versus plan — by machine and by shift.",
     "svc.mod.8.h":"Labor Utilization &amp; Billable Hours",
-    "svc.mod.8.p":"How much work time delivers direct value, and where operational hours are slipping through the cracks.",
+    "svc.mod.8.p":"Discover how many working hours truly drive value, and where time is being wasted.",
     "svc.mod.9.h":"Warehouse Management (WMS)",
-    "svc.mod.9.p":"Real-time warehouse activity, open fulfillment queues, and daily throughput.",
+    "svc.mod.9.p":"What is really happening in the warehouse, and what is still open for today.",
     "svc.tracks.eyebrow":"How to Get Started",
-    "svc.tracks.h":"Two Implementation Tracks, One Powerful Infrastructure",
+    "svc.tracks.h":"Two Tracks, One Infrastructure",
     "svc.track.1.h":"Core Track <span class='path-sub'>Ready for Rapid Deployment</span>",
-    "svc.track.1.desc":"Best-practice pre-built data models and industry-standard modules available from Day 1 — go live fast without building from scratch.",
+    "svc.track.1.desc":"Ready-to-use infrastructure and modules based on best practices, available from day one — go live quickly without building from scratch.",
     "svc.track.1.li1":"Rapid implementation — weeks, not months",
     "svc.track.1.li2":"Standardized dashboards and reports for each module",
     "svc.track.1.li3":"Ongoing updates included at no extra cost",
-    "svc.track.2.h":"Tailor-Made Track <span class='path-sub'>Custom-Tailored to Your Proprietary Workflows</span>",
-    "svc.track.2.desc":"Engineered around your organization's specific operational processes, custom hierarchies, and bespoke reporting logic.",
-    "svc.track.2.li1":"Process mapping with Compass BI senior architects",
-    "svc.track.2.li2":"Fully customized dashboards and metrics",
-    "svc.track.2.li3":"Dedicated ongoing strategic advisory",
+    "svc.track.2.h":"Tailor-Made Track <span class='path-sub'>Customized for Your Unique Processes</span>",
+    "svc.track.2.desc":"Built around your specific processes, hierarchy and reporting needs.",
+    "svc.track.2.li1":"Process mapping with the Compass BI team",
+    "svc.track.2.li2":"Fully customized dashboards and logic",
+    "svc.track.2.li3":"Close ongoing support",
     "svc.cta.h":"Not Sure Where to Start?",
-    "svc.cta.p":"In an introductory discovery call, we'll understand your specific needs and recommend a practical roadmap — even if we conclude that conditions for a BI rollout are not yet ripe.",
+    "svc.cta.p":"In our discovery call, we'll assess your needs and recommend a roadmap — even if we conclude that conditions aren't yet ripe for the project.",
 
     /* --- contact --- */
     "contact.hero.pill":"<span class='dot'></span>Contact Us",
-    "contact.hero.h1":"Let’s Talk About <em>Your Data</em> in Priority ERP.",
-    "contact.hero.lead":"Fill out the form below — or send us a direct message, whichever is most convenient for you.",
+    "contact.hero.h1":"Let’s Talk About <em>Your Priority ERP Data</em>.",
+    "contact.hero.lead":"Fill out the form — or send us a WhatsApp message, whichever is more convenient.",
     "contact.form.eyebrow":"Get in Touch",
     "contact.form.h":"We'll Get Back to You Within One Business Day",
     "contact.reach.wa":"WhatsApp",
@@ -3195,12 +3213,12 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     "form.message":"How can we help?",
     "form.message.ph":"Tell us a bit about your data and analytics needs...",
     "form.submit":"Send Message",
-    "form.note":"Fields marked with <span class='req'>*</span> are required. Information is used solely to contact you.",
+    "form.note":"Fields marked with <span class='req'>*</span> are required. We respect your privacy. Used only to reply.",
     "form.done.h":"We've got your enquiry",
     "contact.done.p":"We'll come back to you within one business day. If it's urgent, here are the fast routes:",
     "modal.done.p":"We'll come back to you within one business day.<br>If it's urgent, here are the fast routes:",
     "form.fail.h":"That didn't send",
-    "form.fail.p":"Something went wrong on the way to us and the enquiry was not sent. You can try again, and these reach us directly:",
+    "form.fail.p":"Something went wrong on the way to us and the enquiry was not sent. You can try again, and reach us directly:",
     "form.retry":"Try again",
     "form.sending":"Sending\u2026",
     "form.done.h.mailto":"Your message is ready to send",
@@ -3219,14 +3237,14 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     /* --- the screenshot viewer --- */
     "shot.close":"Close",
     "shot.count":"Module {n} of {t}",
-    "shot.soon":"This module's preview is on its way",
+    "shot.soon":"This module's preview is being prepared",
     "shot.demo":"Figures shown are demo data",
     "shot.prev":"Previous",
     "shot.next":"Next",
     "shot.alt":"Screenshot: {name} dashboard, demo data",
 
     /* --- footer --- */
-    "footer.desc":"Analytics infrastructure for Priority ERP — dashboards, automations, and AI agents, with no in-house BI team required.",
+    "footer.desc":"Analytics infrastructure for Priority ERP — dashboards, automations and AI agents, with no in-house BI team required.",
     "footer.nav.t":"Navigation",
     "footer.contact.t":"Contact",
     "footer.wa.aria":"WhatsApp +972-54-577-8838",
@@ -3237,7 +3255,7 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
     "meta.title":"Compass BI — Analytics Infrastructure for Priority ERP",
     "meta.desc":"Data warehouse, executive dashboards, alerts and AI agents for businesses running on Priority ERP. A complete BI infrastructure as a monthly service — with no in-house BI team and no infrastructure investment.",
     "meta.og.title":"Your data already lives in Priority ERP. It’s time it started talking.",
-    "meta.og.desc":"Data warehouse, dashboards, alerts and AI agents — for businesses running on Priority ERP. Connect in a single day, go live in weeks.",
+    "meta.og.desc":"Data warehouse, dashboards, alerts and AI agents — for businesses running on Priority ERP. Connect in a day, go live in weeks.",
     "meta.og.locale":"en_US",
     "meta.og.alt":"Compass BI — Analytics Infrastructure for Priority ERP"
   };
@@ -3385,7 +3403,13 @@ a.reach-card:hover .wa-glyph{fill:#25D366}
       var s = localStorage.getItem(LANG_STORE);
       if(s === "en" || s === "he") return s;
     }catch(e){}
-    return "he";
+    /* English is the default since 2026-08-26, by instruction. A visitor who
+       picked a language still gets their pick - the stored value above wins
+       over this line; this is only the fallback when nothing else says.
+       The twin of this line lives in _source.head.html, which resolves the
+       same order before first paint. Change one and you must change both:
+       they disagree silently, and the symptom is a visible RTL/LTR flip. */
+    return "en";
   }
 
   collectI18n();
