@@ -435,7 +435,42 @@
       </g>
     </symbol>
 
-    <!-- The one glyph here that is not one of the eighteen: a magnifier
+    <!-- 19 שכבת אנליטיקה מחושבת - a block per business object, with the
+         monthly history drawn over them; the orange block is the one that
+         changed. Added 2026-09-16 with tier IV. -->
+    <symbol id="ico19" viewBox="0 0 120 120">
+      <rect x="12" y="62" width="96" height="46" rx="8" fill="#6459C4" opacity=".10"/>
+      <polygon points="34,70 38,69.5 38,83.5 34,84" fill="#24518F"/>
+      <rect x="20" y="70" width="14" height="14" rx="3" fill="url(#gBlue)"/>
+      <polygon points="56,70 60,69.5 60,83.5 56,84" fill="#24518F"/>
+      <rect x="42" y="70" width="14" height="14" rx="3" fill="url(#gBlue)"/>
+      <polygon points="78,70 82,69.5 82,83.5 78,84" fill="#B23E27"/>
+      <rect x="64" y="70" width="14" height="14" rx="3" fill="url(#gOrg)"/>
+      <polygon points="100,70 104,69.5 104,83.5 100,84" fill="#24518F"/>
+      <rect x="86" y="70" width="14" height="14" rx="3" fill="url(#gBlue)"/>
+      <rect x="20" y="90" width="80" height="8" rx="4" fill="#8A8794" opacity=".55"/>
+      <polyline points="16,48 36,38 56,44 76,24 102,16" fill="none" stroke="#6459C4"
+                stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="102" cy="16" r="6" fill="url(#sVio)"/>
+    </symbol>
+
+    <!-- 20 בריף עסקי - one page about one client: who, then the lines that
+         matter, the last one flagged. Added 2026-09-16 with tier IV. -->
+    <symbol id="ico20" viewBox="0 0 120 120">
+      <rect x="22" y="12" width="76" height="98" rx="9" fill="#6459C4" opacity=".08"/>
+      <rect x="22" y="12" width="76" height="98" rx="9" fill="none" stroke="#8A8794" stroke-width="2.6"/>
+      <circle cx="44" cy="36" r="11" fill="url(#sVio)"/>
+      <rect x="62" y="28" width="26" height="6" rx="3" fill="#605D67"/>
+      <rect x="62" y="40" width="18" height="5" rx="2.5" fill="#8A8794"/>
+      <polygon points="88,60 92,59.5 92,69.5 88,70" fill="#24518F"/>
+      <rect x="32" y="60" width="56" height="10" rx="3" fill="url(#gBlue)"/>
+      <polygon points="72,76 76,75.5 76,85.5 72,86" fill="#24518F"/>
+      <rect x="32" y="76" width="40" height="10" rx="3" fill="url(#gBlue)"/>
+      <polygon points="56,92 60,91.5 60,101.5 56,102" fill="#B23E27"/>
+      <rect x="32" y="92" width="24" height="10" rx="3" fill="url(#gOrg)"/>
+    </symbol>
+
+    <!-- The one glyph here that is not one of the twenty: a magnifier
          marking a module card as openable. It is deliberately outside the
          numbering and deliberately currentColor - the eighteen say something
          with their blue-against-orange and are opted out of forced colours,
@@ -447,6 +482,15 @@
         <circle cx="10.5" cy="10.5" r="6.5"/>
         <path d="M15.4 15.4 21 21"/>
         <path d="M10.5 7.8v5.4M7.8 10.5h5.4"/>
+      </g>
+    </symbol>
+
+    <!-- A page, for the tier rows: what they open is mostly text. -->
+    <symbol id="icoRead" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4.5" y="3" width="15" height="18" rx="2.5"/>
+        <path d="M8.5 8h7M8.5 12h7M8.5 16h4"/>
       </g>
     </symbol>
   </defs>
@@ -1643,6 +1687,61 @@ button.layer{
   .modal-card.shot-card{padding:20px 16px 16px}
   .shot-nav button{padding:9px 12px}
 }
+
+/* ---- a tier row opens its detail page (2026-09-16) ----
+   The tier rows are <button> now, like the module cards, and borrow their
+   resets from button.layer above. They keep the tier physics - a sideways
+   slide, not the modules' lift - because they still sit in a vertical stack.
+   The small page glyph sits where the module magnifier sits and for the
+   same measured reason: it is the one spot empty on every card. A page and
+   not a magnifier, because what opens here is mostly text. */
+.tier button.layer{position:relative}
+.tier button.layer:hover .mod-peek,
+.tier button.layer:focus-visible .mod-peek{color:var(--brass-ink);transform:scale(1.12)}
+@media (prefers-reduced-motion:reduce){
+  .tier button.layer:hover .mod-peek{transform:none}
+}
+
+/* ---- the tier detail viewer ----
+   Narrower than the screenshot viewer: this one is read, and a line of
+   running text past ~75 characters stops being comfortable. Two classes
+   for the same reason as .modal.shot-modal - the base .modal rule sits
+   later in the sheet and would otherwise win. */
+.modal.tier-modal{width:min(760px,calc(100vw - 30px))}
+.modal-card.tier-card{padding:28px 32px 22px}
+.tier-modal .modal-head{margin-bottom:18px}
+.tier-modal h2[tabindex="-1"]:focus{outline:none}
+.td-sec{margin:0 0 18px}
+.td-sec h3{
+  font-family:var(--ui);font-size:.74rem;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--brass-ink);margin:0 0 6px;
+}
+.td-txt p{margin:0 0 8px;color:var(--ink-dim);font-size:.95rem;line-height:1.75}
+.td-txt p:last-child{margin-bottom:0}
+.td-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.td-list li{
+  position:relative;padding-inline-start:16px;
+  color:var(--ink-dim);font-size:.95rem;line-height:1.7;
+}
+.td-list li::before{
+  content:"";position:absolute;inset-inline-start:0;top:.72em;
+  width:6px;height:6px;border-radius:50%;background:var(--brass);
+}
+.td-list li b{color:var(--ink);font-weight:700}
+/* The bullet is a background, and backgrounds are dropped under forced
+   colours. body in front so this outranks the rule above wherever the
+   sheet puts it - recurring lesson 1. */
+@media (forced-colors:active){
+  body .td-list li::before{background:CanvasText;forced-color-adjust:none}
+}
+/* The frame follows the text rather than leading it: the words are what
+   was approved, and a placeholder at the top would push them below the
+   fold on a phone for a picture that is not there yet. */
+.tier-modal .shot-frame{margin-top:22px}
+@media (max-width:520px){
+  .modal-card.tier-card{padding:20px 16px 16px}
+  .tier-modal .modal-head h2{font-size:1.3rem}
+}
 .mods .layer .hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:3px}
 .mods .layer strong{margin-bottom:0}
 /* category pills - a quiet sorting aid, so they sit below the module name
@@ -2462,7 +2561,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
           </div>
           <div class="card">
             <h3 class="h-s" data-i18n="home.sol.2.h">דשבורדים ומסכי זמן אמת</h3>
-            <p data-i18n="home.sol.2.p">תמונת מצב ברורה לכל דרג בארגון - מעודכנת ברגע, לא מדוח שהודפס אתמול.</p>
+            <p data-i18n="home.sol.2.p">תמונת מצב ברורה לכל דרג בארגון - מעודכנת, לא מדוח שהודפס אתמול.</p>
           </div>
           <div class="card">
             <h3 class="h-s" data-i18n="home.sol.3.h">בקרת חריגים והתראות</h3>
@@ -2812,7 +2911,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
       <div class="wrap">
         <div class="head-block reveal">
           <div class="eyebrow" data-i18n="svc.tiers.eyebrow">תשתית אנליטית</div>
-          <h2 class="h-l" data-i18n="svc.tiers.h">שלוש קומות שנבנות זו על גבי זו</h2>
+          <h2 class="h-l" data-i18n="svc.tiers.h">ארבע קומות, מהתשתית ועד העומק האנליטי</h2>
         </div>
 
         <div class="reveal">
@@ -2822,7 +2921,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
               <span><span class="nm" data-i18n="svc.tier.1.nm">תשתית</span><span class="sub" data-i18n="svc.tier.1.sub">מקור אמת אחד</span></span>
             </div>
             <div class="layers">
-              <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico11"/></svg><div><strong data-i18n="svc.tier.1.l1.h">מחסן נתונים ארגוני</strong><span data-i18n="svc.tier.1.l1.p">כל המידע מ-Priority ומערכות חיצוניות, מאוחד ומאורגן במקום אחד ומהווה את הבסיס עליו הכל נבנה.</span></div></div>
+              <button class="layer" type="button" data-td="1" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico11"/></svg><div><strong data-i18n="svc.tier.1.l1.h">מחסן נתונים ארגוני</strong><span data-i18n="svc.tier.1.l1.p">כל המידע מ-Priority ומערכות חיצוניות, מאוחד ומאורגן במקום אחד ומהווה את הבסיס עליו הכל נבנה.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
             </div>
           </div>
 
@@ -2832,9 +2931,9 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
               <span><span class="nm" data-i18n="svc.tier.2.nm">תצוגה</span><span class="sub" data-i18n="svc.tier.2.sub">המידע מגיע אליכם</span></span>
             </div>
             <div class="layers">
-              <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico12"/></svg><div><strong data-i18n="svc.tier.2.l1.h">דשבורדים</strong><span data-i18n="svc.tier.2.l1.p">תמונת מצב ברורה ומעודכנת לכל דרג בארגון.</span></div></div>
-              <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico13"/></svg><div><strong data-i18n="svc.tier.2.l2.h">מסכי זמן אמת</strong><span data-i18n="svc.tier.2.l2.p">מעקב חי אחרי מה שקורה בעסק עכשיו - לא אתמול.</span></div></div>
-              <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico14"/></svg><div><strong data-i18n="svc.tier.2.l3.h">דוחות שוטפים בדחיפה</strong><span data-i18n="svc.tier.2.l3.p">הדוחות והחריגים מגיעים אליכם באופן אוטומטי - לא צריך לחפש אותם.</span></div></div>
+              <button class="layer" type="button" data-td="2" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico12"/></svg><div><strong data-i18n="svc.tier.2.l1.h">דשבורדים</strong><span data-i18n="svc.tier.2.l1.p">תמונת מצב ברורה ומעודכנת לכל דרג בארגון.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
+              <button class="layer" type="button" data-td="3" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico13"/></svg><div><strong data-i18n="svc.tier.2.l2.h">מסכי זמן אמת</strong><span data-i18n="svc.tier.2.l2.p">מעקב חי אחרי מה שקורה בעסק עכשיו - לא אתמול.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
+              <button class="layer" type="button" data-td="4" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico14"/></svg><div><strong data-i18n="svc.tier.2.l3.h">דוחות שוטפים בדחיפה</strong><span data-i18n="svc.tier.2.l3.p">הדוחות והחריגים מגיעים אליכם באופן אוטומטי - לא צריך לחפש אותם.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
             </div>
           </div>
 
@@ -2844,9 +2943,24 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
               <span><span class="nm" data-i18n="svc.tier.3.nm">ניתוח</span><span class="sub" data-i18n="svc.tier.3.sub">המערכת עוזרת לכם להבין ולפעול</span></span>
             </div>
             <div class="layers">
-              <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico16"/></svg><div><strong data-i18n="svc.tier.3.l2.h">סוכן AI אינטראקטיבי</strong><span data-i18n="svc.tier.3.l2.p">לשאול שאלות ולקבל תשובות בשפה חופשית.</span></div></div>
-              <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico17"/></svg><div><strong data-i18n="svc.tier.3.l3.h">אוטומציות אנליטיות</strong><span data-i18n="svc.tier.3.l3.p">תהליכים ניהוליים שמבוססים על נתונים - שרצים לבד, בזמן הנכון.</span></div></div>
-              <div class="layer"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico18"/></svg><div><strong data-i18n="svc.tier.3.l4.h">אנליסט AI פרואקטיבי</strong><span data-i18n="svc.tier.3.l4.p">מאתר בעצמו אנומליות ודפוסים חריגים - גם בלי שביקשתם.</span></div></div>
+              <button class="layer" type="button" data-td="6" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico16"/></svg><div><strong data-i18n="svc.tier.3.l2.h">סוכן AI אינטראקטיבי</strong><span data-i18n="svc.tier.3.l2.p">לשאול שאלות ולקבל תשובות בשפה חופשית.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
+              <button class="layer" type="button" data-td="7" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico17"/></svg><div><strong data-i18n="svc.tier.3.l3.h">אוטומציות אנליטיות</strong><span data-i18n="svc.tier.3.l3.p">תהליכים ניהוליים שמבוססים על נתונים - שרצים לבד, בזמן הנכון.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
+              <button class="layer" type="button" data-td="8" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico18"/></svg><div><strong data-i18n="svc.tier.3.l4.h">אנליסט AI פרואקטיבי</strong><span data-i18n="svc.tier.3.l4.p">מאתר בעצמו אנומליות ודפוסים חריגים - גם בלי שביקשתם.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
+            </div>
+          </div>
+
+          <!-- Tier IV, added 2026-09-16. It sits beside tier III rather than on
+               top of it - a different audience, not a higher floor - which is
+               why the section heading describes a route and no longer says
+               the tiers are built on one another. -->
+          <div class="tier">
+            <div class="tier-name">
+              <span class="idx">IV</span>
+              <span><span class="nm" data-i18n="svc.tier.4.nm">אנליטיקה מתקדמת</span><span class="sub" data-i18n="svc.tier.4.sub">עומק אנליטי לארגונים עם נתונים מורכבים</span></span>
+            </div>
+            <div class="layers">
+              <button class="layer" type="button" data-td="9" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico19"/></svg><div><strong data-i18n="svc.tier.4.l1.h">שכבת אנליטיקה מחושבת</strong><span data-i18n="svc.tier.4.l1.p">מדדים מחושבים לכל לקוח, מוצר ומספר סיריאלי - עם היסטוריה חודשית שחושפת מגמות וסטיות.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
+              <button class="layer" type="button" data-td="10" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico20"/></svg><div><strong data-i18n="svc.tier.4.l2.h">בריף עסקי</strong><span data-i18n="svc.tier.4.l2.p">בוחרים לקוח - והתמונה המלאה מולכם.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
             </div>
           </div>
         </div>
@@ -2866,7 +2980,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
              brief: "הנהלה" would have held a single card, which reads as
              an orphan rather than as a group. -->
         <div class="mods reveal">
-          <button class="layer" type="button" data-mod="1" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico01"/></svg><div><div class="hd"><strong data-i18n="svc.mod.1.h">מכירות וגבייה</strong><span class="tag sale" data-i18n="svc.tag.sales">מכירות</span></div><span data-i18n="svc.mod.1.p">מי קונה, מי לא רווחי, מי מאחר בתשלום - בזמן אמת.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
+          <button class="layer" type="button" data-mod="1" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico01"/></svg><div><div class="hd"><strong data-i18n="svc.mod.1.h">מכירות וגבייה</strong><span class="tag sale" data-i18n="svc.tag.sales">מכירות</span></div><span data-i18n="svc.mod.1.p">מי קונה, מי לא רווחי, מי מאחר בתשלום - בתמונה עדכנית אחת.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
           <button class="layer" type="button" data-mod="2" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico02"/></svg><div><div class="hd"><strong data-i18n="svc.mod.2.h">לידים</strong><span class="tag sale" data-i18n="svc.tag.sales">מכירות</span></div><span data-i18n="svc.mod.2.p">מהיכן מגיעות הפניות, איך הן מטופלות, ואיזה מקור באמת סוגר עסקאות.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
           <button class="layer" type="button" data-mod="3" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico03"/></svg><div><div class="hd"><strong data-i18n="svc.mod.3.h">מלאי והמלצות רכש</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.3.p">מה חסר, מה תקוע על המדף, ומה צריך להזמין החודש.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
           <button class="layer" type="button" data-mod="4" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico04"/></svg><div><div class="hd"><strong data-i18n="svc.mod.4.h">בקרת תקציב</strong><span class="tag fin" data-i18n="svc.tag.fin">פיננסים</span></div><span data-i18n="svc.mod.4.p">איפה אתם חורגים מהתקציב ואיפה נשאר לכם - בזמן שעוד אפשר לתקן.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
@@ -3169,6 +3283,110 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
   </div>
 </dialog>
 
+<!-- ---- the tier detail viewer (2026-09-16) ----
+     Each of the nine tier rows opens its own page: the problem, the
+     solution, what you get, who it is for, and a screenshot with its
+     caption. The copy was approved row by row on 2026-09-16 and its working
+     document is _copy-tier-details.md; the numbers in data-td are that
+     document's row numbers, which is why 5 is missing - exception control
+     was folded into the push reports that day.
+
+     The long copy lives in #tierTexts below rather than in a script, for
+     the same reason every other string does: Hebrew is read off the markup
+     at boot and applyStrings rewrites these nodes on a language change like
+     any other, hidden or not. The viewer copies from them each time it
+     fills, so it cannot fall out of translation.
+
+     No screenshot exists for any row yet, so every row shows the drawn
+     placeholder. Choosing which capture goes with which row is Elishai's
+     call (open item 9), and a missing capture never borrows another row's
+     or the other language's. -->
+<div id="tierTexts" hidden>
+  <div data-td="1">
+    <div data-k="p" data-i18n="td.1.p">המידע בעסק יושב בכמה מקומות בבת אחת - Priority, מערכות חיצוניות כמו CRM ושעון נוכחות, וקבצי Excel של מחלקות. כל שאלה שחוצה מערכות דורשת ייצוא, הצלבה ידנית והתאמות, וכל מחלקה מגיעה לישיבה עם מספר אחר.</div>
+    <div data-k="s" data-i18n="td.1.s">מחסן נתונים ארגוני שמרכז את הכל במקום אחד. אנחנו מחברים את Priority ואת המערכות החיצוניות, מנקים ומאחדים את הנתונים, ובונים מודל אחד שכל שאר הקומות נשענות עליו. המדד מחושב פעם אחת, ומאותו רגע כולם מדברים על אותו מספר.</div>
+    <div data-k="g" data-i18n="td.1.g">מקור אמת אחד לכל הארגון. צילום מצב לסוף כל חודש, שנשמר בטבלאות היסטוריות גם אחרי שהנתון ב-Priority השתנה. מבנה שמוכן לדשבורדים, לדוחות ולסוכני AI - בלי לבנות מחדש לכל שימוש.</div>
+    <div data-k="w" data-i18n="td.1.w">לכל עסק שעובד עם Priority ומוצא את עצמו מצליב נתונים ידנית. זו הקומה הראשונה, ובלעדיה כל מה שמעליה לא עומד.</div>
+    <div data-k="c" data-i18n="td.1.c">מודל הנתונים - Priority והמערכות שסביבו במבנה אחד.</div>
+  </div>
+  <div data-td="2">
+    <div data-k="p" data-i18n="td.2.p">דוח סטטי עונה על שאלה אחת, ולרוב לא על השאלה הבאה. כשהמנהל רוצה לרדת רמה - לפי סניף, לפי לקוח, לפי חודש - הוא חוזר לבקש דוח נוסף, ומחכה.</div>
+    <div data-k="s" data-i18n="td.2.s">דשבורדים ב-Power BI, בנויים לכל דרג בנפרד. ההנהלה מקבלת תמונת מצב, מנהל התחום מקבל את החתך שלו, והכל מאותו מודל - כך שהמספר בדשבורד ההנהלה והמספר בדשבורד המחלקתי לעולם לא סותרים זה את זה.</div>
+    <div data-k="g" data-i18n="td.2.g">תמונת מצב מעודכנת, בלי להמתין לאיש BI. יכולת לרדת מהסיכום לרשומה הבודדת. גישה מהדפדפן ומהטלפון, עם הרשאות לפי תפקיד.</div>
+    <div data-k="w" data-i18n="td.2.w">לארגון שבו יותר מאדם אחד צריך לראות מספרים, ורוצה להפסיק להיות תלוי במי שיודע לבנות דוח.</div>
+    <div data-k="c" data-i18n="td.2.c">דשבורד הנהלה - התמונה כולה במסך אחד.</div>
+  </div>
+  <div data-td="3">
+    <div data-k="p" data-i18n="td.3.p">ישנם תהליכים שוטפים חשובים מספיק, הדורשים בקרה כמעט בזמן אמת. כשקו ייצור נעצר, כשתור השירות מתארך או כשמשלוח מתעכב - הדוח של מחר כבר לא עוזר.</div>
+    <div data-k="s" data-i18n="td.3.s">מסכי כמעט זמן אמת (מתעדכנים פעם ב-15 דקות), שמוצגים במקום שבו העבודה קורה - רצפת הייצור, מוקד השירות, המחסן. המסך מתרענן מעצמו ומראה את המצב העדכני מול היעד, בלי שאף אחד צריך להפעיל אותו.</div>
+    <div data-k="g" data-i18n="td.3.g">מדד מתעדכן מול היעד של היום. סימון בולט כשמשהו יוצא מהתקן. מסך שתלוי על הקיר ועובד לבד.</div>
+    <div data-k="w" data-i18n="td.3.w">לתפעול - ייצור, מחסן, שירות - שבו הפער בין לדעת עכשיו לבין לדעת מחר נמדד ביעילות או בשירות.</div>
+    <div data-k="c" data-i18n="td.3.c">מסך רצפה - המצב העדכני מול היעד.</div>
+  </div>
+  <div data-td="4">
+    <div data-k="p" data-i18n="td.4.p">לא כל דוח צריך להגיע במייל. דוח שנשלח מתוך הרגל נמחק מתוך הרגל, ואז גם הדוח החשוב הולך לאיבוד.</div>
+    <div data-k="s" data-i18n="td.4.s">בוחרים יחד מה שווה לדחוף - סטטוס יומי וחריגים. לכל דוח מגדירים מי מקבל אותו, איזה חתך, באיזה פורמט ובאיזו תדירות. מאותו רגע הוא נשלח מעצמו. חריגים נשלחים לאחראי על הרשומה, לפי סף שאתם קובעים.</div>
+    <div data-k="g" data-i18n="td.4.g">רק הדוחות שבאמת נקראים, שמגיעים בלי שביקשתם. כל נמען מקבל את מה שרלוונטי לו, בפורמט ובקצב שנקבעו מראש.</div>
+    <div data-k="w" data-i18n="td.4.w">לארגונים שבהם ההנהלה לא נכנסת למערכות, אבל כן קוראת מייל, ורוצה לקבל בו רק את מה שדורש תשומת לב.</div>
+    <div data-k="c" data-i18n="td.4.c">דוח שמגיע במייל - מוכן, בשעה קבועה.</div>
+  </div>
+  <div data-td="6">
+    <div data-k="p" data-i18n="td.6.p">הדרך המהירה ביותר לקבל מספר היא לשאול מישהו שיודע. אבל הוא לא תמיד זמין - במיוחד כשאתם מחוץ למשרד, בין פגישות או אצל לקוח.</div>
+    <div data-k="s" data-i18n="td.6.s">סוכן AI שמתנהג כמו עובד שמכיר את המספרים שלכם. שואלים בעברית או באנגלית, בשפה טבעית, בדיוק כמו ששואלים אדם - ומקבלים תשובה מיד. אפשר להמשיך עם שאלת המשך ולנהל שיחה בלי להתחיל מחדש.</div>
+    <div data-k="g" data-i18n="td.6.g"><ul class='td-list'><li><b>שיחה, לא שאילתה.</b> שואלים באופן טבעי. מקבלים תשובה מיד. ממשיכים עם שאלות המשך בלי להתחיל מחדש.</li><li><b>ישירות מהטלפון.</b> לא צריך לפתוח דשבורד. לא צריך לחפש דוח. לא צריך לחכות שמישהו יתפנה.</li><li><b>המספרים שאתם כבר מכירים וסומכים עליהם.</b> התשובות מבוססות על אותו מודל נתונים שעומד מאחורי הדשבורדים הקיימים שלכם.</li></ul></div>
+    <div data-k="w" data-i18n="td.6.w">למנהלים ולאנשי מכירות שצריכים תשובות תוך כדי תנועה - ורוצים לשאול שאלה באופן טבעי, בדיוק כמו שהיו שואלים עובד שמכיר את המספרים.</div>
+    <div data-k="c" data-i18n="td.6.c">שואלים שאלה. מקבלים את המספר. ממשיכים הלאה.</div>
+  </div>
+  <div data-td="7">
+    <div data-k="p" data-i18n="td.7.p">גם אחרי שהנתונים זמינים והדשבורדים עובדים, הרבה תהליכים ניהוליים עדיין דורשים פעולה ידנית: לבדוק נתונים, לזהות מצב מסוים, להחליט מה צריך לקרות - ואז לבצע את הפעולה. שוב ושוב.</div>
+    <div data-k="s" data-i18n="td.7.s"><p>אנחנו הופכים תהליכים ניהוליים מבוססי נתונים לאוטומטיים. המערכת בודקת את הנתונים, מזהה מצב שהוגדר מראש ומפעילה את הפעולה המתאימה - לפי כללים ולוח זמנים שנקבעו.</p><p>זה יכול להיות תהליך של יצירת משימה, העברת מידע בין מערכות, עדכון רשומה או הפעלת פעולה במערכת אחרת. זה לא תהליך אחד ולא תבנית קבועה: כמעט כל תהליך שחוזר על עצמו וניתן להגדיר לו כללים, אפשר לבחון לאוטומציה.</p></div>
+    <div data-k="g" data-i18n="td.7.g">תהליכים שרצים בזמן, באותה צורה בכל פעם, בלי שמישהו צריך לזכור להפעיל אותם. פחות עבודה ידנית, תגובה מהירה יותר ויותר שליטה בתהליך.</div>
+    <div data-k="w" data-i18n="td.7.w">למנהלים שמוצאים את עצמם בודקים את אותם נתונים ומבצעים את אותה פעולה, שוב ושוב.</div>
+    <div data-k="c" data-i18n="td.7.c">הנתונים מזהים. התהליך פועל. אתם ממשיכים לנהל.</div>
+  </div>
+  <div data-td="8">
+    <div data-k="p" data-i18n="td.8.p">דוחות חריגים ואוטומציות תופסים את מה שהגדרתם מראש. אבל מה שנופל בין הכיסאות הוא דווקא מה שלא חשבתם לחפש - דפוס שמשתנה בהדרגה, לקוח שמתחיל להתרחק, או שילוב בין נתונים שאף אחד לא חשב לבדוק.</div>
+    <div data-k="s" data-i18n="td.8.s">אנליסט AI שעובר על הנתונים מיוזמתו ומחפש אנומליות, מגמות ודפוסים חריגים. הוא לא ממתין לשאלה או לכלל שהוגדר מראש, אלא מחפש מה שונה מההתנהגות הרגילה ומסביר מה מצא.</div>
+    <div data-k="g" data-i18n="td.8.g">ממצאים שלא חשבתם לחפש. הסבר בשפה עסקית - לא רק מספר או גרף. והממצאים מגיעים מתועדפים, כך שאפשר להבין במה כדאי להתמקד קודם.</div>
+    <div data-k="w" data-i18n="td.8.w">לארגונים שכבר יש להם דשבורדים, דוחות ובקרות - ורוצים לגלות גם את מה שנופל בין הכיסאות.</div>
+    <div data-k="c" data-i18n="td.8.c">ממצא שאיש לא חיפש - והסבר למה הוא חשוב.</div>
+  </div>
+  <div data-td="9">
+    <div data-k="p" data-i18n="td.9.p">דוחות ודשבורדים מראים מה קרה. אבל כדי להבין איפה השינוי קרה, להשוות אותו לאורך זמן ולנתח אותו לעומק, צריך מדדים מחושבים ברמת האובייקט העסקי - ולא רק סיכומים כלליים.</div>
+    <div data-k="s" data-i18n="td.9.s"><p>שכבת אנליטיקה מתקדמת שיושבת מעל מחסן הנתונים. הנתונים עוברים טיוב וסינון, והמערכת מחשבת ושומרת מדדים עבור אובייקטים עסקיים מרכזיים - כמו לקוח, מספר סיריאלי, מוצר, ערוץ ועוד.</p><p>בכל חודש החישובים מתעדכנים והתוצאות נשמרות, כך שנבנית היסטוריה חודשית לכל מדד. בחברות גדולות שכבות כאלה הן חלק מהתשתית האנליטית. כאן הן מגיעות כשירות, בלי שתצטרכו לבנות ולתחזק אותן בעצמכם.</p></div>
+    <div data-k="g" data-i18n="td.9.g">מדדים מחושבים ברמת האובייקט העסקי, ולא רק סיכומים. היסטוריה חודשית - כך שאפשר לראות ולהשוות את אותו מדד לאורך זמן. סימון של מה שהשתנה מחודש לחודש. ובעיקר, בסיס אנליטי עמוק שעליו נשענים האנליסט והבריף העסקי.</div>
+    <div data-k="w" data-i18n="td.9.w">לחברות שכבר יש להן מחסן נתונים ודוחות, ורוצות לעבור משלב "מה קרה" לשלב "איפה ולמה".</div>
+    <div data-k="c" data-i18n="td.9.c">מדד אחד, לאורך שנים עשר חודשים - כולל מה שהשתנה.</div>
+  </div>
+  <div data-td="10">
+    <div data-k="p" data-i18n="td.10.p">כל פעם שצריך לדון על לקוח, מוצר או חריג, מתחילים לחבר את התמונה מחדש. פותחים Power BI, עוברים בין דוחות, מחפשים מספרים ומצליבים נתונים. זה לוקח זמן, ולא תמיד קל לראות את כל התמונה במקום אחד.</div>
+    <div data-k="s" data-i18n="td.10.s"><p>לפני פגישה או שיחה, בוחרים את הלקוח - והבריף שלו נבנה מול העיניים. המערכת מרכזת את כל מה שצריך לדעת עליו: מכירות, רווחיות, מגמות, חריגים ומדדים נוספים, מתוך הנתונים העדכניים ביותר.</p><p>הבריף יכול להיבנות גם עבור מוצר או אובייקט עסקי מרכזי אחר. במקום לאסוף את התמונה ממספר דוחות ומסכים, מקבלים אותה במקום אחד - בדיוק כשצריך אותה.</p></div>
+    <div data-k="g" data-i18n="td.10.g"><ul class='td-list'><li><b>תמונה מלאה במקום אחד.</b> כל המדדים והנתונים החשובים לאותו לקוח או אובייקט עסקי, מסודרים בבריף אחד.</li><li><b>הקשר לאורך זמן.</b> מדדים מחושבים, היסטוריה חודשית ומגמות מאפשרים להבין לא רק מה קורה עכשיו, אלא גם איך הדברים השתנו.</li><li><b>מה שדורש תשומת לב.</b> חריגים ושינויים רלוונטיים כבר מסומנים בתוך הבריף.</li></ul></div>
+    <div data-k="w" data-i18n="td.10.w">למנהלים שנכנסים לפגישה על לקוח, מוצר או פעילות עסקית, ורוצים את כל התמונה מוכנה - בלי לבקש אותה מאף אחד.</div>
+    <div data-k="c" data-i18n="td.10.c">בריף של לקוח - מכירות, רווחיות, מגמות וחריגים, בדף אחד.</div>
+  </div>
+</div>
+
+<dialog class="modal tier-modal" id="tierModal" aria-labelledby="tierTitle">
+  <div class="modal-card tier-card">
+    <div class="modal-head">
+      <p class="shot-count" id="tierCount"></p>
+      <h2 id="tierTitle" tabindex="-1"></h2>
+      <button class="modal-x" id="tierClose" type="button" aria-label="סגירה" data-i18n-al="shot.close">✕</button>
+    </div>
+    <div class="td-sec"><h3 data-i18n="td.l.p">הבעיה</h3><div class="td-txt" data-slot="p"></div></div>
+    <div class="td-sec"><h3 data-i18n="td.l.s">הפתרון</h3><div class="td-txt" data-slot="s"></div></div>
+    <div class="td-sec"><h3 data-i18n="td.l.g">מה מקבלים</h3><div class="td-txt" data-slot="g"></div></div>
+    <div class="td-sec"><h3 data-i18n="td.l.w">למי זה מתאים</h3><div class="td-txt" data-slot="w"></div></div>
+    <div class="shot-frame" id="tierFrame"></div>
+    <p class="shot-cap" data-slot="c"></p>
+    <div class="shot-nav">
+      <button type="button" id="tierPrev" data-i18n="shot.prev">הקודם</button>
+      <button type="button" id="tierNext" data-i18n="shot.next">הבא</button>
+    </div>
+  </div>
+</dialog>
+
 </div>
 
 
@@ -3197,6 +3415,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
   // Assigned once the viewer is wired up; setLang calls it so a language
   // switch with the viewer open rewrites what is inside it.
   var shotRefill = null;
+  var tierRefill = null;
 
   /* ---------- the English copy deck ----------
      Taken verbatim from site-copy-en.html (US & Global Enterprise Market,
@@ -3252,7 +3471,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     "home.sol.1.h":"Enterprise Data Warehouse",
     "home.sol.1.p":"All data from Priority ERP and external systems is unified and organized in one place.",
     "home.sol.2.h":"Real-Time Executive Dashboards",
-    "home.sol.2.p":"A clear picture of the business for every level of the organization — updated in real time, not from a report printed yesterday.",
+    "home.sol.2.p":"A clear picture of the business for every level of the organization — up to date, not from a report printed yesterday.",
     "home.sol.3.h":"Exception Monitoring &amp; Alerts",
     "home.sol.3.p":"Exceptions reach you in a scheduled report, sent to the right owner — not buried in the monthly summary.",
     "home.sol.link":"Explore the Full Infrastructure &amp; Modules <span aria-hidden='true'>→</span>",
@@ -3354,7 +3573,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     "svc.hero.h1":"One Infrastructure. <em>Complete Business Coverage.</em>",
     "svc.hero.lead":"From connecting to Priority ERP to an AI agent that answers questions in plain language — everything you need to turn your data into answers.",
     "svc.tiers.eyebrow":"Analytics Infrastructure",
-    "svc.tiers.h":"Three Tiers Built on Top of One Another",
+    "svc.tiers.h":"Four Tiers, From Infrastructure to Analytical Depth",
     "svc.tier.1.nm":"Infrastructure",
     "svc.tier.1.sub":"Single Source of Truth",
     "svc.tier.1.l1.h":"Enterprise Data Warehouse",
@@ -3375,6 +3594,62 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     "svc.tier.3.l3.p":"Data-driven management processes that run on their own, at the right time.",
     "svc.tier.3.l4.h":"Proactive AI Analyst",
     "svc.tier.3.l4.p":"Proactively identifies anomalies and unusual patterns without waiting for you to ask.",
+    "svc.tier.4.nm":"Advanced Analytics",
+    "svc.tier.4.sub":"Analytical Depth for Data-Rich Organizations",
+    "svc.tier.4.l1.h":"Computed Analytics Layer",
+    "svc.tier.4.l1.p":"Metrics computed for every client, product and serial number — with monthly history that reveals trends and deviations.",
+    "svc.tier.4.l2.h":"Business Brief",
+    "svc.tier.4.l2.p":"Pick a client — and the full picture is in front of you.",
+    "td.l.p":"The problem",
+    "td.l.s":"The solution",
+    "td.l.g":"What you get",
+    "td.l.w":"Who it's for",
+    "td.soon":"The screenshot for this service is being prepared",
+    "td.1.p":"Your data lives in several places at once — Priority, external systems such as CRM and time &amp; attendance, and departmental Excel files. Every question that crosses a system boundary means an export, a manual reconciliation and a set of adjustments, and every department walks into the meeting with a different number.",
+    "td.1.s":"One enterprise data warehouse that brings it all together. We connect Priority and the external systems, clean and unify the data, and build a single model that every tier above rests on. A metric is calculated once, and from that point everyone is talking about the same number.",
+    "td.1.g":"A single source of truth for the whole organization. An end-of-month snapshot, kept in history tables even after the figure in Priority has changed. A structure ready for dashboards, reports and AI agents — without rebuilding it for each one.",
+    "td.1.w":"Any business running on Priority that finds itself reconciling data by hand. This is the first tier; without it, nothing above it stands.",
+    "td.1.c":"The data model — Priority and the systems around it, in one structure.",
+    "td.2.p":"A static report answers one question, and usually not the one that follows it. When a manager wants to go a level deeper — by branch, by client, by month — they file another request and wait.",
+    "td.2.s":"Power BI dashboards, built for each level of the organization. Management gets the overview, the department head gets their own cut, and all of it comes from one model — so the number on the executive dashboard and the number on the departmental one never contradict each other.",
+    "td.2.g":"A current picture without waiting on a BI specialist. The ability to drill from the summary down to the individual record. Access from browser and phone, with permissions by role.",
+    "td.2.w":"An organization where more than one person needs to see the numbers, and wants to stop depending on whoever knows how to build a report.",
+    "td.2.c":"An executive dashboard — the whole picture on one screen.",
+    "td.3.p":"Some day-to-day processes matter enough to need near-real-time monitoring. When a line stops, a service queue grows or a shipment slips, tomorrow's report is already too late.",
+    "td.3.s":"Near-real-time screens (refreshed every 15 minutes), shown where the work actually happens — the production floor, the service desk, the warehouse. The screen refreshes itself and shows the latest position against target, with nobody having to operate it.",
+    "td.3.g":"A continuously updated metric against today's target. Clear flagging when something leaves its normal range. A screen on the wall that runs on its own.",
+    "td.3.w":"Operations — production, warehouse, service — where the gap between knowing now and knowing tomorrow is measured in efficiency or service.",
+    "td.3.c":"A floor screen — the latest position against target.",
+    "td.4.p":"Not every report belongs in the inbox. A report sent out of habit gets deleted out of habit, and then the important one gets lost with it.",
+    "td.4.s":"We choose together what is worth pushing — the daily status and the exceptions. For each report we define who receives it, which cut, in what format and how often. From then on it sends itself. Exceptions go to whoever owns the record, against a threshold you set.",
+    "td.4.g":"Only the reports that actually get read, arriving without being asked for. Each recipient gets what is relevant to them, in the format and at the pace agreed up front.",
+    "td.4.w":"Organizations where management doesn't log into systems, but does read email — and wants it to carry only what needs attention.",
+    "td.4.c":"A report that arrives by email — ready, at a fixed hour.",
+    "td.6.p":"The fastest way to get a number is to ask someone who knows. But that person isn't always available — especially when you're out of the office, between meetings, or with a customer.",
+    "td.6.s":"An AI agent that works like a colleague who knows your numbers. Ask in plain Hebrew or English, the way you'd ask a person, and get an answer right away. Ask a follow-up and keep the conversation going.",
+    "td.6.g":"<ul class='td-list'><li><b>A conversation, not a query.</b> Ask naturally. Get an immediate answer. Continue with follow-up questions without starting over.</li><li><b>From your phone.</b> No dashboard to open. No report to find. No need to wait for someone to be available.</li><li><b>The numbers you already trust.</b> Answers are based on the same data model behind your existing dashboards.</li></ul>",
+    "td.6.w":"Managers and sales teams who need answers while they're on the move — and want to ask a question as naturally as they would ask a colleague.",
+    "td.6.c":"Ask a question. Get the number. Keep moving.",
+    "td.7.p":"Even once the data is available and the dashboards work, many management processes still need someone to act by hand: check the data, spot a particular situation, decide what should happen — and then do it. Again and again.",
+    "td.7.s":"<p>We turn data-driven management processes into automated ones. The system checks the data, recognizes a situation defined in advance and triggers the right action — on the rules and schedule that were agreed.</p><p>That can mean creating a task, passing information between systems, updating a record or triggering an action in another system. It isn't one process or a fixed template: almost any process that repeats and can be described by rules is worth examining for automation.</p>",
+    "td.7.g":"Processes that run on time, the same way every time, without anyone having to remember to start them. Less manual work, faster response and more control over the process.",
+    "td.7.w":"Managers who find themselves checking the same data and taking the same action, again and again.",
+    "td.7.c":"The data spots it. The process acts. You keep managing.",
+    "td.8.p":"Exception reports and automations catch what you defined in advance. But what slips through is exactly what you never thought to look for — a pattern shifting gradually, a client starting to drift away, or a combination of data nobody thought to check.",
+    "td.8.s":"An AI analyst that goes over the data on its own initiative, looking for anomalies, trends and unusual patterns. It doesn't wait for a question or a predefined rule; it looks for what differs from normal behavior and explains what it found.",
+    "td.8.g":"Findings you never thought to look for. An explanation in business language — not just a number or a chart. And findings that arrive prioritized, so you can see what to focus on first.",
+    "td.8.w":"Organizations that already have dashboards, reports and controls — and want to uncover what falls between them too.",
+    "td.8.c":"A finding nobody was looking for — and why it matters.",
+    "td.9.p":"Reports and dashboards show you what happened. But to see where the change happened, compare it over time and analyze it in depth, you need metrics computed at the level of the business object — not just overall totals.",
+    "td.9.s":"<p>An advanced analytics layer that sits above the data warehouse. The data is refined and filtered, and the system computes and stores metrics for the key business objects — client, serial number, product, channel and more.</p><p>Every month the calculations are refreshed and the results kept, building a monthly history for every metric. In large companies layers like this are part of the analytics infrastructure. Here they come as a service, without your having to build and maintain them yourselves.</p>",
+    "td.9.g":"Metrics computed at the business-object level, not just totals. Monthly history — so the same metric can be seen and compared over time. A mark on what changed from month to month. And above all, a deep analytical foundation that the analyst and the Business Brief rest on.",
+    "td.9.w":"Companies that already have a warehouse and reports, and want to move from \"what happened\" to \"where and why\".",
+    "td.9.c":"One metric across twelve months — including what changed.",
+    "td.10.p":"Every time a client, a product or an exception comes up for discussion, you start piecing the picture together again. You open Power BI, move between reports, hunt for numbers and cross-check data. It takes time, and it isn't always easy to see the whole picture in one place.",
+    "td.10.s":"<p>Before a meeting or a call, pick the client — and their brief builds in front of you. The system brings together everything you need to know about them: sales, profitability, trends, exceptions and other metrics, from the latest data.</p><p>A brief can also be built for a product or another key business object. Instead of assembling the picture from several reports and screens, you get it in one place — exactly when you need it.</p>",
+    "td.10.g":"<ul class='td-list'><li><b>The full picture in one place.</b> Every important metric and figure for that client or business object, laid out in a single brief.</li><li><b>Context over time.</b> Computed metrics, monthly history and trends show not only what is happening now, but how things have changed.</li><li><b>What needs attention.</b> Relevant exceptions and changes are already flagged inside the brief.</li></ul>",
+    "td.10.w":"Managers walking into a meeting about a client, a product or a line of business, who want the whole picture ready — without asking anyone for it.",
+    "td.10.c":"A client brief — sales, profitability, trends and exceptions, on one page.",
     "svc.mods.eyebrow":"Ready-to-Deploy Modules",
     "svc.mods.h":"Analytical Coverage for Every Business Domain — Ready to Launch",
     "svc.mods.sub":"Open a module to see a real dashboard",
@@ -3382,7 +3657,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     "svc.tag.ops":"Operations",
     "svc.tag.fin":"Finance",
     "svc.mod.1.h":"Sales &amp; Collections",
-    "svc.mod.1.p":"Who is buying, who is unprofitable and who is overdue on payment — in real time.",
+    "svc.mod.1.p":"Who is buying, who is unprofitable and who is overdue on payment — in one up-to-date picture.",
     "svc.mod.2.h":"Lead Tracking",
     "svc.mod.2.p":"Where inquiries come from, how they are processed and which source generates real revenue.",
     "svc.mod.3.h":"Inventory &amp; Procurement Forecasting",
@@ -3519,6 +3794,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
   HE["shot.count"] = "מודול {n} מתוך {t}";
   HE["shot.soon"]  = "התצוגה של המודול הזה בהכנה";
   HE["shot.alt"]   = "צילום מסך: דשבורד {name}, נתוני הדגמה";
+  HE["td.soon"]  = "הצילום של השירות הזה בהכנה";
   HE["mail.subject"]      = "פנייה מהאתר";
 
   // head tags. [selector, attribute or null for textContent, key]
@@ -3607,6 +3883,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     syncClip();
     repaint();
     if(shotRefill) shotRefill();
+    if(tierRefill) tierRefill();
     // Every word on the page has just been replaced underneath a visitor who
     // cannot see it happen. Focus stays on the switch - they pressed it on
     // purpose - so the live region carries the news instead. The sentence is
@@ -4176,6 +4453,87 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
       // Reopening costs nothing: the file is in the HTTP cache by then.
       shotFrame.replaceChildren();
       if(shotFrom) shotFrom.focus({preventScroll:true});
+    });
+  }
+
+
+  /* ---------- the tier detail viewer ----------
+     Same dialog mechanics as the screenshot viewer above - Esc, focus trap
+     and inert background from the platform, arrows that follow the reading
+     direction, focus handed back to the row on close. The words come from
+     #tierTexts, which applyStrings keeps in the language now showing; the
+     tier label and the row name are read off the row that was clicked. */
+  var tierBox = document.getElementById("tierModal");
+  var tierStore = document.getElementById("tierTexts");
+  if(tierBox && tierStore){
+    var tierRows  = [].slice.call(document.querySelectorAll(".tier [data-td]"));
+    var tierTitle = document.getElementById("tierTitle");
+    var tierCount = document.getElementById("tierCount");
+    var tierFrame = document.getElementById("tierFrame");
+    var tierAt    = 0;
+    var tierFrom  = null;
+
+    var tierFill = function(i, announce){
+      tierAt = (i + tierRows.length) % tierRows.length;
+      var row  = tierRows[tierAt];
+      var n    = row.getAttribute("data-td");
+      var tier = row.closest(".tier");
+      var name = row.querySelector("strong").textContent;
+
+      tierTitle.textContent = name;
+      tierCount.textContent = tier.querySelector(".idx").textContent + " · " +
+                              tier.querySelector(".nm").textContent;
+
+      var src = tierStore.querySelector('[data-td="' + n + '"]');
+      [].slice.call(tierBox.querySelectorAll("[data-slot]")).forEach(function(slot){
+        var k = slot.getAttribute("data-slot");
+        var from = src && src.querySelector('[data-k="' + k + '"]');
+        var html = from ? from.innerHTML.trim() : "";
+        // The caption is a <p> already; the four sections take a paragraph
+        // unless the copy brought its own block markup (a list, two <p>).
+        if(k === "c" || html.charAt(0) === "<") slot.innerHTML = html;
+        else slot.innerHTML = "<p>" + html + "</p>";
+      });
+
+      // No row has a screenshot yet, in either language. Drawn, never
+      // borrowed - see .shot-holder.
+      var box = document.createElement("div");
+      box.className = "shot-holder";
+      box.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+                      '<use href="#icoZoom"/></svg><p></p>';
+      box.querySelector("p").textContent = S("td.soon");
+      tierFrame.replaceChildren(box);
+
+      tierBox.querySelector(".modal-card").scrollTop = 0;
+      if(announce) say(name);
+    };
+
+    tierRefill = function(){ if(tierBox.open) tierFill(tierAt, false); };
+
+    tierRows.forEach(function(row){
+      row.addEventListener("click", function(){
+        tierFrom = row;
+        tierFill(tierRows.indexOf(row), false);
+        if(typeof tierBox.showModal === "function") tierBox.showModal();
+        else tierBox.setAttribute("open","");
+        tierTitle.focus({preventScroll:true});
+      });
+    });
+
+    document.getElementById("tierPrev").addEventListener("click", function(){ tierFill(tierAt - 1, true); });
+    document.getElementById("tierNext").addEventListener("click", function(){ tierFill(tierAt + 1, true); });
+
+    tierBox.addEventListener("keydown", function(e){
+      if(e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      var ltr = document.documentElement.getAttribute("dir") !== "rtl";
+      e.preventDefault();
+      tierFill(tierAt + ((e.key === "ArrowRight") === ltr ? 1 : -1), true);
+    });
+
+    document.getElementById("tierClose").addEventListener("click", function(){ tierBox.close(); });
+    tierBox.addEventListener("click", function(e){ if(e.target === tierBox) tierBox.close(); });
+    tierBox.addEventListener("close", function(){
+      if(tierFrom) tierFrom.focus({preventScroll:true});
     });
   }
 
