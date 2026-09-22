@@ -2335,6 +2335,17 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
   /* the rain is decoration with no state to preserve - it just goes */
   .hero-rain{display:none}
 }
+
+/* ─── the way out of a tier window (2026-09-22) ───
+   Only rows 8 and 6 carry one, so the slot hides itself when the row has no
+   link. Two classes, not one: [hidden] is a browser default that loses to any
+   display rule of the same specificity, and .modal p rules sit later in this
+   sheet than this block does. */
+.td-more{margin:14px 0 0}
+.td-more[hidden]{display:none}
+.td-more-link{font-weight:700;text-decoration:none;color:var(--accent-ink, #8A6D1F);
+              display:inline-flex;align-items:center;gap:6px}
+.td-more-link:hover{text-decoration:underline}
 </style>
 
 <div class="atmos" aria-hidden="true"></div>
@@ -2493,16 +2504,16 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
         </div>
         <div class="g3 reveal">
           <div class="symptom">
-            <h3 class="h-s" data-i18n="home.problem.1.h">הנתונים פזורים בין דוחות</h3>
-            <p data-i18n="home.problem.1.p">מכירות, מלאי, ייצור ותקציב - כל תחום בדוח נפרד. מי שרוצה תמונה מלאה מייצא שלושה דוחות לאקסל ומדביק אותם לגיליון אחד.</p>
+            <h3 class="h-s" data-i18n="home.problem.1.h">הנתון נכון, התשובה מאוחרת</h3>
+            <p data-i18n="home.problem.1.p">החיתוך הניהולי לוקח ימים. עד שהתמונה מוכנה, ההחלטה כבר נפלה בלעדיה.</p>
           </div>
           <div class="symptom">
-            <h3 class="h-s" data-i18n="home.problem.2.h">אין בארגון מי שיבנה BI</h3>
-            <p data-i18n="home.problem.2.p">בניית BI עצמאית דורשת זמן, ידע מקצועי ותקציב - כשיש עסק לנהל.</p>
+            <h3 class="h-s" data-i18n="home.problem.2.h">אין גרסה אחת של האמת</h3>
+            <p data-i18n="home.problem.2.p">הכספים והתפעול מגיעים לישיבה עם שני מספרים לאותה שאלה. הדיון מתחיל בוויכוח על ההגדרה.</p>
           </div>
           <div class="symptom">
-            <h3 class="h-s" data-i18n="home.problem.3.h">חריגות מתגלות באיחור</h3>
-            <p data-i18n="home.problem.3.p">החריגה מתגלה בסיכום החודשי, אחרי שהיא כבר עלתה כסף - כי אף אחד לא התריע עליה בזמן.</p>
+            <h3 class="h-s" data-i18n="home.problem.3.h">הידע יושב אצל אדם אחד</h3>
+            <p data-i18n="home.problem.3.p">מי שיודע לבנות את הדוח הוא נקודת כשל בודדת. הוא בחופשה, והחודש נסגר בלי תמונה.</p>
           </div>
         </div>
       </div>
@@ -2933,7 +2944,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
             <div class="layers">
               <button class="layer" type="button" data-td="2" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico12"/></svg><div><strong data-i18n="svc.tier.2.l1.h">דשבורדים</strong><span data-i18n="svc.tier.2.l1.p">תמונת מצב ברורה ומעודכנת לכל דרג בארגון.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
               <button class="layer" type="button" data-td="3" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico13"/></svg><div><strong data-i18n="svc.tier.2.l2.h">מסכי זמן אמת</strong><span data-i18n="svc.tier.2.l2.p">מעקב חי אחרי מה שקורה בעסק עכשיו - לא אתמול.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
-              <button class="layer" type="button" data-td="4" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico14"/></svg><div><strong data-i18n="svc.tier.2.l3.h">דוחות שוטפים בדחיפה</strong><span data-i18n="svc.tier.2.l3.p">הדוחות והחריגים מגיעים אליכם באופן אוטומטי - לא צריך לחפש אותם.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
+              <button class="layer" type="button" data-td="4" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico14"/></svg><div><strong data-i18n="svc.tier.2.l3.h">דוחות שוטפים בדחיפה</strong><span data-i18n="svc.tier.2.l3.p">הדוחות שאתם צריכים כל יום/שבוע/חודש מגיעים אליכם לבד - לא צריך לחפש אותם.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
             </div>
           </div>
 
@@ -2945,7 +2956,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
             <div class="layers">
               <button class="layer" type="button" data-td="6" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico16"/></svg><div><strong data-i18n="svc.tier.3.l2.h">סוכן AI אינטראקטיבי</strong><span data-i18n="svc.tier.3.l2.p">לשאול שאלות ולקבל תשובות בשפה חופשית.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
               <button class="layer" type="button" data-td="7" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico17"/></svg><div><strong data-i18n="svc.tier.3.l3.h">אוטומציות אנליטיות</strong><span data-i18n="svc.tier.3.l3.p">תהליכים ניהוליים שמבוססים על נתונים - שרצים לבד, בזמן הנכון.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
-              <button class="layer" type="button" data-td="8" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico18"/></svg><div><strong data-i18n="svc.tier.3.l4.h">אנליסט AI פרואקטיבי</strong><span data-i18n="svc.tier.3.l4.p">מאתר בעצמו אנומליות ודפוסים חריגים - גם בלי שביקשתם.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
+              <button class="layer" type="button" data-td="8" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico18"/></svg><div><strong data-i18n="svc.tier.3.l4.h">אנליסט AI פרואקטיבי</strong><span data-i18n="svc.tier.3.l4.p">שומר על המספרים כל יום - ומוכיח שהוא עדיין צודק.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
             </div>
           </div>
 
@@ -3158,6 +3169,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
           <button data-go="home" data-i18n="nav.home">ראשי</button>
           <button data-go="about" data-i18n="nav.about">אודות</button>
           <button data-go="services" data-i18n="nav.services">שירותים</button>
+          <a href="ai-analyst/" data-i18n="footer.analyst">אנליסט AI</a>
           <button data-go="contact" data-i18n="nav.contact">צור קשר</button>
         </div>
         <div class="rail-col">
@@ -3304,65 +3316,67 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
 <div id="tierTexts" hidden>
   <div data-td="1">
     <div data-k="p" data-i18n="td.1.p">המידע בעסק יושב בכמה מקומות בבת אחת - Priority, מערכות חיצוניות כמו CRM ושעון נוכחות, וקבצי Excel של מחלקות. כל שאלה שחוצה מערכות דורשת ייצוא, הצלבה ידנית והתאמות, וכל מחלקה מגיעה לישיבה עם מספר אחר.</div>
-    <div data-k="s" data-i18n="td.1.s">מחסן נתונים ארגוני שמרכז את הכל במקום אחד. אנחנו מחברים את Priority ואת המערכות החיצוניות, מנקים ומאחדים את הנתונים, ובונים מודל אחד שכל שאר הקומות נשענות עליו. המדד מחושב פעם אחת, ומאותו רגע כולם מדברים על אותו מספר.</div>
+    <div data-k="s" data-i18n="td.1.s">מחסן נתונים ארגוני שמרכז את הכל במקום אחד. אנחנו מחברים את Priority ואת המערכות החיצוניות, מאחדים את הנתונים ובונים מודל אחד שכל שאר הקומות נשענות עליו. המדד מחושב פעם אחת, ומאותו רגע <strong>כולם מדברים על אותו מספר</strong>.</div>
     <div data-k="g" data-i18n="td.1.g">מקור אמת אחד לכל הארגון. צילום מצב לסוף כל חודש, שנשמר בטבלאות היסטוריות גם אחרי שהנתון ב-Priority השתנה. מבנה שמוכן לדשבורדים, לדוחות ולסוכני AI - בלי לבנות מחדש לכל שימוש.</div>
-    <div data-k="w" data-i18n="td.1.w">לכל עסק שעובד עם Priority ומוצא את עצמו מצליב נתונים ידנית. זו הקומה הראשונה, ובלעדיה כל מה שמעליה לא עומד.</div>
+    <div data-k="w" data-i18n="td.1.w">לכל עסק שעובד עם Priority ומוצא את עצמו מצליב נתונים ידנית. <strong>זו הקומה הראשונה, ובלעדיה כל מה שמעליה לא עומד.</strong></div>
     <div data-k="c" data-i18n="td.1.c">מודל הנתונים - Priority והמערכות שסביבו במבנה אחד.</div>
   </div>
   <div data-td="2">
     <div data-k="p" data-i18n="td.2.p">דוח סטטי עונה על שאלה אחת, ולרוב לא על השאלה הבאה. כשהמנהל רוצה לרדת רמה - לפי סניף, לפי לקוח, לפי חודש - הוא חוזר לבקש דוח נוסף, ומחכה.</div>
-    <div data-k="s" data-i18n="td.2.s">דשבורדים ב-Power BI, בנויים לכל דרג בנפרד. ההנהלה מקבלת תמונת מצב, מנהל התחום מקבל את החתך שלו, והכל מאותו מודל - כך שהמספר בדשבורד ההנהלה והמספר בדשבורד המחלקתי לעולם לא סותרים זה את זה.</div>
+    <div data-k="s" data-i18n="td.2.s">דשבורדים ב-Power BI, בנויים לכל דרג בנפרד. ההנהלה מקבלת תמונת מצב, מנהל התחום מקבל את החתך שלו, והכל מאותו מודל - כך שהמספר בדשבורד ההנהלה והמספר בדשבורד המחלקתי <strong>לעולם לא סותרים זה את זה</strong>.</div>
     <div data-k="g" data-i18n="td.2.g">תמונת מצב מעודכנת, בלי להמתין לאיש BI. יכולת לרדת מהסיכום לרשומה הבודדת. גישה מהדפדפן ומהטלפון, עם הרשאות לפי תפקיד.</div>
-    <div data-k="w" data-i18n="td.2.w">לארגון שבו יותר מאדם אחד צריך לראות מספרים, ורוצה להפסיק להיות תלוי במי שיודע לבנות דוח.</div>
+    <div data-k="w" data-i18n="td.2.w">לארגון שבו יותר מאדם אחד צריך לראות מספרים, ורוצה <strong>להפסיק להיות תלוי במי שיודע לבנות דוח</strong>.</div>
     <div data-k="c" data-i18n="td.2.c">דשבורד הנהלה - התמונה כולה במסך אחד.</div>
   </div>
   <div data-td="3">
     <div data-k="p" data-i18n="td.3.p">ישנם תהליכים שוטפים חשובים מספיק, הדורשים בקרה כמעט בזמן אמת. כשקו ייצור נעצר, כשתור השירות מתארך או כשמשלוח מתעכב - הדוח של מחר כבר לא עוזר.</div>
-    <div data-k="s" data-i18n="td.3.s">מסכי כמעט זמן אמת (מתעדכנים פעם ב-15 דקות), שמוצגים במקום שבו העבודה קורה - רצפת הייצור, מוקד השירות, המחסן. המסך מתרענן מעצמו ומראה את המצב העדכני מול היעד, בלי שאף אחד צריך להפעיל אותו.</div>
+    <div data-k="s" data-i18n="td.3.s">מסכי כמעט זמן אמת (מתעדכנים פעם ב-15 דקות), שמוצגים במקום שבו העבודה קורה - רצפת הייצור, מוקד השירות, המחסן. המסך מתרענן מעצמו ומראה את המצב העדכני מול היעד, <strong>בלי שאף אחד צריך להפעיל אותו</strong>.</div>
     <div data-k="g" data-i18n="td.3.g">מדד מתעדכן מול היעד של היום. סימון בולט כשמשהו יוצא מהתקן. מסך שתלוי על הקיר ועובד לבד.</div>
-    <div data-k="w" data-i18n="td.3.w">לתפעול - ייצור, מחסן, שירות - שבו הפער בין לדעת עכשיו לבין לדעת מחר נמדד ביעילות או בשירות.</div>
+    <div data-k="w" data-i18n="td.3.w">לתפעול - ייצור, מחסן, שירות - שבו <strong>הפער בין לדעת עכשיו לבין לדעת מחר</strong> נמדד ביעילות או בשירות.</div>
     <div data-k="c" data-i18n="td.3.c">מסך רצפה - המצב העדכני מול היעד.</div>
   </div>
   <div data-td="4">
     <div data-k="p" data-i18n="td.4.p">לא כל דוח צריך להגיע במייל. דוח שנשלח מתוך הרגל נמחק מתוך הרגל, ואז גם הדוח החשוב הולך לאיבוד.</div>
-    <div data-k="s" data-i18n="td.4.s">בוחרים יחד מה שווה לדחוף - סטטוס יומי וחריגים. לכל דוח מגדירים מי מקבל אותו, איזה חתך, באיזה פורמט ובאיזו תדירות. מאותו רגע הוא נשלח מעצמו. חריגים נשלחים לאחראי על הרשומה, לפי סף שאתם קובעים.</div>
+    <div data-k="s" data-i18n="td.4.s">בוחרים יחד מה שווה לדחוף. לכל דוח מגדירים מי מקבל אותו, איזה חתך, באיזה פורמט ובאיזו תדירות. <strong>מאותו רגע הוא נשלח מעצמו.</strong></div>
     <div data-k="g" data-i18n="td.4.g">רק הדוחות שבאמת נקראים, שמגיעים בלי שביקשתם. כל נמען מקבל את מה שרלוונטי לו, בפורמט ובקצב שנקבעו מראש.</div>
-    <div data-k="w" data-i18n="td.4.w">לארגונים שבהם ההנהלה לא נכנסת למערכות, אבל כן קוראת מייל, ורוצה לקבל בו רק את מה שדורש תשומת לב.</div>
+    <div data-k="w" data-i18n="td.4.w">לארגונים שבהם ההנהלה לא נכנסת למערכות, אבל כן קוראת מייל, <strong>ורוצה שהדוח שהיא צריכה יחכה לה שם בבוקר</strong>.</div>
     <div data-k="c" data-i18n="td.4.c">דוח שמגיע במייל - מוכן, בשעה קבועה.</div>
   </div>
   <div data-td="6">
     <div data-k="p" data-i18n="td.6.p">הדרך המהירה ביותר לקבל מספר היא לשאול מישהו שיודע. אבל הוא לא תמיד זמין - במיוחד כשאתם מחוץ למשרד, בין פגישות או אצל לקוח.</div>
-    <div data-k="s" data-i18n="td.6.s">סוכן AI שמתנהג כמו עובד שמכיר את המספרים שלכם. שואלים בעברית או באנגלית, בשפה טבעית, בדיוק כמו ששואלים אדם - ומקבלים תשובה מיד. אפשר להמשיך עם שאלת המשך ולנהל שיחה בלי להתחיל מחדש.</div>
+    <div data-k="s" data-i18n="td.6.s">סוכן AI שמתנהג כמו עובד שמכיר את המספרים שלכם. שואלים בעברית או באנגלית, בשפה טבעית, בדיוק כמו ששואלים אדם - <strong>ומקבלים תשובה מיד</strong>. אפשר להמשיך עם שאלת המשך ולנהל שיחה בלי להתחיל מחדש.</div>
     <div data-k="g" data-i18n="td.6.g"><ul class='td-list'><li><b>שיחה, לא שאילתה.</b> שואלים באופן טבעי. מקבלים תשובה מיד. ממשיכים עם שאלות המשך בלי להתחיל מחדש.</li><li><b>ישירות מהטלפון.</b> לא צריך לפתוח דשבורד. לא צריך לחפש דוח. לא צריך לחכות שמישהו יתפנה.</li><li><b>המספרים שאתם כבר מכירים וסומכים עליהם.</b> התשובות מבוססות על אותו מודל נתונים שעומד מאחורי הדשבורדים הקיימים שלכם.</li></ul></div>
-    <div data-k="w" data-i18n="td.6.w">למנהלים ולאנשי מכירות שצריכים תשובות תוך כדי תנועה - ורוצים לשאול שאלה באופן טבעי, בדיוק כמו שהיו שואלים עובד שמכיר את המספרים.</div>
+    <div data-k="w" data-i18n="td.6.w">למנהלים ולאנשי מכירות שצריכים <strong>תשובות תוך כדי תנועה</strong> - ורוצים לשאול שאלה באופן טבעי, בדיוק כמו שהיו שואלים עובד שמכיר את המספרים.</div>
+    <div data-k="l" data-i18n="td.6.l"><a class="td-more-link" href="ai-analyst/">איך התשובות נבדקות ←</a></div>
     <div data-k="c" data-i18n="td.6.c">שואלים שאלה. מקבלים את המספר. ממשיכים הלאה.</div>
   </div>
   <div data-td="7">
     <div data-k="p" data-i18n="td.7.p">גם אחרי שהנתונים זמינים והדשבורדים עובדים, הרבה תהליכים ניהוליים עדיין דורשים פעולה ידנית: לבדוק נתונים, לזהות מצב מסוים, להחליט מה צריך לקרות - ואז לבצע את הפעולה. שוב ושוב.</div>
-    <div data-k="s" data-i18n="td.7.s"><p>אנחנו הופכים תהליכים ניהוליים מבוססי נתונים לאוטומטיים. המערכת בודקת את הנתונים, מזהה מצב שהוגדר מראש ומפעילה את הפעולה המתאימה - לפי כללים ולוח זמנים שנקבעו.</p><p>זה יכול להיות תהליך של יצירת משימה, העברת מידע בין מערכות, עדכון רשומה או הפעלת פעולה במערכת אחרת. זה לא תהליך אחד ולא תבנית קבועה: כמעט כל תהליך שחוזר על עצמו וניתן להגדיר לו כללים, אפשר לבחון לאוטומציה.</p></div>
+    <div data-k="s" data-i18n="td.7.s"><p>אנחנו הופכים תהליכים ניהוליים מבוססי נתונים לאוטומטיים. המערכת בודקת את הנתונים, מזהה מצב שהוגדר מראש ומפעילה את הפעולה המתאימה - לפי כללים ולוח זמנים שנקבעו.</p><p>זה יכול להיות תהליך של יצירת משימה, העברת מידע בין מערכות, עדכון רשומה או הפעלת פעולה במערכת אחרת. זה לא תהליך אחד ולא תבנית קבועה: <strong>כמעט כל תהליך שחוזר על עצמו וניתן להגדיר לו כללים, אפשר לבחון לאוטומציה</strong>.</p></div>
     <div data-k="g" data-i18n="td.7.g">תהליכים שרצים בזמן, באותה צורה בכל פעם, בלי שמישהו צריך לזכור להפעיל אותם. פחות עבודה ידנית, תגובה מהירה יותר ויותר שליטה בתהליך.</div>
-    <div data-k="w" data-i18n="td.7.w">למנהלים שמוצאים את עצמם בודקים את אותם נתונים ומבצעים את אותה פעולה, שוב ושוב.</div>
+    <div data-k="w" data-i18n="td.7.w">למנהלים שמוצאים את עצמם <strong>בודקים את אותם נתונים ומבצעים את אותה פעולה, שוב ושוב</strong>.</div>
     <div data-k="c" data-i18n="td.7.c">הנתונים מזהים. התהליך פועל. אתם ממשיכים לנהל.</div>
   </div>
   <div data-td="8">
-    <div data-k="p" data-i18n="td.8.p">דוחות חריגים ואוטומציות תופסים את מה שהגדרתם מראש. אבל מה שנופל בין הכיסאות הוא דווקא מה שלא חשבתם לחפש - דפוס שמשתנה בהדרגה, לקוח שמתחיל להתרחק, או שילוב בין נתונים שאף אחד לא חשב לבדוק.</div>
-    <div data-k="s" data-i18n="td.8.s">אנליסט AI שעובר על הנתונים מיוזמתו ומחפש אנומליות, מגמות ודפוסים חריגים. הוא לא ממתין לשאלה או לכלל שהוגדר מראש, אלא מחפש מה שונה מההתנהגות הרגילה ומסביר מה מצא.</div>
-    <div data-k="g" data-i18n="td.8.g">ממצאים שלא חשבתם לחפש. הסבר בשפה עסקית - לא רק מספר או גרף. והממצאים מגיעים מתועדפים, כך שאפשר להבין במה כדאי להתמקד קודם.</div>
-    <div data-k="w" data-i18n="td.8.w">לארגונים שכבר יש להם דשבורדים, דוחות ובקרות - ורוצים לגלות גם את מה שנופל בין הכיסאות.</div>
-    <div data-k="c" data-i18n="td.8.c">ממצא שאיש לא חיפש - והסבר למה הוא חשוב.</div>
+    <div data-k="p" data-i18n="td.8.p">מישהו צריך לעבור על המספרים כל יום, ובפועל אף אחד לא עושה את זה. וברגע שתוכנה עושה את זה במקומכם, נפתחת שאלה שנייה שאף אחד לא שואל בקול: איך יודעים שהיא עדיין צודקת?</div>
+    <div data-k="s" data-i18n="td.8.s">אנליסט AI שעובד <strong>בצורה שיטתית ומבוקרת</strong>. פעם ביום הוא בודק את הנתונים מול כללים שנקבעו איתכם, ומתריע לאדם הנכון כשכלל נשבר. כל התראה מציגה את התנועות שמאחוריה. כשהכול תקין - שקט.</div>
+    <div data-k="g" data-i18n="td.8.g">בעיות שצפות בזמן שעוד אפשר לפעול. התראות שיורשות את ההרשאות של הסוכן - איש מכירות רואה רק את הלקוחות שלו. ומערך בדיקה שרץ אחרי כל שינוי, על שאלות שהעסק כבר יודע לענות עליהן: <strong>אם הדיוק יורד מהתקן, השינוי לא עולה לאוויר.</strong></div>
+    <div data-k="w" data-i18n="td.8.w">לארגונים שרוצים ש-AI ישמור על המספרים שלהם, <strong>ולא מוכנים לסמוך עליו בלי הוכחה.</strong></div>
+    <div data-k="l" data-i18n="td.8.l"><a class="td-more-link" href="ai-analyst/">איך זה נבדק - לעמוד המלא ←</a></div>
+    <div data-k="c" data-i18n="td.8.c">התראה יומית - והמבחן שמוכיח שהיא עדיין נכונה.</div>
   </div>
   <div data-td="9">
     <div data-k="p" data-i18n="td.9.p">דוחות ודשבורדים מראים מה קרה. אבל כדי להבין איפה השינוי קרה, להשוות אותו לאורך זמן ולנתח אותו לעומק, צריך מדדים מחושבים ברמת האובייקט העסקי - ולא רק סיכומים כלליים.</div>
-    <div data-k="s" data-i18n="td.9.s"><p>שכבת אנליטיקה מתקדמת שיושבת מעל מחסן הנתונים. הנתונים עוברים טיוב וסינון, והמערכת מחשבת ושומרת מדדים עבור אובייקטים עסקיים מרכזיים - כמו לקוח, מספר סיריאלי, מוצר, ערוץ ועוד.</p><p>בכל חודש החישובים מתעדכנים והתוצאות נשמרות, כך שנבנית היסטוריה חודשית לכל מדד. בחברות גדולות שכבות כאלה הן חלק מהתשתית האנליטית. כאן הן מגיעות כשירות, בלי שתצטרכו לבנות ולתחזק אותן בעצמכם.</p></div>
+    <div data-k="s" data-i18n="td.9.s"><p>שכבת אנליטיקה מתקדמת שיושבת מעל מחסן הנתונים. הנתונים עוברים סינון, והמערכת מחשבת ושומרת מדדים עבור אובייקטים עסקיים מרכזיים - כמו לקוח, מספר סיריאלי, מוצר, ערוץ ועוד.</p><p>בכל חודש החישובים מתעדכנים והתוצאות נשמרות, כך שנבנית היסטוריה חודשית לכל מדד. בחברות גדולות שכבות כאלה הן חלק מהתשתית האנליטית. <strong>כאן הן מגיעות כשירות</strong>, בלי שתצטרכו לבנות ולתחזק אותן בעצמכם.</p></div>
     <div data-k="g" data-i18n="td.9.g">מדדים מחושבים ברמת האובייקט העסקי, ולא רק סיכומים. היסטוריה חודשית - כך שאפשר לראות ולהשוות את אותו מדד לאורך זמן. סימון של מה שהשתנה מחודש לחודש. ובעיקר, בסיס אנליטי עמוק שעליו נשענים האנליסט והבריף העסקי.</div>
-    <div data-k="w" data-i18n="td.9.w">לחברות שכבר יש להן מחסן נתונים ודוחות, ורוצות לעבור משלב "מה קרה" לשלב "איפה ולמה".</div>
+    <div data-k="w" data-i18n="td.9.w">לחברות שכבר יש להן מחסן נתונים ודוחות, ורוצות לעבור <strong>משלב "מה קרה" לשלב "איפה ולמה"</strong>.</div>
     <div data-k="c" data-i18n="td.9.c">מדד אחד, לאורך שנים עשר חודשים - כולל מה שהשתנה.</div>
   </div>
   <div data-td="10">
     <div data-k="p" data-i18n="td.10.p">כל פעם שצריך לדון על לקוח, מוצר או חריג, מתחילים לחבר את התמונה מחדש. פותחים Power BI, עוברים בין דוחות, מחפשים מספרים ומצליבים נתונים. זה לוקח זמן, ולא תמיד קל לראות את כל התמונה במקום אחד.</div>
-    <div data-k="s" data-i18n="td.10.s"><p>לפני פגישה או שיחה, בוחרים את הלקוח - והבריף שלו נבנה מול העיניים. המערכת מרכזת את כל מה שצריך לדעת עליו: מכירות, רווחיות, מגמות, חריגים ומדדים נוספים, מתוך הנתונים העדכניים ביותר.</p><p>הבריף יכול להיבנות גם עבור מוצר או אובייקט עסקי מרכזי אחר. במקום לאסוף את התמונה ממספר דוחות ומסכים, מקבלים אותה במקום אחד - בדיוק כשצריך אותה.</p></div>
+    <div data-k="s" data-i18n="td.10.s"><p>לפני פגישה או שיחה, בוחרים את הלקוח - <strong>והבריף שלו נבנה מול העיניים</strong>. המערכת מרכזת את כל מה שצריך לדעת עליו: מכירות, רווחיות, מגמות, חריגים ומדדים נוספים, מתוך הנתונים העדכניים ביותר.</p><p>הבריף יכול להיבנות גם עבור מוצר או אובייקט עסקי מרכזי אחר. במקום לאסוף את התמונה ממספר דוחות ומסכים, מקבלים אותה במקום אחד - בדיוק כשצריך אותה.</p></div>
     <div data-k="g" data-i18n="td.10.g"><ul class='td-list'><li><b>תמונה מלאה במקום אחד.</b> כל המדדים והנתונים החשובים לאותו לקוח או אובייקט עסקי, מסודרים בבריף אחד.</li><li><b>הקשר לאורך זמן.</b> מדדים מחושבים, היסטוריה חודשית ומגמות מאפשרים להבין לא רק מה קורה עכשיו, אלא גם איך הדברים השתנו.</li><li><b>מה שדורש תשומת לב.</b> חריגים ושינויים רלוונטיים כבר מסומנים בתוך הבריף.</li></ul></div>
-    <div data-k="w" data-i18n="td.10.w">למנהלים שנכנסים לפגישה על לקוח, מוצר או פעילות עסקית, ורוצים את כל התמונה מוכנה - בלי לבקש אותה מאף אחד.</div>
+    <div data-k="w" data-i18n="td.10.w">למנהלים שנכנסים לפגישה על לקוח, מוצר או פעילות עסקית, ורוצים את כל התמונה מוכנה - <strong>בלי לבקש אותה מאף אחד</strong>.</div>
     <div data-k="c" data-i18n="td.10.c">בריף של לקוח - מכירות, רווחיות, מגמות וחריגים, בדף אחד.</div>
   </div>
 </div>
@@ -3380,6 +3394,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     <div class="td-sec"><h3 data-i18n="td.l.w">למי זה מתאים</h3><div class="td-txt" data-slot="w"></div></div>
     <div class="shot-frame" id="tierFrame"></div>
     <p class="shot-cap" data-slot="c"></p>
+    <p class="td-more" data-slot="l"></p>
     <div class="shot-nav">
       <button type="button" id="tierPrev" data-i18n="shot.prev">הקודם</button>
       <button type="button" id="tierNext" data-i18n="shot.next">הבא</button>
@@ -3451,12 +3466,12 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     /* --- home: the problem --- */
     "home.problem.eyebrow":"Sound Familiar?",
     "home.problem.h":"Priority ERP is packed with data. What it lacks is a clear picture of your business.",
-    "home.problem.1.h":"Data Scattered Across Reports",
-    "home.problem.1.p":"Sales, inventory, manufacturing and budget — each in a separate report. Getting the full picture means exporting three reports to Excel and combining them into one spreadsheet.",
-    "home.problem.2.h":"No One in the Organization to Build BI",
-    "home.problem.2.p":"Building BI in-house requires time, professional expertise and budget — while you have a business to run.",
-    "home.problem.3.h":"Exceptions Are Discovered Too Late",
-    "home.problem.3.p":"An exception is discovered in the monthly summary, after it has already cost money.",
+    "home.problem.1.h":"Right Data, Late Answer",
+    "home.problem.1.p":"The management cut takes days. The decision comes first.",
+    "home.problem.2.h":"No Single Version of the Truth",
+    "home.problem.2.p":"Finance and operations arrive with two numbers for one question, and argue about definitions.",
+    "home.problem.3.h":"Knowledge in One Head",
+    "home.problem.3.p":"Whoever builds the report is a single point of failure. A holiday, and the month closes blind.",
 
     /* --- home: the solution --- */
     "home.solution.eyebrow":"How We Solve It",
@@ -3585,7 +3600,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     "svc.tier.2.l2.h":"Real-Time Operational Views",
     "svc.tier.2.l2.p":"Live monitoring of what is happening in the business now — not yesterday.",
     "svc.tier.2.l3.h":"Automated Push Reports",
-    "svc.tier.2.l3.p":"Reports and exceptions are delivered to you automatically — no need to look for them.",
+    "svc.tier.2.l3.p":"The reports you need every day, week or month arrive on their own — no need to look for them.",
     "svc.tier.3.nm":"Analysis",
     "svc.tier.3.sub":"The System Helps You Understand and Act",
     "svc.tier.3.l2.h":"Interactive AI Agent",
@@ -3593,7 +3608,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     "svc.tier.3.l3.h":"Analytical Automations",
     "svc.tier.3.l3.p":"Data-driven management processes that run on their own, at the right time.",
     "svc.tier.3.l4.h":"Proactive AI Analyst",
-    "svc.tier.3.l4.p":"Proactively identifies anomalies and unusual patterns without waiting for you to ask.",
+    "svc.tier.3.l4.p":"Watches your numbers daily — and proves it is still right.",
     "svc.tier.4.nm":"Advanced Analytics",
     "svc.tier.4.sub":"Analytical Depth for Data-Rich Organizations",
     "svc.tier.4.l1.h":"Computed Analytics Layer",
@@ -3606,49 +3621,51 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     "td.l.w":"Who it's for",
     "td.soon":"The screenshot for this service is being prepared",
     "td.1.p":"Your data lives in several places at once — Priority, external systems such as CRM and time &amp; attendance, and departmental Excel files. Every question that crosses a system boundary means an export, a manual reconciliation and a set of adjustments, and every department walks into the meeting with a different number.",
-    "td.1.s":"One enterprise data warehouse that brings it all together. We connect Priority and the external systems, clean and unify the data, and build a single model that every tier above rests on. A metric is calculated once, and from that point everyone is talking about the same number.",
+    "td.1.s":"One enterprise data warehouse that brings it all together. We connect Priority and the external systems, unify the data and build a single model that every tier above rests on. A metric is calculated once, and from that point <strong>everyone is talking about the same number</strong>.",
     "td.1.g":"A single source of truth for the whole organization. An end-of-month snapshot, kept in history tables even after the figure in Priority has changed. A structure ready for dashboards, reports and AI agents — without rebuilding it for each one.",
-    "td.1.w":"Any business running on Priority that finds itself reconciling data by hand. This is the first tier; without it, nothing above it stands.",
+    "td.1.w":"Any business running on Priority that finds itself reconciling data by hand. <strong>This is the first tier; without it, nothing above it stands.</strong>",
     "td.1.c":"The data model — Priority and the systems around it, in one structure.",
     "td.2.p":"A static report answers one question, and usually not the one that follows it. When a manager wants to go a level deeper — by branch, by client, by month — they file another request and wait.",
-    "td.2.s":"Power BI dashboards, built for each level of the organization. Management gets the overview, the department head gets their own cut, and all of it comes from one model — so the number on the executive dashboard and the number on the departmental one never contradict each other.",
+    "td.2.s":"Power BI dashboards, built for each level of the organization. Management gets the overview, the department head gets their own cut, and all of it comes from one model — so the number on the executive dashboard and the number on the departmental one <strong>never contradict each other</strong>.",
     "td.2.g":"A current picture without waiting on a BI specialist. The ability to drill from the summary down to the individual record. Access from browser and phone, with permissions by role.",
-    "td.2.w":"An organization where more than one person needs to see the numbers, and wants to stop depending on whoever knows how to build a report.",
+    "td.2.w":"An organization where more than one person needs to see the numbers, and wants to <strong>stop depending on whoever knows how to build a report</strong>.",
     "td.2.c":"An executive dashboard — the whole picture on one screen.",
     "td.3.p":"Some day-to-day processes matter enough to need near-real-time monitoring. When a line stops, a service queue grows or a shipment slips, tomorrow's report is already too late.",
-    "td.3.s":"Near-real-time screens (refreshed every 15 minutes), shown where the work actually happens — the production floor, the service desk, the warehouse. The screen refreshes itself and shows the latest position against target, with nobody having to operate it.",
+    "td.3.s":"Near-real-time screens (refreshed every 15 minutes), shown where the work actually happens — the production floor, the service desk, the warehouse. The screen refreshes itself and shows the latest position against target, <strong>with nobody having to operate it</strong>.",
     "td.3.g":"A continuously updated metric against today's target. Clear flagging when something leaves its normal range. A screen on the wall that runs on its own.",
-    "td.3.w":"Operations — production, warehouse, service — where the gap between knowing now and knowing tomorrow is measured in efficiency or service.",
+    "td.3.w":"Operations — production, warehouse, service — where <strong>the gap between knowing now and knowing tomorrow</strong> is measured in efficiency or service.",
     "td.3.c":"A floor screen — the latest position against target.",
     "td.4.p":"Not every report belongs in the inbox. A report sent out of habit gets deleted out of habit, and then the important one gets lost with it.",
-    "td.4.s":"We choose together what is worth pushing — the daily status and the exceptions. For each report we define who receives it, which cut, in what format and how often. From then on it sends itself. Exceptions go to whoever owns the record, against a threshold you set.",
+    "td.4.s":"We choose together what is worth pushing. For each report we define who receives it, which cut, in what format and how often. <strong>From then on it sends itself.</strong>",
     "td.4.g":"Only the reports that actually get read, arriving without being asked for. Each recipient gets what is relevant to them, in the format and at the pace agreed up front.",
-    "td.4.w":"Organizations where management doesn't log into systems, but does read email — and wants it to carry only what needs attention.",
+    "td.4.w":"Organizations where management doesn't log into systems, but does read email — <strong>and want the report they need waiting there in the morning</strong>.",
     "td.4.c":"A report that arrives by email — ready, at a fixed hour.",
     "td.6.p":"The fastest way to get a number is to ask someone who knows. But that person isn't always available — especially when you're out of the office, between meetings, or with a customer.",
-    "td.6.s":"An AI agent that works like a colleague who knows your numbers. Ask in plain Hebrew or English, the way you'd ask a person, and get an answer right away. Ask a follow-up and keep the conversation going.",
+    "td.6.s":"An AI agent that works like a colleague who knows your numbers. Ask in plain Hebrew or English, the way you'd ask a person, and <strong>get an answer right away</strong>. Ask a follow-up and keep the conversation going.",
     "td.6.g":"<ul class='td-list'><li><b>A conversation, not a query.</b> Ask naturally. Get an immediate answer. Continue with follow-up questions without starting over.</li><li><b>From your phone.</b> No dashboard to open. No report to find. No need to wait for someone to be available.</li><li><b>The numbers you already trust.</b> Answers are based on the same data model behind your existing dashboards.</li></ul>",
-    "td.6.w":"Managers and sales teams who need answers while they're on the move — and want to ask a question as naturally as they would ask a colleague.",
+    "td.6.w":"Managers and sales teams who need <strong>answers while they're on the move</strong> — and want to ask a question as naturally as they would ask a colleague.",
     "td.6.c":"Ask a question. Get the number. Keep moving.",
     "td.7.p":"Even once the data is available and the dashboards work, many management processes still need someone to act by hand: check the data, spot a particular situation, decide what should happen — and then do it. Again and again.",
-    "td.7.s":"<p>We turn data-driven management processes into automated ones. The system checks the data, recognizes a situation defined in advance and triggers the right action — on the rules and schedule that were agreed.</p><p>That can mean creating a task, passing information between systems, updating a record or triggering an action in another system. It isn't one process or a fixed template: almost any process that repeats and can be described by rules is worth examining for automation.</p>",
+    "td.7.s":"<p>We turn data-driven management processes into automated ones. The system checks the data, recognizes a situation defined in advance and triggers the right action — on the rules and schedule that were agreed.</p><p>That can mean creating a task, passing information between systems, updating a record or triggering an action in another system. It isn't one process or a fixed template: <strong>almost any process that repeats and can be described by rules is worth examining for automation</strong>.</p>",
     "td.7.g":"Processes that run on time, the same way every time, without anyone having to remember to start them. Less manual work, faster response and more control over the process.",
-    "td.7.w":"Managers who find themselves checking the same data and taking the same action, again and again.",
+    "td.7.w":"Managers who find themselves <strong>checking the same data and taking the same action, again and again</strong>.",
     "td.7.c":"The data spots it. The process acts. You keep managing.",
-    "td.8.p":"Exception reports and automations catch what you defined in advance. But what slips through is exactly what you never thought to look for — a pattern shifting gradually, a client starting to drift away, or a combination of data nobody thought to check.",
-    "td.8.s":"An AI analyst that goes over the data on its own initiative, looking for anomalies, trends and unusual patterns. It doesn't wait for a question or a predefined rule; it looks for what differs from normal behavior and explains what it found.",
-    "td.8.g":"Findings you never thought to look for. An explanation in business language — not just a number or a chart. And findings that arrive prioritized, so you can see what to focus on first.",
-    "td.8.w":"Organizations that already have dashboards, reports and controls — and want to uncover what falls between them too.",
-    "td.8.c":"A finding nobody was looking for — and why it matters.",
+    "td.8.p":"Someone should go over the numbers every day, and in practice nobody does. And the moment software does it for you, a second question opens that nobody asks out loud: how do you know it is still right?",
+    "td.8.s":"An AI analyst that works <strong>systematically and under control</strong>. Once a day it checks your data against rules agreed with you, and alerts the right people when a rule is broken. Every alert shows the transactions behind it. When everything is in order — silence.",
+    "td.8.g":"Problems that surface in time to act. Alerts that inherit the agent's permissions — a sales rep sees only their own customers. And a test set that reruns after every change, on questions the business already knows how to answer: <strong>if accuracy falls below the agreed standard, the change does not go live.</strong>",
+    "td.8.w":"Organizations that want AI watching their numbers, <strong>and are not willing to trust it without proof.</strong>",
+    "td.8.l":"<a class=\"td-more-link\" href=\"ai-analyst/\">How it's tested — the full page →</a>",
+    "td.6.l":"<a class=\"td-more-link\" href=\"ai-analyst/\">How the answers are tested →</a>",
+    "td.8.c":"A daily alert — and the test that proves it is still right.",
     "td.9.p":"Reports and dashboards show you what happened. But to see where the change happened, compare it over time and analyze it in depth, you need metrics computed at the level of the business object — not just overall totals.",
-    "td.9.s":"<p>An advanced analytics layer that sits above the data warehouse. The data is refined and filtered, and the system computes and stores metrics for the key business objects — client, serial number, product, channel and more.</p><p>Every month the calculations are refreshed and the results kept, building a monthly history for every metric. In large companies layers like this are part of the analytics infrastructure. Here they come as a service, without your having to build and maintain them yourselves.</p>",
+    "td.9.s":"<p>An advanced analytics layer that sits above the data warehouse. The data is filtered, and the system computes and stores metrics for the key business objects — client, serial number, product, channel and more.</p><p>Every month the calculations are refreshed and the results kept, building a monthly history for every metric. In large companies layers like this are part of the analytics infrastructure. <strong>Here they come as a service</strong>, without your having to build and maintain them yourselves.</p>",
     "td.9.g":"Metrics computed at the business-object level, not just totals. Monthly history — so the same metric can be seen and compared over time. A mark on what changed from month to month. And above all, a deep analytical foundation that the analyst and the Business Brief rest on.",
-    "td.9.w":"Companies that already have a warehouse and reports, and want to move from \"what happened\" to \"where and why\".",
+    "td.9.w":"Companies that already have a warehouse and reports, and want to move <strong>from \"what happened\" to \"where and why\"</strong>.",
     "td.9.c":"One metric across twelve months — including what changed.",
     "td.10.p":"Every time a client, a product or an exception comes up for discussion, you start piecing the picture together again. You open Power BI, move between reports, hunt for numbers and cross-check data. It takes time, and it isn't always easy to see the whole picture in one place.",
-    "td.10.s":"<p>Before a meeting or a call, pick the client — and their brief builds in front of you. The system brings together everything you need to know about them: sales, profitability, trends, exceptions and other metrics, from the latest data.</p><p>A brief can also be built for a product or another key business object. Instead of assembling the picture from several reports and screens, you get it in one place — exactly when you need it.</p>",
+    "td.10.s":"<p>Before a meeting or a call, pick the client — and <strong>their brief builds in front of you</strong>. The system brings together everything you need to know about them: sales, profitability, trends, exceptions and other metrics, from the latest data.</p><p>A brief can also be built for a product or another key business object. Instead of assembling the picture from several reports and screens, you get it in one place — exactly when you need it.</p>",
     "td.10.g":"<ul class='td-list'><li><b>The full picture in one place.</b> Every important metric and figure for that client or business object, laid out in a single brief.</li><li><b>Context over time.</b> Computed metrics, monthly history and trends show not only what is happening now, but how things have changed.</li><li><b>What needs attention.</b> Relevant exceptions and changes are already flagged inside the brief.</li></ul>",
-    "td.10.w":"Managers walking into a meeting about a client, a product or a line of business, who want the whole picture ready — without asking anyone for it.",
+    "td.10.w":"Managers walking into a meeting about a client, a product or a line of business, who want the whole picture ready — <strong>without asking anyone for it</strong>.",
     "td.10.c":"A client brief — sales, profitability, trends and exceptions, on one page.",
     "svc.mods.eyebrow":"Ready-to-Deploy Modules",
     "svc.mods.h":"Analytical Coverage for Every Business Domain — Ready to Launch",
@@ -3745,6 +3762,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
 
     /* --- footer --- */
     "footer.desc":"Analytics infrastructure for Priority ERP — dashboards, automations and AI agents, with no in-house BI team required.",
+    "footer.analyst":"AI Analyst",
     "footer.nav.t":"Navigation",
     "footer.contact.t":"Contact",
     "footer.wa.aria":"WhatsApp +972-54-577-8838",
@@ -4491,8 +4509,13 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
         var html = from ? from.innerHTML.trim() : "";
         // The caption is a <p> already; the four sections take a paragraph
         // unless the copy brought its own block markup (a list, two <p>).
-        if(k === "c" || html.charAt(0) === "<") slot.innerHTML = html;
+        if(k === "c" || k === "l" || html.charAt(0) === "<") slot.innerHTML = html;
         else slot.innerHTML = "<p>" + html + "</p>";
+        // Only two rows carry a "read more" link. The rest must not leave an
+        // empty <p> behind the caption - see .td-more[hidden] in the sheet,
+        // which is written in two classes because [hidden] loses to a bare
+        // display rule at the same specificity.
+        if(k === "l") slot.hidden = !html;
       });
 
       // No row has a screenshot yet, in either language. Drawn, never
