@@ -1765,6 +1765,79 @@ button.layer{
 .tag.ops{color:var(--ink-dim)}
 .tag.sale{color:var(--brass-ink)}
 
+/* ---- packages (2026-09-27) ----
+   Four cards in a row, read as a ladder: a small serif step number in the
+   corner carries the order the way the tier numerals used to. Each card is
+   a name and one line - "who it's for" lives in the window (27/09), and "built
+   on" was dropped as too technical for a sales page (27/09). They reuse the .layer surface - ring, soft shadow,
+   the same hover lift - so the services page keeps one card language. Two
+   up on a tablet, one column on a phone. Analyst is not sold yet: its card
+   is the same card at a lower altitude, with a "coming soon" chip, and still
+   opens - the window says what it will be without promising a date. */
+.pkgs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.pkg{
+  position:relative;display:flex;flex-direction:column;gap:10px;text-align:start;
+  padding:22px 20px 52px;border-radius:var(--edge-sm);border:0;
+  background:var(--card);box-shadow:var(--ring),var(--elev-1);color:inherit;font:inherit;cursor:pointer;
+  transition:box-shadow var(--dur-base) var(--ease-standard),background var(--dur-base) var(--ease-standard),transform var(--dur-base) var(--ease-standard);
+}
+.pkg:hover{box-shadow:var(--ring),var(--elev-2);background:var(--card-hi);transform:translateY(-4px)}
+.pkg .pkg-top{display:flex;align-items:flex-start;justify-content:space-between}
+.pkg .licon{width:42px;height:42px;display:block}
+.pkg-idx{font-family:var(--serif);font-weight:700;font-size:1.6rem;line-height:1;color:var(--brass-ink);opacity:.85;font-variant-numeric:tabular-nums}
+.pkg-nm{display:block;font-family:var(--serif);font-size:1.22rem;font-weight:700;line-height:1.25}
+.pkg-line{font-size:.93rem;color:var(--ink);line-height:1.55}
+.pkgs .mod-peek{inset-inline-start:auto;inset-inline-end:20px;bottom:18px}
+.pkg:hover .mod-peek,.pkg:focus-visible .mod-peek{color:var(--brass-ink);transform:scale(1.12)}
+.pkg.is-soon{background:var(--panel-2);box-shadow:var(--ring)}
+.pkg.is-soon .pkg-idx{opacity:.5}
+.soon{
+  display:inline-block;vertical-align:middle;margin-inline-start:6px;
+  font-family:var(--sans);font-size:.66rem;font-weight:600;letter-spacing:.05em;
+  padding:3px 9px;border-radius:var(--radius-pill);background:var(--brass-soft);color:var(--brass-ink);white-space:nowrap;
+}
+/* the home package cards open their window, so they are buttons wearing the
+   card surface: reset what a button brings, keep what .card gives */
+.card-link{display:block;width:100%;text-align:start;font:inherit;color:inherit;cursor:pointer;padding-bottom:52px}
+.card .card-hook{color:var(--ink);font-weight:600;margin-bottom:8px}
+.card-link .mod-peek{inset-inline-start:auto;inset-inline-end:28px;bottom:22px}
+.card-link:hover .mod-peek,.card-link:focus-visible .mod-peek{color:var(--brass-ink);transform:scale(1.12)}
+@media (prefers-reduced-motion:reduce){ .card-link:hover .mod-peek{transform:none} }
+/* the interactive agent closes the modules grid: full width, the module
+   card's shape, a brass chip instead of a category pill (27/09) */
+.agent-feature{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:center;margin-top:22px}
+.agent-feature .mod-addon{position:relative;align-self:center}
+.agent-shot .agent-fig{width:280px}
+@media (max-width:760px){
+  .agent-feature{grid-template-columns:1fr}
+  .agent-shot .agent-fig{width:min(300px,80vw)}
+}
+.layer .tag.addon{background:var(--brass-soft);color:var(--brass-ink)}
+.tier-modal .shot-nav[hidden]{display:none}
+.pkg-foot{margin:26px 0 0;text-align:center}
+.pkg-pill{
+  display:inline-block;padding:9px 20px;border-radius:var(--radius-pill);
+  background:var(--brass-soft);color:var(--brass-ink);
+  font-size:.95rem;font-weight:600;line-height:1.4;
+}
+.partner-line{margin:6px 0 0;color:var(--ink-dim);font-size:.95rem;font-weight:600}
+/* a brand name inside an uppercased label keeps its own case - "ב-PRIORITY"
+   reads as a typo in a Hebrew heading */
+.keep-case{text-transform:none}
+.td-fact{margin-top:10px}
+.td-fact p{font-size:.88rem;color:var(--ink-faint)}
+.td-sec[hidden],.td-fact[hidden]{display:none}
+/* the agent's screenshot: a phone-width capture, centred, after "what you get".
+   The English side draws a placeholder of the same shape instead - never the
+   Hebrew capture (the bilingual rule). */
+.agent-fig{margin:0 auto;width:min(340px,80vw);text-align:center}
+.agent-fig img{display:block;width:100%;height:auto;border-radius:18px;box-shadow:var(--ring),var(--elev-2)}
+.agent-fig figcaption{margin-top:10px;font-size:.86rem;color:var(--ink-dim);line-height:1.5}
+.agent-holder{aspect-ratio:450 / 798;border-radius:18px;background:var(--panel-2);box-shadow:var(--ring);min-height:0}
+@media (prefers-reduced-motion:reduce){ .pkg:hover{transform:none} .pkg:hover .mod-peek{transform:none} }
+@media (max-width:1100px){ .pkgs{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:560px){ .pkgs{grid-template-columns:1fr} }
+
 /* ---- paths ---- */
 .path{border:0;border-radius:var(--edge);padding:40px 36px;background:var(--card);box-shadow:var(--ring),var(--elev-1)}
 /* the recommended path used to be marked with an orange border. It is now
@@ -2526,9 +2599,11 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
           <h2 class="h-l" data-i18n="home.solution.h">תשתית אנליטית אחת - מרכז שליטה לכל העסק</h2>
         </div>
 
-        <!-- the route the data takes. Every label here is a phrase that was
-             already approved elsewhere on the site (the hero lead and the
-             three cards below), so the diagram adds a picture, not copy. -->
+        <!-- the route the data takes. Step 3 names what comes out of the
+             warehouse, not the tool it is built in: classic BI plus AI.
+             Power BI is named on this site only in the About page's
+             technology section, where it is a fact rather than a pitch
+             (decision 18 of 27/09). -->
         <div class="pipeline reveal" role="img" aria-label="הנתונים זורמים מ-Priority אל מחסן נתונים ארגוני, ומשם לדשבורדים, התראות וסוכני AI" data-i18n-al="home.pipe.aria">
           <div class="pipe-node">
             <div class="ico" aria-hidden="true">
@@ -2560,27 +2635,49 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
                 <rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 14.5v-3M12 14.5v-6M17 14.5v-4.5"/>
               </svg>
             </div>
-            <span class="nm" data-i18n="home.pipe.3.nm">Power BI וסוכני AI</span>
+            <span class="nm" data-i18n="home.pipe.3.nm">BI ו-AI</span>
             <span class="sub" data-i18n="home.pipe.3.sub">דשבורדים, התראות וסוכני AI</span>
           </div>
         </div>
 
-        <div class="g3 reveal">
-          <div class="card">
-            <h3 class="h-s" data-i18n="home.sol.1.h">מחסן נתונים ארגוני</h3>
-            <p data-i18n="home.sol.1.p">כל המידע מ-Priority ומערכות חיצוניות מאוחד ומאורגן במקום אחד.</p>
-          </div>
-          <div class="card">
-            <h3 class="h-s" data-i18n="home.sol.2.h">דשבורדים ומסכי זמן אמת</h3>
-            <p data-i18n="home.sol.2.p">תמונת מצב ברורה לכל דרג בארגון - מעודכנת, לא מדוח שהודפס אתמול.</p>
-          </div>
-          <div class="card">
-            <h3 class="h-s" data-i18n="home.sol.3.h">בקרת חריגים והתראות</h3>
-            <p data-i18n="home.sol.3.p">חריגים מגיעים אליכם בדוח קבוע, לאחראי הנכון - לא בסיכום החודשי.</p>
-          </div>
+        <!-- Each card is a button: the router takes it to the services page,
+             and data-open-pk then opens that package's window there, so "more
+             detail" is one click away rather than a scroll and a second click.
+             The short line is the hook; the two sentences under it are
+             shortened from the approved windows and add no claim of their own. -->
+        <!-- The four packages, 2026-09-27 - they replace the three service
+             cards (warehouse, dashboards, exceptions), which described layers
+             of technology rather than something a manager buys. Same order as
+             the services page: the sales path, with Analyst last and marked
+             "coming soon" because it is not sold yet. -->
+        <div class="g4 reveal">
+          <button class="card card-link" type="button" data-go="services" data-open-pk="1" aria-haspopup="dialog">
+            <h3 class="h-s" data-i18n="home.sol.1.h">Compass</h3>
+            <p class="card-hook" data-i18n="home.sol.1.p">מראה את העסק - כל התחומים, בתמונה אחת.</p>
+            <p data-i18n="home.sol.1.d">מחסן נתונים אחד שמחבר את Priority ואת המערכות שסביבו, ועליו דשבורדים, מסכי זמן אמת ודוחות שמגיעים לבד. מתחברים ביום אחד, עולים לאוויר תוך שבועות.</p>
+            <svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg>
+          </button>
+          <button class="card card-link" type="button" data-go="services" data-open-pk="2" aria-haspopup="dialog">
+            <h3 class="h-s" data-i18n="home.sol.2.h">Compass Control</h3>
+            <p class="card-hook" data-i18n="home.sol.2.p">מתריע על חריגות, ומעביר אותן לאחראי.</p>
+            <p data-i18n="home.sol.2.d">פעם ביום בודק את הנתונים מול כללים שנקבעו איתכם. כל חריגה נכנסת לתור, עם אחראי, כסף או זמן בסיכון, ופעולה מומלצת.</p>
+            <svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg>
+          </button>
+          <button class="card card-link" type="button" data-go="services" data-open-pk="3" aria-haspopup="dialog">
+            <h3 class="h-s" data-i18n="home.sol.3.h">Compass Brief</h3>
+            <p class="card-hook" data-i18n="home.sol.3.p">מכין למנהל את ההחלטות של הבוקר.</p>
+            <p data-i18n="home.sol.3.d">דף אחד בכל בוקר, מתוך מה ש-Control תפס: אילו חריגות נתפסו, כמה כסף בסיכון, ושלוש פעולות עם אחראי לכל אחת.</p>
+            <svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg>
+          </button>
+          <button class="card card-link" type="button" data-go="services" data-open-pk="4" aria-haspopup="dialog">
+            <h3 class="h-s"><span data-i18n="home.sol.4.h">Compass Analyst</span> <span class="soon" data-i18n="pk.soon">בקרוב</span></h3>
+            <p class="card-hook" data-i18n="home.sol.4.p">מוצא עם AI מה שהכללים פספסו.</p>
+            <p data-i18n="home.sol.4.d">סורק עם AI את כל המודל ומוצא מה שהכללים פספסו. כל ממצא מגובה במדד, ודפוס שחוזר הופך לכלל ב-Control.</p>
+            <svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg>
+          </button>
         </div>
         <div style="margin-top:30px" class="reveal">
-          <button class="link-arrow" data-go="services" data-i18n="home.sol.link">לכל התשתית והמודולים <span aria-hidden="true">←</span></button>
+          <button class="link-arrow" data-go="services" data-i18n="home.sol.link">לארבע החבילות <span aria-hidden="true">←</span></button>
         </div>
       </div>
     </section>
@@ -2591,6 +2688,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
         <div class="reveal" style="text-align:center;margin-bottom:32px">
           <div class="eyebrow" style="justify-content:center" data-i18n="home.brands.eyebrow">מותגים מובילים שבחרו בנו</div>
           <p style="margin:0;color:var(--ink-dim);font-size:.95rem" data-i18n="home.brands.p">עשרות מנהלים מקבלים החלטות מדי יום דרך Compass BI.</p>
+          <p class="partner-line" data-i18n="home.brands.partner">שותף טכנולוגי רשמי של Priority מאז 2021.</p>
         </div>
         <div class="brands reveal">
           <div class="plate"><img src="data:image/png;base64,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" alt="HOTAM Online"></div>
@@ -2880,7 +2978,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
             <div class="way">
               <div>
                 <strong data-i18n="about.onward.1.h">מעמיקים</strong>
-                <span data-i18n="about.onward.1.p">בקרת חריגים, התראות וסוכני AI על המודול שכבר עובד.</span>
+                <span data-i18n="about.onward.1.p">בקרת חריגים, התראות, דף בוקר וסוכני AI - על המודול שכבר עובד.</span>
               </div>
             </div>
             <div class="way">
@@ -2914,67 +3012,53 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
       <div class="wrap" style="max-width:840px">
         <div class="pill rise" data-i18n="svc.hero.pill"><span class="dot"></span>שירותים</div>
         <h1 class="h-xl rise" data-i18n="svc.hero.h1">תשתית אחת, <em>כיסוי מלא לעסק</em>.</h1>
-        <p class="lead rise" data-i18n="svc.hero.lead">מהחיבור הראשוני ל-Priority ועד סוכן AI שעונה בשפה חופשית - כל מה שצריך כדי להפוך נתונים לתשובות.</p>
+        <p class="lead rise" data-i18n="svc.hero.lead">תמונת מצב של העסק, התראות על החריגות שחשובות לכם, דף בוקר עם המלצות לפעולה, וסוכן AI שעונה בשפה חופשית - ארבע חבילות על תשתית אחת.</p>
       </div>
     </section>
 
+    <!-- The four packages, 2026-09-27. They replace the four tiers: the tiers
+         were layers of technology, the packages are what a customer buys. The
+         approved text is _copy-packages.md; each card opens its window in
+         #tierModal, whose words come from #pkgTexts below. The order is the
+         sales path - Compass, Control, Brief, then Analyst, which is marked
+         "coming soon" because it is not sold yet. -->
     <section>
       <div class="wrap">
         <div class="head-block reveal">
-          <div class="eyebrow" data-i18n="svc.tiers.eyebrow">תשתית אנליטית</div>
-          <h2 class="h-l" data-i18n="svc.tiers.h">ארבע קומות, מהתשתית ועד העומק האנליטי</h2>
+          <div class="eyebrow" data-i18n="svc.pk.eyebrow">ארבע חבילות</div>
+          <h2 class="h-l" data-i18n="svc.pk.h">מתחילים ב-Compass. מוסיפים כשהעסק מוכן.</h2>
+          <p class="head-sub" data-i18n="svc.pk.sub">שותף טכנולוגי רשמי של Priority מאז 2021.</p>
         </div>
-
-        <div class="reveal">
-          <div class="tier">
-            <div class="tier-name">
-              <span class="idx">I</span>
-              <span><span class="nm" data-i18n="svc.tier.1.nm">תשתית</span><span class="sub" data-i18n="svc.tier.1.sub">מקור אמת אחד</span></span>
-            </div>
-            <div class="layers">
-              <button class="layer" type="button" data-td="1" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico11"/></svg><div><strong data-i18n="svc.tier.1.l1.h">מחסן נתונים ארגוני</strong><span data-i18n="svc.tier.1.l1.p">כל המידע מ-Priority ומערכות חיצוניות, מאוחד ומאורגן במקום אחד ומהווה את הבסיס עליו הכל נבנה.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
-            </div>
-          </div>
-
-          <div class="tier">
-            <div class="tier-name">
-              <span class="idx">II</span>
-              <span><span class="nm" data-i18n="svc.tier.2.nm">תצוגה</span><span class="sub" data-i18n="svc.tier.2.sub">המידע מגיע אליכם</span></span>
-            </div>
-            <div class="layers">
-              <button class="layer" type="button" data-td="2" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico12"/></svg><div><strong data-i18n="svc.tier.2.l1.h">דשבורדים</strong><span data-i18n="svc.tier.2.l1.p">תמונת מצב ברורה ומעודכנת לכל דרג בארגון.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
-              <button class="layer" type="button" data-td="3" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico13"/></svg><div><strong data-i18n="svc.tier.2.l2.h">מסכי זמן אמת</strong><span data-i18n="svc.tier.2.l2.p">מעקב חי אחרי מה שקורה בעסק עכשיו - לא אתמול.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
-              <button class="layer" type="button" data-td="4" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico14"/></svg><div><strong data-i18n="svc.tier.2.l3.h">דוחות שוטפים בדחיפה</strong><span data-i18n="svc.tier.2.l3.p">הדוחות שאתם צריכים כל יום/שבוע/חודש מגיעים אליכם לבד - לא צריך לחפש אותם.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
-            </div>
-          </div>
-
-          <div class="tier">
-            <div class="tier-name">
-              <span class="idx">III</span>
-              <span><span class="nm" data-i18n="svc.tier.3.nm">ניתוח</span><span class="sub" data-i18n="svc.tier.3.sub">המערכת עוזרת לכם להבין ולפעול</span></span>
-            </div>
-            <div class="layers">
-              <button class="layer" type="button" data-td="6" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico16"/></svg><div><strong data-i18n="svc.tier.3.l2.h">סוכן AI אינטראקטיבי</strong><span data-i18n="svc.tier.3.l2.p">לשאול שאלות ולקבל תשובות בשפה חופשית.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
-              <button class="layer" type="button" data-td="7" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico17"/></svg><div><strong data-i18n="svc.tier.3.l3.h">אוטומציות אנליטיות</strong><span data-i18n="svc.tier.3.l3.p">תהליכים ניהוליים שמבוססים על נתונים - שרצים לבד, בזמן הנכון.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
-              <button class="layer" type="button" data-td="8" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico18"/></svg><div><strong data-i18n="svc.tier.3.l4.h">אנליסט AI פרואקטיבי</strong><span data-i18n="svc.tier.3.l4.p">שומר על המספרים כל יום - ומוכיח שהוא עדיין צודק.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
-            </div>
-          </div>
-
-          <!-- Tier IV, added 2026-09-16. It sits beside tier III rather than on
-               top of it - a different audience, not a higher floor - which is
-               why the section heading describes a route and no longer says
-               the tiers are built on one another. -->
-          <div class="tier">
-            <div class="tier-name">
-              <span class="idx">IV</span>
-              <span><span class="nm" data-i18n="svc.tier.4.nm">אנליטיקה מתקדמת</span><span class="sub" data-i18n="svc.tier.4.sub">עומק אנליטי לארגונים עם נתונים מורכבים</span></span>
-            </div>
-            <div class="layers">
-              <button class="layer" type="button" data-td="9" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico19"/></svg><div><strong data-i18n="svc.tier.4.l1.h">שכבת אנליטיקה מחושבת</strong><span data-i18n="svc.tier.4.l1.p">מדדים מחושבים לכל לקוח, מוצר ומספר סיריאלי - עם היסטוריה חודשית שחושפת מגמות וסטיות.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
-              <button class="layer" type="button" data-td="10" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico20"/></svg><div><strong data-i18n="svc.tier.4.l2.h">בריף עסקי</strong><span data-i18n="svc.tier.4.l2.p">בוחרים לקוח - והתמונה המלאה מולכם.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
-            </div>
-          </div>
+        <div class="pkgs reveal">
+          <button class="pkg" type="button" data-pk="1" aria-haspopup="dialog">
+            <span class="pkg-top"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico12"/></svg><span class="pkg-idx" aria-hidden="true">1</span></span>
+            <strong class="pkg-nm"><span data-i18n="pk.1.nm">Compass</span></strong>
+            <span class="pkg-line" data-i18n="pk.1.line">מראה את העסק - כל התחומים, בתמונה אחת.</span>
+            <svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg>
+          </button>
+          <button class="pkg" type="button" data-pk="2" aria-haspopup="dialog">
+            <span class="pkg-top"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico18"/></svg><span class="pkg-idx" aria-hidden="true">2</span></span>
+            <strong class="pkg-nm"><span data-i18n="pk.2.nm">Compass Control</span></strong>
+            <span class="pkg-line" data-i18n="pk.2.line">מתריע על חריגות - ומעביר אותן לאחראי.</span>
+            <svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg>
+          </button>
+          <button class="pkg" type="button" data-pk="3" aria-haspopup="dialog">
+            <span class="pkg-top"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico20"/></svg><span class="pkg-idx" aria-hidden="true">3</span></span>
+            <strong class="pkg-nm"><span data-i18n="pk.3.nm">Compass Brief</span></strong>
+            <span class="pkg-line" data-i18n="pk.3.line">מכין למנהל את ההחלטות של הבוקר.</span>
+            <svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg>
+          </button>
+          <button class="pkg is-soon" type="button" data-pk="4" aria-haspopup="dialog">
+            <span class="pkg-top"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico19"/></svg><span class="pkg-idx" aria-hidden="true">4</span></span>
+            <strong class="pkg-nm"><span data-i18n="pk.4.nm">Compass Analyst</span> <span class="soon" data-i18n="pk.soon">בקרוב</span></strong>
+            <span class="pkg-line" data-i18n="pk.4.line">מוצא עם AI מה שהכללים פספסו.</span>
+            <svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg>
+          </button>
         </div>
+        <!-- Hashavshevet gets one line and no more (decision 6): a pill centred
+             under the ladder, so a reader on that ERP sees it without it reading
+             as a sixth package. -->
+        <p class="pkg-foot reveal"><span class="pkg-pill" data-i18n="svc.pk.hash">עובדים עם חשבשבת? Compass זמין גם לכם.</span></p>
       </div>
     </section>
 
@@ -3001,34 +3085,19 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
           <button class="layer" type="button" data-mod="8" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico08"/></svg><div><div class="hd"><strong data-i18n="svc.mod.8.h">ניצולת שעות עובדים</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.8.p">כמה משעות העבודה באמת מביאות ערך, ואיפה הן הולכות לאיבוד.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
           <button class="layer" type="button" data-mod="9" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico09"/></svg><div><div class="hd"><strong data-i18n="svc.mod.9.h">WMS</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.9.p">מה באמת קורה במחסן, ומה נשאר פתוח להיום.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
         </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="head-block reveal">
-          <div class="eyebrow" data-i18n="svc.tracks.eyebrow">איך תרצו להתחיל</div>
-          <h2 class="h-l" data-i18n="svc.tracks.h">שני מסלולים, אותה תשתית</h2>
-        </div>
-        <div class="g2 reveal">
-          <div class="path lit">
-            <h3 data-i18n="svc.track.1.h">מסלול Core <span class="path-sub">מוכן להפעלה מהירה</span></h3>
-            <p class="desc" data-i18n="svc.track.1.desc">תשתית ומודולים מוכנים מהיום הראשון לפי best practice - שעולים לאוויר מהר, בלי לבנות מאפס.</p>
-            <ul>
-              <li data-i18n="svc.track.1.li1">הטמעה מהירה - שבועות ולא חודשים</li>
-              <li data-i18n="svc.track.1.li2">דשבורדים ודוחות סטנדרטיים לכל מודול</li>
-              <li data-i18n="svc.track.1.li3">עדכונים שוטפים ללא עלות נוספת</li>
-            </ul>
-          </div>
-          <div class="path">
-            <h3 data-i18n="svc.track.2.h">מסלול Tailor-Made <span class="path-sub">התאמה אישית לתהליכים ייחודיים</span></h3>
-            <p class="desc" data-i18n="svc.track.2.desc">נבנה סביב התהליכים, ההיררכיה והדוחות הספציפיים שלכם - כשהצרכים חורגים מהתקן.</p>
-            <ul>
-              <li data-i18n="svc.track.2.li1">מיפוי תהליכים מול צוות Compass BI</li>
-              <li data-i18n="svc.track.2.li2">דשבורדים ולוגיקה בהתאמה מלאה</li>
-              <li data-i18n="svc.track.2.li3">ליווי צמוד</li>
-            </ul>
-          </div>
+        <!-- The interactive agent, back on 27/09 (decision 17), is an add-on to
+             any module, so it closes the modules section - in the module card's
+             shape, with a brass chip so it does not read as a tenth module. Its
+             screenshot sits beside it on the page, where everyone sees it,
+             rather than inside its window. The card still opens the window
+             (#tierModal, data-pk - not the screenshot viewer's data-mod).
+             English shows a drawn placeholder until an English capture exists:
+             never the Hebrew one. The img is lazy, so an English visitor, whose
+             copy replaces this markup before the section is reached, never
+             downloads it. -->
+        <div class="agent-feature reveal">
+          <button class="layer mod-addon" type="button" data-pk="5" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico16"/></svg><div><div class="hd"><strong data-i18n="pk.5.nm">סוכן AI אינטראקטיבי</strong><span class="tag addon" data-i18n="pk.addon">תוספת לכל מודול</span></div><span data-i18n="pk.5.line">לשאול שאלות ולקבל תשובות בשפה חופשית.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg></button>
+          <div class="agent-shot" data-i18n="svc.agent.shot"><figure class="agent-fig"><img src="assets/agent-1.webp" srcset="assets/agent-1.webp 450w, assets/agent-1@2x.webp 899w" sizes="(max-width:420px) 80vw, 340px" width="450" height="798" loading="lazy" alt="צילום מסך: סוכן ה-AI עונה על מכירות לפי לקוח, נתוני הדגמה"><figcaption>שאלה אחת, תשובה מסודרת - מכירות לפי לקוח, החודש.</figcaption></figure></div>
         </div>
       </div>
     </section>
@@ -3036,7 +3105,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     <section class="summon snug">
       <div class="wrap">
         <div class="inner reveal">
-          <h2 class="h-l" data-i18n="svc.cta.h">לא בטוחים מאיפה להתחיל?</h2>
+          <h2 class="h-l" data-i18n="svc.cta.h">לא בטוחים מאיפה להתחיל? כמעט תמיד מ-Compass.</h2>
           <p data-i18n="svc.cta.p">בפגישת היכרות נבין את הצרכים שלכם ונמליץ על תוכנית עבודה - גם אם נגיע למסקנה שהתנאים לפרויקט אינם בשלים.</p>
           <button class="btn btn-fill" type="button" data-talk data-i18n="cta.talk">דברו איתנו</button>
         </div>
@@ -3161,7 +3230,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
             <path d="M760.47,111.6h10.73v62.59h-10.73V111.6z"/>
           </svg>
         </div>
-        <p data-i18n="footer.desc">תשתית אנליטית ל-Priority - דשבורדים, אוטומציות וסוכן AI, בלי צוות BI פנימי.</p>
+        <p data-i18n="footer.desc">תשתית אנליטית ל-Priority - דשבורדים, התראות וסוכני AI, בלי צוות BI פנימי.</p>
       </div>
       <div class="rail-cols">
         <div class="rail-col">
@@ -3169,7 +3238,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
           <button data-go="home" data-i18n="nav.home">ראשי</button>
           <button data-go="about" data-i18n="nav.about">אודות</button>
           <button data-go="services" data-i18n="nav.services">שירותים</button>
-          <a href="ai-analyst/" data-i18n="footer.analyst">אנליסט AI</a>
+          <a href="control/" data-i18n="footer.analyst">Compass Control</a>
           <button data-go="contact" data-i18n="nav.contact">צור קשר</button>
         </div>
         <div class="rail-col">
@@ -3295,89 +3364,65 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
   </div>
 </dialog>
 
-<!-- ---- the tier detail viewer (2026-09-16) ----
-     Each of the nine tier rows opens its own page: the problem, the
-     solution, what you get, who it is for, and a screenshot with its
-     caption. The copy was approved row by row on 2026-09-16 and its working
-     document is _copy-tier-details.md; the numbers in data-td are that
-     document's row numbers, which is why 5 is missing - exception control
-     was folded into the push reports that day.
+<!-- ---- the package viewer (2026-09-27) ----
+     Each of the four package cards opens its window: the problem, the
+     solution, what you get, what it isn't, and what's inside - plus, where a
+     package has one, its Priority examples (Control), its fact line (Control)
+     and how it works (Analyst). The copy was approved on 2026-09-27 in
+     Elishai's wording; its working document is _copy-packages.md.
 
-     The long copy lives in #tierTexts below rather than in a script, for
-     the same reason every other string does: Hebrew is read off the markup
-     at boot and applyStrings rewrites these nodes on a language change like
-     any other, hidden or not. The viewer copies from them each time it
-     fills, so it cannot fall out of translation.
+     The dialog is the one the tier rows used (#tierModal), kept under its old
+     id so the shared modal CSS keeps applying. A section whose key is absent
+     for a package is hidden, not left as an empty heading.
 
-     No screenshot exists for any row yet, so every row shows the drawn
-     placeholder. Choosing which capture goes with which row is Elishai's
-     call (open item 9), and a missing capture never borrows another row's
-     or the other language's. -->
-<div id="tierTexts" hidden>
-  <div data-td="1">
-    <div data-k="p" data-i18n="td.1.p">המידע בעסק יושב בכמה מקומות בבת אחת - Priority, מערכות חיצוניות כמו CRM ושעון נוכחות, וקבצי Excel של מחלקות. כל שאלה שחוצה מערכות דורשת ייצוא, הצלבה ידנית והתאמות, וכל מחלקה מגיעה לישיבה עם מספר אחר.</div>
-    <div data-k="s" data-i18n="td.1.s">מחסן נתונים ארגוני שמרכז את הכל במקום אחד. אנחנו מחברים את Priority ואת המערכות החיצוניות, מאחדים את הנתונים ובונים מודל אחד שכל שאר הקומות נשענות עליו. המדד מחושב פעם אחת, ומאותו רגע <strong>כולם מדברים על אותו מספר</strong>.</div>
-    <div data-k="g" data-i18n="td.1.g">מקור אמת אחד לכל הארגון. צילום מצב לסוף כל חודש, שנשמר בטבלאות היסטוריות גם אחרי שהנתון ב-Priority השתנה. מבנה שמוכן לדשבורדים, לדוחות ולסוכני AI - בלי לבנות מחדש לכל שימוש.</div>
-    <div data-k="w" data-i18n="td.1.w">לכל עסק שעובד עם Priority ומוצא את עצמו מצליב נתונים ידנית. <strong>זו הקומה הראשונה, ובלעדיה כל מה שמעליה לא עומד.</strong></div>
-    <div data-k="c" data-i18n="td.1.c">מודל הנתונים - Priority והמערכות שסביבו במבנה אחד.</div>
+     The fact line is a sentence with no heading of its own - decision 3 of
+     22/09: a structure of cost, stated as a fact, never as a title.
+
+     No screenshots: the approved windows have none, so there is no frame and
+     no placeholder to show. -->
+<div id="pkgTexts" hidden>
+  <div data-pk="1">
+    <div data-k="p" data-i18n="pk.1.p">Priority מלא בנתונים, אבל כל שאלה ניהולית עוברת דרך ייצוא, אקסל ומי שיודע לבנות את הדוח. עד שהתמונה מוכנה, ההחלטה כבר התקבלה.</div>
+    <div data-k="s" data-i18n="pk.1.s">מחברים את Priority ואת המערכות החיצוניות למחסן נתונים אחד, ועליו בונים דשבורדים, מסכי זמן אמת ודוחות שמגיעים לבד - לפי תשעה מודולים מוכנים לכל תחום בעסק. מתחברים ביום אחד, עולים לאוויר תוך שבועות. וכשהצרכים חורגים מהמודולים, בונים סביב התהליכים, ההיררכיה והדוחות שלכם.</div>
+    <div data-k="g" data-i18n="pk.1.g">מקור אמת אחד לכל הארגון. תמונת מצב עדכנית לכל דרג. דוחות שמגיעים אליכם, במקום שתחפשו אותם. ועדכונים ותחזוקה שוטפים.</div>
+    <div data-k="w" data-i18n="pk.1.who">מנכ"לים, תפעול ומכירות - גם בלי צוות BI בבית.</div>
+    <div data-k="n" data-i18n="pk.1.n">לא פרויקט מחסן נתונים של חצי שנה.</div>
+    <div data-k="i" data-i18n="pk.1.i">מחסן נתונים ארגוני · דשבורדים · מסכי זמן אמת · דוחות שוטפים בדחיפה · ייצוא לאקסל · תשעת המודולים</div>
   </div>
-  <div data-td="2">
-    <div data-k="p" data-i18n="td.2.p">דוח סטטי עונה על שאלה אחת, ולרוב לא על השאלה הבאה. כשהמנהל רוצה לרדת רמה - לפי סניף, לפי לקוח, לפי חודש - הוא חוזר לבקש דוח נוסף, ומחכה.</div>
-    <div data-k="s" data-i18n="td.2.s">דשבורדים ב-Power BI, בנויים לכל דרג בנפרד. ההנהלה מקבלת תמונת מצב, מנהל התחום מקבל את החתך שלו, והכל מאותו מודל - כך שהמספר בדשבורד ההנהלה והמספר בדשבורד המחלקתי <strong>לעולם לא סותרים זה את זה</strong>.</div>
-    <div data-k="g" data-i18n="td.2.g">תמונת מצב מעודכנת, בלי להמתין לאיש BI. יכולת לרדת מהסיכום לרשומה הבודדת. גישה מהדפדפן ומהטלפון, עם הרשאות לפי תפקיד.</div>
-    <div data-k="w" data-i18n="td.2.w">לארגון שבו יותר מאדם אחד צריך לראות מספרים, ורוצה <strong>להפסיק להיות תלוי במי שיודע לבנות דוח</strong>.</div>
-    <div data-k="c" data-i18n="td.2.c">דשבורד הנהלה - התמונה כולה במסך אחד.</div>
+  <div data-pk="2">
+    <div data-k="p" data-i18n="pk.2.p">מישהו צריך לעבור על המספרים כל יום, ובפועל אף אחד לא עושה את זה. וברגע שתוכנה עושה את זה במקומכם, נפתחת שאלה שנייה שאף אחד לא שואל בקול: איך יודעים שהיא עדיין צודקת?</div>
+    <div data-k="s" data-i18n="pk.2.s">פעם ביום, Compass Control בודק את הנתונים מול כללים שנקבעו איתכם. כשכלל מופר, החריגה נכנסת לתור: איזה כלל, מה הסף, מי האחראי, כמה כסף או זמן בסיכון, ומה הפעולה המומלצת. ההתראה מגיעה לאנשים הנכונים ומציגה את התנועות שמאחוריה. כשהכול תקין - שקט.</div>
+    <div data-k="x" data-i18n="pk.2.x"><ul class='td-list'><li>אספקה באיחור מול מה שהתחייבתם ללקוח</li><li>לקוח בפיגור בתשלום עם הזמנות פתוחות</li><li>מק"ט מתחת לנקודת ההזמנה, כשזמן האספקה של הספק מתארך</li><li>מחסור ברכיב מול הזמנת לקוח</li><li>פקודת ייצור באיחור מול התאריך שהובטח ללקוח</li><li>קריאת שירות שעומדת לחרוג מה-SLA של לקוח בחוזה</li></ul></div>
+    <div data-k="g" data-i18n="pk.2.g">בעיות שצפות בזמן שעוד אפשר לפעול. התראות שיורשות את ההרשאות - איש מכירות רואה רק את הלקוחות שלו. והמלצות, לא פעולות: המערכת ממליצה, ואדם מאשר כל כתיבה חזרה ל-Priority.</div>
+    <div data-k="f" data-i18n="pk.2.f">הניטור עצמו אינו משתמש ב-AI ורץ על השרת הקיים, ולכן אין לו עלות הפעלה חודשית נוספת.</div>
+    <div data-k="w" data-i18n="pk.2.who">תפעול, רכש, גבייה ומנהלי מכירות.</div>
+    <div data-k="n" data-i18n="pk.2.n">לא רובוט שרושם לבד לתוך Priority.</div>
+    <div data-k="i" data-i18n="pk.2.i">קטלוג החריגות · התור · הניתוב לאחראים · אוטומציות אנליטיות</div>
+    <div data-k="l" data-i18n="pk.2.l"><a class="td-more-link" href="control/">לעמוד המלא של Compass Control ←</a></div>
   </div>
-  <div data-td="3">
-    <div data-k="p" data-i18n="td.3.p">ישנם תהליכים שוטפים חשובים מספיק, הדורשים בקרה כמעט בזמן אמת. כשקו ייצור נעצר, כשתור השירות מתארך או כשמשלוח מתעכב - הדוח של מחר כבר לא עוזר.</div>
-    <div data-k="s" data-i18n="td.3.s">מסכי כמעט זמן אמת (מתעדכנים פעם ב-15 דקות), שמוצגים במקום שבו העבודה קורה - רצפת הייצור, מוקד השירות, המחסן. המסך מתרענן מעצמו ומראה את המצב העדכני מול היעד, <strong>בלי שאף אחד צריך להפעיל אותו</strong>.</div>
-    <div data-k="g" data-i18n="td.3.g">מדד מתעדכן מול היעד של היום. סימון בולט כשמשהו יוצא מהתקן. מסך שתלוי על הקיר ועובד לבד.</div>
-    <div data-k="w" data-i18n="td.3.w">לתפעול - ייצור, מחסן, שירות - שבו <strong>הפער בין לדעת עכשיו לבין לדעת מחר</strong> נמדד ביעילות או בשירות.</div>
-    <div data-k="c" data-i18n="td.3.c">מסך רצפה - המצב העדכני מול היעד.</div>
+  <div data-pk="3">
+    <div data-k="p" data-i18n="pk.3.p">המידע קיים, ההתראות נשלחות - ועדיין, מי שמנהל את העסק לא יעבור על תור של חריגות לפני הישיבה הראשונה.</div>
+    <div data-k="s" data-i18n="pk.3.s">כל בוקר, דף אחד מתוך מה ש-Control תפס: אילו חריגות נתפסו, כמה כסף בסיכון, ושלוש פעולות עם אחראי לכל אחת. כל מספר בדף מגיע ממדד של Compass. וכש-Analyst פועל, מצטרפים שני ממצאים - מסומנים כממצאים, לא כאזעקות.</div>
+    <div data-k="g" data-i18n="pk.3.g">דף אחד במקום ישיבת סטטוס. ודף שאפשר לסמוך עליו, כי אין בו מספר אחד שלא הגיע מהמודל.</div>
+    <div data-k="w" data-i18n="pk.3.who">מנכ"לים וסמנכ"לים שלא יפתחו דשבורד כל בוקר.</div>
+    <div data-k="n" data-i18n="pk.3.n">לא שיחה, לא ניוזלטר ולא תחליף ל-Control.</div>
+    <div data-k="i" data-i18n="pk.3.i">דף הבוקר · שלוש הפעולות · הניתוב לאחראים</div>
   </div>
-  <div data-td="4">
-    <div data-k="p" data-i18n="td.4.p">לא כל דוח צריך להגיע במייל. דוח שנשלח מתוך הרגל נמחק מתוך הרגל, ואז גם הדוח החשוב הולך לאיבוד.</div>
-    <div data-k="s" data-i18n="td.4.s">בוחרים יחד מה שווה לדחוף. לכל דוח מגדירים מי מקבל אותו, איזה חתך, באיזה פורמט ובאיזו תדירות. <strong>מאותו רגע הוא נשלח מעצמו.</strong></div>
-    <div data-k="g" data-i18n="td.4.g">רק הדוחות שבאמת נקראים, שמגיעים בלי שביקשתם. כל נמען מקבל את מה שרלוונטי לו, בפורמט ובקצב שנקבעו מראש.</div>
-    <div data-k="w" data-i18n="td.4.w">לארגונים שבהם ההנהלה לא נכנסת למערכות, אבל כן קוראת מייל, <strong>ורוצה שהדוח שהיא צריכה יחכה לה שם בבוקר</strong>.</div>
-    <div data-k="c" data-i18n="td.4.c">דוח שמגיע במייל - מוכן, בשעה קבועה.</div>
+  <div data-pk="5">
+    <div data-k="p" data-i18n="pk.5.p">הדרך המהירה ביותר לקבל מספר היא לשאול מישהו שיודע. אבל הוא לא תמיד זמין - במיוחד כשאתם מחוץ למשרד, בין פגישות או אצל לקוח.</div>
+    <div data-k="s" data-i18n="pk.5.s">סוכן AI שמתנהג כמו עובד שמכיר את המספרים שלכם. שואלים בעברית או באנגלית, בשפה טבעית, בדיוק כמו ששואלים אדם - <strong>ומקבלים תשובה מיד</strong>. אפשר להמשיך עם שאלת המשך ולנהל שיחה בלי להתחיל מחדש.</div>
+    <div data-k="g" data-i18n="pk.5.g"><ul class='td-list'><li><b>שיחה, לא שאילתה.</b> שואלים באופן טבעי. מקבלים תשובה מיד. ממשיכים עם שאלות המשך בלי להתחיל מחדש.</li><li><b>ישירות מהטלפון.</b> לא צריך לפתוח דשבורד. לא צריך לחפש דוח. לא צריך לחכות שמישהו יתפנה.</li><li><b>המספרים שאתם כבר מכירים וסומכים עליהם.</b> התשובות מבוססות על אותו מודל נתונים שעומד מאחורי הדשבורדים הקיימים שלכם.</li></ul></div>
+    <div data-k="t" data-i18n="pk.5.t">מערך בדיקה רץ אחרי כל שינוי, על שאלות שהעסק כבר יודע לענות עליהן: אם הדיוק יורד מתחת לתקן, השינוי לא עולה לאוויר.</div>
+    <div data-k="w" data-i18n="pk.5.w">למנהלים ולאנשי מכירות שצריכים <strong>תשובות תוך כדי תנועה</strong> - ורוצים לשאול שאלה באופן טבעי, בדיוק כמו שהיו שואלים עובד שמכיר את המספרים.</div>
   </div>
-  <div data-td="6">
-    <div data-k="p" data-i18n="td.6.p">הדרך המהירה ביותר לקבל מספר היא לשאול מישהו שיודע. אבל הוא לא תמיד זמין - במיוחד כשאתם מחוץ למשרד, בין פגישות או אצל לקוח.</div>
-    <div data-k="s" data-i18n="td.6.s">סוכן AI שמתנהג כמו עובד שמכיר את המספרים שלכם. שואלים בעברית או באנגלית, בשפה טבעית, בדיוק כמו ששואלים אדם - <strong>ומקבלים תשובה מיד</strong>. אפשר להמשיך עם שאלת המשך ולנהל שיחה בלי להתחיל מחדש.</div>
-    <div data-k="g" data-i18n="td.6.g"><ul class='td-list'><li><b>שיחה, לא שאילתה.</b> שואלים באופן טבעי. מקבלים תשובה מיד. ממשיכים עם שאלות המשך בלי להתחיל מחדש.</li><li><b>ישירות מהטלפון.</b> לא צריך לפתוח דשבורד. לא צריך לחפש דוח. לא צריך לחכות שמישהו יתפנה.</li><li><b>המספרים שאתם כבר מכירים וסומכים עליהם.</b> התשובות מבוססות על אותו מודל נתונים שעומד מאחורי הדשבורדים הקיימים שלכם.</li></ul></div>
-    <div data-k="w" data-i18n="td.6.w">למנהלים ולאנשי מכירות שצריכים <strong>תשובות תוך כדי תנועה</strong> - ורוצים לשאול שאלה באופן טבעי, בדיוק כמו שהיו שואלים עובד שמכיר את המספרים.</div>
-    <div data-k="l" data-i18n="td.6.l"><a class="td-more-link" href="ai-analyst/">איך התשובות נבדקות ←</a></div>
-    <div data-k="c" data-i18n="td.6.c">שואלים שאלה. מקבלים את המספר. ממשיכים הלאה.</div>
-  </div>
-  <div data-td="7">
-    <div data-k="p" data-i18n="td.7.p">גם אחרי שהנתונים זמינים והדשבורדים עובדים, הרבה תהליכים ניהוליים עדיין דורשים פעולה ידנית: לבדוק נתונים, לזהות מצב מסוים, להחליט מה צריך לקרות - ואז לבצע את הפעולה. שוב ושוב.</div>
-    <div data-k="s" data-i18n="td.7.s"><p>אנחנו הופכים תהליכים ניהוליים מבוססי נתונים לאוטומטיים. המערכת בודקת את הנתונים, מזהה מצב שהוגדר מראש ומפעילה את הפעולה המתאימה - לפי כללים ולוח זמנים שנקבעו.</p><p>זה יכול להיות תהליך של יצירת משימה, העברת מידע בין מערכות, עדכון רשומה או הפעלת פעולה במערכת אחרת. זה לא תהליך אחד ולא תבנית קבועה: <strong>כמעט כל תהליך שחוזר על עצמו וניתן להגדיר לו כללים, אפשר לבחון לאוטומציה</strong>.</p></div>
-    <div data-k="g" data-i18n="td.7.g">תהליכים שרצים בזמן, באותה צורה בכל פעם, בלי שמישהו צריך לזכור להפעיל אותם. פחות עבודה ידנית, תגובה מהירה יותר ויותר שליטה בתהליך.</div>
-    <div data-k="w" data-i18n="td.7.w">למנהלים שמוצאים את עצמם <strong>בודקים את אותם נתונים ומבצעים את אותה פעולה, שוב ושוב</strong>.</div>
-    <div data-k="c" data-i18n="td.7.c">הנתונים מזהים. התהליך פועל. אתם ממשיכים לנהל.</div>
-  </div>
-  <div data-td="8">
-    <div data-k="p" data-i18n="td.8.p">מישהו צריך לעבור על המספרים כל יום, ובפועל אף אחד לא עושה את זה. וברגע שתוכנה עושה את זה במקומכם, נפתחת שאלה שנייה שאף אחד לא שואל בקול: איך יודעים שהיא עדיין צודקת?</div>
-    <div data-k="s" data-i18n="td.8.s">אנליסט AI שעובד <strong>בצורה שיטתית ומבוקרת</strong>. פעם ביום הוא בודק את הנתונים מול כללים שנקבעו איתכם, ומתריע לאנשים הנכונים כשכלל נשבר. כל התראה מציגה את התנועות שמאחוריה. כשהכול תקין - שקט.</div>
-    <div data-k="g" data-i18n="td.8.g">בעיות שצפות בזמן שעוד אפשר לפעול. התראות שיורשות את ההרשאות של האנליסט - איש מכירות רואה רק את הלקוחות שלו. ומערך בדיקה שרץ אחרי כל שינוי, על שאלות שהעסק כבר יודע לענות עליהן: <strong>אם הדיוק יורד מהתקן, השינוי לא עולה לאוויר.</strong></div>
-    <div data-k="w" data-i18n="td.8.w">לארגונים שרוצים ש-AI ישמור על המספרים שלהם, <strong>ולא מוכנים לסמוך עליו בלי הוכחה.</strong></div>
-    <div data-k="l" data-i18n="td.8.l"><a class="td-more-link" href="ai-analyst/">איך זה נבדק - לעמוד המלא ←</a></div>
-    <div data-k="c" data-i18n="td.8.c">התראה יומית - והמבחן שמוכיח שהיא עדיין נכונה.</div>
-  </div>
-  <div data-td="9">
-    <div data-k="p" data-i18n="td.9.p">דוחות ודשבורדים מראים מה קרה. אבל כדי להבין איפה השינוי קרה, להשוות אותו לאורך זמן ולנתח אותו לעומק, צריך מדדים מחושבים ברמת האובייקט העסקי - ולא רק סיכומים כלליים.</div>
-    <div data-k="s" data-i18n="td.9.s"><p>שכבת אנליטיקה מתקדמת שיושבת מעל מחסן הנתונים. הנתונים עוברים סינון, והמערכת מחשבת ושומרת מדדים עבור אובייקטים עסקיים מרכזיים - כמו לקוח, מספר סיריאלי, מוצר, ערוץ ועוד.</p><p>בכל חודש החישובים מתעדכנים והתוצאות נשמרות, כך שנבנית היסטוריה חודשית לכל מדד. בחברות גדולות שכבות כאלה הן חלק מהתשתית האנליטית. <strong>כאן הן מגיעות כשירות</strong>, בלי שתצטרכו לבנות ולתחזק אותן בעצמכם.</p></div>
-    <div data-k="g" data-i18n="td.9.g">מדדים מחושבים ברמת האובייקט העסקי, ולא רק סיכומים. היסטוריה חודשית - כך שאפשר לראות ולהשוות את אותו מדד לאורך זמן. סימון של מה שהשתנה מחודש לחודש. ובעיקר, בסיס אנליטי עמוק שעליו נשענים האנליסט והבריף העסקי.</div>
-    <div data-k="w" data-i18n="td.9.w">לחברות שכבר יש להן מחסן נתונים ודוחות, ורוצות לעבור <strong>משלב "מה קרה" לשלב "איפה ולמה"</strong>.</div>
-    <div data-k="c" data-i18n="td.9.c">מדד אחד, לאורך שנים עשר חודשים - כולל מה שהשתנה.</div>
-  </div>
-  <div data-td="10">
-    <div data-k="p" data-i18n="td.10.p">כל פעם שצריך לדון על לקוח, מוצר או חריג, מתחילים לחבר את התמונה מחדש. פותחים Power BI, עוברים בין דוחות, מחפשים מספרים ומצליבים נתונים. זה לוקח זמן, ולא תמיד קל לראות את כל התמונה במקום אחד.</div>
-    <div data-k="s" data-i18n="td.10.s"><p>לפני פגישה או שיחה, בוחרים את הלקוח - <strong>והבריף שלו נבנה מול העיניים</strong>. המערכת מרכזת את כל מה שצריך לדעת עליו: מכירות, רווחיות, מגמות, חריגים ומדדים נוספים, מתוך הנתונים העדכניים ביותר.</p><p>הבריף יכול להיבנות גם עבור מוצר או אובייקט עסקי מרכזי אחר. במקום לאסוף את התמונה ממספר דוחות ומסכים, מקבלים אותה במקום אחד - בדיוק כשצריך אותה.</p></div>
-    <div data-k="g" data-i18n="td.10.g"><ul class='td-list'><li><b>תמונה מלאה במקום אחד.</b> כל המדדים והנתונים החשובים לאותו לקוח או אובייקט עסקי, מסודרים בבריף אחד.</li><li><b>הקשר לאורך זמן.</b> מדדים מחושבים, היסטוריה חודשית ומגמות מאפשרים להבין לא רק מה קורה עכשיו, אלא גם איך הדברים השתנו.</li><li><b>מה שדורש תשומת לב.</b> חריגים ושינויים רלוונטיים כבר מסומנים בתוך הבריף.</li></ul></div>
-    <div data-k="w" data-i18n="td.10.w">למנהלים שנכנסים לפגישה על לקוח, מוצר או פעילות עסקית, ורוצים את כל התמונה מוכנה - <strong>בלי לבקש אותה מאף אחד</strong>.</div>
-    <div data-k="c" data-i18n="td.10.c">בריף של לקוח - מכירות, רווחיות, מגמות וחריגים, בדף אחד.</div>
+  <div data-pk="4">
+    <div data-k="p" data-i18n="pk.4.p">כללים תופסים רק את מה שידעתם לחפש. הבעיה הבאה תגיע ממקום שאף אחד לא הגדיר לו סף.</div>
+    <div data-k="s" data-i18n="pk.4.s"><p>Compass Analyst סורק את כל המודל של Compass - לא רק את המסך שפתחתם - ומייצר כרטיס לכל ממצא שהכללים לא הגדירו. כל ממצא מגובה במדד של Compass, ומגיע עם צעד הבא: לפתוח את המסך הרלוונטי, או להפוך אותו לכלל קבוע ב-Control.</p><p>ולפני פגישה או שיחה, בוחרים לקוח - והבריף שלו נבנה מול העיניים: מכירות, רווחיות, מגמות וחריגים, מתוך הנתונים העדכניים ביותר.</p></div>
+    <div data-k="g" data-i18n="pk.4.g">ממצאים עם ראיות, לא ניחושים. קטלוג חריגות שגדל: כל דפוס חוזר שהאנליסט מוצא הופך לכלל, ומאותו רגע Control שומר עליו. ותמונה מלאה של כל לקוח, בדיוק כשצריך אותה.</div>
+    <div data-k="h" data-i18n="pk.4.h">Analyst משתמש ב-AI כדי לסרוק את המודל ולנסח את הממצאים - אבל כל מספר בכרטיס מגיע ממדד של Compass, לא מה-AI. מערך בדיקה רץ אחרי כל שינוי, על שאלות שהעסק כבר יודע לענות עליהן: אם הדיוק יורד מתחת לתקן, השינוי לא עולה לאוויר.</div>
+    <div data-k="w" data-i18n="pk.4.who">בקרים, אנליסטים תפעוליים, ובעלים ששואלים "מה עוד?"</div>
+    <div data-k="n" data-i18n="pk.4.n">לא צ'אטבוט ולא מנוע תובנות כללי. רק הנתונים שבמודל, ורק מדדים שאתם כבר מכירים.</div>
+    <div data-k="i" data-i18n="pk.4.i">שכבת אנליטיקה מחושבת · כרטיסי ממצא · קידום לכלל ב-Control · בריף לקוח</div>
   </div>
 </div>
 
@@ -3390,10 +3435,13 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     </div>
     <div class="td-sec"><h3 data-i18n="td.l.p">הבעיה</h3><div class="td-txt" data-slot="p"></div></div>
     <div class="td-sec"><h3 data-i18n="td.l.s">הפתרון</h3><div class="td-txt" data-slot="s"></div></div>
-    <div class="td-sec"><h3 data-i18n="td.l.g">מה מקבלים</h3><div class="td-txt" data-slot="g"></div></div>
+    <div class="td-sec"><h3 data-i18n="pk.l.x">למשל, ב-<span class="keep-case">Priority</span></h3><div class="td-txt" data-slot="x"></div></div>
+    <div class="td-sec"><h3 data-i18n="td.l.g">מה מקבלים</h3><div class="td-txt" data-slot="g"></div><div class="td-txt td-fact" data-slot="f"></div></div>
     <div class="td-sec"><h3 data-i18n="td.l.w">למי זה מתאים</h3><div class="td-txt" data-slot="w"></div></div>
-    <div class="shot-frame" id="tierFrame"></div>
-    <p class="shot-cap" data-slot="c"></p>
+    <div class="td-sec"><h3 data-i18n="pk.l.h">איך הוא עובד</h3><div class="td-txt" data-slot="h"></div></div>
+    <div class="td-sec"><h3 data-i18n="pk.l.t">איך התשובות נבדקות</h3><div class="td-txt" data-slot="t"></div></div>
+    <div class="td-sec"><h3 data-i18n="pk.l.n">מה זה לא</h3><div class="td-txt" data-slot="n"></div></div>
+    <div class="td-sec td-inside"><h3 data-i18n="pk.l.i">מה יש בפנים</h3><div class="td-txt" data-slot="i"></div></div>
     <p class="td-more" data-slot="l"></p>
     <div class="shot-nav">
       <button type="button" id="tierPrev" data-i18n="shot.prev">הקודם</button>
@@ -3481,16 +3529,15 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     "home.pipe.1.sub":"The core system your enterprise already runs on",
     "home.pipe.2.nm":"Enterprise Data Warehouse",
     "home.pipe.2.sub":"All your data sources in one place",
-    "home.pipe.3.nm":"Power BI &amp; AI Agents",
+    "home.pipe.3.nm":"BI &amp; AI",
     "home.pipe.3.sub":"Dashboards, alerts and AI agents",
-    "home.sol.1.h":"Enterprise Data Warehouse",
-    "home.sol.1.p":"All data from Priority ERP and external systems is unified and organized in one place.",
-    "home.sol.2.h":"Real-Time Executive Dashboards",
-    "home.sol.2.p":"A clear picture of the business for every level of the organization — up to date, not from a report printed yesterday.",
-    "home.sol.3.h":"Exception Monitoring &amp; Alerts",
-    "home.sol.3.p":"Exceptions reach you in a scheduled report, sent to the right owner — not buried in the monthly summary.",
-    "home.sol.link":"Explore the Full Infrastructure &amp; Modules <span aria-hidden='true'>→</span>",
-
+    "home.sol.1.h":"Compass",
+    "home.sol.1.p":"Shows the business — every area, in one picture.",
+    "home.sol.2.h":"Compass Control",
+    "home.sol.2.p":"Flags exceptions, and hands them to an owner.",
+    "home.sol.3.h":"Compass Brief",
+    "home.sol.3.p":"Prepares the manager's decisions for the morning.",
+    "home.sol.link":"Explore the four packages <span aria-hidden='true'>→</span>",
     /* --- home: brands and testimonials --- */
     "home.brands.eyebrow":"Trusted by Industry Leaders",
     "home.brands.p":"Dozens of executives make critical business decisions every day with Compass BI.",
@@ -3563,7 +3610,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     "about.work.3.p":"The first module goes live within weeks, getting your team up and running immediately.",
     "about.onward.h":"Following the first phase, we proceed in two directions:",
     "about.onward.1.h":"Optimize live module",
-    "about.onward.1.p":"Enhance exception control, alerts and AI agents for the live module.",
+    "about.onward.1.p":"Exception control, alerts, a morning page and AI agents — on the module that already works.",
     "about.onward.2.h":"Expand capabilities",
     "about.onward.2.p":"Roll out additional modules, one by one, according to your priorities.",
     "about.cta.h":"Want to See How This Works for a Business Like Yours?",
@@ -3586,87 +3633,74 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     /* --- services --- */
     "svc.hero.pill":"<span class='dot'></span>Services",
     "svc.hero.h1":"One Infrastructure. <em>Complete Business Coverage.</em>",
-    "svc.hero.lead":"From connecting to Priority ERP to an AI agent that answers questions in plain language — everything you need to turn your data into answers.",
-    "svc.tiers.eyebrow":"Analytics Infrastructure",
-    "svc.tiers.h":"Four Tiers, From Infrastructure to Analytical Depth",
-    "svc.tier.1.nm":"Infrastructure",
-    "svc.tier.1.sub":"Single Source of Truth",
-    "svc.tier.1.l1.h":"Enterprise Data Warehouse",
-    "svc.tier.1.l1.p":"All data from Priority ERP and external systems is unified and organized in one place — the foundation everything else is built on.",
-    "svc.tier.2.nm":"Visibility",
-    "svc.tier.2.sub":"Data Delivered Directly to You",
-    "svc.tier.2.l1.h":"Executive Dashboards",
-    "svc.tier.2.l1.p":"A clear and up-to-date picture for every level of the organization.",
-    "svc.tier.2.l2.h":"Real-Time Operational Views",
-    "svc.tier.2.l2.p":"Live monitoring of what is happening in the business now — not yesterday.",
-    "svc.tier.2.l3.h":"Automated Push Reports",
-    "svc.tier.2.l3.p":"The reports you need every day, week or month arrive on their own — no need to look for them.",
-    "svc.tier.3.nm":"Analysis",
-    "svc.tier.3.sub":"The System Helps You Understand and Act",
-    "svc.tier.3.l2.h":"Interactive AI Agent",
-    "svc.tier.3.l2.p":"Ask questions and get answers in plain language.",
-    "svc.tier.3.l3.h":"Analytical Automations",
-    "svc.tier.3.l3.p":"Data-driven management processes that run on their own, at the right time.",
-    "svc.tier.3.l4.h":"Proactive AI Analyst",
-    "svc.tier.3.l4.p":"Watches your numbers daily — and proves it is still right.",
-    "svc.tier.4.nm":"Advanced Analytics",
-    "svc.tier.4.sub":"Analytical Depth for Data-Rich Organizations",
-    "svc.tier.4.l1.h":"Computed Analytics Layer",
-    "svc.tier.4.l1.p":"Metrics computed for every client, product and serial number — with monthly history that reveals trends and deviations.",
-    "svc.tier.4.l2.h":"Business Brief",
-    "svc.tier.4.l2.p":"Pick a client — and the full picture is in front of you.",
+    "svc.hero.lead":"A picture of the business, alerts on the exceptions that matter to you, a morning page with recommended actions, and an AI agent that answers in plain language — four packages on one infrastructure.",
     "td.l.p":"The problem",
     "td.l.s":"The solution",
     "td.l.g":"What you get",
     "td.l.w":"Who it's for",
-    "td.soon":"The screenshot for this service is being prepared",
-    "td.1.p":"Your data lives in several places at once — Priority, external systems such as CRM and time &amp; attendance, and departmental Excel files. Every question that crosses a system boundary means an export, a manual reconciliation and a set of adjustments, and every department walks into the meeting with a different number.",
-    "td.1.s":"One enterprise data warehouse that brings it all together. We connect Priority and the external systems, unify the data and build a single model that every tier above rests on. A metric is calculated once, and from that point <strong>everyone is talking about the same number</strong>.",
-    "td.1.g":"A single source of truth for the whole organization. An end-of-month snapshot, kept in history tables even after the figure in Priority has changed. A structure ready for dashboards, reports and AI agents — without rebuilding it for each one.",
-    "td.1.w":"Any business running on Priority that finds itself reconciling data by hand. <strong>This is the first tier; without it, nothing above it stands.</strong>",
-    "td.1.c":"The data model — Priority and the systems around it, in one structure.",
-    "td.2.p":"A static report answers one question, and usually not the one that follows it. When a manager wants to go a level deeper — by branch, by client, by month — they file another request and wait.",
-    "td.2.s":"Power BI dashboards, built for each level of the organization. Management gets the overview, the department head gets their own cut, and all of it comes from one model — so the number on the executive dashboard and the number on the departmental one <strong>never contradict each other</strong>.",
-    "td.2.g":"A current picture without waiting on a BI specialist. The ability to drill from the summary down to the individual record. Access from browser and phone, with permissions by role.",
-    "td.2.w":"An organization where more than one person needs to see the numbers, and wants to <strong>stop depending on whoever knows how to build a report</strong>.",
-    "td.2.c":"An executive dashboard — the whole picture on one screen.",
-    "td.3.p":"Some day-to-day processes matter enough to need near-real-time monitoring. When a line stops, a service queue grows or a shipment slips, tomorrow's report is already too late.",
-    "td.3.s":"Near-real-time screens (refreshed every 15 minutes), shown where the work actually happens — the production floor, the service desk, the warehouse. The screen refreshes itself and shows the latest position against target, <strong>with nobody having to operate it</strong>.",
-    "td.3.g":"A continuously updated metric against today's target. Clear flagging when something leaves its normal range. A screen on the wall that runs on its own.",
-    "td.3.w":"Operations — production, warehouse, service — where <strong>the gap between knowing now and knowing tomorrow</strong> is measured in efficiency or service.",
-    "td.3.c":"A floor screen — the latest position against target.",
-    "td.4.p":"Not every report belongs in the inbox. A report sent out of habit gets deleted out of habit, and then the important one gets lost with it.",
-    "td.4.s":"We choose together what is worth pushing. For each report we define who receives it, which cut, in what format and how often. <strong>From then on it sends itself.</strong>",
-    "td.4.g":"Only the reports that actually get read, arriving without being asked for. Each recipient gets what is relevant to them, in the format and at the pace agreed up front.",
-    "td.4.w":"Organizations where management doesn't log into systems, but does read email — <strong>and want the report they need waiting there in the morning</strong>.",
-    "td.4.c":"A report that arrives by email — ready, at a fixed hour.",
-    "td.6.p":"The fastest way to get a number is to ask someone who knows. But that person isn't always available — especially when you're out of the office, between meetings, or with a customer.",
-    "td.6.s":"An AI agent that works like a colleague who knows your numbers. Ask in plain Hebrew or English, the way you'd ask a person, and <strong>get an answer right away</strong>. Ask a follow-up and keep the conversation going.",
-    "td.6.g":"<ul class='td-list'><li><b>A conversation, not a query.</b> Ask naturally. Get an immediate answer. Continue with follow-up questions without starting over.</li><li><b>From your phone.</b> No dashboard to open. No report to find. No need to wait for someone to be available.</li><li><b>The numbers you already trust.</b> Answers are based on the same data model behind your existing dashboards.</li></ul>",
-    "td.6.w":"Managers and sales teams who need <strong>answers while they're on the move</strong> — and want to ask a question as naturally as they would ask a colleague.",
-    "td.6.c":"Ask a question. Get the number. Keep moving.",
-    "td.7.p":"Even once the data is available and the dashboards work, many management processes still need someone to act by hand: check the data, spot a particular situation, decide what should happen — and then do it. Again and again.",
-    "td.7.s":"<p>We turn data-driven management processes into automated ones. The system checks the data, recognizes a situation defined in advance and triggers the right action — on the rules and schedule that were agreed.</p><p>That can mean creating a task, passing information between systems, updating a record or triggering an action in another system. It isn't one process or a fixed template: <strong>almost any process that repeats and can be described by rules is worth examining for automation</strong>.</p>",
-    "td.7.g":"Processes that run on time, the same way every time, without anyone having to remember to start them. Less manual work, faster response and more control over the process.",
-    "td.7.w":"Managers who find themselves <strong>checking the same data and taking the same action, again and again</strong>.",
-    "td.7.c":"The data spots it. The process acts. You keep managing.",
-    "td.8.p":"Someone should go over the numbers every day, and in practice nobody does. And the moment software does it for you, a second question opens that nobody asks out loud: how do you know it is still right?",
-    "td.8.s":"An AI analyst that works <strong>systematically and under control</strong>. Once a day it checks your data against rules agreed with you, and alerts the right people when a rule is broken. Every alert shows the transactions behind it. When everything is in order — silence.",
-    "td.8.g":"Problems that surface in time to act. Alerts that inherit the analyst's permissions — a sales rep sees only their own customers. And a test set that reruns after every change, on questions the business already knows how to answer: <strong>if accuracy falls below the agreed standard, the change does not go live.</strong>",
-    "td.8.w":"Organizations that want AI watching their numbers, <strong>and are not willing to trust it without proof.</strong>",
-    "td.8.l":"<a class=\"td-more-link\" href=\"ai-analyst/\">How it's tested — the full page →</a>",
-    "td.6.l":"<a class=\"td-more-link\" href=\"ai-analyst/\">How the answers are tested →</a>",
-    "td.8.c":"A daily alert — and the test that proves it is still right.",
-    "td.9.p":"Reports and dashboards show you what happened. But to see where the change happened, compare it over time and analyze it in depth, you need metrics computed at the level of the business object — not just overall totals.",
-    "td.9.s":"<p>An advanced analytics layer that sits above the data warehouse. The data is filtered, and the system computes and stores metrics for the key business objects — client, serial number, product, channel and more.</p><p>Every month the calculations are refreshed and the results kept, building a monthly history for every metric. In large companies layers like this are part of the analytics infrastructure. <strong>Here they come as a service</strong>, without your having to build and maintain them yourselves.</p>",
-    "td.9.g":"Metrics computed at the business-object level, not just totals. Monthly history — so the same metric can be seen and compared over time. A mark on what changed from month to month. And above all, a deep analytical foundation that the analyst and the Business Brief rest on.",
-    "td.9.w":"Companies that already have a warehouse and reports, and want to move <strong>from \"what happened\" to \"where and why\"</strong>.",
-    "td.9.c":"One metric across twelve months — including what changed.",
-    "td.10.p":"Every time a client, a product or an exception comes up for discussion, you start piecing the picture together again. You open Power BI, move between reports, hunt for numbers and cross-check data. It takes time, and it isn't always easy to see the whole picture in one place.",
-    "td.10.s":"<p>Before a meeting or a call, pick the client — and <strong>their brief builds in front of you</strong>. The system brings together everything you need to know about them: sales, profitability, trends, exceptions and other metrics, from the latest data.</p><p>A brief can also be built for a product or another key business object. Instead of assembling the picture from several reports and screens, you get it in one place — exactly when you need it.</p>",
-    "td.10.g":"<ul class='td-list'><li><b>The full picture in one place.</b> Every important metric and figure for that client or business object, laid out in a single brief.</li><li><b>Context over time.</b> Computed metrics, monthly history and trends show not only what is happening now, but how things have changed.</li><li><b>What needs attention.</b> Relevant exceptions and changes are already flagged inside the brief.</li></ul>",
-    "td.10.w":"Managers walking into a meeting about a client, a product or a line of business, who want the whole picture ready — <strong>without asking anyone for it</strong>.",
-    "td.10.c":"A client brief — sales, profitability, trends and exceptions, on one page.",
+    /* --- the four packages, 2026-09-27 (_copy-packages.md) --- */
+    "home.sol.4.h":"Compass Analyst",
+    "home.sol.1.d":"One data warehouse that connects Priority and the systems around it, with dashboards, real-time views and reports that arrive on their own. Connected in a day, live within weeks.",
+    "home.sol.2.d":"Once a day it checks your data against rules agreed with you. Every exception enters a queue, with an owner, the money or time at risk, and a recommended action.",
+    "home.sol.3.d":"One page every morning, built from what Control caught: which exceptions were caught, how much money is at risk, and three actions, each with an owner.",
+    "home.sol.4.d":"Scans the whole model with AI and finds what the rules missed. Every finding is backed by a measure, and a pattern that keeps coming back becomes a rule in Control.",
+    "home.sol.4.p":"Uses AI to find what the rules missed.",
+    "home.brands.partner":"An official Priority technology partner since 2021.",
+    "pk.soon":"Coming soon",
+    "svc.pk.eyebrow":"Four packages",
+    "svc.pk.h":"Start with Compass. Add more when the business is ready.",
+    "svc.pk.sub":"An official Priority technology partner since 2021.",
+    "svc.pk.hash":"Running on Hashavshevet? Compass is available for you too.",
+    "pk.l.x":"For example, in Priority",
+    "pk.l.h":"How it works",
+    "pk.l.n":"What it isn't",
+    "pk.l.i":"What's inside",
+    "pk.1.nm":"Compass",
+    "pk.1.line":"Shows the business — every area, in one picture.",
+    "pk.1.who":"CEOs, operations and sales — no in-house BI team needed.",
+    "pk.2.nm":"Compass Control",
+    "pk.2.line":"Flags exceptions — and hands them to an owner.",
+    "pk.2.who":"Operations, procurement, collections and sales managers.",
+    "pk.3.nm":"Compass Brief",
+    "pk.3.line":"Prepares the manager's decisions for the morning.",
+    "pk.3.who":"CEOs and VPs who won't open a dashboard every morning.",
+    "pk.4.nm":"Compass Analyst",
+    "pk.4.line":"Uses AI to find what the rules missed.",
+    "pk.4.who":"Controllers, operations analysts, and owners who keep asking \"what else?\"",
+    "pk.1.p":"Priority is full of data, but every management question goes through an export, a spreadsheet and whoever knows how to build the report. By the time the picture is ready, the decision has already been made.",
+    "pk.1.s":"We connect Priority and your external systems to one data warehouse, and build on it dashboards, real-time views and reports that arrive on their own — following nine ready modules for every area of the business. Connected in a day, live within weeks. And when your needs go beyond the modules, we build around your processes, hierarchy and reports.",
+    "pk.1.g":"One source of truth for the whole organisation. An up-to-date picture for every level. Reports that come to you, instead of you looking for them. And ongoing updates and maintenance.",
+    "pk.1.n":"Not a six-month data warehouse project.",
+    "pk.1.i":"Enterprise Data Warehouse · Dashboards · Real-Time Views · Automated Push Reports · Excel export · the nine modules",
+    "pk.2.p":"Someone should go over the numbers every day, and in practice nobody does. And the moment software does it for you, a second question opens that nobody asks out loud: how do you know it is still right?",
+    "pk.2.s":"Once a day, Compass Control checks your data against rules agreed with you. When a rule breaks, the exception enters a queue: which rule, what threshold, who owns it, how much money or time is at risk, and the recommended action. The alert reaches the right people and shows the transactions behind it. When everything is in order — silence.",
+    "pk.2.x":"<ul class='td-list'><li>A late shipment against what you promised the customer</li><li>An overdue customer with open orders</li><li>An item below its reorder point while the supplier's lead time slips</li><li>A component shortage against a committed customer order</li><li>A work order running late against the customer's date</li><li>A service ticket about to breach a contracted customer's SLA</li></ul>",
+    "pk.2.g":"Problems that surface in time to act. Alerts that inherit permissions — a sales rep sees only their own customers. And recommendations, not actions: the system recommends, and a person approves every write-back into Priority.",
+    "pk.2.f":"Monitoring itself uses no AI and runs on your existing server, so it carries no additional monthly running cost.",
+    "pk.2.n":"Not a robot posting into Priority on its own.",
+    "pk.addon":"Add-on to any module",
+    "pk.l.t":"How the answers are tested",
+    "pk.5.nm":"Interactive AI Agent",
+    "pk.5.line":"Ask questions and get answers in plain language.",
+    "pk.5.p":"The fastest way to get a number is to ask someone who knows. But that person isn't always available — especially when you're out of the office, between meetings, or with a customer.",
+    "pk.5.s":"An AI agent that works like a colleague who knows your numbers. Ask in plain Hebrew or English, the way you'd ask a person, and <strong>get an answer right away</strong>. Ask a follow-up and keep the conversation going.",
+    "pk.5.g":"<ul class='td-list'><li><b>A conversation, not a query.</b> Ask naturally. Get an immediate answer. Continue with follow-up questions without starting over.</li><li><b>From your phone.</b> No dashboard to open. No report to find. No need to wait for someone to be available.</li><li><b>The numbers you already trust.</b> Answers are based on the same data model behind your existing dashboards.</li></ul>",
+    "svc.agent.shot":"<figure class='agent-fig'><div class='shot-holder agent-holder'><svg viewBox='0 0 24 24' aria-hidden='true'><use href='#icoZoom'/></svg><p>The English screenshot is on its way.</p></div><figcaption>One question, a structured answer — sales by customer, this month.</figcaption></figure>",
+    "pk.5.t":"A test set reruns after every change, on questions the business already knows how to answer: if accuracy falls below the agreed standard, the change does not go live.",
+    "pk.5.w":"Managers and sales teams who need <strong>answers while they're on the move</strong> — and want to ask a question as naturally as they would ask a colleague.",
+    "pk.2.l":"<a class='td-more-link' href='control/'>The full Compass Control page →</a>",
+    "pk.2.i":"The exception catalogue · the queue · routing to owners · analytical automations",
+    "pk.3.p":"The data exists, the alerts go out — and still, the person running the business won't work through an exception queue before the first meeting.",
+    "pk.3.s":"Every morning, one page built from what Control caught: which exceptions were caught, how much money is at risk, and three actions, each with an owner. Every number on the page comes from a Compass measure. And once Analyst is running, two discoveries join them — marked as discoveries, not alarms.",
+    "pk.3.g":"One page instead of a status meeting. And a page you can trust, because there isn't a number on it that didn't come from the model.",
+    "pk.3.n":"Not a chat, not a newsletter, and not a substitute for Control.",
+    "pk.3.i":"The morning page · three actions · routing to owners",
+    "pk.4.p":"Rules only catch what you knew to look for. The next problem will come from somewhere nobody set a threshold for.",
+    "pk.4.s":"<p>Compass Analyst scans the full Compass model — not only the screen you opened — and produces a card for every finding the rules did not define. Every finding is backed by a Compass measure, and comes with a next step: open the relevant screen, or promote it into a standing Control rule.</p><p>And before a meeting or a call, pick a client — and their brief builds in front of you: sales, profitability, trends and exceptions, from the latest data.</p>",
+    "pk.4.g":"Findings with evidence, not guesses. An exception catalogue that grows: every repeating pattern the Analyst finds becomes a rule, and from then on Control watches it. And the full picture of every client, exactly when you need it.",
+    "pk.4.h":"Analyst uses AI to scan the model and word its findings — but every number on a card comes from a Compass measure, not from the AI. And a test set reruns after every change, on questions the business already knows how to answer: if accuracy falls below the agreed standard, the change does not go live.",
+    "pk.4.n":"Not a chatbot, and not a generic insight engine. Only the data in the model, and only measures you already know.",
+    "pk.4.i":"Computed analytics layer · finding cards · promotion to a Control rule · client brief",
     "svc.mods.eyebrow":"Ready-to-Deploy Modules",
     "svc.mods.h":"Analytical Coverage for Every Business Domain — Ready to Launch",
     "svc.mods.sub":"Open a module to see a real dashboard",
@@ -3691,19 +3725,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     "svc.mod.8.p":"Discover how many working hours truly drive value, and where time is being wasted.",
     "svc.mod.9.h":"Warehouse Management (WMS)",
     "svc.mod.9.p":"What is really happening in the warehouse, and what is still open for today.",
-    "svc.tracks.eyebrow":"How to Get Started",
-    "svc.tracks.h":"Two Tracks, One Infrastructure",
-    "svc.track.1.h":"Core Track <span class='path-sub'>Ready for Rapid Deployment</span>",
-    "svc.track.1.desc":"Ready-to-use infrastructure and modules based on best practices, available from day one — go live quickly without building from scratch.",
-    "svc.track.1.li1":"Rapid implementation — weeks, not months",
-    "svc.track.1.li2":"Standardized dashboards and reports for each module",
-    "svc.track.1.li3":"Ongoing updates included at no extra cost",
-    "svc.track.2.h":"Tailor-Made Track <span class='path-sub'>Customized for Your Unique Processes</span>",
-    "svc.track.2.desc":"Built around your specific processes, hierarchy and reporting needs.",
-    "svc.track.2.li1":"Process mapping with the Compass BI team",
-    "svc.track.2.li2":"Fully customized dashboards and logic",
-    "svc.track.2.li3":"Close ongoing support",
-    "svc.cta.h":"Not Sure Where to Start?",
+    "svc.cta.h":"Not sure where to start? Almost always with Compass.",
     "svc.cta.p":"In our discovery call, we'll assess your needs and recommend a roadmap — even if we conclude that conditions aren't yet ripe for the project.",
 
     /* --- contact --- */
@@ -3761,8 +3783,8 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     "shot.alt":"Screenshot: {name} dashboard, demo data",
 
     /* --- footer --- */
-    "footer.desc":"Analytics infrastructure for Priority ERP — dashboards, automations and AI agents, with no in-house BI team required.",
-    "footer.analyst":"AI Analyst",
+    "footer.desc":"Analytics infrastructure for Priority ERP — dashboards, alerts and AI agents, with no in-house BI team required.",
+    "footer.analyst":"Compass Control",
     "footer.nav.t":"Navigation",
     "footer.contact.t":"Contact",
     "footer.wa.aria":"WhatsApp +972-54-577-8838",
@@ -3812,7 +3834,6 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
   HE["shot.count"] = "מודול {n} מתוך {t}";
   HE["shot.soon"]  = "התצוגה של המודול הזה בהכנה";
   HE["shot.alt"]   = "צילום מסך: דשבורד {name}, נתוני הדגמה";
-  HE["td.soon"]  = "הצילום של השירות הזה בהכנה";
   HE["mail.subject"]      = "פנייה מהאתר";
 
   // head tags. [selector, attribute or null for textContent, key]
@@ -4028,6 +4049,14 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     if(!trigger) return;
     e.preventDefault();
     go(trigger.dataset.go);
+    // A home package card also names its package: open that window on the
+    // services page. After go(), so the dialog opens over the view it
+    // belongs to and its own focus handling wins over the view's h1.
+    var pk = trigger.getAttribute("data-open-pk");
+    if(pk){
+      var card = document.querySelector('.pkgs button[data-pk="' + pk + '"]');
+      if(card) card.click();
+    }
   });
 
   // Back and forward walk the same hashes go() writes, so the hash is the one
@@ -4475,57 +4504,58 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
   }
 
 
-  /* ---------- the tier detail viewer ----------
+  /* ---------- the package viewer ----------
      Same dialog mechanics as the screenshot viewer above - Esc, focus trap
      and inert background from the platform, arrows that follow the reading
-     direction, focus handed back to the row on close. The words come from
-     #tierTexts, which applyStrings keeps in the language now showing; the
-     tier label and the row name are read off the row that was clicked. */
+     direction, focus handed back to the card on close. The words come from
+     #pkgTexts, which applyStrings keeps in the language now showing; the
+     package name is read off the card that was clicked. */
   var tierBox = document.getElementById("tierModal");
-  var tierStore = document.getElementById("tierTexts");
+  var tierStore = document.getElementById("pkgTexts");
   if(tierBox && tierStore){
-    var tierRows  = [].slice.call(document.querySelectorAll(".tier [data-td]"));
+    // The ladder is the prev/next sequence. The add-on card sits in the
+    // modules grid and opens on its own, with no prev/next - it is not a rung.
+    var tierRows  = [].slice.call(document.querySelectorAll(".pkgs button[data-pk]"));
+    var tierSolo  = [].slice.call(document.querySelectorAll(".agent-feature button[data-pk]"));
+    var tierNav   = tierBox.querySelector(".shot-nav");
+    var tierOne   = null;
     var tierTitle = document.getElementById("tierTitle");
     var tierCount = document.getElementById("tierCount");
-    var tierFrame = document.getElementById("tierFrame");
     var tierAt    = 0;
     var tierFrom  = null;
 
     var tierFill = function(i, announce){
-      tierAt = (i + tierRows.length) % tierRows.length;
-      var row  = tierRows[tierAt];
-      var n    = row.getAttribute("data-td");
-      var tier = row.closest(".tier");
-      var name = row.querySelector("strong").textContent;
+      var row;
+      if(tierOne){ row = tierOne; }
+      else { tierAt = (i + tierRows.length) % tierRows.length; row = tierRows[tierAt]; }
+      tierNav.hidden = !!tierOne;
+      var n    = row.getAttribute("data-pk");
+      // The name alone - the card's "coming soon" chip sits beside it in the
+      // same heading, and belongs in the count line here, not in the title.
+      var name = row.querySelector('[data-i18n$=".nm"]').textContent.trim();
+      var soon = row.querySelector(".soon");
 
       tierTitle.textContent = name;
-      tierCount.textContent = tier.querySelector(".idx").textContent + " · " +
-                              tier.querySelector(".nm").textContent;
+      // A rung counts itself on the ladder ("2 / 4"); the add-on is not a
+      // rung, so its count line is its own tag instead of "5 / 4".
+      var addon = row.querySelector('[data-i18n="pk.addon"]');
+      tierCount.textContent = addon ? addon.textContent :
+                              (tierAt + 1) + " / " + tierRows.length +
+                              (soon ? " · " + soon.textContent : "");
 
-      var src = tierStore.querySelector('[data-td="' + n + '"]');
+      var src = tierStore.querySelector('[data-pk="' + n + '"]');
       [].slice.call(tierBox.querySelectorAll("[data-slot]")).forEach(function(slot){
         var k = slot.getAttribute("data-slot");
         var from = src && src.querySelector('[data-k="' + k + '"]');
         var html = from ? from.innerHTML.trim() : "";
-        // The caption is a <p> already; the four sections take a paragraph
-        // unless the copy brought its own block markup (a list, two <p>).
-        if(k === "c" || k === "l" || html.charAt(0) === "<") slot.innerHTML = html;
-        else slot.innerHTML = "<p>" + html + "</p>";
-        // Only two rows carry a "read more" link. The rest must not leave an
-        // empty <p> behind the caption - see .td-more[hidden] in the sheet,
-        // which is written in two classes because [hidden] loses to a bare
-        // display rule at the same specificity.
-        if(k === "l") slot.hidden = !html;
+        // A paragraph unless the copy brought its own block markup (a list,
+        // two <p>). A section this package does not have is hidden whole -
+        // the fact line shares its section with "what you get", so it hides
+        // alone.
+        slot.innerHTML = !html ? "" : (html.charAt(0) === "<" ? html : "<p>" + html + "</p>");
+        if(k === "f" || k === "l") slot.hidden = !html;
+        else slot.closest(".td-sec").hidden = !html;
       });
-
-      // No row has a screenshot yet, in either language. Drawn, never
-      // borrowed - see .shot-holder.
-      var box = document.createElement("div");
-      box.className = "shot-holder";
-      box.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' +
-                      '<use href="#icoZoom"/></svg><p></p>';
-      box.querySelector("p").textContent = S("td.soon");
-      tierFrame.replaceChildren(box);
 
       tierBox.querySelector(".modal-card").scrollTop = 0;
       if(announce) say(name);
@@ -4533,9 +4563,10 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
 
     tierRefill = function(){ if(tierBox.open) tierFill(tierAt, false); };
 
-    tierRows.forEach(function(row){
+    tierRows.concat(tierSolo).forEach(function(row){
       row.addEventListener("click", function(){
         tierFrom = row;
+        tierOne = tierSolo.indexOf(row) > -1 ? row : null;
         tierFill(tierRows.indexOf(row), false);
         if(typeof tierBox.showModal === "function") tierBox.showModal();
         else tierBox.setAttribute("open","");
@@ -4548,6 +4579,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
 
     tierBox.addEventListener("keydown", function(e){
       if(e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      if(tierOne) return;
       var ltr = document.documentElement.getAttribute("dir") !== "rtl";
       e.preventDefault();
       tierFill(tierAt + ((e.key === "ArrowRight") === ltr ? 1 : -1), true);
