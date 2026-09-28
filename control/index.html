@@ -472,7 +472,7 @@
    Contrast themes actually switched on. */
 @media (forced-colors:active){
   /* the surfaces. One border each, where a shadow used to be. */
-  .pill,.btn,.burger,.route-cta,.hc-video,.hc-holder,.pipe-node,.card,.layer,
+  .pill,.src,.btn,.burger,.route-cta,.hc-video,.hc-holder,.pipe-node,.card,.layer,
   .path,.onward,.voice,.plate,.person,.avatar,.ledger .cellx,.strip .s,
   .summon .inner,.modal-card,.modal-x,.skip,
   .shot-frame,.shot-nav button,
@@ -573,8 +573,10 @@ a{color:inherit;text-decoration:none}
 
 /* The announcement channel. Read by a screen reader, invisible to everyone
    else. Not display:none and not visibility:hidden - either of those would
-   take it out of the accessibility tree, which is the one thing it is for. */
-.sr-live{position:absolute;width:1px;height:1px;margin:-1px;padding:0;
+   take it out of the accessibility tree, which is the one thing it is for.
+   .sr is the same thing for words inside a line - the hero's source chips
+   carry the pill's old prefixes that way (2026-09-28). */
+.sr-live,.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;
   overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 
 /* grain + atmosphere, fixed behind everything */
@@ -970,6 +972,32 @@ section.snug{padding:clamp(52px,5.5vw,72px) 0}
    each end. Tracking rather than size, because the size was set on
    purpose. If the wordmark's proportions ever change, remeasure this. */
 [lang="en"] .hero-slogan{text-transform:uppercase;letter-spacing:.247em;font-size:2rem}
+
+/* ---- the two sources over the lockup (2026-09-28) ----
+   Option ג of the hero-label canvas, which is where every number here comes
+   from: 18px chips, and 84px of air under them for the lines to run in. The
+   row's bottom margin IS the lines' room, so that is the one place to change
+   it. The chip is .pill's recipe - --panel on --ring and --elev-1 - at a
+   squarer 12px radius: a pill reads as a label, and these are meant to read
+   as the systems themselves.
+   The lines' svg is positioned against .hero-viz, not against .hero-src,
+   which stays static on purpose (see drawMark). Drawn in CSS pixels, with no
+   viewBox, because placeSources() measures in pixels. It comes before the
+   lockup in the DOM, so the lockup paints over the ends and the lines run
+   in under the arc rather than stopping on top of it. */
+.hero-src{width:100%}
+.sources{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 24px;margin-bottom:84px}
+.src{
+  display:inline-flex;align-items:center;gap:.45em;
+  padding:.42em .8em .42em .68em;border-radius:12px;
+  background:var(--panel);box-shadow:var(--ring),var(--elev-1);
+  font-family:var(--ui);font-size:1.125rem;font-weight:700;letter-spacing:.01em;line-height:1.2;
+  color:var(--logo-core);
+}
+.src-ico{width:.9em;height:.9em;flex:none;fill:none;stroke:var(--brass);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.src-lines{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.src-line{fill:none;stroke:var(--sky);stroke-width:2;stroke-linecap:round;stroke-dasharray:2 7}
+.src-dot{fill:var(--brass)}
 
 /* ---- the recorded phone dashboard, on the about view ----
    The source is 592x1552 - a phone screen - so it is sized by width and left
@@ -1961,6 +1989,12 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
      the column and there is nothing to align against. */
   .hero-slogan{left:0;font-size:clamp(1.35rem,7.6vw,2.25rem);letter-spacing:.12em;padding:8px 20px}
   [lang="en"] .hero-slogan{letter-spacing:.24em;font-size:clamp(1.05rem,5.85vw,2rem)}
+  /* Stacked, the sources take the canvas's phone metrics: 15px chips and
+     58px of air. They sit above the headline here, so every pixel of that
+     air pushes it down - measured at 375, the pill leaving pays for all but
+     33px of it. */
+  .sources{gap:10px 16px;margin-bottom:58px}
+  .src{font-size:.95rem}
   /* Stacked, the clip's height is what pushes the approach section down the
      page. 160px at 375px, holding 200px from tablet up. */
   .heroclip{max-width:clamp(160px,42vw,200px)}
@@ -2369,6 +2403,21 @@ html.still .hero-rain{display:none}
     mark();
     r.removeAttribute("data-lang-pending");       // set by the head script
     try{ localStorage.setItem(STORE, lang); }catch(e){}
+    pointHome();
+  }
+
+  /* The home page has two addresses since 2026-09-28 - / in Hebrew, /en/ in
+     English - while this page stays one address that switches in place. So
+     every way back to the home page follows the language this page is in:
+     the logo, "back to services", the CTA, and the footer's screens below.
+     Read once, as written ("../" plus whatever follows), and re-pointed on
+     every switch. */
+  var homeLinks = [].slice.call(document.querySelectorAll('a[href^="../"]')).map(function(a){
+    return {a:a, rest:a.getAttribute("href").slice(3)};
+  });
+  function homeBase(){ return lang === "en" ? "../en/" : "../"; }
+  function pointHome(){
+    homeLinks.forEach(function(h){ h.a.setAttribute("href", homeBase() + h.rest); });
   }
 
   /* Must agree with the resolver in _source.head.analyst.html, line for
@@ -2403,7 +2452,7 @@ html.still .hero-rain{display:none}
   /* The shared footer carries the home page's router buttons. There is no
      router here, so they become links back to the home page's screens. */
   [].slice.call(document.querySelectorAll("[data-go]")).forEach(function(b){
-    b.addEventListener("click", function(){ location.href = "../#" + b.getAttribute("data-go"); });
+    b.addEventListener("click", function(){ location.href = homeBase() + "#" + b.getAttribute("data-go"); });
   });
 })();
 </script>
