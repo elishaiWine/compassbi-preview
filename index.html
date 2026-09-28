@@ -60,6 +60,14 @@
   setTimeout(function(){ r.removeAttribute("data-lang-pending"); }, 1200);
 })();
 </script>
+
+<!-- ─── the pause button, before first paint ───
+     A visitor who paused the animations on an earlier visit gets .still on
+     <html> before anything moves, so the entrance animations never start
+     and snap. The button and the rest of its state live in _source.body.html. -->
+<script>
+try{ if(localStorage.getItem("compassbi.motion") === "still") document.documentElement.classList.add("still"); }catch(e){}
+</script>
 </head><body>
 <!-- ============================================================
      Icon sprite. Eighteen isometric icons, one per module and per
@@ -715,6 +723,14 @@
      token on 2026-09-02 - one unit of red apart, invisible, and it takes
      the last copy of the deviant hex out of the sheet. */
   --brass-label:var(--brand-orange);
+  /* Text on the brass tint (--brass-soft). Added 2026-09-28 for the three
+     chips that sit on it - "coming soon", the Hashavshevet pill and the
+     "add-on" tag. They were --brass-ink, which is 5.05:1 on white but 4.44:1
+     once the tint is under it, and 4.0:1 where the tint sits on the sunken
+     Analyst card. Same hue as --brass-ink (22deg), darker: 5.35:1 on the tint
+     over white, 4.81:1 over --panel-2. Elishai's call, 28/09: darken them
+     rather than list them in the accessibility statement. */
+  --brass-chip:#A5450D;
 
   /* ---- the brand's own accessibility derivatives ----
      Added 2026-09-02 from 14 BRAND/assets/tokens/tokens.css, which is
@@ -858,6 +874,7 @@
        for more contrast is the one reader for whom the brand orange was
        never the point. */
     --brass-label:#932F14;
+    --brass-chip:#932F14;
     --sky-ink:#1F4C8C;
     --hair:rgba(20,19,28,.30);
     --hair-strong:rgba(20,19,28,.52);
@@ -1794,7 +1811,7 @@ button.layer{
 .soon{
   display:inline-block;vertical-align:middle;margin-inline-start:6px;
   font-family:var(--sans);font-size:.66rem;font-weight:600;letter-spacing:.05em;
-  padding:3px 9px;border-radius:var(--radius-pill);background:var(--brass-soft);color:var(--brass-ink);white-space:nowrap;
+  padding:3px 9px;border-radius:var(--radius-pill);background:var(--brass-soft);color:var(--brass-chip);white-space:nowrap;
 }
 /* the home package cards open their window, so they are buttons wearing the
    card surface: reset what a button brings, keep what .card gives */
@@ -1812,12 +1829,12 @@ button.layer{
   .agent-feature{grid-template-columns:1fr}
   .agent-shot .agent-fig{width:min(300px,80vw)}
 }
-.layer .tag.addon{background:var(--brass-soft);color:var(--brass-ink)}
+.layer .tag.addon{background:var(--brass-soft);color:var(--brass-chip)}
 .tier-modal .shot-nav[hidden]{display:none}
 .pkg-foot{margin:26px 0 0;text-align:center}
 .pkg-pill{
   display:inline-block;padding:9px 20px;border-radius:var(--radius-pill);
-  background:var(--brass-soft);color:var(--brass-ink);
+  background:var(--brass-soft);color:var(--brass-chip);
   font-size:.95rem;font-weight:600;line-height:1.4;
 }
 .partner-line{margin:6px 0 0;color:var(--ink-dim);font-size:.95rem;font-weight:600}
@@ -2291,6 +2308,37 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
 .lang-opt[aria-pressed="true"]{color:var(--ink);background:var(--panel);box-shadow:var(--ring),var(--elev-1)}
 .lang-sep{color:var(--hair-strong);font-size:.78rem;line-height:1;user-select:none}
 
+/* ---- the pause button (2026-09-28) ----
+   Stops every animation on the page - WCAG 2.2.2, see the script. It sits
+   beside the language switch and borrows its look: the same sunken pill at
+   rest, the same raised white chip when pressed, so the header gains one
+   quiet control rather than a new kind of thing. 33px square, which is the
+   height .lang already has. .tools holds the pair on one line, and in the
+   phone drawer it takes over the spacing .lang used to carry there; the
+   two-class rule zeroes .lang's own margins inside it, in every media.
+   Hidden when the OS asks for less motion: nothing would be left to stop. */
+.tools{display:inline-flex;align-items:center;gap:6px;flex:none;margin-inline-start:10px}
+.tools .lang{margin:0}
+.motion{
+  display:inline-grid;place-items:center;flex:none;
+  width:33px;height:33px;padding:0;border:0;cursor:pointer;
+  border-radius:var(--radius-pill);background:var(--panel-2);color:var(--ink-faint);
+  transition:color var(--dur-base) var(--ease-standard),background var(--dur-base) var(--ease-standard),box-shadow var(--dur-base) var(--ease-standard);
+}
+.motion svg{width:11px;height:11px;fill:currentColor}
+.motion:hover{color:var(--ink)}
+.motion[aria-pressed="true"]{color:var(--ink);background:var(--panel);box-shadow:var(--ring),var(--elev-1)}
+/* the icon says what a press will do: pause while things move, play once
+   they are stopped. Media glyphs are not mirrored in RTL. */
+.motion .m-play,.motion[aria-pressed="true"] .m-pause{display:none}
+.motion[aria-pressed="true"] .m-play{display:inline}
+@media (prefers-reduced-motion:reduce){ .motion{display:none} }
+/* Forced colours drop the sunken fill, and a bare glyph does not read as a
+   button. Written here and not in the forced-colours block near the top of
+   the sheet: that block sits earlier, and .motion's own border:0 above would
+   beat it at equal specificity - recurring lesson 1. */
+@media (forced-colors:active){ .motion{border:1px solid} }
+
 /* ---- LTR mirroring ----
    The layout is built on logical properties (inset-inline, margin-inline,
    text-align:start), so it flips on its own the moment dir="ltr" lands on
@@ -2389,6 +2437,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
   .route{padding:13px 6px;font-size:1rem;text-align:start}
   .route-cta{margin:10px 0 0;padding:14px 20px;font-size:1rem}
   .lang{margin:14px 0 0;align-self:center}
+  .tools{margin:14px 0 0;align-self:center}
   .bearing{display:none}
   .g3,.g2,.g4,.steps,.strip,.crew,.ledger,.voices,.ways{grid-template-columns:1fr}
   .brands{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -2408,6 +2457,14 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
   /* the rain is decoration with no state to preserve - it just goes */
   .hero-rain{display:none}
 }
+/* The same stillness, switched on from the page by the pause button. A copy
+   of the block above rather than a shared rule: a media query and a class
+   cannot share one selector list, and the copy is five lines. Change one,
+   change both. */
+html.still *,html.still *::before,html.still *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+html.still .rise,html.still .reveal{opacity:1;transform:none}
+html.still .hero .h-xl em::after{transform:scaleX(1)}
+html.still .hero-rain{display:none}
 
 /* ─── the way out of a tier window (2026-09-22) ───
    Only rows 8 and 6 carry one, so the slot hides itself when the row has no
@@ -2477,12 +2534,19 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
       <button class="route" data-go="services" data-i18n="nav.services">שירותים</button>
       <button class="route" data-go="contact" data-i18n="nav.contact">צור קשר</button>
       <button class="btn btn-fill route-cta" type="button" data-talk data-i18n="cta.talk">דברו איתנו</button>
-      <!-- language switch. Like .route-cta it sits INSIDE .routes, not beside
-           it, so the mobile dropdown carries it too - .routes is the drawer. -->
-      <div class="lang" role="group" data-i18n-al="nav.lang" aria-label="שפת האתר">
-        <button class="lang-opt" type="button" data-lang="he" aria-pressed="true" lang="he">עב</button>
-        <span class="lang-sep" aria-hidden="true">|</span>
-        <button class="lang-opt" type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+      <!-- language switch and pause button. Like .route-cta they sit INSIDE
+           .routes, not beside it, so the mobile dropdown carries them too -
+           .routes is the drawer. .tools keeps the two on one line there. -->
+      <div class="tools">
+        <div class="lang" role="group" data-i18n-al="nav.lang" aria-label="שפת האתר">
+          <button class="lang-opt" type="button" data-lang="he" aria-pressed="true" lang="he">עב</button>
+          <span class="lang-sep" aria-hidden="true">|</span>
+          <button class="lang-opt" type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+        <!-- the pause button - see "the pause button" in the script -->
+        <button class="motion" id="motionBtn" type="button" aria-pressed="false" aria-label="עצירת אנימציות" data-i18n-al="nav.motion">
+          <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path class="m-pause" d="M3 2h2v8H3zM7 2h2v8H7z"/><path class="m-play" d="M3.5 1.8v8.4L10 6z"/></svg>
+        </button>
       </div>
     </nav>
     <button class="burger" id="burger" aria-label="פתיחת תפריט" aria-expanded="false" data-i18n-al="nav.burger">
@@ -3457,6 +3521,15 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
 (function(){
   "use strict";
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* The pause button (2026-09-28). `reduce` is the operating system asking
+     for less motion; `still` is the visitor asking from the page, through
+     the button in the header. quiet() is either, and it is what every piece
+     of motion below asks before it moves. The head script has already put
+     .still on <html> before first paint when it was chosen on an earlier
+     visit, so this reads that decision back rather than resolving it a
+     second time. */
+  var still = document.documentElement.classList.contains("still");
+  function quiet(){ return reduce || still; }
 
   /* ---------- which screenshots exist ----------
      Written by _gen.shots.js and spliced in by _build.sh, because a static
@@ -3495,6 +3568,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     "nav.aria":"Main navigation",
     "nav.burger":"Open menu",
     "nav.lang":"Site language",
+    "nav.motion":"Pause animations",
     "cta.talk":"Talk to Us",
     "ui.skip":"Skip to content",
     "ui.top":"Back to top",
@@ -3994,7 +4068,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
 
   function go(name, push){
     if(VIEWS.indexOf(name) === -1) name = "home";
-    if(name === current && push !== "init") { window.scrollTo({top:0,behavior:reduce?"auto":"smooth"}); return; }
+    if(name === current && push !== "init") { window.scrollTo({top:0,behavior:quiet()?"auto":"smooth"}); return; }
     VIEWS.forEach(function(v){
       document.getElementById("view-"+v).classList.toggle("on", v === name);
     });
@@ -4121,7 +4195,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
 
   function watchReveals(){
     var els = document.querySelectorAll(".view.on .reveal:not(.in)");
-    if(!io || reduce){ els.forEach(function(el){ el.classList.add("in"); }); return; }
+    if(!io || quiet()){ els.forEach(function(el){ el.classList.add("in"); }); return; }
     els.forEach(function(el){ io.observe(el); });
   }
 
@@ -4148,14 +4222,14 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
 
   var counters = [].slice.call(document.querySelectorAll("[data-count-to]"));
   if(counters.length){
-    if(reduce || !("IntersectionObserver" in window)){
+    if(quiet() || !("IntersectionObserver" in window)){
       // final value is already in the markup - nothing to do
     } else {
       var cio = new IntersectionObserver(function(entries){
         entries.forEach(function(en){
           if(!en.isIntersecting) return;
           cio.unobserve(en.target);
-          runCount(en.target);
+          if(!quiet()) runCount(en.target);   // paused: the final figure is already there
         });
       }, {threshold:.6});
       counters.forEach(function(el){
@@ -4175,7 +4249,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     bar.classList.toggle("lift", window.scrollY > 8);
   }, {passive:true});
   up.addEventListener("click", function(){
-    window.scrollTo({top:0, behavior: reduce ? "auto" : "smooth"});
+    window.scrollTo({top:0, behavior: quiet() ? "auto" : "smooth"});
   });
 
   /* ---------- enquiry forms ----------
@@ -4634,7 +4708,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     // A viewer who asked for less motion keeps the poster and the caption:
     // the dashboard still arrives, the movement does not. Same contract the
     // rain, the mark and the old rose hold.
-    if(reduce){ try{ clipVideo.pause(); }catch(e){} return; }
+    if(quiet()){ try{ clipVideo.pause(); }catch(e){} return; }
     var p = clipVideo.play();
     // Autoplay can still be refused (a data-saver profile, an OS setting).
     // The poster is already on screen, so there is nothing to repair - this
@@ -4800,7 +4874,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
     // A viewer who asked for less motion gets the settled lockup, once. Same
     // contract the rain and the rose held: the artwork still arrives, the
     // movement does not.
-    var T = reduce ? MB_END : mbWarp((now - mbT0) / 1000);
+    var T = quiet() ? MB_END : mbWarp((now - mbT0) / 1000);
 
     mbSweep.setAttribute("opacity", MB.sweepOp(T));
     mbSweep.setAttribute("transform", mbRot(MB.sweepRot(T)));
@@ -5062,33 +5136,81 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
   }
 
   /* one loop for every canvas: independent rAF chains would drift apart and
-     double the wake-ups for no gain */
-  var rains = [], rainLast = 0;
+     double the wake-ups for no gain.
+     The loop ends itself the moment quiet() turns true - the pause button -
+     rather than idling on, and startRain() is the only way back in. The
+     canvases are made lazily for the same reason: a visitor who arrives with
+     the animations already paused never builds them unless they ask. */
+  var rains = [], rainLast = 0, rainOn = false;
   function rainFrame(now){
+    if(quiet()){ rainOn = false; return; }
     if(now - rainLast >= RAIN_STEP){
       rainLast = now;
       for(var i = 0; i < rains.length; i++) rains[i].step(now);
     }
     requestAnimationFrame(rainFrame);
   }
-
-  if(!reduce){
-    [].slice.call(document.querySelectorAll(".hero-rain")).forEach(function(cv){
-      rains.push(makeRain(cv, cv.hasAttribute("data-catch")));
-    });
-    if(rains.length) requestAnimationFrame(rainFrame);
+  function startRain(){
+    if(rainOn || quiet()) return;
+    if(!rains.length){
+      [].slice.call(document.querySelectorAll(".hero-rain")).forEach(function(cv){
+        rains.push(makeRain(cv, cv.hasAttribute("data-catch")));
+      });
+    }
+    if(rains.length){ rainOn = true; requestAnimationFrame(rainFrame); }
   }
+  startRain();
 
-  /* ---------- render loop ---------- */
+  /* ---------- render loop ----------
+     Same shape as the rain: it stops itself when quiet() turns true, after
+     one last drawMark that lands the lockup in its settled pose. */
+  var frameOn = false;
   function frame(now){
     drawMark(now);
-    if(!reduce) requestAnimationFrame(frame);
+    if(quiet()){ frameOn = false; return; }
+    requestAnimationFrame(frame);
+  }
+  function startFrame(){
+    if(frameOn || quiet()) return;
+    frameOn = true;
+    requestAnimationFrame(frame);
   }
   // paint once synchronously — rAF never fires while the tab is backgrounded,
   // which would otherwise leave the lockup blank until the viewer focuses the tab
   function repaint(){ drawMark(performance.now()); }
   repaint();
-  if(!reduce) requestAnimationFrame(frame);
+  startFrame();
+
+  /* ---------- the pause button ----------
+     WCAG 2.2.2, level A, and so Israeli Standard 5568: anything that moves
+     on its own for more than five seconds needs a way to stop it from the
+     page itself - the operating system's setting does not count, it is not
+     on the page. One button stops all of it: the rain, the vessels, the
+     mark's build, the header needle, the pinging dots, the pipeline's light
+     and the About clip. The CSS half is html.still, a copy of the
+     reduced-motion block; this half stops what CSS cannot reach - the two
+     rAF loops and the video. Remembered in localStorage (compassbi.motion)
+     and read back before first paint by _source.head.html. The stylesheet
+     hides the button when the OS already asks for less motion: by then
+     there is nothing left for it to stop. */
+  var MOTION_STORE = "compassbi.motion";
+  var motionBtn = document.getElementById("motionBtn");
+  function setStill(on){
+    still = !!on;
+    document.documentElement.classList.toggle("still", still);
+    if(motionBtn) motionBtn.setAttribute("aria-pressed", still ? "true" : "false");
+    try{
+      if(still) localStorage.setItem(MOTION_STORE, "still");
+      else localStorage.removeItem(MOTION_STORE);
+    }catch(e){}
+    syncClip();
+    if(still) repaint();
+    else { startRain(); startFrame(); }
+  }
+  if(motionBtn){
+    motionBtn.setAttribute("aria-pressed", still ? "true" : "false");
+    motionBtn.addEventListener("click", function(){ setStill(!still); });
+  }
   document.addEventListener("visibilitychange", function(){
     if(!document.hidden) repaint();
   });

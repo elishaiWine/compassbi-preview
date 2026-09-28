@@ -285,6 +285,14 @@
      token on 2026-09-02 - one unit of red apart, invisible, and it takes
      the last copy of the deviant hex out of the sheet. */
   --brass-label:var(--brand-orange);
+  /* Text on the brass tint (--brass-soft). Added 2026-09-28 for the three
+     chips that sit on it - "coming soon", the Hashavshevet pill and the
+     "add-on" tag. They were --brass-ink, which is 5.05:1 on white but 4.44:1
+     once the tint is under it, and 4.0:1 where the tint sits on the sunken
+     Analyst card. Same hue as --brass-ink (22deg), darker: 5.35:1 on the tint
+     over white, 4.81:1 over --panel-2. Elishai's call, 28/09: darken them
+     rather than list them in the accessibility statement. */
+  --brass-chip:#A5450D;
 
   /* ---- the brand's own accessibility derivatives ----
      Added 2026-09-02 from 14 BRAND/assets/tokens/tokens.css, which is
@@ -428,6 +436,7 @@
        for more contrast is the one reader for whom the brand orange was
        never the point. */
     --brass-label:#932F14;
+    --brass-chip:#932F14;
     --sky-ink:#1F4C8C;
     --hair:rgba(20,19,28,.30);
     --hair-strong:rgba(20,19,28,.52);
@@ -1364,7 +1373,7 @@ button.layer{
 .soon{
   display:inline-block;vertical-align:middle;margin-inline-start:6px;
   font-family:var(--sans);font-size:.66rem;font-weight:600;letter-spacing:.05em;
-  padding:3px 9px;border-radius:var(--radius-pill);background:var(--brass-soft);color:var(--brass-ink);white-space:nowrap;
+  padding:3px 9px;border-radius:var(--radius-pill);background:var(--brass-soft);color:var(--brass-chip);white-space:nowrap;
 }
 /* the home package cards open their window, so they are buttons wearing the
    card surface: reset what a button brings, keep what .card gives */
@@ -1382,12 +1391,12 @@ button.layer{
   .agent-feature{grid-template-columns:1fr}
   .agent-shot .agent-fig{width:min(300px,80vw)}
 }
-.layer .tag.addon{background:var(--brass-soft);color:var(--brass-ink)}
+.layer .tag.addon{background:var(--brass-soft);color:var(--brass-chip)}
 .tier-modal .shot-nav[hidden]{display:none}
 .pkg-foot{margin:26px 0 0;text-align:center}
 .pkg-pill{
   display:inline-block;padding:9px 20px;border-radius:var(--radius-pill);
-  background:var(--brass-soft);color:var(--brass-ink);
+  background:var(--brass-soft);color:var(--brass-chip);
   font-size:.95rem;font-weight:600;line-height:1.4;
 }
 .partner-line{margin:6px 0 0;color:var(--ink-dim);font-size:.95rem;font-weight:600}
@@ -1861,6 +1870,37 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
 .lang-opt[aria-pressed="true"]{color:var(--ink);background:var(--panel);box-shadow:var(--ring),var(--elev-1)}
 .lang-sep{color:var(--hair-strong);font-size:.78rem;line-height:1;user-select:none}
 
+/* ---- the pause button (2026-09-28) ----
+   Stops every animation on the page - WCAG 2.2.2, see the script. It sits
+   beside the language switch and borrows its look: the same sunken pill at
+   rest, the same raised white chip when pressed, so the header gains one
+   quiet control rather than a new kind of thing. 33px square, which is the
+   height .lang already has. .tools holds the pair on one line, and in the
+   phone drawer it takes over the spacing .lang used to carry there; the
+   two-class rule zeroes .lang's own margins inside it, in every media.
+   Hidden when the OS asks for less motion: nothing would be left to stop. */
+.tools{display:inline-flex;align-items:center;gap:6px;flex:none;margin-inline-start:10px}
+.tools .lang{margin:0}
+.motion{
+  display:inline-grid;place-items:center;flex:none;
+  width:33px;height:33px;padding:0;border:0;cursor:pointer;
+  border-radius:var(--radius-pill);background:var(--panel-2);color:var(--ink-faint);
+  transition:color var(--dur-base) var(--ease-standard),background var(--dur-base) var(--ease-standard),box-shadow var(--dur-base) var(--ease-standard);
+}
+.motion svg{width:11px;height:11px;fill:currentColor}
+.motion:hover{color:var(--ink)}
+.motion[aria-pressed="true"]{color:var(--ink);background:var(--panel);box-shadow:var(--ring),var(--elev-1)}
+/* the icon says what a press will do: pause while things move, play once
+   they are stopped. Media glyphs are not mirrored in RTL. */
+.motion .m-play,.motion[aria-pressed="true"] .m-pause{display:none}
+.motion[aria-pressed="true"] .m-play{display:inline}
+@media (prefers-reduced-motion:reduce){ .motion{display:none} }
+/* Forced colours drop the sunken fill, and a bare glyph does not read as a
+   button. Written here and not in the forced-colours block near the top of
+   the sheet: that block sits earlier, and .motion's own border:0 above would
+   beat it at equal specificity - recurring lesson 1. */
+@media (forced-colors:active){ .motion{border:1px solid} }
+
 /* ---- LTR mirroring ----
    The layout is built on logical properties (inset-inline, margin-inline,
    text-align:start), so it flips on its own the moment dir="ltr" lands on
@@ -1959,6 +1999,7 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
   .route{padding:13px 6px;font-size:1rem;text-align:start}
   .route-cta{margin:10px 0 0;padding:14px 20px;font-size:1rem}
   .lang{margin:14px 0 0;align-self:center}
+  .tools{margin:14px 0 0;align-self:center}
   .bearing{display:none}
   .g3,.g2,.g4,.steps,.strip,.crew,.ledger,.voices,.ways{grid-template-columns:1fr}
   .brands{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -1978,6 +2019,14 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
   /* the rain is decoration with no state to preserve - it just goes */
   .hero-rain{display:none}
 }
+/* The same stillness, switched on from the page by the pause button. A copy
+   of the block above rather than a shared rule: a media query and a class
+   cannot share one selector list, and the copy is five lines. Change one,
+   change both. */
+html.still *,html.still *::before,html.still *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+html.still .rise,html.still .reveal{opacity:1;transform:none}
+html.still .hero .h-xl em::after{transform:scaleX(1)}
+html.still .hero-rain{display:none}
 
 /* ─── the way out of a tier window (2026-09-22) ───
    Only rows 8 and 6 carry one, so the slot hides itself when the row has no
