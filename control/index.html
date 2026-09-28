@@ -1,5 +1,5 @@
 <!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Compass Control לנתוני Priority - חריגות, אחראים ופעולה | Compass BI</title>
+<title>Compass Control לנתוני Priority ו-NetSuite - חריגות, אחראים ופעולה | Compass BI</title>
 <meta name="description" content="Compass Control בודק את הנתונים מול כללים שנקבעו איתכם, ומעביר כל חריגה לאחראי עם פעולה מומלצת.">
 
 <link rel="canonical" href="https://compassbi.co.il/control/">
@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://compassbi.co.il/og-compass-bi.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Compass BI - תשתית אנליטית ל-Priority">
+<meta property="og:image:alt" content="Compass BI - תשתית אנליטית ל-Priority ול-NetSuite">
 
 <meta name="twitter:card" content="summary_large_image">
 
@@ -1403,6 +1403,9 @@ button.layer{
 /* a brand name inside an uppercased label keeps its own case - "ב-PRIORITY"
    reads as a typo in a Hebrew heading */
 .keep-case{text-transform:none}
+/* a Hebrew word hyphenated to a Latin one ("וב-NetSuite") never splits at the
+   hyphen - the spans are laid down by keepPrefixes() in the page script */
+.nw{white-space:nowrap}
 .td-fact{margin-top:10px}
 .td-fact p{font-size:.88rem;color:var(--ink-faint)}
 .td-sec[hidden],.td-fact[hidden]{display:none}
@@ -2110,7 +2113,7 @@ html.still .hero-rain{display:none}
     <p class="ai-sub" data-i18n="cp.q.sub">לדעת על בעיה בזמן שעוד אפשר לפעול.</p>
     <p class="ai-contrast" data-i18n="cp.q.contrast">דוח מגיע כי קבעתם שיגיע, גם כשאין מה לדווח. <strong>התראה עובדת הפוך: היא מגיעה רק כשמשהו חורג</strong> - ולכן כשהיא מגיעה, היא נקראת.</p>
     <p data-i18n="cp.q.p1">פעם ביום, Compass Control בודק את הנתונים מול כללים שנקבעו איתכם. כשכלל מופר, החריגה נכנסת לתור: איזה כלל, מה הסף, מי האחראי, כמה כסף או זמן בסיכון, ומה הפעולה המומלצת. ההתראה מגיעה לאנשים הנכונים ומציגה את התנועות שמאחוריה. כשהכול תקין - שקט.</p>
-    <p class="ai-claim" data-i18n="cp.q.ex.t">למשל, ב-Priority:</p>
+    <p class="ai-claim" data-i18n="cp.q.ex.t">למשל, ב-Priority או ב-NetSuite:</p>
     <ul class="ai-flat">
       <li data-i18n="cp.q.ex.1">אספקה באיחור מול מה שהתחייבתם ללקוח</li>
       <li data-i18n="cp.q.ex.2">לקוח בפיגור בתשלום עם הזמנות פתוחות</li>
@@ -2127,8 +2130,8 @@ html.still .hero-rain{display:none}
   <section class="ai-sec">
     <h2 class="h-l" data-i18n="cp.r.h">המלצות, לא פעולות</h2>
     <p class="ai-sub" data-i18n="cp.r.sub">המערכת ממליצה. אדם מאשר.</p>
-    <p data-i18n="cp.r.p1">לכל חריגה יש אחראי ופעולה מומלצת. המערכת ממליצה, ואדם מאשר כל כתיבה חזרה ל-Priority.</p>
-    <p class="ai-contrast" data-i18n="cp.r.not">Compass Control הוא לא רובוט שרושם לבד לתוך Priority.</p>
+    <p data-i18n="cp.r.p1">לכל חריגה יש אחראי ופעולה מומלצת. המערכת ממליצה, ואדם מאשר כל כתיבה חזרה ל-ERP.</p>
+    <p class="ai-contrast" data-i18n="cp.r.not">Compass Control הוא לא רובוט שרושם לבד לתוך ה-ERP.</p>
     <!-- The cost line. A fact, never a heading - decision 3 of 22/09: a
          structure of cost, no price and no range, which keeps it inside
          INTENT's "no price list on the site". Cut to setup only on 27/09:
@@ -2181,7 +2184,7 @@ html.still .hero-rain{display:none}
             <path d="M760.47,111.6h10.73v62.59h-10.73V111.6z"/>
           </svg>
         </div>
-        <p data-i18n="footer.desc">תשתית אנליטית ל-Priority - דשבורדים, התראות וסוכני AI, בלי צוות BI פנימי.</p>
+        <p data-i18n="footer.desc">תשתית אנליטית ל-Priority ול-NetSuite - דשבורדים, התראות וסוכני AI, בלי צוות BI פנימי.</p>
       </div>
       <div class="rail-cols">
         <div class="rail-col">
@@ -2227,7 +2230,7 @@ html.still .hero-rain{display:none}
      footer.*) are repeated here rather than imported - this page does not
      load that script, and a missing key would render an empty element. */
   var EN = {
-    "meta.title":"Compass Control for Priority data — exceptions, owners and action | Compass BI",
+    "meta.title":"Compass Control for Priority and NetSuite data — exceptions, owners and action | Compass BI",
     "meta.desc":"Compass Control checks your data against rules agreed with you, and hands every exception to its owner with a recommended action.",
     "cp.back":"← Back to services",
     "cp.eyebrow":"Package 2 of 4",
@@ -2237,7 +2240,7 @@ html.still .hero-rain{display:none}
     "cp.q.sub":"Know about problems in time to act.",
     "cp.q.contrast":"A report arrives because you scheduled it, even when there is nothing to flag. <strong>An alert works the other way round: it arrives only when something breaks</strong> — which is why it gets read.",
     "cp.q.p1":"Once a day, Compass Control checks your data against rules agreed with you. When a rule breaks, the exception enters a queue: which rule, what threshold, who owns it, how much money or time is at risk, and the recommended action. The alert reaches the right people and shows the transactions behind it. When everything is in order — silence.",
-    "cp.q.ex.t":"For example, in Priority:",
+    "cp.q.ex.t":"For example, in Priority or NetSuite:",
     "cp.q.ex.1":"A late shipment against what you promised the customer",
     "cp.q.ex.2":"An overdue customer with open orders",
     "cp.q.ex.3":"An item below its reorder point while the supplier's lead time slips",
@@ -2250,8 +2253,8 @@ html.still .hero-rain{display:none}
     "cp.q.data":"<strong>No AI is used for monitoring.</strong> The checks are your rules, run on your existing server, and the data stays on it.",
     "cp.r.h":"Recommendations, not actions",
     "cp.r.sub":"The system recommends. A person approves.",
-    "cp.r.p1":"Every exception has an owner and a recommended action. The system recommends, and a person approves every write-back into Priority.",
-    "cp.r.not":"Compass Control is not a robot posting into Priority on its own.",
+    "cp.r.p1":"Every exception has an owner and a recommended action. The system recommends, and a person approves every write-back into your ERP.",
+    "cp.r.not":"Compass Control is not a robot posting into your ERP on its own.",
     "cp.r.cost":"Monitoring itself uses no AI and runs on your existing server, so it carries no additional monthly running cost. Setup is priced per project.",
     "cp.ctl.h":"Built for control",
     "cp.ctl.sub":"Useful is not enough. It has to be measurable and owned.",
@@ -2276,7 +2279,7 @@ html.still .hero-rain{display:none}
     "nav.about":"About",
     "nav.services":"Services",
     "nav.contact":"Contact",
-    "footer.desc":"Analytics infrastructure for Priority ERP — dashboards, alerts and AI agents, with no in-house BI team required.",
+    "footer.desc":"Analytics infrastructure for Priority ERP and NetSuite — dashboards, alerts and AI agents, with no in-house BI team required.",
     "footer.nav.t":"Navigation",
     "footer.analyst":"Compass Control",
     "footer.contact.t":"Get in touch",
@@ -2290,7 +2293,7 @@ html.still .hero-rain{display:none}
   var nodes = { t: [], al: [] };
   var lang = "he";
 
-  HE["meta.title"] = "Compass Control לנתוני Priority - חריגות, אחראים ופעולה | Compass BI";
+  HE["meta.title"] = "Compass Control לנתוני Priority ו-NetSuite - חריגות, אחראים ופעולה | Compass BI";
   HE["meta.desc"]  = "Compass Control בודק את הנתונים מול כללים שנקבעו איתכם, ומעביר כל חריגה לאחראי עם פעולה מומלצת.";
 
   function S(k){ return lang === "en" ? (EN[k] != null ? EN[k] : "") : (HE[k] != null ? HE[k] : ""); }
@@ -2316,6 +2319,34 @@ html.still .hero-rain{display:none}
     if(d) d.setAttribute("content", S("meta.desc"));
   }
 
+  /* Keeps "ב-NetSuite", "ה-ERP" and every other Hebrew word hyphenated to a
+     Latin one on a single line - a copy of keepPrefixes() in
+     _source.body.html, where the reason is written out. */
+  var PREFIXED = /[א-ת]+-[A-Za-z][A-Za-z.]*/g;
+  function keepPrefixes(){
+    if(lang === "en") return;
+    nodes.t.forEach(function(el){
+      var walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), hits = [];
+      for(var n = walk.nextNode(); n; n = walk.nextNode()){
+        PREFIXED.lastIndex = 0;
+        if(PREFIXED.test(n.data) && !n.parentNode.classList.contains("nw")) hits.push(n);
+      }
+      hits.forEach(function(n){
+        var frag = document.createDocumentFragment(), s = n.data, last = 0, m;
+        PREFIXED.lastIndex = 0;
+        while((m = PREFIXED.exec(s))){
+          if(m.index > last) frag.appendChild(document.createTextNode(s.slice(last, m.index)));
+          var sp = document.createElement("span");
+          sp.className = "nw"; sp.textContent = m[0];
+          frag.appendChild(sp);
+          last = m.index + m[0].length;
+        }
+        if(last < s.length) frag.appendChild(document.createTextNode(s.slice(last)));
+        n.parentNode.replaceChild(frag, n);
+      });
+    });
+  }
+
   function mark(){
     [].slice.call(document.querySelectorAll("[data-lang]")).forEach(function(b){
       b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
@@ -2328,6 +2359,7 @@ html.still .hero-rain{display:none}
     r.setAttribute("lang", lang);
     r.setAttribute("dir", lang === "en" ? "ltr" : "rtl");
     apply();
+    keepPrefixes();
     mark();
     r.removeAttribute("data-lang-pending");       // set by the head script
     try{ localStorage.setItem(STORE, lang); }catch(e){}

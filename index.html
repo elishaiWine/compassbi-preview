@@ -1,6 +1,6 @@
 <!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Compass BI - תשתית אנליטית ל-Priority</title>
-<meta name="description" content="מחסן נתונים, דשבורדים ניהוליים, התראות וסוכני AI לעסקים שרצים על Priority. תשתית BI מלאה כשירות חודשי - בלי לגייס צוות BI פנימי ובלי להשקיע בתשתיות.">
+<title>Compass BI - תשתית אנליטית ל-Priority ול-NetSuite</title>
+<meta name="description" content="מחסן נתונים, דשבורדים, התראות וסוכני AI לעסקים שרצים על Priority או על NetSuite. תשתית BI מלאה כשירות חודשי - בלי לגייס צוות BI פנימי ובלי להשקיע בתשתיות.">
 
 <link rel="canonical" href="https://compassbi.co.il/">
 <meta name="robots" content="noindex">
@@ -13,7 +13,7 @@
 <meta property="og:locale" content="he_IL">
 <meta property="og:url" content="https://compassbi.co.il/">
 <meta property="og:title" content="BI ו-AI. הגיע הזמן שהנתונים שלכם יתחילו לדבר.">
-<meta property="og:description" content="מחסן נתונים, דשבורדים, התראות וסוכני AI - לעסקים שרצים על Priority. מתחברים ביום אחד, עולים לאוויר תוך שבועות.">
+<meta property="og:description" content="מחסן נתונים, דשבורדים, התראות וסוכני AI - לעסקים שרצים על Priority או על NetSuite. מתחברים ביום אחד, עולים לאוויר תוך שבועות.">
 
 <!-- og:image needs a real 1200x630 file at this URL before the site goes live.
      A broken og:image renders a blank card, which is worse than no image at all -
@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://compassbi.co.il/og-compass-bi.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Compass BI - תשתית אנליטית ל-Priority">
+<meta property="og:image:alt" content="Compass BI - תשתית אנליטית ל-Priority ול-NetSuite">
 
 <meta name="twitter:card" content="summary_large_image">
 
@@ -1841,6 +1841,9 @@ button.layer{
 /* a brand name inside an uppercased label keeps its own case - "ב-PRIORITY"
    reads as a typo in a Hebrew heading */
 .keep-case{text-transform:none}
+/* a Hebrew word hyphenated to a Latin one ("וב-NetSuite") never splits at the
+   hyphen - the spans are laid down by keepPrefixes() in the page script */
+.nw{white-space:nowrap}
 .td-fact{margin-top:10px}
 .td-fact p{font-size:.88rem;color:var(--ink-faint)}
 .td-sec[hidden],.td-fact[hidden]{display:none}
@@ -2637,7 +2640,7 @@ html.still .hero-rain{display:none}
       <div class="wrap">
         <div class="head-block reveal">
           <div class="eyebrow" data-i18n="home.problem.eyebrow">מוכר לכם?</div>
-          <h2 class="h-l" data-i18n="home.problem.h">Priority מלא בנתונים. מה שאין בו זו תמונת מצב של העסק.</h2>
+          <h2 class="h-l" data-i18n="home.problem.h">ה-ERP מלא בנתונים. מה שאין בו זו תמונת מצב של העסק.</h2>
         </div>
         <div class="g3 reveal">
           <div class="symptom">
@@ -2668,14 +2671,14 @@ html.still .hero-rain{display:none}
              Power BI is named on this site only in the About page's
              technology section, where it is a fact rather than a pitch
              (decision 18 of 27/09). -->
-        <div class="pipeline reveal" role="img" aria-label="הנתונים זורמים מ-Priority אל מחסן נתונים ארגוני, ומשם לדשבורדים, התראות וסוכני AI" data-i18n-al="home.pipe.aria">
+        <div class="pipeline reveal" role="img" aria-label="הנתונים זורמים מ-Priority או מ-NetSuite אל מחסן נתונים ארגוני, ומשם לדשבורדים, התראות וסוכני AI" data-i18n-al="home.pipe.aria">
           <div class="pipe-node">
             <div class="ico" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
                 <ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v13c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3v-13"/><path d="M4.5 12c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3"/>
               </svg>
             </div>
-            <span class="nm" data-i18n="home.pipe.1.nm">Priority</span>
+            <span class="nm" data-i18n="home.pipe.1.nm">Priority / NetSuite</span>
             <span class="sub" data-i18n="home.pipe.1.sub">המערכת שהעסק כבר רץ עליה</span>
           </div>
 
@@ -2718,7 +2721,7 @@ html.still .hero-rain{display:none}
           <button class="card card-link" type="button" data-go="services" data-open-pk="1" aria-haspopup="dialog">
             <h3 class="h-s" data-i18n="home.sol.1.h">Compass</h3>
             <p class="card-hook" data-i18n="home.sol.1.p">מראה את העסק - כל התחומים, בתמונה אחת.</p>
-            <p data-i18n="home.sol.1.d">מחסן נתונים אחד שמחבר את Priority ואת המערכות שסביבו, ועליו דשבורדים, מסכי זמן אמת ודוחות שמגיעים לבד. מתחברים ביום אחד, עולים לאוויר תוך שבועות.</p>
+            <p data-i18n="home.sol.1.d">מחסן נתונים אחד שמחבר את ה-ERP ואת המערכות שסביבו, ועליו דשבורדים, מסכי זמן אמת ודוחות שמגיעים לבד. מתחברים ביום אחד, עולים לאוויר תוך שבועות.</p>
             <svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg>
           </button>
           <button class="card card-link" type="button" data-go="services" data-open-pk="2" aria-haspopup="dialog">
@@ -2819,7 +2822,7 @@ html.still .hero-rain{display:none}
     <section class="summon snug">
       <div class="wrap">
         <div class="inner reveal">
-          <h2 class="h-l" data-i18n="home.cta.h">רוצים לדעת מה אפשר להוציא מה-Priority שלכם?</h2>
+          <h2 class="h-l" data-i18n="home.cta.h">רוצים לדעת מה אפשר להוציא מה-ERP שלכם?</h2>
           <p data-i18n="home.cta.p">בפגישת היכרות נראה דשבורדים חיים, נבחן את המערכת שלכם, ונגיד לכם מה ריאלי - לפני שמתחייבים למשהו.</p>
           <button class="btn btn-fill" type="button" data-talk data-i18n="cta.talk">דברו איתנו</button>
         </div>
@@ -2932,16 +2935,16 @@ html.still .hero-rain{display:none}
       <div class="wrap">
         <div class="head-block reveal">
           <div class="eyebrow" data-i18n="about.why.eyebrow">למה זה משנה</div>
-          <h2 class="h-l" data-i18n="about.why.h">התמחות ב-Priority, לא "עוד מערכת BI"</h2>
+          <h2 class="h-l" data-i18n="about.why.h">התמחות ב-Priority וב-NetSuite, לא "עוד מערכת BI"</h2>
         </div>
         <div class="g4 reveal">
           <div class="card">
             <h3 class="h-s" data-i18n="about.why.1.h">הטמעה מהירה</h3>
-            <p data-i18n="about.why.1.p">מכיוון שאנחנו כבר מכירים את מבנה הנתונים של Priority, ההטמעה נמדדת בשבועות ולא בחודשי אפיון.</p>
+            <p data-i18n="about.why.1.p">מכיוון שאנחנו כבר מכירים את מבנה הנתונים של Priority ושל NetSuite, ההטמעה נמדדת בשבועות ולא בחודשי אפיון.</p>
           </div>
           <div class="card">
             <h3 class="h-s" data-i18n="about.why.2.h">שפה משותפת עם הצוות שלכם</h3>
-            <p data-i18n="about.why.2.p">אנחנו מדברים במונחים שהצוות הכספי, המכירות והתפעול כבר מכירים מתוך Priority.</p>
+            <p data-i18n="about.why.2.p">אנחנו מדברים במונחים שהצוות הכספי, המכירות והתפעול כבר מכירים מתוך ה-ERP.</p>
           </div>
           <div class="card">
             <h3 class="h-s" data-i18n="about.why.3.h">ליווי צמוד, לא פרויקט חד-פעמי</h3>
@@ -3022,7 +3025,7 @@ html.still .hero-rain{display:none}
         <div class="steps reveal">
           <div class="step">
             <span class="n">01</span>
-            <h3 class="h-s" data-i18n="about.work.1.h">מתחברים ל-Priority</h3>
+            <h3 class="h-s" data-i18n="about.work.1.h">מתחברים ל-Priority או ל-NetSuite</h3>
             <p data-i18n="about.work.1.p">חיבור ישיר למערכת הקיימת שלכם, ללא שינוי בתהליכי העבודה השוטפים.</p>
           </div>
           <div class="step">
@@ -3184,7 +3187,7 @@ html.still .hero-rain{display:none}
     <section class="hero" style="padding-bottom:20px">
       <div class="wrap" style="max-width:840px">
         <div class="pill rise" data-i18n="contact.hero.pill"><span class="dot"></span>צור קשר</div>
-        <h1 class="h-xl rise" data-i18n="contact.hero.h1">בואו נדבר על <em>הנתונים שלכם</em> ב-Priority.</h1>
+        <h1 class="h-xl rise" data-i18n="contact.hero.h1">בואו נדבר על <em>הנתונים שלכם</em>.</h1>
         <p class="lead rise" data-i18n="contact.hero.lead">מלאו את הטופס - או שלחו הודעה בוואטסאפ, מה שנוח לכם.</p>
       </div>
     </section>
@@ -3294,7 +3297,7 @@ html.still .hero-rain{display:none}
             <path d="M760.47,111.6h10.73v62.59h-10.73V111.6z"/>
           </svg>
         </div>
-        <p data-i18n="footer.desc">תשתית אנליטית ל-Priority - דשבורדים, התראות וסוכני AI, בלי צוות BI פנימי.</p>
+        <p data-i18n="footer.desc">תשתית אנליטית ל-Priority ול-NetSuite - דשבורדים, התראות וסוכני AI, בלי צוות BI פנימי.</p>
       </div>
       <div class="rail-cols">
         <div class="rail-col">
@@ -3446,8 +3449,8 @@ html.still .hero-rain{display:none}
      no placeholder to show. -->
 <div id="pkgTexts" hidden>
   <div data-pk="1">
-    <div data-k="p" data-i18n="pk.1.p">Priority מלא בנתונים, אבל כל שאלה ניהולית עוברת דרך ייצוא, אקסל ומי שיודע לבנות את הדוח. עד שהתמונה מוכנה, ההחלטה כבר התקבלה.</div>
-    <div data-k="s" data-i18n="pk.1.s">מחברים את Priority ואת המערכות החיצוניות למחסן נתונים אחד, ועליו בונים דשבורדים, מסכי זמן אמת ודוחות שמגיעים לבד - לפי תשעה מודולים מוכנים לכל תחום בעסק. מתחברים ביום אחד, עולים לאוויר תוך שבועות. וכשהצרכים חורגים מהמודולים, בונים סביב התהליכים, ההיררכיה והדוחות שלכם.</div>
+    <div data-k="p" data-i18n="pk.1.p">ה-ERP מלא בנתונים, אבל כל שאלה ניהולית עוברת דרך ייצוא, אקסל ומי שיודע לבנות את הדוח. עד שהתמונה מוכנה, ההחלטה כבר התקבלה.</div>
+    <div data-k="s" data-i18n="pk.1.s">מחברים את ה-ERP ואת המערכות החיצוניות למחסן נתונים אחד, ועליו בונים דשבורדים, מסכי זמן אמת ודוחות שמגיעים לבד - לפי תשעה מודולים מוכנים לכל תחום בעסק. מתחברים ביום אחד, עולים לאוויר תוך שבועות. וכשהצרכים חורגים מהמודולים, בונים סביב התהליכים, ההיררכיה והדוחות שלכם.</div>
     <div data-k="g" data-i18n="pk.1.g">מקור אמת אחד לכל הארגון. תמונת מצב עדכנית לכל דרג. דוחות שמגיעים אליכם, במקום שתחפשו אותם. ועדכונים ותחזוקה שוטפים.</div>
     <div data-k="w" data-i18n="pk.1.who">מנכ"לים, תפעול ומכירות - גם בלי צוות BI בבית.</div>
     <div data-k="n" data-i18n="pk.1.n">לא פרויקט מחסן נתונים של חצי שנה.</div>
@@ -3457,10 +3460,10 @@ html.still .hero-rain{display:none}
     <div data-k="p" data-i18n="pk.2.p">מישהו צריך לעבור על המספרים כל יום, ובפועל אף אחד לא עושה את זה. וברגע שתוכנה עושה את זה במקומכם, נפתחת שאלה שנייה שאף אחד לא שואל בקול: איך יודעים שהיא עדיין צודקת?</div>
     <div data-k="s" data-i18n="pk.2.s">פעם ביום, Compass Control בודק את הנתונים מול כללים שנקבעו איתכם. כשכלל מופר, החריגה נכנסת לתור: איזה כלל, מה הסף, מי האחראי, כמה כסף או זמן בסיכון, ומה הפעולה המומלצת. ההתראה מגיעה לאנשים הנכונים ומציגה את התנועות שמאחוריה. כשהכול תקין - שקט.</div>
     <div data-k="x" data-i18n="pk.2.x"><ul class='td-list'><li>אספקה באיחור מול מה שהתחייבתם ללקוח</li><li>לקוח בפיגור בתשלום עם הזמנות פתוחות</li><li>מק"ט מתחת לנקודת ההזמנה, כשזמן האספקה של הספק מתארך</li><li>מחסור ברכיב מול הזמנת לקוח</li><li>פקודת ייצור באיחור מול התאריך שהובטח ללקוח</li><li>קריאת שירות שעומדת לחרוג מה-SLA של לקוח בחוזה</li></ul></div>
-    <div data-k="g" data-i18n="pk.2.g">בעיות שצפות בזמן שעוד אפשר לפעול. התראות שיורשות את ההרשאות - איש מכירות רואה רק את הלקוחות שלו. והמלצות, לא פעולות: המערכת ממליצה, ואדם מאשר כל כתיבה חזרה ל-Priority.</div>
+    <div data-k="g" data-i18n="pk.2.g">בעיות שצפות בזמן שעוד אפשר לפעול. התראות שיורשות את ההרשאות - איש מכירות רואה רק את הלקוחות שלו. והמלצות, לא פעולות: המערכת ממליצה, ואדם מאשר כל כתיבה חזרה ל-ERP.</div>
     <div data-k="f" data-i18n="pk.2.f">הניטור עצמו אינו משתמש ב-AI ורץ על השרת הקיים, ולכן אין לו עלות הפעלה חודשית נוספת.</div>
     <div data-k="w" data-i18n="pk.2.who">תפעול, רכש, גבייה ומנהלי מכירות.</div>
-    <div data-k="n" data-i18n="pk.2.n">לא רובוט שרושם לבד לתוך Priority.</div>
+    <div data-k="n" data-i18n="pk.2.n">לא רובוט שרושם לבד לתוך ה-ERP.</div>
     <div data-k="i" data-i18n="pk.2.i">קטלוג החריגות · התור · הניתוב לאחראים · אוטומציות אנליטיות</div>
     <div data-k="l" data-i18n="pk.2.l"><a class="td-more-link" href="control/">לעמוד המלא של Compass Control ←</a></div>
   </div>
@@ -3499,7 +3502,7 @@ html.still .hero-rain{display:none}
     </div>
     <div class="td-sec"><h3 data-i18n="td.l.p">הבעיה</h3><div class="td-txt" data-slot="p"></div></div>
     <div class="td-sec"><h3 data-i18n="td.l.s">הפתרון</h3><div class="td-txt" data-slot="s"></div></div>
-    <div class="td-sec"><h3 data-i18n="pk.l.x">למשל, ב-<span class="keep-case">Priority</span></h3><div class="td-txt" data-slot="x"></div></div>
+    <div class="td-sec"><h3 data-i18n="pk.l.x">למשל, ב-<span class="keep-case">Priority</span> או ב-<span class="keep-case">NetSuite</span></h3><div class="td-txt" data-slot="x"></div></div>
     <div class="td-sec"><h3 data-i18n="td.l.g">מה מקבלים</h3><div class="td-txt" data-slot="g"></div><div class="td-txt td-fact" data-slot="f"></div></div>
     <div class="td-sec"><h3 data-i18n="td.l.w">למי זה מתאים</h3><div class="td-txt" data-slot="w"></div></div>
     <div class="td-sec"><h3 data-i18n="pk.l.h">איך הוא עובד</h3><div class="td-txt" data-slot="h"></div></div>
@@ -3587,7 +3590,7 @@ html.still .hero-rain{display:none}
 
     /* --- home: the problem --- */
     "home.problem.eyebrow":"Sound Familiar?",
-    "home.problem.h":"Priority ERP is packed with data. What it lacks is a clear picture of your business.",
+    "home.problem.h":"Your ERP is packed with data. What it lacks is a clear picture of your business.",
     "home.problem.1.h":"Right Data, Late Answer",
     "home.problem.1.p":"The management cut takes days. The decision comes first.",
     "home.problem.2.h":"No Single Version of the Truth",
@@ -3598,8 +3601,8 @@ html.still .hero-rain{display:none}
     /* --- home: the solution --- */
     "home.solution.eyebrow":"How We Solve It",
     "home.solution.h":"One Unified Analytics Infrastructure — A Control Center for Your Entire Business",
-    "home.pipe.aria":"Data flows from Priority ERP into an enterprise data warehouse, and from there to dashboards, alerts and AI agents",
-    "home.pipe.1.nm":"Priority ERP",
+    "home.pipe.aria":"Data flows from Priority ERP or NetSuite into an enterprise data warehouse, and from there to dashboards, alerts and AI agents",
+    "home.pipe.1.nm":"Priority / NetSuite",
     "home.pipe.1.sub":"The core system your enterprise already runs on",
     "home.pipe.2.nm":"Enterprise Data Warehouse",
     "home.pipe.2.sub":"All your data sources in one place",
@@ -3631,7 +3634,7 @@ html.still .hero-rain{display:none}
     "home.voice.3.rl":"Vice President",
     "home.voice.3.co":"M. Pines Ltd.",
     "home.voice.3.since":"Partner Since 2017",
-    "home.cta.h":"Want to See What Your Priority ERP Can Unlock?",
+    "home.cta.h":"Want to See What Your ERP Can Unlock?",
     "home.cta.p":"In a discovery call, we'll walk through live dashboards, review your system setup and show you what is realistically possible — before making any commitments.",
 
     /* --- about --- */
@@ -3661,11 +3664,11 @@ html.still .hero-rain{display:none}
     "about.tech.4.v":"Flat Monthly Subscription",
     "about.tech.4.d":"Proactive management, optimization and ongoing maintenance included — fully predictable costs.",
     "about.why.eyebrow":"Why It Matters",
-    "about.why.h":"Deep Priority ERP Specialization — Not Just \"Another BI System\"",
+    "about.why.h":"Deep Specialization in Priority ERP and NetSuite — Not Just \"Another BI System\"",
     "about.why.1.h":"Rapid Implementation",
-    "about.why.1.p":"Because we know Priority ERP's underlying data architecture inside out, onboarding takes weeks — not months of exploratory scoping.",
+    "about.why.1.p":"Because we know the underlying data architecture of Priority ERP and NetSuite inside out, onboarding takes weeks — not months of exploratory scoping.",
     "about.why.2.h":"We Speak Your Business Language",
-    "about.why.2.p":"We speak the exact operational, commercial and financial terms your teams already use daily within Priority ERP.",
+    "about.why.2.p":"We speak the exact operational, commercial and financial terms your teams already use daily within your ERP.",
     "about.why.3.h":"Close Ongoing Support, not a One-Time Project",
     "about.why.3.p":"After go-live, we continue to update, maintain and add modules as your needs evolve.",
     "about.why.4.h":"No Need for an In-House BI Team",
@@ -3676,7 +3679,7 @@ html.still .hero-rain{display:none}
     "about.team.h":"The Experts Managing Your BI",
     "about.work.eyebrow":"How We Work",
     "about.work.h":"Go Live with Your First Module, Then Scale from There",
-    "about.work.1.h":"Connect to Priority ERP",
+    "about.work.1.h":"Connect to Priority ERP or NetSuite",
     "about.work.1.p":"Direct connection to your existing system, without changing your day-to-day business processes.",
     "about.work.2.h":"Select the First Module",
     "about.work.2.p":"Together, we identify the most urgent need and start there.",
@@ -3714,7 +3717,7 @@ html.still .hero-rain{display:none}
     "td.l.w":"Who it's for",
     /* --- the four packages, 2026-09-27 (_copy-packages.md) --- */
     "home.sol.4.h":"Compass Analyst",
-    "home.sol.1.d":"One data warehouse that connects Priority and the systems around it, with dashboards, real-time views and reports that arrive on their own. Connected in a day, live within weeks.",
+    "home.sol.1.d":"One data warehouse that connects your ERP and the systems around it, with dashboards, real-time views and reports that arrive on their own. Connected in a day, live within weeks.",
     "home.sol.2.d":"Once a day it checks your data against rules agreed with you. Every exception enters a queue, with an owner, the money or time at risk, and a recommended action.",
     "home.sol.3.d":"One page every morning, built from what Control caught: which exceptions were caught, how much money is at risk, and three actions, each with an owner.",
     "home.sol.4.d":"Scans the whole model with AI and finds what the rules missed. Every finding is backed by a measure, and a pattern that keeps coming back becomes a rule in Control.",
@@ -3725,7 +3728,7 @@ html.still .hero-rain{display:none}
     "svc.pk.h":"Start with Compass. Add more when the business is ready.",
     "svc.pk.sub":"An official Priority technology partner since 2021.",
     "svc.pk.hash":"Running on Hashavshevet? Compass is available for you too.",
-    "pk.l.x":"For example, in Priority",
+    "pk.l.x":"For example, in Priority or NetSuite",
     "pk.l.h":"How it works",
     "pk.l.n":"What it isn't",
     "pk.l.i":"What's inside",
@@ -3741,17 +3744,17 @@ html.still .hero-rain{display:none}
     "pk.4.nm":"Compass Analyst",
     "pk.4.line":"Uses AI to find what the rules missed.",
     "pk.4.who":"Managers who need answers from their data, and no analyst to go looking for them.",
-    "pk.1.p":"Priority is full of data, but every management question goes through an export, a spreadsheet and whoever knows how to build the report. By the time the picture is ready, the decision has already been made.",
-    "pk.1.s":"We connect Priority and your external systems to one data warehouse, and build on it dashboards, real-time views and reports that arrive on their own — following nine ready modules for every area of the business. Connected in a day, live within weeks. And when your needs go beyond the modules, we build around your processes, hierarchy and reports.",
+    "pk.1.p":"Your ERP is full of data, but every management question goes through an export, a spreadsheet and whoever knows how to build the report. By the time the picture is ready, the decision has already been made.",
+    "pk.1.s":"We connect your ERP and your external systems to one data warehouse, and build on it dashboards, real-time views and reports that arrive on their own — following nine ready modules for every area of the business. Connected in a day, live within weeks. And when your needs go beyond the modules, we build around your processes, hierarchy and reports.",
     "pk.1.g":"One source of truth for the whole organisation. An up-to-date picture for every level. Reports that come to you, instead of you looking for them. And ongoing updates and maintenance.",
     "pk.1.n":"Not a six-month data warehouse project.",
     "pk.1.i":"Enterprise Data Warehouse · Dashboards · Real-Time Views · Automated Push Reports · Excel export · the nine modules",
     "pk.2.p":"Someone should go over the numbers every day, and in practice nobody does. And the moment software does it for you, a second question opens that nobody asks out loud: how do you know it is still right?",
     "pk.2.s":"Once a day, Compass Control checks your data against rules agreed with you. When a rule breaks, the exception enters a queue: which rule, what threshold, who owns it, how much money or time is at risk, and the recommended action. The alert reaches the right people and shows the transactions behind it. When everything is in order — silence.",
     "pk.2.x":"<ul class='td-list'><li>A late shipment against what you promised the customer</li><li>An overdue customer with open orders</li><li>An item below its reorder point while the supplier's lead time slips</li><li>A component shortage against a committed customer order</li><li>A work order running late against the customer's date</li><li>A service ticket about to breach a contracted customer's SLA</li></ul>",
-    "pk.2.g":"Problems that surface in time to act. Alerts that inherit permissions — a sales rep sees only their own customers. And recommendations, not actions: the system recommends, and a person approves every write-back into Priority.",
+    "pk.2.g":"Problems that surface in time to act. Alerts that inherit permissions — a sales rep sees only their own customers. And recommendations, not actions: the system recommends, and a person approves every write-back into your ERP.",
     "pk.2.f":"Monitoring itself uses no AI and runs on your existing server, so it carries no additional monthly running cost.",
-    "pk.2.n":"Not a robot posting into Priority on its own.",
+    "pk.2.n":"Not a robot posting into your ERP on its own.",
     "pk.addon":"Add-on to any module",
     "pk.l.t":"How the answers are tested",
     "pk.5.nm":"Interactive AI Agent",
@@ -3804,7 +3807,7 @@ html.still .hero-rain{display:none}
 
     /* --- contact --- */
     "contact.hero.pill":"<span class='dot'></span>Contact Us",
-    "contact.hero.h1":"Let’s Talk About <em>Your Priority ERP Data</em>.",
+    "contact.hero.h1":"Let’s Talk About <em>Your Data</em>.",
     "contact.hero.lead":"Fill out the form — or send us a WhatsApp message, whichever is more convenient.",
     "contact.form.eyebrow":"Get in Touch",
     "contact.form.h":"We'll Get Back to You Within One Business Day",
@@ -3857,7 +3860,7 @@ html.still .hero-rain{display:none}
     "shot.alt":"Screenshot: {name} dashboard, demo data",
 
     /* --- footer --- */
-    "footer.desc":"Analytics infrastructure for Priority ERP — dashboards, alerts and AI agents, with no in-house BI team required.",
+    "footer.desc":"Analytics infrastructure for Priority ERP and NetSuite — dashboards, alerts and AI agents, with no in-house BI team required.",
     "footer.analyst":"Compass Control",
     "footer.nav.t":"Navigation",
     "footer.contact.t":"Contact",
@@ -3866,12 +3869,12 @@ html.still .hero-rain{display:none}
     "footer.rights":"© 2026 Compass BI. All rights reserved.",
 
     /* --- head tags --- */
-    "meta.title":"Compass BI — Analytics Infrastructure for Priority ERP",
-    "meta.desc":"Data warehouse, executive dashboards, alerts and AI agents for businesses running on Priority ERP. A complete BI infrastructure as a monthly service — with no in-house BI team and no infrastructure investment.",
+    "meta.title":"Compass BI — Analytics Infrastructure for Priority ERP and NetSuite",
+    "meta.desc":"Data warehouse, dashboards, alerts and AI agents for businesses running on Priority ERP or NetSuite. A complete BI infrastructure as a monthly service — with no in-house BI team and no infrastructure investment.",
     "meta.og.title":"BI and AI. It’s time your data started talking.",
-    "meta.og.desc":"Data warehouse, dashboards, alerts and AI agents — for businesses running on Priority ERP. Connect in a day, go live in weeks.",
+    "meta.og.desc":"Data warehouse, dashboards, alerts and AI agents — for businesses running on Priority ERP or NetSuite. Connect in a day, go live in weeks.",
     "meta.og.locale":"en_US",
-    "meta.og.alt":"Compass BI — Analytics Infrastructure for Priority ERP"
+    "meta.og.alt":"Compass BI — Analytics Infrastructure for Priority ERP and NetSuite"
   };
 
   /* ==================== i18n ====================
@@ -3954,6 +3957,41 @@ html.still .hero-rain{display:none}
     });
   }
 
+  /* A Hebrew word hyphenated to a Latin one - "ה-ERP", "וב-NetSuite",
+     "ב-AI" - reads as one word, but Chrome will break the line after the
+     hyphen and leave "וב-" hanging at the end of a line (seen 2026-09-28 in
+     the About heading, and some sixty such pairs sit on the site). U+2011
+     would hold them together, but none of the site's fonts carries it, so
+     it would be drawn from a fallback face. Instead every pair in a
+     translated string is wrapped in a nowrap span - on the DOM's text nodes,
+     never on the string, so no attribute can be touched. Runs after every
+     applyStrings, which throws the spans away with the old innerHTML. The
+     /control/ page carries a copy of this for its own engine. */
+  var PREFIXED = /[א-ת]+-[A-Za-z][A-Za-z.]*/g;
+  function keepPrefixes(){
+    if(lang === "en") return;
+    i18nNodes.t.forEach(function(el){
+      var walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), hits = [];
+      for(var n = walk.nextNode(); n; n = walk.nextNode()){
+        PREFIXED.lastIndex = 0;
+        if(PREFIXED.test(n.data) && !n.parentNode.classList.contains("nw")) hits.push(n);
+      }
+      hits.forEach(function(n){
+        var frag = document.createDocumentFragment(), s = n.data, last = 0, m;
+        PREFIXED.lastIndex = 0;
+        while((m = PREFIXED.exec(s))){
+          if(m.index > last) frag.appendChild(document.createTextNode(s.slice(last, m.index)));
+          var sp = document.createElement("span");
+          sp.className = "nw"; sp.textContent = m[0];
+          frag.appendChild(sp);
+          last = m.index + m[0].length;
+        }
+        if(last < s.length) frag.appendChild(document.createTextNode(s.slice(last)));
+        n.parentNode.replaceChild(frag, n);
+      });
+    });
+  }
+
   function markLangButtons(){
     [].slice.call(document.querySelectorAll("[data-lang]")).forEach(function(b){
       b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
@@ -3981,6 +4019,7 @@ html.still .hero-rain{display:none}
     root.setAttribute("lang", lang);
     root.setAttribute("dir", lang === "en" ? "ltr" : "rtl");
     applyStrings();
+    keepPrefixes();
     root.removeAttribute("data-lang-pending");   // set by the head script, see _source.head.html
     markLangButtons();
     try{ localStorage.setItem(LANG_STORE, lang); }catch(e){}
