@@ -2192,7 +2192,14 @@ html.still .hero-rain{display:none}
           <button data-go="home" data-i18n="nav.home">ראשי</button>
           <button data-go="about" data-i18n="nav.about">אודות</button>
           <button data-go="services" data-i18n="nav.services">שירותים</button>
-          <a href="control/" data-i18n="footer.analyst">Compass Control</a>
+          <!-- Compass Control is out of the navigation for now (Elishai, 28/09).
+               The page itself stays, and so does the link to it from the
+               Control package window. To bring it back: this line
+                 <a href="control/" data-i18n="footer.analyst">Compass Control</a>
+               and "footer.analyst":"Compass Control" in the EN table of both
+               _source.body.html and _source.control.html. The script at the
+               foot of _source.control.html that turns it into a self-link is
+               still there, and does nothing while the link is gone. -->
           <button data-go="contact" data-i18n="nav.contact">צור קשר</button>
         </div>
         <div class="rail-col">
@@ -2281,7 +2288,6 @@ html.still .hero-rain{display:none}
     "nav.contact":"Contact",
     "footer.desc":"Analytics infrastructure for Priority ERP and NetSuite — dashboards, alerts and AI agents, with no in-house BI team required.",
     "footer.nav.t":"Navigation",
-    "footer.analyst":"Compass Control",
     "footer.contact.t":"Get in touch",
     "footer.wa.aria":"WhatsApp 054-577-8838",
     "footer.wa.num":"054-577-8838",
