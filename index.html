@@ -2165,6 +2165,10 @@ section.band-strip{padding-block-end:0}
 .field-err:empty{display:none}
 .field textarea{resize:vertical;min-height:118px;line-height:1.7}
 .note{font-size:.8rem;color:var(--ink-faint);margin-top:12px}
+/* the privacy policy link at the end of the note (29/09/2026): a link in a
+   sentence has to look like one, and the site-wide a{} rule takes that away */
+.note a{color:var(--sky-ink);text-decoration:underline;text-underline-offset:.18em}
+.note a:hover{color:var(--ink)}
 /* the three ways to reach us — a row under the form, not a sidebar */
 .reach{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .reach .card{padding:22px 24px}
@@ -2282,7 +2286,14 @@ a.reach-card:hover .wa-glyph{fill:var(--wa)}
 .rail-wa{display:inline-flex;align-items:center;gap:8px}
 .rail-wa .wa-glyph{width:15px;height:15px}
 .rail-wa span{line-height:1}
-.rail-end{padding-top:24px;font-size:.8rem;color:var(--ink-faint);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.rail-end{padding-top:24px;font-size:.8rem;color:var(--ink-faint);display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+/* The two legal links (29/09/2026). Padded like the footer columns above,
+   for the same reason: at .8rem a bare link is under the 24px tap floor.
+   The padding makes them taller than the two plain lines beside them, so
+   .rail-end lines its items up on the baseline rather than the top. */
+.rail-legal{display:inline-flex;gap:6px 20px;flex-wrap:wrap}
+.rail-legal a{color:var(--ink-dim);padding:4px 0;transition:color var(--dur-base)}
+.rail-legal a:hover{color:var(--brass-ink)}
 
 .helm-up{
   position:fixed;bottom:26px;inset-inline-end:26px;z-index:70;
@@ -3300,7 +3311,7 @@ html.still .hero-rain{display:none}
             </div>
             <div class="hp" aria-hidden="true"><label for="f-web">Website</label><input type="text" id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
             <button class="btn btn-fill btn-block" type="submit" data-i18n="form.submit">שליחת הפנייה</button>
-            <p class="note" data-i18n="form.note">שדות המסומנים ב-<span class="req">*</span> נדרשים. הפרטים משמשים ליצירת קשר בלבד.</p>
+            <p class="note" data-i18n="form.note">שדות המסומנים ב-<span class="req">*</span> נדרשים. הפרטים משמשים ליצירת קשר בלבד. <a href="privacy/?lang=he" target="_blank" rel="noopener">מדיניות הפרטיות</a></p>
           </form>
 
           <div class="modal-done" id="pageDone" hidden style="text-align:start;margin-top:8px">
@@ -3409,6 +3420,16 @@ html.still .hero-rain{display:none}
     </div>
     <div class="rail-end">
       <span data-i18n="footer.rights">© 2026 Compass BI. כל הזכויות שמורות.</span>
+      <!-- The legal pages (29/09/2026). Written for the home page: relative
+           to the site root, and in Hebrew. Everywhere else they are moved -
+           _build.en.pl rewrites them for /en/, _build.sh puts "../" in front
+           on the pages one folder down, and the script on those pages keeps
+           ?lang= in step with the page. data-legal is how all three find
+           them, so it stays even though nothing styles it. -->
+      <span class="rail-legal">
+        <a href="privacy/?lang=he" data-legal="privacy" data-i18n="footer.privacy">מדיניות פרטיות</a>
+        <a href="accessibility/?lang=he" data-legal="accessibility" data-i18n="footer.a11y">הצהרת נגישות</a>
+      </span>
       <span>Your BI Partner</span>
     </div>
   </div>
@@ -3452,7 +3473,7 @@ html.still .hero-rain{display:none}
 
       <div class="hp" aria-hidden="true"><label for="t-web">Website</label><input type="text" id="t-web" name="website" tabindex="-1" autocomplete="off"></div>
       <button class="btn btn-fill btn-block" type="submit" data-i18n="form.submit">שליחת הפנייה</button>
-      <p class="note" data-i18n="form.note">שדות המסומנים ב-<span class="req">*</span> נדרשים. הפרטים משמשים ליצירת קשר בלבד.</p>
+      <p class="note" data-i18n="form.note">שדות המסומנים ב-<span class="req">*</span> נדרשים. הפרטים משמשים ליצירת קשר בלבד. <a href="privacy/?lang=he" target="_blank" rel="noopener">מדיניות הפרטיות</a></p>
     </form>
 
     <div class="modal-done" id="talkDone" hidden>
@@ -3909,7 +3930,7 @@ html.still .hero-rain{display:none}
     "form.message":"How can we help?",
     "form.message.ph":"Tell us a bit about your data and analytics needs...",
     "form.submit":"Send Message",
-    "form.note":"Fields marked with <span class='req'>*</span> are required. We respect your privacy. Used only to reply.",
+    "form.note":"Fields marked with <span class='req'>*</span> are required. We respect your privacy. Used only to reply. <a href='privacy/?lang=en' target='_blank' rel='noopener'>Privacy policy</a>",
     "form.done.h":"We've got your enquiry",
     "contact.done.p":"We'll come back to you within one business day. If it's urgent, here are the fast routes:",
     "modal.done.p":"We'll come back to you within one business day.<br>If it's urgent, here are the fast routes:",
@@ -3946,6 +3967,8 @@ html.still .hero-rain{display:none}
     "footer.wa.aria":"WhatsApp +972-54-577-8838",
     "footer.wa.num":"+972-54-577-8838",
     "footer.rights":"© 2026 Compass BI. All rights reserved.",
+    "footer.privacy":"Privacy Policy",
+    "footer.a11y":"Accessibility Statement",
 
     /* --- head tags --- */
     "meta.title":"Compass BI — Analytics Infrastructure for Priority ERP and NetSuite",
