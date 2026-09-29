@@ -1710,15 +1710,47 @@ button.layer{
    language, would be soft on a retina screen, and - being a background
    image in every practical form - would vanish under forced colours, which
    is a trap this sheet has already been caught by twice. */
-/* Deliberately not the 16:9 of the screenshot it stands in for: holding a
-   full dashboard's worth of empty grey open says "broken", where a compact
-   panel says "not yet". */
+/* 16:9 since 2026-09-29 (Elishai): the placeholder now holds the same
+   proportion as the screenshots, so the viewer does not change height when
+   Next moves between a module that has one and a module that does not. The
+   earlier rule kept it compact because a full-size empty grey reads as
+   "broken"; the content is kept small and centred for that reason. Only
+   inside .shot-frame - the agent's placeholder is a portrait phone shot. */
 .shot-holder{
   display:grid;place-items:center;gap:12px;align-content:center;
   min-height:230px;padding:40px 24px;text-align:center;
 }
 .shot-holder svg{width:34px;height:34px;color:var(--ink-faint)}
 .shot-holder p{margin:0;color:var(--ink-dim);font-size:.94rem;max-width:34ch;line-height:1.6}
+.shot-frame .shot-holder{aspect-ratio:16/9;min-height:0;padding:16px 24px}
+/* Dots and counter over the image, only for a module with more than one
+   screenshot (2026-09-29). Previous/Next still move between modules. A dark
+   pill so the dots read on any dashboard, white on it is well above 4.5:1.
+   Each dot is a 24px target (WCAG 2.5.8) drawn as a 10px circle. */
+.shot-dots{
+  position:absolute;inset-inline:0;bottom:12px;margin-inline:auto;width:max-content;
+  display:flex;align-items:center;gap:2px;padding:3px 12px;border-radius:999px;
+  background:rgba(20,19,28,.82);color:#fff;
+}
+.shot-dot{
+  position:relative;width:24px;height:24px;padding:0;border:0;background:none;cursor:pointer;
+}
+.shot-dot::before{
+  content:"";position:absolute;inset:7px;border-radius:50%;border:1.5px solid #fff;
+}
+.shot-dot[aria-current="true"]::before{background:#fff}
+.shot-dot:focus-visible{outline:2px solid #fff;outline-offset:-1px;border-radius:50%}
+.shot-n{
+  margin-inline-start:6px;font-family:var(--ui);font-size:.78rem;font-weight:600;
+  letter-spacing:.04em;font-variant-numeric:tabular-nums;
+}
+/* Backgrounds are dropped under forced colours, and the active dot is a
+   background - body in front so this outranks the rule above. */
+@media (forced-colors:active){
+  body .shot-dots{background:Canvas;color:CanvasText;border:1px solid CanvasText}
+  body .shot-dot::before{border-color:CanvasText}
+  body .shot-dot[aria-current="true"]::before{background:CanvasText;forced-color-adjust:none}
+}
 .shot-cap{margin:14px 0 0;color:var(--ink-dim);font-size:.95rem;line-height:1.65}
 /* Says the figures are demo data. It is small, but it is not fine print to
    be buried: the site's own position on the about page is that a dashboard
@@ -3529,8 +3561,8 @@ html.still .hero-rain{display:none}
          text - are seeded in HE and printed by the script. -->
     <p class="shot-demo" data-i18n="shot.demo">הנתונים בתצוגות הם נתוני הדגמה</p>
     <div class="shot-nav">
-      <button type="button" id="shotPrev" data-i18n="shot.prev">הקודם</button>
-      <button type="button" id="shotNext" data-i18n="shot.next">הבא</button>
+      <button type="button" id="shotPrev" data-i18n="shot.prev">מודול קודם</button>
+      <button type="button" id="shotNext" data-i18n="shot.next">מודול הבא</button>
     </div>
   </div>
 </dialog>
@@ -3549,8 +3581,10 @@ html.still .hero-rain{display:none}
      The fact line is a sentence with no heading of its own - decision 3 of
      22/09: a structure of cost, stated as a fact, never as a title.
 
-     No screenshots: the approved windows have none, so there is no frame and
-     no placeholder to show. -->
+     Screenshots (2026-09-29, placement A): a package that has one shows it
+     after "what you get" (#tierModal .td-shot); Control and Brief show a
+     placeholder until it exists; Compass and Analyst have no frame at all. The
+     text itself is unchanged. -->
 <div id="pkgTexts" hidden>
   <div data-pk="1">
     <div data-k="p" data-i18n="pk.1.p">ה-ERP מלא בנתונים, אבל כל שאלה ניהולית עוברת דרך ייצוא, אקסל ומי שיודע לבנות את הדוח. עד שהתמונה מוכנה, ההחלטה כבר התקבלה.</div>
@@ -3608,6 +3642,10 @@ html.still .hero-rain{display:none}
     <div class="td-sec"><h3 data-i18n="td.l.s">הפתרון</h3><div class="td-txt" data-slot="s"></div></div>
     <div class="td-sec"><h3 data-i18n="pk.l.x">למשל, ב-<span class="keep-case">Priority</span> או ב-<span class="keep-case">NetSuite</span></h3><div class="td-txt" data-slot="x"></div></div>
     <div class="td-sec"><h3 data-i18n="td.l.g">מה מקבלים</h3><div class="td-txt" data-slot="g"></div><div class="td-txt td-fact" data-slot="f"></div></div>
+    <div class="td-sec td-shot" hidden>
+      <div class="shot-frame"></div>
+      <p class="shot-demo" data-i18n="shot.demo">הנתונים בתצוגות הם נתוני הדגמה</p>
+    </div>
     <div class="td-sec"><h3 data-i18n="td.l.w">למי זה מתאים</h3><div class="td-txt" data-slot="w"></div></div>
     <div class="td-sec"><h3 data-i18n="pk.l.h">איך הוא עובד</h3><div class="td-txt" data-slot="h"></div></div>
     <div class="td-sec"><h3 data-i18n="pk.l.t">איך התשובות נבדקות</h3><div class="td-txt" data-slot="t"></div></div>
@@ -3615,8 +3653,8 @@ html.still .hero-rain{display:none}
     <div class="td-sec td-inside"><h3 data-i18n="pk.l.i">מה יש בפנים</h3><div class="td-txt" data-slot="i"></div></div>
     <p class="td-more" data-slot="l"></p>
     <div class="shot-nav">
-      <button type="button" id="tierPrev" data-i18n="shot.prev">הקודם</button>
-      <button type="button" id="tierNext" data-i18n="shot.next">הבא</button>
+      <button type="button" id="tierPrev" data-i18n="pk.prev">חבילה קודמת</button>
+      <button type="button" id="tierNext" data-i18n="pk.next">חבילה הבאה</button>
     </div>
   </div>
 </dialog>
@@ -3655,6 +3693,26 @@ html.still .hero-rain{display:none}
      never a broken frame, and never a Hebrew dashboard shown to an English
      reader. */
   var SHOTS = {he:{},en:{}};
+  // Screenshots 2 and up of a module: SHOTS_MORE.he[3] = [[w,h,w2], ...].
+  var SHOTS_MORE = {he:{},en:{}};
+  // Package windows: same manifest, filled by _gen.shots.js from PICS/PACKAGES.
+  var PKSHOTS = {he:{},en:{}};
+  // Packages that draw a placeholder until their screenshot exists. Compass
+  // has the nine modules and Analyst is not sold yet - no frame for them.
+  var PKFRAME = {2:1,3:1};
+/* Generated by _gen.shots.js - do not edit by hand. */
+  SHOTS.he[2] = [1100,619,1952];
+  SHOTS.he[3] = [1100,619,1520];
+  SHOTS.he[4] = [1100,619,1936];
+  SHOTS.he[6] = [1100,619,1576];
+  SHOTS.he[8] = [1100,619,1952];
+  SHOTS.en[2] = [1100,619,1506];
+  SHOTS.en[3] = [1100,619,1520];
+  SHOTS.en[4] = [1100,619,1492];
+  SHOTS.en[6] = [1100,619,1576];
+  SHOTS.en[8] = [1100,619,1952];
+  SHOTS_MORE.he[6] = [[1100,619,1576]];
+  SHOTS_MORE.en[6] = [[1100,619,1576],[1100,619,1583]];
 
   /* ---------- the English copy deck ----------
      Taken verbatim from site-copy-en.html (US & Global Enterprise Market,
@@ -3954,11 +4012,16 @@ html.still .hero-rain{display:none}
     /* --- the screenshot viewer --- */
     "shot.close":"Close",
     "shot.count":"Module {n} of {t}",
-    "shot.soon":"This module's preview is being prepared",
+    "shot.soon":"The screenshot is on its way",
     "shot.demo":"Figures shown are demo data",
-    "shot.prev":"Previous",
-    "shot.next":"Next",
+    "shot.prev":"Previous module",
+    "shot.next":"Next module",
+    "pk.prev":"Previous package",
+    "pk.next":"Next package",
+    "shot.dot":"Screenshot {n} of {t}",
     "shot.alt":"Screenshot: {name} dashboard, demo data",
+    "pk.shot.soon":"The screenshot is on its way",
+    "pk.shot.alt":"Screenshot: {name}, demo data",
 
     /* --- footer --- */
     "footer.desc":"Analytics infrastructure for Priority ERP and NetSuite — dashboards, alerts and AI agents, with no in-house BI team required.",
@@ -4018,8 +4081,11 @@ html.still .hero-rain{display:none}
   HE["form.done.h.mailto"] = "הפרטים מוכנים לשליחה";
   HE["form.done.p.mailto"] = "נפתח אצלכם חלון מייל עם ההודעה - לחצו \"שלח\" והפנייה תגיע אלינו.";
   HE["shot.count"] = "מודול {n} מתוך {t}";
-  HE["shot.soon"]  = "התצוגה של המודול הזה בהכנה";
+  HE["shot.soon"]  = "צילום המסך בדרך";
   HE["shot.alt"]   = "צילום מסך: דשבורד {name}, נתוני הדגמה";
+  HE["pk.shot.soon"] = "צילום המסך בדרך";
+  HE["pk.shot.alt"]  = "צילום מסך: {name}, נתוני הדגמה";
+  HE["shot.dot"]     = "צילום {n} מתוך {t}";
   HE["mail.subject"]      = "פנייה מהאתר";
 
   // head tags. [selector, attribute or null for textContent, key]
@@ -4633,18 +4699,57 @@ html.still .hero-rain{display:none}
 
       var dims = SHOTS[lang] && SHOTS[lang][n];
       if(dims){
-        var base = "assets/mod-" + (n < 10 ? "0" : "") + n + (lang === "en" ? ".en" : "");
+        // A module can carry more than one screenshot (2026-09-29): the first
+        // is SHOTS, the rest SHOTS_MORE, in order. Dots over the image - and a
+        // counter - appear only then; Previous/Next still move between
+        // modules, so a single-screenshot module looks exactly as it did.
+        var pics = [dims].concat((SHOTS_MORE[lang] && SHOTS_MORE[lang][n]) || []);
+        var stem = "assets/mod-" + (n < 10 ? "0" : "") + n;
+        var tail = lang === "en" ? ".en" : "";
         var img = document.createElement("img");
-        // width/height are the 1x pixel size and are what holds the frame's
-        // proportions open while the file is still in flight.
-        img.width = dims[0]; img.height = dims[1];
         img.alt = S("shot.alt").replace("{name}", name);
         img.decoding = "async";
-        img.src = base + ".webp";
-        img.srcset = base + ".webp " + dims[0] + "w, " + base + "@2x.webp " + dims[2] + "w";
         img.sizes = "(max-width:520px) calc(100vw - 62px)," +
                     "(max-width:1090px) calc(100vw - 82px),1008px";
+        var dots = null;
+        var showPic = function(j, announcePic){
+          var d = pics[j];
+          var base = stem + (j ? "-" + (j + 1) : "") + tail;
+          // width/height are the 1x pixel size and are what holds the frame's
+          // proportions open while the file is still in flight.
+          img.width = d[0]; img.height = d[1];
+          img.srcset = base + ".webp " + d[0] + "w, " + base + "@2x.webp " + d[2] + "w";
+          img.src = base + ".webp";
+          if(dots){
+            [].forEach.call(dots.querySelectorAll(".shot-dot"), function(b, k){
+              if(k === j) b.setAttribute("aria-current", "true");
+              else b.removeAttribute("aria-current");
+            });
+            dots.querySelector(".shot-n").textContent = (j + 1) + " / " + pics.length;
+          }
+          if(announcePic) say(S("shot.dot").replace("{n}", j + 1).replace("{t}", pics.length));
+        };
+        if(pics.length > 1){
+          dots = document.createElement("div");
+          dots.className = "shot-dots";
+          pics.forEach(function(_, j){
+            var b = document.createElement("button");
+            b.type = "button";
+            b.className = "shot-dot";
+            b.setAttribute("aria-label",
+              S("shot.dot").replace("{n}", j + 1).replace("{t}", pics.length));
+            b.addEventListener("click", function(){ showPic(j, true); });
+            dots.appendChild(b);
+          });
+          var cnt = document.createElement("span");
+          cnt.className = "shot-n";
+          cnt.setAttribute("dir", "ltr");   // "2 / 3" reads the same in both languages
+          cnt.setAttribute("aria-hidden", "true");
+          dots.appendChild(cnt);
+        }
+        showPic(0, false);
         shotFrame.replaceChildren(img);
+        if(dots) shotFrame.appendChild(dots);
       }else{
         // No screenshot in this language yet. Drawn, not downloaded - see the
         // .shot-holder note in the stylesheet - and never the other
@@ -4751,6 +4856,36 @@ html.still .hero-rain{display:none}
         if(k === "f" || k === "l") slot.hidden = !html;
         else slot.closest(".td-sec").hidden = !html;
       });
+
+      // The screenshot, after "what you get". Same rule as the module viewer:
+      // this language's file or a drawn placeholder, never the other
+      // language's. A package with no frame (Compass, Analyst, the agent)
+      // hides the whole block, note included.
+      var pkBox = tierBox.querySelector(".td-shot");
+      var pkFrame = pkBox.querySelector(".shot-frame");
+      var pkNote = pkBox.querySelector(".shot-demo");
+      var pkNum = +n;
+      var pkDims = PKSHOTS[lang] && PKSHOTS[lang][pkNum];
+      pkBox.hidden = !(pkDims || PKFRAME[pkNum]);
+      if(pkDims){
+        var pkBase = "assets/pk-0" + pkNum + (lang === "en" ? ".en" : "");
+        var pkImg = document.createElement("img");
+        pkImg.width = pkDims[0]; pkImg.height = pkDims[1];
+        pkImg.alt = S("pk.shot.alt").replace("{name}", name);
+        pkImg.decoding = "async";
+        pkImg.loading = "lazy";
+        pkImg.src = pkBase + ".webp";
+        pkImg.srcset = pkBase + ".webp " + pkDims[0] + "w, " + pkBase + "@2x.webp " + pkDims[2] + "w";
+        pkImg.sizes = "(max-width:520px) calc(100vw - 62px), 696px";
+        pkFrame.replaceChildren(pkImg);
+      }else if(!pkBox.hidden){
+        var pkHold = document.createElement("div");
+        pkHold.className = "shot-holder";
+        pkHold.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg><p></p>';
+        pkHold.querySelector("p").textContent = S("pk.shot.soon");
+        pkFrame.replaceChildren(pkHold);
+      }
+      pkNote.hidden = !pkDims;   // no figures on screen, no note
 
       tierBox.querySelector(".modal-card").scrollTop = 0;
       if(announce) say(name);

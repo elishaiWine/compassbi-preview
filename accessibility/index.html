@@ -1245,15 +1245,47 @@ button.layer{
    language, would be soft on a retina screen, and - being a background
    image in every practical form - would vanish under forced colours, which
    is a trap this sheet has already been caught by twice. */
-/* Deliberately not the 16:9 of the screenshot it stands in for: holding a
-   full dashboard's worth of empty grey open says "broken", where a compact
-   panel says "not yet". */
+/* 16:9 since 2026-09-29 (Elishai): the placeholder now holds the same
+   proportion as the screenshots, so the viewer does not change height when
+   Next moves between a module that has one and a module that does not. The
+   earlier rule kept it compact because a full-size empty grey reads as
+   "broken"; the content is kept small and centred for that reason. Only
+   inside .shot-frame - the agent's placeholder is a portrait phone shot. */
 .shot-holder{
   display:grid;place-items:center;gap:12px;align-content:center;
   min-height:230px;padding:40px 24px;text-align:center;
 }
 .shot-holder svg{width:34px;height:34px;color:var(--ink-faint)}
 .shot-holder p{margin:0;color:var(--ink-dim);font-size:.94rem;max-width:34ch;line-height:1.6}
+.shot-frame .shot-holder{aspect-ratio:16/9;min-height:0;padding:16px 24px}
+/* Dots and counter over the image, only for a module with more than one
+   screenshot (2026-09-29). Previous/Next still move between modules. A dark
+   pill so the dots read on any dashboard, white on it is well above 4.5:1.
+   Each dot is a 24px target (WCAG 2.5.8) drawn as a 10px circle. */
+.shot-dots{
+  position:absolute;inset-inline:0;bottom:12px;margin-inline:auto;width:max-content;
+  display:flex;align-items:center;gap:2px;padding:3px 12px;border-radius:999px;
+  background:rgba(20,19,28,.82);color:#fff;
+}
+.shot-dot{
+  position:relative;width:24px;height:24px;padding:0;border:0;background:none;cursor:pointer;
+}
+.shot-dot::before{
+  content:"";position:absolute;inset:7px;border-radius:50%;border:1.5px solid #fff;
+}
+.shot-dot[aria-current="true"]::before{background:#fff}
+.shot-dot:focus-visible{outline:2px solid #fff;outline-offset:-1px;border-radius:50%}
+.shot-n{
+  margin-inline-start:6px;font-family:var(--ui);font-size:.78rem;font-weight:600;
+  letter-spacing:.04em;font-variant-numeric:tabular-nums;
+}
+/* Backgrounds are dropped under forced colours, and the active dot is a
+   background - body in front so this outranks the rule above. */
+@media (forced-colors:active){
+  body .shot-dots{background:Canvas;color:CanvasText;border:1px solid CanvasText}
+  body .shot-dot::before{border-color:CanvasText}
+  body .shot-dot[aria-current="true"]::before{background:CanvasText;forced-color-adjust:none}
+}
 .shot-cap{margin:14px 0 0;color:var(--ink-dim);font-size:.95rem;line-height:1.65}
 /* Says the figures are demo data. It is small, but it is not fine print to
    be buried: the site's own position on the about page is that a dashboard
