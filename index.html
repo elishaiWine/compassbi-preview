@@ -1704,6 +1704,10 @@ button.layer{
   color:var(--ink-faint);margin:0 0 6px;
 }
 .shot-modal .modal-head{margin-bottom:16px}
+/* The module text (2026-09-30) sits above the screenshot in a dialog sized for
+   the screenshot, so its line is held to a readable measure. Placement is a
+   stage-B decision; this only keeps the lines short until then. */
+.shot-modal .mod-sec{max-width:72ch}
 /* The frame holds the aspect ratio the manifest reported before the file
    arrives, so opening a module does not shove the dialog taller a moment
    later. Both children fill it. */
@@ -2785,7 +2789,7 @@ html.still .hero-rain{display:none}
         <div class="g3 reveal">
           <div class="symptom">
             <h3 class="h-s" data-i18n="home.problem.1.h">הנתון נכון, התשובה מאוחרת</h3>
-            <p data-i18n="home.problem.1.p">החיתוך הניהולי לוקח ימים. עד שהתמונה מוכנה, ההחלטה כבר נפלה בלעדיה.</p>
+            <p data-i18n="home.problem.1.p">לקבל את הנתונים בפריסה שהמנהל צריך לוקח ימים. עד שהתמונה מוכנה, ההחלטה כבר נפלה בלעדיה.</p>
           </div>
           <div class="symptom">
             <h3 class="h-s" data-i18n="home.problem.2.h">אין גרסה אחת של האמת</h3>
@@ -2864,13 +2868,13 @@ html.still .hero-rain{display:none}
           <button class="card card-link" type="button" data-go="services" data-open-pk="1" aria-haspopup="dialog">
             <h3 class="h-s" data-i18n="home.sol.1.h">Compass</h3>
             <p class="card-hook" data-i18n="home.sol.1.p">מראה את העסק - כל התחומים, בתמונה אחת.</p>
-            <p data-i18n="home.sol.1.d">מחסן נתונים אחד שמחבר את ה-ERP ואת המערכות שסביבו, ועליו דשבורדים, מסכי זמן אמת ודוחות שמגיעים לבד. מתחברים ביום אחד, עולים לאוויר תוך שבועות.</p>
+            <p data-i18n="home.sol.1.d">מחסן נתונים אחד שמחבר את ה-ERP ואת המערכות שסביבו, ועליו דשבורדים, מסכי זמן אמת ודוחות בלחיצת כפתור. מתחברים ביום אחד, עולים לאוויר תוך שבועות.</p>
             <svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg>
           </button>
           <button class="card card-link" type="button" data-go="services" data-open-pk="2" aria-haspopup="dialog">
             <h3 class="h-s" data-i18n="home.sol.2.h">Compass Control</h3>
             <p class="card-hook" data-i18n="home.sol.2.p">מתריע על חריגות, ומעביר אותן לאחראי.</p>
-            <p data-i18n="home.sol.2.d">פעם ביום בודק את הנתונים מול כללים שנקבעו איתכם. כל חריגה נכנסת לתור, עם אחראי, כסף או זמן בסיכון, ופעולה מומלצת.</p>
+            <p data-i18n="home.sol.2.d">בודק חריגים בתזמון הנדרש, מכל חצי שעה ועד פעם בחודש. כל חריגה נכנסת לתור, עם אחראי, כסף או זמן בסיכון, ופעולה מומלצת.</p>
             <svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoRead"/></svg>
           </button>
           <button class="card card-link" type="button" data-go="services" data-open-pk="3" aria-haspopup="dialog">
@@ -3305,7 +3309,7 @@ html.still .hero-rain{display:none}
           <button class="layer" type="button" data-mod="4" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico04"/></svg><div><div class="hd"><strong data-i18n="svc.mod.4.h">בקרת תקציב</strong><span class="tag fin" data-i18n="svc.tag.fin">פיננסים</span></div><span data-i18n="svc.mod.4.p">איפה אתם חורגים מהתקציב ואיפה נשאר לכם - בזמן שעוד אפשר לתקן.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
           <button class="layer" type="button" data-mod="5" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico05"/></svg><div><div class="hd"><strong data-i18n="svc.mod.5.h">רווח והפסד</strong><span class="tag fin" data-i18n="svc.tag.fin">פיננסים</span></div><span data-i18n="svc.mod.5.p">רווחיות לכל מרכז רווח, לכל חברה ולקבוצה כולה - בתמונה אחת, בלי לאחד דוחות באקסל.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
           <button class="layer" type="button" data-mod="6" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico06"/></svg><div><div class="hd"><strong data-i18n="svc.mod.6.h">שירות</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.6.p">כמה קריאות פתוחות, כמה זמן הן לוקחות, ומי מהטכנאים עומד ביעדים.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
-          <button class="layer" type="button" data-mod="7" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico07"/></svg><div><div class="hd"><strong data-i18n="svc.mod.7.h">ייצור</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.7.p">קצב הייצור בפועל מול התכנון - לכל מכונה, לכל משמרת.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
+          <button class="layer" type="button" data-mod="7" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico07"/></svg><div><div class="hd"><strong data-i18n="svc.mod.7.h">ייצור</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.7.p">קצב הייצור בפועל מול התכנון - לכל מכונה ולכל מרכז עבודה.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
           <button class="layer" type="button" data-mod="8" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico08"/></svg><div><div class="hd"><strong data-i18n="svc.mod.8.h">ניצולת שעות עובדים</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.8.p">כמה משעות העבודה באמת מביאות ערך, ואיפה הן הולכות לאיבוד.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
           <button class="layer" type="button" data-mod="9" aria-haspopup="dialog"><svg class="licon" viewBox="0 0 120 120" aria-hidden="true"><use href="#ico09"/></svg><div><div class="hd"><strong data-i18n="svc.mod.9.h">WMS</strong><span class="tag ops" data-i18n="svc.tag.ops">תפעול</span></div><span data-i18n="svc.mod.9.p">מה באמת קורה במחסן, ומה נשאר פתוח להיום.</span></div><svg class="mod-peek" viewBox="0 0 24 24" aria-hidden="true"><use href="#icoZoom"/></svg></button>
         </div>
@@ -3590,6 +3594,9 @@ html.still .hero-rain{display:none}
       <h2 id="shotTitle" tabindex="-1"></h2>
       <button class="modal-x" id="shotClose" type="button" aria-label="סגירה" data-i18n-al="shot.close">✕</button>
     </div>
+    <div class="td-sec mod-sec"><h3 data-i18n="td.l.p">הבעיה</h3><div class="td-txt" data-slot="p"></div></div>
+    <div class="td-sec mod-sec"><h3 data-i18n="td.l.s">הפתרון</h3><div class="td-txt" data-slot="s"></div></div>
+    <div class="td-sec mod-sec"><h3 data-i18n="pk.l.i">מה רואים</h3><div class="td-txt" data-slot="i"></div></div>
     <div class="shot-frame" id="shotFrame"></div>
     <p class="shot-cap" id="shotCap"></p>
     <!-- These three carry their Hebrew in the markup like every other fixed
@@ -3626,30 +3633,19 @@ html.still .hero-rain{display:none}
 <div id="pkgTexts" hidden>
   <div data-pk="1">
     <div data-k="p" data-i18n="pk.1.p">ה-ERP מלא בנתונים, אבל כל שאלה ניהולית עוברת דרך ייצוא, אקסל ומי שיודע לבנות את הדוח. עד שהתמונה מוכנה, ההחלטה כבר התקבלה.</div>
-    <div data-k="s" data-i18n="pk.1.s">מחברים את ה-ERP ואת המערכות החיצוניות למחסן נתונים אחד, ועליו בונים דשבורדים, מסכי זמן אמת ודוחות שמגיעים לבד - לפי תשעה מודולים מוכנים לכל תחום בעסק. מתחברים ביום אחד, עולים לאוויר תוך שבועות. וכשהצרכים חורגים מהמודולים, בונים סביב התהליכים, ההיררכיה והדוחות שלכם.</div>
-    <div data-k="g" data-i18n="pk.1.g">מקור אמת אחד לכל הארגון. תמונת מצב עדכנית לכל דרג. דוחות שמגיעים אליכם, במקום שתחפשו אותם. ועדכונים ותחזוקה שוטפים.</div>
-    <div data-k="w" data-i18n="pk.1.who">מנכ"לים, תפעול ומכירות - גם בלי צוות BI בבית.</div>
-    <div data-k="n" data-i18n="pk.1.n">לא פרויקט מחסן נתונים של חצי שנה.</div>
-    <div data-k="i" data-i18n="pk.1.i">מחסן נתונים ארגוני · דשבורדים · מסכי זמן אמת · דוחות שוטפים בדחיפה · ייצוא לאקסל · תשעת המודולים</div>
+    <div data-k="s" data-i18n="pk.1.s">מחברים את ה-ERP ואת המערכות החיצוניות למחסן נתונים אחד, ועליו בונים דשבורדים, מסכי זמן אמת ודוחות בלחיצת כפתור - לפי תשעה מודולים מוכנים לכל תחום בעסק. מקור אמת אחד, ותמונת מצב עדכנית לכל דרג. מתחברים ביום אחד, עולים לאוויר תוך שבועות. וכשהצרכים חורגים מהמודולים, בונים סביב התהליכים, ההיררכיה והדוחות שלכם.</div>
+    <div data-k="i" data-i18n="pk.1.i">דשבורדים · מסכי זמן אמת · דוחות בלחיצת כפתור · ייצוא לאקסל · תשעת המודולים</div>
   </div>
   <div data-pk="2">
     <div data-k="p" data-i18n="pk.2.p">מישהו צריך לעבור על המספרים כל יום, ובפועל אף אחד לא עושה את זה. וברגע שתוכנה עושה את זה במקומכם, נפתחת שאלה שנייה שאף אחד לא שואל בקול: איך יודעים שהיא עדיין צודקת?</div>
-    <div data-k="s" data-i18n="pk.2.s">פעם ביום, Compass Control בודק את הנתונים מול כללים שנקבעו איתכם. כשכלל מופר, החריגה נכנסת לתור: איזה כלל, מה הסף, מי האחראי, כמה כסף או זמן בסיכון, ומה הפעולה המומלצת. ההתראה מגיעה לאנשים הנכונים ומציגה את התנועות שמאחוריה. כשהכול תקין - שקט.</div>
-    <div data-k="x" data-i18n="pk.2.x"><ul class='td-list'><li>אספקה באיחור מול מה שהתחייבתם ללקוח</li><li>לקוח בפיגור בתשלום עם הזמנות פתוחות</li><li>מק"ט מתחת לנקודת ההזמנה, כשזמן האספקה של הספק מתארך</li><li>מחסור ברכיב מול הזמנת לקוח</li><li>פקודת ייצור באיחור מול התאריך שהובטח ללקוח</li><li>קריאת שירות שעומדת לחרוג מה-SLA של לקוח בחוזה</li></ul></div>
-    <div data-k="g" data-i18n="pk.2.g">בעיות שצפות בזמן שעוד אפשר לפעול. התראות שיורשות את ההרשאות - איש מכירות רואה רק את הלקוחות שלו. והמלצות, לא פעולות: המערכת ממליצה, ואדם מאשר כל כתיבה חזרה ל-ERP.</div>
-    <div data-k="f" data-i18n="pk.2.f">הניטור עצמו אינו משתמש ב-AI ורץ על השרת הקיים, ולכן אין לו עלות הפעלה חודשית נוספת.</div>
-    <div data-k="w" data-i18n="pk.2.who">תפעול, רכש, גבייה ומנהלי מכירות.</div>
-    <div data-k="n" data-i18n="pk.2.n">לא רובוט שרושם לבד לתוך ה-ERP.</div>
-    <div data-k="i" data-i18n="pk.2.i">קטלוג החריגות · התור · הניתוב לאחראים · אוטומציות אנליטיות</div>
+    <div data-k="s" data-i18n="pk.2.s">Compass Control בודק חריגים בתזמון הנדרש, מכל חצי שעה ועד פעם בחודש, מול כללים שנקבעו איתכם. כשכלל מופר, החריגה נכנסת לתור עם אחראי, כסף או זמן בסיכון, ופעולה מומלצת - וההתראה מגיעה לאנשים הנכונים. המערכת ממליצה, ואדם מאשר כל כתיבה חזרה ל-ERP. כשהכול תקין - שקט.</div>
+    <div data-k="i" data-i18n="pk.2.i">קטלוג החריגות · התור · ההתראה עם התנועות שמאחוריה · הניתוב לאחראים</div>
     <div data-k="l" data-i18n="pk.2.l"><a class="td-more-link" href="control/?lang=he">לעמוד המלא של Compass Control ←</a></div>
   </div>
   <div data-pk="3">
     <div data-k="p" data-i18n="pk.3.p">המידע קיים, ההתראות נשלחות - ועדיין, מי שמנהל את העסק לא יעבור על תור של חריגות לפני הישיבה הראשונה.</div>
-    <div data-k="s" data-i18n="pk.3.s">כל בוקר, דף אחד מתוך מה ש-Control תפס: אילו חריגות נתפסו, כמה כסף בסיכון, ושלוש פעולות עם אחראי לכל אחת. כל מספר בדף מגיע ממדד של Compass. וכש-Analyst פועל, מצטרפים שני ממצאים - מסומנים כממצאים, לא כאזעקות.</div>
-    <div data-k="g" data-i18n="pk.3.g">דף אחד במקום ישיבת סטטוס. ודף שאפשר לסמוך עליו, כי אין בו מספר אחד שלא הגיע מהמודל.</div>
-    <div data-k="w" data-i18n="pk.3.who">מנכ"לים וסמנכ"לים שלא יפתחו דשבורד כל בוקר.</div>
-    <div data-k="n" data-i18n="pk.3.n">לא שיחה, לא ניוזלטר ולא תחליף ל-Control.</div>
-    <div data-k="i" data-i18n="pk.3.i">דף הבוקר · שלוש הפעולות · הניתוב לאחראים</div>
+    <div data-k="s" data-i18n="pk.3.s">כל בוקר, דף אחד מתוך מה ש-Control תפס: אילו חריגות, כמה כסף בסיכון, ושלוש פעולות עם אחראי לכל אחת. וגם לפני פגישה עם לקוח - בוחרים אותו, והבריף שלו נבנה מול העיניים: מכירות, רווחיות, מגמות וחריגים. כל מספר מגיע ממדד של Compass.</div>
+    <div data-k="i" data-i18n="pk.3.i">דף הבוקר · שלוש הפעולות · בריף לקוח · הניתוב לאחראים</div>
   </div>
   <div data-pk="5">
     <div data-k="p" data-i18n="pk.5.p">הדרך המהירה ביותר לקבל מספר היא לשאול מישהו שיודע. אבל הוא לא תמיד זמין - במיוחד כשאתם מחוץ למשרד, בין פגישות או אצל לקוח.</div>
@@ -3660,12 +3656,61 @@ html.still .hero-rain{display:none}
   </div>
   <div data-pk="4">
     <div data-k="p" data-i18n="pk.4.p">כללים תופסים רק את מה שידעתם לחפש. הבעיה הבאה תגיע ממקום שאף אחד לא הגדיר לו סף.</div>
-    <div data-k="s" data-i18n="pk.4.s"><p>Compass Analyst סורק את כל המודל של Compass - לא רק את המסך שפתחתם - ומייצר כרטיס לכל ממצא שהכללים לא הגדירו. כל ממצא מגובה במדד של Compass, ומגיע עם צעד הבא: לפתוח את המסך הרלוונטי, או להפוך אותו לכלל קבוע ב-Control.</p><p>ולפני פגישה או שיחה, בוחרים לקוח - והבריף שלו נבנה מול העיניים: מכירות, רווחיות, מגמות וחריגים, מתוך הנתונים העדכניים ביותר.</p></div>
-    <div data-k="g" data-i18n="pk.4.g">ממצאים עם ראיות, לא ניחושים. קטלוג חריגות שגדל: כל דפוס חוזר שהאנליסט מוצא הופך לכלל, ומאותו רגע Control שומר עליו. ותמונה מלאה של כל לקוח, בדיוק כשצריך אותה.</div>
-    <div data-k="h" data-i18n="pk.4.h">Analyst משתמש ב-AI כדי לסרוק את המודל ולנסח את הממצאים - אבל כל מספר בכרטיס מגיע ממדד של Compass, לא מה-AI. מערך בדיקה רץ אחרי כל שינוי, על שאלות שהעסק כבר יודע לענות עליהן: אם הדיוק יורד מתחת לתקן, השינוי לא עולה לאוויר.</div>
-    <div data-k="w" data-i18n="pk.4.who">מנהלים שצריכים תשובות מהנתונים, ואין להם אנליסט שיחפש אותן.</div>
-    <div data-k="n" data-i18n="pk.4.n">לא צ'אטבוט ולא מנוע תובנות כללי. רק הנתונים שבמודל, ורק מדדים שאתם כבר מכירים.</div>
-    <div data-k="i" data-i18n="pk.4.i">שכבת אנליטיקה מחושבת · כרטיסי ממצא · קידום לכלל ב-Control · בריף לקוח</div>
+    <div data-k="s" data-i18n="pk.4.s">Compass Analyst סורק את כל המודל של Compass - לא רק את המסך שפתחתם - ומייצר כרטיס לכל ממצא שהכללים לא הגדירו, עם צעד הבא: לפתוח את המסך הרלוונטי או להפוך את הדפוס לכלל קבוע ב-Control. ה-AI סורק ומנסח, אבל כל מספר מגיע ממדד של Compass, ומערך בדיקה רץ אחרי כל שינוי.</div>
+    <div data-k="i" data-i18n="pk.4.i">כרטיסי ממצא · קידום לכלל ב-Control</div>
+  </div>
+</div>
+
+<!-- ---- module texts (2026-09-30) ----
+     The three sections under each module's name: the problem, the solution and what
+     you see. Same mechanism as #pkgTexts - applyStrings keeps these in the language
+     now showing, and the viewer below reads them off by module number. The working
+     document is _copy-modules.md. -->
+<div id="modTexts" hidden>
+  <div data-mod="1">
+    <div data-k="p" data-i18n="mod.1.p">יודעים כמה נמכר, אבל לא תמיד מי באמת רווחי ומי משלם בזמן. המכירות והגבייה נמצאות לעיתים בדוחות נפרדים - ולכן התמונה העסקית חלקית.</div>
+    <div data-k="s" data-i18n="mod.1.s">מודול שמחבר <strong>מה נמכר, כמה הרווחנו ומי שילם</strong> לתמונה אחת, לכל לקוח ולכל איש מכירות, מול התקופה המקבילה. הנתונים מגיעים מ-Priority, והמדדים מחושבים פעם אחת במחסן הנתונים, כך שהמספרים עקביים בכל הדוחות.</div>
+    <div data-k="i" data-i18n="mod.1.i">מכירות ורווח מול שנה קודמת · חוב פתוח ועתידי · זיכויים · מכירות לפי פריט ומשפחה · עמידה ביעדים לכל איש מכירות</div>
+  </div>
+  <div data-mod="2">
+    <div data-k="p" data-i18n="mod.2.p">יודעים כמה פניות נכנסו, אבל לא מה עלה בגורלן: מקור הליד נרשם בהתחלה ונשכח עד הסגירה, ותקציב השיווק מתחלק לפי תחושה.</div>
+    <div data-k="s" data-i18n="mod.2.s">מודול שעוקב אחרי הפנייה <strong>מהרגע שנכנסה ועד ההרשמה או העסקה</strong> - מאיזה מקור הגיעה, מי טיפל בה, ואיפה אתם מול היעד בחודש, ברבעון ובשנה.</div>
+    <div data-k="i" data-i18n="mod.2.i">הרשמות מול יעד · לידים לפי מקור לאורך זמן · ביצועי יועצים מול יעד · השוואה לשנים קודמות</div>
+  </div>
+  <div data-mod="3">
+    <div data-k="p" data-i18n="mod.3.p">המלאי נבדק לרוב כשמשהו כבר חסר, ובאותו זמן כסף שוכב על המדף בפריטים שאינם זזים - ושתי הבעיות לא נראות באותו דוח.</div>
+    <div data-k="s" data-i18n="mod.3.s">מודול שמצליב <strong>מלאי קיים, קצב מכירה והזמנות פתוחות</strong> להמלצה לכל פריט, לאופק של שלושה חודשים: להזמין, לבדוק או לא להזמין. השורות הדחופות למעלה, והנוסחה גלויה.</div>
+    <div data-k="i" data-i18n="mod.3.i">שלושה מונים: לבדיקה, להזמנה, עודף · פריטים לפי דחיפות · המלצת רכש לכל מק"ט · סינון לפי יצרן, היררכיה ואופק</div>
+  </div>
+  <div data-mod="4">
+    <div data-k="p" data-i18n="mod.4.p">התקציב נבנה באקסל בתחילת השנה והביצוע יושב ב-Priority. ההשוואה ביניהם נעשית ידנית, לרוב פעם ברבעון - כלומר החריגה מתגלה אחרי שקרתה.</div>
+    <div data-k="s" data-i18n="mod.4.s">מודול שמעמיד <strong>תקציב מול ביצוע</strong> באותו מסך, לפי סעיף, עם הסטייה בכסף ובאחוזים והיתרה להמשך השנה. קובץ התקציב מתחבר כמקור נתונים, והביצוע מתעדכן מעצמו.</div>
+    <div data-k="i" data-i18n="mod.4.i">תקציב, ביצוע ויתרה · סעיפי תקציב עם סטייה בכסף ובאחוזים · סטיית תקציב לפי חודש · ביצוע מול התקציב החודשי</div>
+  </div>
+  <div data-mod="5">
+    <div data-k="p" data-i18n="mod.5.p">הרווח והפסד מגיע אחרי סגירת החודש, ברמת החברה כולה. מי שרוצה לדעת מה תרם מרכז רווח מפרק אותו ידנית, ובקבוצה מאחד גם בין החברות.</div>
+    <div data-k="s" data-i18n="mod.5.s">מודול אחד שעושה את שתי העבודות: <strong>רווחיות לפי מרכז רווח, ואיחוד כמה חברות לתמונה אחת.</strong> ההוצאות מיוחסות למרכזי הרווח לפי מפתח שנקבע איתכם, והקבוצה מוצגת באותו מבנה - בלי לאחד קבצים.</div>
+    <div data-k="i" data-i18n="mod.5.i">רווח והפסד לכל מרכז רווח, חברה וקבוצה · באותו מבנה · השוואה לתקופה מקבילה ולתקציב · ירידה מהשורה אל התנועות שמאחוריה</div>
+  </div>
+  <div data-mod="6">
+    <div data-k="p" data-i18n="mod.6.p">המוקד יודע כמה קריאות פתוחות, אבל לא אם זה הרבה: בלי מגמה ובלי יעד כל יום נראה כשריפה, ולקוח שחוזר עם אותה תקלה לא בולט.</div>
+    <div data-k="s" data-i18n="mod.6.s">מודול שמודד את <strong>מחזור החיים של הקריאה</strong> - מהפתיחה ועד הסגירה, לפי סוג, לקוח וצוות - מול היעד שהגדרתם. תקלות פתוחות מסודרות לפי כמה זמן הן ממתינות, כדי לטפל קודם במה שעומד הכי הרבה.</div>
+    <div data-k="i" data-i18n="mod.6.i">קריאות, תקלות ותקלות משביתות · זמן טיפול ממוצע · קריאות לפי צוות, לקוח וסוג תקלה · מדדי שירות לפי צוות · תקלות פתוחות לפי שעות פתיחה</div>
+  </div>
+  <div data-mod="7">
+    <div data-k="p" data-i18n="mod.7.p">התכנון נקבע בתחילת השבוע והביצוע מתברר בסופו. כשקו נעצר או מכונה מפגרת אחרי התכנון, המידע מגיע להנהלה אחרי שכבר היה אפשר להגיב.</div>
+    <div data-k="s" data-i18n="mod.7.s">מודול שמעמיד <strong>תכנון מול ביצוע בפועל</strong> לכל מרכז עבודה ומכונה: כמות שיוצרה מול היעד והפוטנציאל, פקודות עבודה פתוחות ובאיחור, וכמה מהזמן המכונה באמת עבדה - עם OEE לכל מכונה.</div>
+    <div data-k="i" data-i18n="mod.7.i">כמות שיוצרה מול יעד ופוטנציאל · אחוז מימוש לכל מכונה · פקודות עבודה פתוחות ובאיחור · OEE · מגמה שבועית וחודשית</div>
+  </div>
+  <div data-mod="8">
+    <div data-k="p" data-i18n="mod.8.p">שעות העבודה נרשמות לצורך שכר, לא לצורך ניהול. יודעים כמה שילמנו, אבל לא איזה חלק מהשעות נזקף לפרויקט, ללקוח או להזמנה שהניבה הכנסה.</div>
+    <div data-k="s" data-i18n="mod.8.s">מודול שמחבר את <strong>דיווח השעות לעבודה עצמה</strong> - לפרויקט, ללקוח ולהזמנה - ומסווג כל שעה: לחיוב, פנימית, לא לחיוב או היעדרות. רואים את אחוז השעות לחיוב לכל עובד וצוות, ואת הפער מול התקן.</div>
+    <div data-k="i" data-i18n="mod.8.i">אחוז שעות לחיוב · שעות לחיוב, פנימיות והיעדרות · יחס לתקן · טבלת עובדים · מגמה חודשית</div>
+  </div>
+  <div data-mod="9">
+    <div data-k="p" data-i18n="mod.9.p">המחסן מדווח על עצמו בסוף היום - הספקנו או לא. לא רואים איפה נעצרה העבודה: ליקוט שממתין, משלוח שלא יצא, ספירה שלא נסגרה.</div>
+    <div data-k="s" data-i18n="mod.9.s">מודול שמציג את <strong>העבודה במחסן לפי שלב</strong> - קליטה וליקוט - ומה נשאר פתוח בכל אחד מהם, לפי קו חלוקה ותחנה. למחסנים שעובדים ב-WMS של Priority.</div>
+    <div data-k="i" data-i18n="mod.9.i">משימות שבוצעו היום · קבלת סחורה פתוחה · פריטים באזור הקבלה · משימות ליקוט לפי קו חלוקה · סטטוס משימות</div>
   </div>
 </div>
 
@@ -3678,7 +3723,6 @@ html.still .hero-rain{display:none}
     </div>
     <div class="td-sec"><h3 data-i18n="td.l.p">הבעיה</h3><div class="td-txt" data-slot="p"></div></div>
     <div class="td-sec"><h3 data-i18n="td.l.s">הפתרון</h3><div class="td-txt" data-slot="s"></div></div>
-    <div class="td-sec"><h3 data-i18n="pk.l.x">למשל, ב-<span class="keep-case">Priority</span> או ב-<span class="keep-case">NetSuite</span></h3><div class="td-txt" data-slot="x"></div></div>
     <div class="td-sec"><h3 data-i18n="td.l.g">מה מקבלים</h3><div class="td-txt" data-slot="g"></div><div class="td-txt td-fact" data-slot="f"></div></div>
     <div class="td-sec td-shot" hidden>
       <div class="shot-frame"></div>
@@ -3688,7 +3732,7 @@ html.still .hero-rain{display:none}
     <div class="td-sec"><h3 data-i18n="pk.l.h">איך הוא עובד</h3><div class="td-txt" data-slot="h"></div></div>
     <div class="td-sec"><h3 data-i18n="pk.l.t">איך התשובות נבדקות</h3><div class="td-txt" data-slot="t"></div></div>
     <div class="td-sec"><h3 data-i18n="pk.l.n">מה זה לא</h3><div class="td-txt" data-slot="n"></div></div>
-    <div class="td-sec td-inside"><h3 data-i18n="pk.l.i">מה יש בפנים</h3><div class="td-txt" data-slot="i"></div></div>
+    <div class="td-sec td-inside"><h3 data-i18n="pk.l.i">מה רואים</h3><div class="td-txt" data-slot="i"></div></div>
     <p class="td-more" data-slot="l"></p>
     <div class="shot-nav">
       <button type="button" id="tierPrev" data-i18n="pk.prev">חבילה קודמת</button>
@@ -3789,7 +3833,7 @@ html.still .hero-rain{display:none}
     "home.problem.eyebrow":"Sound Familiar?",
     "home.problem.h":"Your ERP is packed with data. What it lacks is a clear picture of your business.",
     "home.problem.1.h":"Right Data, Late Answer",
-    "home.problem.1.p":"The management cut takes days. The decision comes first.",
+    "home.problem.1.p":"Getting the data in the layout the manager needs takes days. By the time it's ready, the decision has already been made.",
     "home.problem.2.h":"No Single Version of the Truth",
     "home.problem.2.p":"Finance and operations arrive with two numbers for one question, and argue about definitions.",
     "home.problem.3.h":"Knowledge in One Head",
@@ -3915,8 +3959,8 @@ html.still .hero-rain{display:none}
     "td.l.w":"Who it's for",
     /* --- the four packages, 2026-09-27 (_copy-packages.md) --- */
     "home.sol.4.h":"Compass Analyst",
-    "home.sol.1.d":"One data warehouse that connects your ERP and the systems around it, with dashboards, real-time views and reports that arrive on their own. Connected in a day, live within weeks.",
-    "home.sol.2.d":"Once a day it checks your data against rules agreed with you. Every exception enters a queue, with an owner, the money or time at risk, and a recommended action.",
+    "home.sol.1.d":"One data warehouse that connects your ERP and the systems around it, with dashboards, real-time views and reports at the click of a button. Connected in a day, live within weeks.",
+    "home.sol.2.d":"It checks for exceptions on the required schedule, from every half hour to once a month. Every exception enters a queue, with an owner, the money or time at risk, and a recommended action.",
     "home.sol.3.d":"One page every morning, built from what Control caught: which exceptions were caught, how much money is at risk, and three actions, each with an owner.",
     "home.sol.4.d":"Scans the whole model with AI and finds what the rules missed. Every finding is backed by a measure, and a pattern that keeps coming back becomes a rule in Control.",
     "home.sol.4.p":"Uses AI to find what the rules missed.",
@@ -3926,34 +3970,50 @@ html.still .hero-rain{display:none}
     "svc.pk.h":"Start with Compass. Add more when the business is ready.",
     "svc.pk.sub":"An official Priority technology partner since 2021.",
     "svc.pk.hash":"Running on Hashavshevet? Compass is available for you too.",
-    "pk.l.x":"For example, in Priority or NetSuite",
     "pk.l.h":"How it works",
     "pk.l.n":"What it isn't",
-    "pk.l.i":"What's inside",
+    "pk.l.i":"What you see",
     "pk.1.nm":"Compass",
     "pk.1.line":"Shows the business — every area, in one picture.",
-    "pk.1.who":"CEOs, operations and sales — no in-house BI team needed.",
     "pk.2.nm":"Compass Control",
     "pk.2.line":"Flags exceptions — and hands them to an owner.",
-    "pk.2.who":"Operations, procurement, collections and sales managers.",
     "pk.3.nm":"Compass Brief",
     "pk.3.line":"Prepares the manager's decisions for the morning.",
-    "pk.3.who":"CEOs and VPs who won't open a dashboard every morning.",
     "pk.4.nm":"Compass Analyst",
     "pk.4.line":"Uses AI to find what the rules missed.",
-    "pk.4.who":"Managers who need answers from their data, and no analyst to go looking for them.",
     "pk.1.p":"Your ERP is full of data, but every management question goes through an export, a spreadsheet and whoever knows how to build the report. By the time the picture is ready, the decision has already been made.",
-    "pk.1.s":"We connect your ERP and your external systems to one data warehouse, and build on it dashboards, real-time views and reports that arrive on their own — following nine ready modules for every area of the business. Connected in a day, live within weeks. And when your needs go beyond the modules, we build around your processes, hierarchy and reports.",
-    "pk.1.g":"One source of truth for the whole organisation. An up-to-date picture for every level. Reports that come to you, instead of you looking for them. And ongoing updates and maintenance.",
-    "pk.1.n":"Not a six-month data warehouse project.",
-    "pk.1.i":"Enterprise Data Warehouse · Dashboards · Real-Time Views · Automated Push Reports · Excel export · the nine modules",
+    "pk.1.s":"We connect your ERP and your external systems to one data warehouse, and build on it dashboards, real-time views and reports at the click of a button — following nine ready modules for every area of the business. One source of truth, and an up-to-date picture for every level. Connected in a day, live within weeks. And when your needs go beyond the modules, we build around your processes, hierarchy and reports.",
+    "pk.1.i":"Dashboards · real-time views · reports at the click of a button · Excel export · the nine modules",
     "pk.2.p":"Someone should go over the numbers every day, and in practice nobody does. And the moment software does it for you, a second question opens that nobody asks out loud: how do you know it is still right?",
-    "pk.2.s":"Once a day, Compass Control checks your data against rules agreed with you. When a rule breaks, the exception enters a queue: which rule, what threshold, who owns it, how much money or time is at risk, and the recommended action. The alert reaches the right people and shows the transactions behind it. When everything is in order — silence.",
-    "pk.2.x":"<ul class='td-list'><li>A late shipment against what you promised the customer</li><li>An overdue customer with open orders</li><li>An item below its reorder point while the supplier's lead time slips</li><li>A component shortage against a committed customer order</li><li>A work order running late against the customer's date</li><li>A service ticket about to breach a contracted customer's SLA</li></ul>",
-    "pk.2.g":"Problems that surface in time to act. Alerts that inherit permissions — a sales rep sees only their own customers. And recommendations, not actions: the system recommends, and a person approves every write-back into your ERP.",
-    "pk.2.f":"Monitoring itself uses no AI and runs on your existing server, so it carries no additional monthly running cost.",
-    "pk.2.n":"Not a robot posting into your ERP on its own.",
+    "pk.2.s":"Compass Control checks for exceptions on the required schedule, from every half hour to once a month, against rules agreed with you. When a rule breaks, the exception enters a queue with an owner, the money or time at risk, and a recommended action — and the alert reaches the right people. The system recommends, and a person approves every write-back into your ERP. When everything is in order — silence.",
     "pk.addon":"Add-on to any module",
+    "mod.1.p":"You know how much was sold, but not always who is genuinely profitable and who pays on time. Sales and collections often live in separate reports — so the business picture is partial.",
+    "mod.1.s":"One module that joins <strong>what was sold, what it earned and who has paid</strong> into a single picture, for every customer and every salesperson, against the comparable period. The data comes from Priority, and metrics are calculated once in the data warehouse, so the numbers stay consistent across every report.",
+    "mod.1.i":"Sales and profit against last year · open and future debt · credits · sales by item and family · target attainment per salesperson",
+    "mod.2.p":"You know how many inquiries came in, but not what became of them: the source is recorded at the start and forgotten by the close, so the marketing budget is divided on instinct.",
+    "mod.2.s":"One module that follows an inquiry <strong>from the moment it arrives to the registration or the deal</strong> — where it came from, who handled it, and where you stand against target by month, quarter and year.",
+    "mod.2.i":"Registrations against target · leads by source over time · advisor performance against target · comparison with previous years",
+    "mod.3.p":"Stock usually gets checked once something has already run out, and at the same time money sits on the shelf in items that do not move — and the two problems never appear in the same report.",
+    "mod.3.s":"One module that combines <strong>stock on hand, sales velocity and open orders</strong> into a recommendation for every item, for a three-month horizon: order, check, or don't order. Urgent rows come first, and the formula is on display.",
+    "mod.3.i":"Three counters: to check, to order, surplus · items by urgency · a purchase recommendation per SKU · filters by manufacturer, hierarchy and horizon",
+    "mod.4.p":"The budget is built in Excel at the start of the year and the actuals sit in Priority. Comparing them is done by hand, usually once a quarter — which means a variance is discovered after it has happened.",
+    "mod.4.s":"One module that puts <strong>budget against actual</strong> on the same screen, line by line, with the variance in money and in percent and what is left for the rest of the year. Your budget file connects as a data source, and the actuals update themselves.",
+    "mod.4.i":"Total budget, execution and remainder · budget lines with variance in money and percent · budget variance by month · execution against the monthly budget",
+    "mod.5.p":"The P&L arrives after the month closes, at whole-company level. Anyone who wants to know what a profit center contributed takes it apart by hand — and in a group, consolidates across companies as well.",
+    "mod.5.s":"One module doing both jobs: <strong>profitability by profit center, and consolidation of several companies into one picture.</strong> Costs are allocated to profit centers by a key agreed with you, and the group is presented in the same structure — without merging files.",
+    "mod.5.i":"A P&L for every profit center, company and the group · in one structure · comparison with the same period and with budget · a path from a report line to the entries behind it",
+    "mod.6.p":"The service desk knows how many calls are open, but not whether that is a lot: with no trend and no target, every day looks like a fire of its own, and a customer returning with the same fault does not stand out.",
+    "mod.6.s":"One module that measures <strong>the life of a service call</strong> — from opening to closure, by type, customer and team — against the target you set. Open faults are ordered by how long they have been waiting, so the longest-waiting get handled first.",
+    "mod.6.i":"Calls, faults and downtime faults · average handling time · calls by team, customer and fault type · service metrics by team · open faults by hours open",
+    "mod.7.p":"The plan is set at the start of the week and the outcome becomes clear at the end of it. When a line stops or a machine falls behind plan, the information reaches management after the moment to react has passed.",
+    "mod.7.s":"One module that puts <strong>plan against actual</strong> for every work center and machine: quantity produced against target and potential, open and late work orders, and how much of the time the machine really ran — with OEE for every machine.",
+    "mod.7.i":"Quantity produced against target and potential · attainment per machine · open and late work orders · OEE · weekly and monthly trend",
+    "mod.8.p":"Hours are recorded for payroll, not for management. You know what you paid, but not what share of those hours was booked to a project, a customer or an order that earned revenue.",
+    "mod.8.s":"One module that connects <strong>time reporting to the work itself</strong> — by project, customer and order — and classifies every hour: billable, internal, non-billable or absence. You see the share of billable hours for each employee and team, and the gap against standard.",
+    "mod.8.i":"Billable-hours share · billable, internal and absence hours · ratio to standard · employee table · monthly trend",
+    "mod.9.p":"The warehouse reports on itself at the end of the day — did we get through it or not. What stays invisible is where the work stopped: a pick waiting, a shipment that did not leave, a count that was never closed.",
+    "mod.9.s":"One module that shows <strong>warehouse work by stage</strong> — receiving and picking — and what is still open at each of them, by distribution line and station. For warehouses running Priority's WMS.",
+    "mod.9.i":"Tasks done today · open goods receipts · items in the receiving area · picking tasks by distribution line · task status",
     "pk.l.t":"How the answers are tested",
     "pk.5.nm":"Interactive AI Agent",
     "pk.5.line":"Ask questions and get answers in plain language.",
@@ -3964,18 +4024,13 @@ html.still .hero-rain{display:none}
     "pk.5.t":"A test set reruns after every change, on questions the business already knows how to answer: if accuracy falls below the agreed standard, the change does not go live.",
     "pk.5.w":"Managers and sales teams who need <strong>answers while they're on the move</strong> — and want to ask a question as naturally as they would ask a colleague.",
     "pk.2.l":"<a class='td-more-link' href='control/?lang=en'>The full Compass Control page →</a>",
-    "pk.2.i":"The exception catalogue · the queue · routing to owners · analytical automations",
+    "pk.2.i":"The exception catalogue · the queue · the alert with the transactions behind it · routing to owners",
     "pk.3.p":"The data exists, the alerts go out — and still, the person running the business won't work through an exception queue before the first meeting.",
-    "pk.3.s":"Every morning, one page built from what Control caught: which exceptions were caught, how much money is at risk, and three actions, each with an owner. Every number on the page comes from a Compass measure. And once Analyst is running, two discoveries join them — marked as discoveries, not alarms.",
-    "pk.3.g":"One page instead of a status meeting. And a page you can trust, because there isn't a number on it that didn't come from the model.",
-    "pk.3.n":"Not a chat, not a newsletter, and not a substitute for Control.",
-    "pk.3.i":"The morning page · three actions · routing to owners",
+    "pk.3.s":"Every morning, one page from what Control caught: which exceptions, how much money is at risk, and three actions, each with an owner. And before a client meeting — pick the client, and their brief builds in front of you: sales, profitability, trends and exceptions. Every number comes from a Compass measure.",
+    "pk.3.i":"The morning page · three actions · client brief · routing to owners",
     "pk.4.p":"Rules only catch what you knew to look for. The next problem will come from somewhere nobody set a threshold for.",
-    "pk.4.s":"<p>Compass Analyst scans the full Compass model — not only the screen you opened — and produces a card for every finding the rules did not define. Every finding is backed by a Compass measure, and comes with a next step: open the relevant screen, or promote it into a standing Control rule.</p><p>And before a meeting or a call, pick a client — and their brief builds in front of you: sales, profitability, trends and exceptions, from the latest data.</p>",
-    "pk.4.g":"Findings with evidence, not guesses. An exception catalogue that grows: every repeating pattern the Analyst finds becomes a rule, and from then on Control watches it. And the full picture of every client, exactly when you need it.",
-    "pk.4.h":"Analyst uses AI to scan the model and word its findings — but every number on a card comes from a Compass measure, not from the AI. And a test set reruns after every change, on questions the business already knows how to answer: if accuracy falls below the agreed standard, the change does not go live.",
-    "pk.4.n":"Not a chatbot, and not a generic insight engine. Only the data in the model, and only measures you already know.",
-    "pk.4.i":"Computed analytics layer · finding cards · promotion to a Control rule · client brief",
+    "pk.4.s":"Compass Analyst scans the full Compass model — not only the screen you opened — and produces a card for every finding the rules did not define, with a next step: open the relevant screen, or promote the pattern into a standing Control rule. The AI scans and words the findings, but every number comes from a Compass measure, and a test set reruns after every change.",
+    "pk.4.i":"Finding cards · promotion to a Control rule",
     "svc.mods.eyebrow":"Ready-to-Deploy Modules",
     "svc.mods.h":"Analytical Coverage for Every Business Domain — Ready to Launch",
     "svc.mods.sub":"Open a module to see a real dashboard",
@@ -3995,7 +4050,7 @@ html.still .hero-rain{display:none}
     "svc.mod.6.h":"Customer Support &amp; Service",
     "svc.mod.6.p":"How many service calls are open, how long they take and which technicians are meeting their targets.",
     "svc.mod.7.h":"Manufacturing &amp; Shop Floor",
-    "svc.mod.7.p":"Actual production rate versus plan — by machine and by shift.",
+    "svc.mod.7.p":"Actual production rate versus plan — by machine and by work center.",
     "svc.mod.8.h":"Labor Utilization &amp; Billable Hours",
     "svc.mod.8.p":"Discover how many working hours truly drive value, and where time is being wasted.",
     "svc.mod.9.h":"Warehouse Management (WMS)",
@@ -4718,6 +4773,7 @@ html.still .hero-rain{display:none}
     var shotCap   = document.getElementById("shotCap");
     var shotCount = document.getElementById("shotCount");
     var shotDemo  = shot.querySelector(".shot-demo");
+    var modStore  = document.getElementById("modTexts");
     var shotAt    = 0;      // index into shotCards
     var shotFrom  = null;   // the card that opened it, to hand focus back to
 
@@ -4732,6 +4788,15 @@ html.still .hero-rain{display:none}
       var desc = card.querySelector(".hd + span").textContent;
 
       shotTitle.textContent = name;
+      // The three text sections, read off #modTexts by module number. A
+      // module with no text leaves its sections hidden, not as empty headings.
+      var modSrc = modStore && modStore.querySelector('[data-mod="' + n + '"]');
+      [].slice.call(shot.querySelectorAll("[data-slot]")).forEach(function(slot){
+        var from = modSrc && modSrc.querySelector('[data-k="' + slot.getAttribute("data-slot") + '"]');
+        var html = from ? from.innerHTML.trim() : "";
+        slot.innerHTML = html ? "<p>" + html + "</p>" : "";
+        slot.closest(".td-sec").hidden = !html;
+      });
       shotCap.textContent   = desc;
       shotCount.textContent = S("shot.count")
         .replace("{n}", shotAt + 1).replace("{t}", shotCards.length);
@@ -4904,8 +4969,12 @@ html.still .hero-rain{display:none}
       var pkFrame = pkBox.querySelector(".shot-frame");
       var pkNote = pkBox.querySelector(".shot-demo");
       var pkNum = +n;
-      var pkDims = PKSHOTS[lang] && PKSHOTS[lang][pkNum];
-      pkBox.hidden = !(pkDims || PKFRAME[pkNum]);
+      // 2026-09-30: package screenshots are off until the design stage. Set
+      // PK_SHOTS_ON to true to bring back the frames and placeholders; the
+      // files and PKSHOTS stay as they are.
+      var PK_SHOTS_ON = false;
+      var pkDims = PK_SHOTS_ON && PKSHOTS[lang] && PKSHOTS[lang][pkNum];
+      pkBox.hidden = !(pkDims || (PK_SHOTS_ON && PKFRAME[pkNum]));
       if(pkDims){
         var pkBase = "assets/pk-0" + pkNum + (lang === "en" ? ".en" : "");
         var pkImg = document.createElement("img");

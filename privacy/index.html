@@ -1237,6 +1237,10 @@ button.layer{
   color:var(--ink-faint);margin:0 0 6px;
 }
 .shot-modal .modal-head{margin-bottom:16px}
+/* The module text (2026-09-30) sits above the screenshot in a dialog sized for
+   the screenshot, so its line is held to a readable measure. Placement is a
+   stage-B decision; this only keeps the lines short until then. */
+.shot-modal .mod-sec{max-width:72ch}
 /* The frame holds the aspect ratio the manifest reported before the file
    arrives, so opening a module does not shove the dialog taller a moment
    later. Both children fill it. */
