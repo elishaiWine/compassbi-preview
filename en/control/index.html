@@ -1,26 +1,73 @@
-<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>הצהרת נגישות | Compass BI</title>
-<meta name="description" content="מה עשינו כדי שהאתר יהיה נגיש, איפה הוא עוד לא, ולמי פונים כשמשהו לא עובד.">
+<!doctype html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Compass Control for Priority and NetSuite Data — Exceptions, Owners, Action | Compass BI</title>
+<meta name="description" content="Compass Control checks your data against rules agreed with you, and hands every exception to its owner with a recommended action.">
 
-<link rel="canonical" href="https://compassbi.co.il/accessibility/">
+<link rel="canonical" href="https://compassbi.co.il/en/control/">
 <meta name="robots" content="noindex">
-<link rel="alternate" hreflang="he" href="https://compassbi.co.il/accessibility/">
-<link rel="alternate" hreflang="en" href="https://compassbi.co.il/en/accessibility/">
-<link rel="alternate" hreflang="x-default" href="https://compassbi.co.il/en/accessibility/">
 
-<!-- One page per language (2026-10-07), each listing the other as its
-     alternate; x-default is English, as on the home page.
-     No og:image on purpose - see the same note in _source.head.privacy.html. -->
-<meta property="og:type" content="website">
+<!-- One page per language, each listing the other as its alternate; x-default
+     is English, as on the home page. _build.en.pl changes only the canonical,
+     og:url, og:locale and the text. -->
+<link rel="alternate" hreflang="he" href="https://compassbi.co.il/control/">
+<link rel="alternate" hreflang="en" href="https://compassbi.co.il/en/control/">
+<link rel="alternate" hreflang="x-default" href="https://compassbi.co.il/en/control/">
+
+<!-- og:title is the package's approved card line, not the page title: the
+     title is for search, the card line is what a shared link should say. -->
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Compass BI">
-<meta property="og:locale" content="he_IL">
-<meta property="og:locale:alternate" content="en_US">
-<meta property="og:url" content="https://compassbi.co.il/accessibility/">
-<meta property="og:title" content="הצהרת נגישות | Compass BI">
-<meta property="og:description" content="מה עשינו כדי שהאתר יהיה נגיש, איפה הוא עוד לא, ולמי פונים כשמשהו לא עובד.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="he_IL">
+<meta property="og:url" content="https://compassbi.co.il/en/control/">
+<meta property="og:title" content="Compass Control flags exceptions — and hands them to an owner">
+<meta property="og:description" content="Compass Control checks your data against rules agreed with you, and hands every exception to its owner with a recommended action.">
+
+<!-- Same missing file as the home page, and the same warning: this points at
+     an image that does not exist yet (open item 2). A broken og:image renders
+     a blank card. If the file will not exist at launch, these four lines come
+     out here AND in _source.head.html, and twitter:card drops to "summary" in
+     both - one without the other leaves X asking for a large card and getting
+     nothing. -->
+<meta property="og:image" content="https://compassbi.co.il/og-compass-bi.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Compass BI — Analytics Infrastructure for Priority ERP and NetSuite">
+
+<meta name="twitter:card" content="summary_large_image">
 
 <meta name="theme-color" content="#F7F7F7">
 <meta name="color-scheme" content="only light">
+
+<!-- ─── language, before first paint ───
+     Since 2026-10-07 the address is the language here too: /control/ is Hebrew
+     and /en/control/ is English, a copy _build.en.pl writes from this same
+     source with <html lang="en" dir="ltr"> and its own head tags in place.
+     Nothing is resolved - no stored choice, no default. Two jobs are left,
+     the same two as in _source.head.html:
+     1. Old links. ?lang= and #en/#he predate the split (the LinkedIn
+        campaign still says /ai-analyst/?lang=en); each goes to the address
+        of the language it asks for. A choice stored on an earlier visit does
+        NOT redirect - a crawler has none.
+     2. On /en/control/ the markup underneath is still the Hebrew source until
+        the engine at the foot of the page puts the English in, so the shell
+        is hidden for that one frame (cleared after 1.2s regardless). -->
+<style>[data-lang-pending] .shell{opacity:0}</style>
+<script>
+(function(){
+  var r = document.documentElement, en = r.getAttribute("lang") === "en",
+      q = /[?&]lang=(en|he)\b/i.exec(location.search),
+      h = (location.hash || "").replace(/^#\/?/, "").toLowerCase(),
+      token = h === "en" || h === "he",
+      asked = q ? q[1].toLowerCase() : token ? h : null;
+  if(asked && (asked === "en") !== en){
+    location.replace((en ? "../../" : "../en/") + "control/" + (token ? "" : location.hash));
+    return;
+  }
+  if(!en) return;                        // Hebrew is what the markup already is
+  r.setAttribute("data-lang-pending", "");
+  setTimeout(function(){ r.removeAttribute("data-lang-pending"); }, 1200);
+})();
+</script>
 <!-- Analytics and lead attribution (2026-10-07). One file for every page; _build.sh
      prints it right after each page's own head.
 
@@ -65,45 +112,20 @@
 </script>
 </head><body>
 <!-- ══════════════════════════════════════════════════════════════
-     The template for the two legal pages, /privacy/ and /accessibility/
-     (29/09/2026). Their copy is _copy-legal.md, approved 29/09.
-     _build.sh builds each page from this file plus the page's own content
-     file, _source.privacy.html or _source.accessibility.html, which lands
-     at the PAGE marker below and carries both languages: the Hebrew in its
-     markup, the English in LEGAL_PAGE.en. A wording change is therefore one
-     file per page; the header, the footer and the language engine are
-     written once, here.
-     Built on the /control/ pattern - shared stylesheet, fonts and footer, and
-     since 2026-10-07 one address per language: /privacy/ and /en/privacy/,
-     /accessibility/ and /en/accessibility/. _build.en.pl writes the English
-     page from the Hebrew one with <html lang="en" dir="ltr"> and its own head
-     tags, so the language is on <html> before this script runs and nothing
-     here decides it. The switch is a link to the other address.
+     /control/ - the page for Compass Control, package 2 of 4.
+     Until 2026-09-27 this was /ai-analyst/, the page for tier row 8, and
+     it argued an AI analyst that proves it is still right. Control names
+     no AI (decision 10 of 27/09) and the test set moved to the Analyst
+     window, so the page was rewritten, not renamed. Its copy document is
+     _copy-control.md. /ai-analyst/ is now a redirect written by _build.sh,
+     because the LinkedIn campaign already links to it.
+     It shares the stylesheet, the fonts and the footer with index.html
+     through the same _build.sh markers. What it does NOT share is the
+     home page's script: the little engine at the foot of this file does
+     the one thing that must behave identically - the language - and it
+     reads and writes the same localStorage key.
      ══════════════════════════════════════════════════════════════ -->
-<script>
-var LEGAL_LANG = (function(){
-  var r = document.documentElement, en = r.getAttribute("lang") === "en",
-      q = /[?&]lang=(en|he)\b/i.exec(location.search),
-      h = (location.hash || "").replace(/^#\/?/, "").toLowerCase(),
-      token = h === "en" || h === "he",
-      asked = q ? q[1].toLowerCase() : token ? h : null,
-      canon = document.querySelector('link[rel="canonical"]'),
-      name = canon ? (/([^\/]+)\/$/.exec(canon.getAttribute("href")) || [])[1] : null;
-  // Old links - ?lang= and #en/#he - go to the address of the language they
-  // ask for. A stored choice does not redirect: a crawler has none.
-  if(asked && name && (asked === "en") !== en){
-    location.replace((en ? "../../" : "../en/") + name + "/" + (token ? "" : location.hash));
-    return asked;
-  }
-  if(en){
-    r.setAttribute("data-lang-pending", "");
-    setTimeout(function(){ r.removeAttribute("data-lang-pending"); }, 1200);
-  }
-  return en ? "en" : "he";
-})();
-</script>
 <style>
-[data-lang-pending] .shell{opacity:0}
 /* Faces this page inlines, 2026-10-01:
      Heebo 100-900 (variable)  headlines AND chrome and labels - one face
      Assistant 400/600         running text - the theme's body face
@@ -2179,52 +2201,55 @@ html.still .hero-rain{display:none}
   text-shadow:0 1px 12px rgba(20,19,60,.55)}
 @media(max-width:640px){.plan-band{aspect-ratio:5/2}}
 
-/* ─── the legal pages only ───
-   After the shared sheet on purpose: at equal specificity the later rule
-   wins (recurring lesson 1). .lg-sec sits on <section>, which the shared
-   sheet pads for a whole marketing band - the class outranks the bare tag. */
-.lg-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;
+/* ─── this page only ───
+   Written AFTER the shared sheet on purpose. Everything here targets
+   elements that already carry a styled class from that sheet, and at
+   equal specificity the later rule wins - see the recurring lesson
+   about writing a new rule that quietly does nothing. */
+.ai-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;
         padding:18px 0;border-bottom:1px solid var(--line, #E4E0D8)}
-.lg-page{padding-block:48px 72px}
-.lg-page:focus{outline:none}          /* the skip link's target, never a Tab stop */
-.lg-page .lead{max-width:62ch;margin-bottom:26px}
-.lg-sec{padding:28px 0;border-top:1px solid var(--line, #E4E0D8)}
-.lg-sec h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.3rem,2.2vw,1.55rem);
-           line-height:1.3;margin:0 0 12px;color:var(--ink)}
-.lg-sec p,.lg-sec li{max-width:68ch;color:var(--ink-dim);line-height:1.75}
-.lg-sec p{margin:0 0 12px}
-.lg-sec p:last-child{margin-bottom:0}
-.lg-sec strong{color:var(--ink);font-weight:700}
-.lg-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
-.lg-list li{padding-inline-start:20px;position:relative}
-.lg-list li::before{content:"";position:absolute;inset-inline-start:4px;top:.72em;
-                    width:6px;height:6px;border-radius:50%;background:var(--brass)}
-/* Links in running text. The shared sheet takes every link's underline and
-   colour away (a{color:inherit;text-decoration:none}), which suits buttons
-   and navigation; inside a paragraph a link has to look like one.
-   isolate: an email and a phone number side by side in a Hebrew line
-   ("sales@... · 054-...") otherwise fuse into one left-to-right run, and a
-   right-to-left reader meets the phone first - measured on the contact line
-   of the accessibility statement, 29/09. Isolated, each keeps its place. */
-.lg-page a{color:var(--sky-ink);text-decoration:underline;text-underline-offset:.18em;unicode-bidi:isolate}
-.lg-page a:hover{color:var(--ink)}
-.lg-sec p.lg-quiet{font-size:.92rem;color:var(--ink-faint)}
-.lg-date{margin:28px 0 0;padding-top:20px;border-top:1px solid var(--line, #E4E0D8);
-         font-size:.92rem;color:var(--ink-faint)}
+.ai-back{font-size:.92rem;color:var(--ink-3, #6B6B6B);text-decoration:none;
+         display:inline-flex;align-items:center;gap:6px}
+.ai-back:hover{color:var(--ink-1, #1A1A1A)}
+/* padding-block, not the padding shorthand: <main> is also .wrap, and a
+   shorthand here zeroed its side gutter - the H1 ran into the screen edge on
+   a phone from 22/09 until 27/09. */
+.ai-page{padding-block:48px 24px}
+.ai-page:focus{outline:none}          /* the skip link's target, never a Tab stop */
+.ai-page .lead{max-width:62ch}
+.ai-sec{padding:40px 0;border-top:1px solid var(--line, #E4E0D8)}
+.ai-sec:first-of-type{border-top:0}
+.ai-sec h2{margin:0 0 6px}
+.ai-sub{font-weight:700;color:var(--ink-2, #3C3C3C);margin:0 0 20px}
+.ai-sec p{max-width:68ch}
+.ai-contrast{padding:14px 18px;border-inline-start:3px solid var(--accent, #C9A227);
+             background:var(--tint, #FAF8F4);border-radius:6px}
+.ai-flat{list-style:none;padding:0;margin:14px 0 18px;display:grid;gap:8px}
+.ai-flat li{padding-inline-start:20px;position:relative;max-width:62ch}
+.ai-flat li::before{content:"";position:absolute;inset-inline-start:4px;top:.62em;
+                    width:6px;height:6px;border-radius:50%;background:var(--accent, #C9A227)}
+.ai-quiet{font-size:.92rem;color:var(--ink-3, #6B6B6B)}
+.ai-claim{font-weight:700}
+.ai-triad{display:flex;flex-wrap:wrap;gap:10px 28px;margin:18px 0 0;padding:0;list-style:none}
+.ai-triad li{font-weight:700}
+.ai-cta{padding:44px 0 72px;border-top:1px solid var(--line, #E4E0D8)}
+.ai-steps{margin:14px 0 26px;padding-inline-start:22px;display:grid;gap:8px}
+.ai-steps li{max-width:62ch}
 @media (max-width:560px){
-  .lg-page{padding-block:32px 48px}
-  .lg-sec{padding:22px 0}
+  .ai-page{padding-block:32px 16px}
+  .ai-sec{padding:30px 0}
 }
 </style>
 
-<!-- The first stop for a keyboard: past the logo and the language switch,
-     straight to the heading. A plain fragment link - there is no router on
-     these pages to protect the hash from. -->
+<!-- The first stop for a keyboard (29/09/2026): past the logo, the back link
+     and the language switch, straight to the heading. The accessibility
+     statement promises one at the top of every page. A plain fragment
+     link - there is no router here to protect the hash from. -->
 <a class="skip" href="#main" data-i18n="ui.skip">דילוג לתוכן</a>
 
 <div class="shell">
 
-<header class="wrap lg-bar">
+<header class="wrap ai-bar">
   <a class="mark" href="../" aria-label="Compass BI - לעמוד הראשי" data-i18n-al="nav.mark">
     <svg class="glyph" viewBox="104 79.5 120 120" role="img" aria-hidden="true">
       <path fill="var(--logo-core)" d="M193.04,139.62c0.09-16.04-12.84-29.11-28.87-29.2c-15.94-0.09-28.94,12.69-29.18,28.59l-10.6-0.06c0.28-21.76,18.05-39.25,39.84-39.13c21.89,0.12,39.54,17.97,39.42,39.86c-0.12,21.79-17.81,39.37-39.57,39.4l0.06-10.6C180.03,168.42,192.95,155.56,193.04,139.62z"/>
@@ -2234,6 +2259,8 @@ html.still .hero-rain{display:none}
     </svg>
   </a>
 
+  <a class="ai-back" href="../#services" data-i18n="cp.back">→ חזרה לשירותים</a>
+
   <div class="lang" role="group" data-i18n-al="nav.lang" aria-label="שפת האתר">
     <button class="lang-opt" type="button" data-lang="he" aria-pressed="true" lang="he">עב</button>
     <span class="lang-sep" aria-hidden="true">|</span>
@@ -2241,88 +2268,63 @@ html.still .hero-rain{display:none}
   </div>
 </header>
 
-<!-- /accessibility/ - the page's own content, in both languages. The Hebrew
-     is the markup; the English is LEGAL_PAGE.en at the foot of this file,
-     one entry per data-i18n key above it. The header, the footer and the
-     language engine come from _source.legal.html. Copy: _copy-legal.md,
-     page 2, approved 29/09/2026.
-     Every claim below is about the site, so a change to the site can make
-     one false. Keep in mind while working elsewhere:
-       - "a skip link at the top of every page": index.html, en/, control/
-         and the two legal pages. A new page needs one.
-       - "a button stops all of it": anything new that moves on its own for
-         more than five seconds has to stop with the pause button (quiet()
-         in _source.body.html) and with reduced motion.
-       - "text meets AA except": a new colour on text is measured before it
-         ships, or it joins the limitations list here.
-       - "tested in": Edge, desktop and Android - Elishai, 29/09. -->
-<main class="wrap lg-page" id="main" tabindex="-1">
-  <h1 class="h-xl" data-i18n="acc.h1">הצהרת נגישות</h1>
-  <p class="lead" data-i18n="acc.lead">אנחנו רוצים שכל אחד יוכל להשתמש באתר הזה, כולל אנשים עם מוגבלות. האתר נבנה לפי התקן הישראלי 5568, המבוסס על הנחיות WCAG, ברמה AA. המגבלות שאנחנו מכירים מפורטות למטה.</p>
-
-  <section class="lg-sec">
-    <h2 data-i18n="acc.did.h">מה עשינו</h2>
-    <ul class="lg-list">
-      <li data-i18n="acc.did.1"><strong>מקלדת.</strong> אפשר לנווט באתר כולו במקלדת. בראש כל עמוד יש קישור "דילוג לתוכן", ובמעבר בין עמודים המיקוד עובר לכותרת העמוד החדש.</li>
-      <li data-i18n="acc.did.2"><strong>קוראי מסך.</strong> לכל עמוד מוגדרים שפה וכיוון, והם מתחלפים עם מתג השפה. שגיאה בטופס מוקראת ומקושרת לשדה שבו היא נמצאת. ללוגואים של הלקוחות ולסרטון יש תיאור בטקסט, ותמונות קישוט מוסתרות מקוראי מסך.</li>
-      <li data-i18n="acc.did.3"><strong>תנועה.</strong> בעמודים שיש בהם אנימציה, כפתור בכותרת עוצר את כולה, והאתר זוכר את הבחירה. מי שהגדיר "הפחתת תנועה" במערכת ההפעלה מקבל אתר בלי אנימציות מלכתחילה.</li>
-      <li data-i18n="acc.did.4"><strong>ניגודיות ותצוגה.</strong> הטקסט עומד ביחס הניגודיות של רמה AA, למעט מה שמפורט במגבלות. האתר מגיב להגדרת "ניגודיות מוגברת" של מערכת ההפעלה, ומותאם לטלפונים ולמסכים צרים בלי גלילה לצדדים.</li>
-    </ul>
-  </section>
-
-  <section class="lg-sec">
-    <h2 data-i18n="acc.lim.h">מגבלות ידועות</h2>
-    <ul class="lg-list">
-      <li data-i18n="acc.lim.1"><strong>הכתום של הלוגו בכיתובים הקטנים</strong> שמעל הכותרות ובתוויות שבראש העמודים: יחס ניגודיות של 4:1, מתחת ל-4.5:1 שהתקן דורש לטקסט קטן. זו בחירה של המותג. מי שהגדיר "ניגודיות מוגברת" במערכת ההפעלה מקבל אותם בגוון כהה יותר.</li>
-    </ul>
-  </section>
-
-  <section class="lg-sec">
-    <h2 data-i18n="acc.br.h">באילו דפדפנים האתר נבדק</h2>
-    <p data-i18n="acc.br.p">Edge, במחשב ובנייד אנדרואיד.</p>
-  </section>
-
-  <section class="lg-sec">
-    <h2 data-i18n="acc.phys.h">נגישות פיזית</h2>
-    <p data-i18n="acc.phys.p">אין קבלת קהל במשרד.</p>
-  </section>
-
-  <section class="lg-sec">
-    <h2 data-i18n="acc.help.h">נתקלתם בבעיה?</h2>
-    <p data-i18n="acc.help.p">אם משהו באתר לא נגיש לכם, נשמח לדעת. כתבו לנו מה לא עבד ובאיזה עמוד, ונחזור אליכם.</p>
-    <p data-i18n="acc.help.who">איש הקשר לנגישות: אלישי וויין · <a href="mailto:sales@compassbi.co.il">sales@compassbi.co.il</a> · <a href="tel:+972545778838">054-577-8838</a></p>
-  </section>
-
-  <p class="lg-date" data-i18n="acc.date">ההצהרה עודכנה <span class="nw">ב-29/09/2026</span>.</p>
+<main class="wrap ai-page" id="main" tabindex="-1">
+  <p class="eyebrow" data-i18n="cp.eyebrow">חבילה 2 מתוך 4</p>
+  <h1 class="h-xl" data-i18n="cp.h1">Compass Control מתריע על חריגות - ומעביר אותן לאחראי.</h1>
+  <p class="lead" data-i18n="cp.lead">הוא בודק את הנתונים בתזמון הנדרש, מכל חצי שעה ועד פעם בחודש, מול כללים שנקבעו איתכם, ומעביר כל חריגה לאחראי עם פעולה מומלצת.</p>
 </main>
-
-<script>
-var LEGAL_PAGE = {
-  name: "accessibility",
-  en: {
-    "meta.title":"Accessibility Statement | Compass BI",
-    "meta.desc":"What we did to make the site accessible, where it is not yet, and who to contact when something doesn't work.",
-    "acc.h1":"Accessibility Statement",
-    "acc.lead":"We want everyone to be able to use this site, including people with disabilities. It was built to Israeli Standard 5568, which is based on the WCAG guidelines, at level AA. The limitations we know of are listed below.",
-    "acc.did.h":"What we have done",
-    "acc.did.1":"<strong>Keyboard.</strong> The whole site can be used with a keyboard. Every page starts with a \"Skip to content\" link, and moving between pages takes focus to the new page's heading.",
-    "acc.did.2":"<strong>Screen readers.</strong> Every page declares its language and direction, and both switch with the language toggle. A form error is announced and tied to the field it belongs to. Client logos and the video carry a text description, and decorative images are hidden from screen readers.",
-    "acc.did.3":"<strong>Motion.</strong> On pages with animation, a button in the header stops all of it, and the site remembers the choice. Anyone who has set \"reduce motion\" in their operating system gets the site without animation from the start.",
-    "acc.did.4":"<strong>Contrast and display.</strong> Text meets the AA contrast ratio, except where noted under limitations. The site responds to the operating system's \"increase contrast\" setting, and fits phones and narrow screens without sideways scrolling.",
-    "acc.lim.h":"Known limitations",
-    "acc.lim.1":"<strong>The logo orange in the small labels</strong> above headings and in the tags at the top of each page: a contrast ratio of 4:1, below the 4.5:1 the standard asks of small text. This is a brand choice. Anyone who has set \"increase contrast\" in their operating system sees them in a darker shade.",
-    "acc.br.h":"Browsers we tested",
-    "acc.br.p":"Edge, on desktop and on an Android phone.",
-    "acc.phys.h":"Physical accessibility",
-    "acc.phys.p":"We do not receive visitors at our office.",
-    "acc.help.h":"Found a problem?",
-    "acc.help.p":"If something on this site is not accessible to you, we want to know. Tell us what did not work and on which page, and we will get back to you.",
-    "acc.help.who":"Accessibility contact: Elishai Wine · <a href='mailto:sales@compassbi.co.il'>sales@compassbi.co.il</a> · <a href='tel:+972545778838'>054-577-8838</a>",
-    "acc.date":"This statement was last updated on September 29, 2026."
-  }
-};
-</script>
-
+<div class="wrap">
+  <section class="ai-sec">
+    <h2 class="h-l" data-i18n="cp.q.h">מחריגה למשימה</h2>
+    <p class="ai-sub" data-i18n="cp.q.sub">לדעת על בעיה בזמן שעוד אפשר לפעול.</p>
+    <p class="ai-contrast" data-i18n="cp.q.contrast">דוח מגיע כי קבעתם שיגיע, גם כשאין מה לדווח. <strong>התראה עובדת הפוך: היא מגיעה רק כשמשהו חורג</strong> - ולכן כשהיא מגיעה, היא נקראת.</p>
+    <p data-i18n="cp.q.p1">Compass Control בודק את הנתונים בתזמון הנדרש, מכל חצי שעה ועד פעם בחודש, מול כללים שנקבעו איתכם. כשכלל מופר, החריגה נכנסת לתור: איזה כלל, מה הסף, מי האחראי, כמה כסף או זמן בסיכון, ומה הפעולה המומלצת. ההתראה מגיעה לאנשים הנכונים ומציגה את התנועות שמאחוריה. כשהכול תקין - שקט.</p>
+    <p class="ai-claim" data-i18n="cp.q.ex.t">למשל, ב-Priority או ב-NetSuite:</p>
+    <ul class="ai-flat">
+      <li data-i18n="cp.q.ex.1">אספקה באיחור מול מה שהתחייבתם ללקוח</li>
+      <li data-i18n="cp.q.ex.2">לקוח בפיגור בתשלום עם הזמנות פתוחות</li>
+      <li data-i18n="cp.q.ex.3">מק"ט מתחת לנקודת ההזמנה, כשזמן האספקה של הספק מתארך</li>
+      <li data-i18n="cp.q.ex.4">מחסור ברכיב מול הזמנת לקוח</li>
+      <li data-i18n="cp.q.ex.5">פקודת ייצור באיחור מול התאריך שהובטח ללקוח</li>
+      <li data-i18n="cp.q.ex.6">קריאת שירות שעומדת לחרוג מה-SLA של לקוח בחוזה</li>
+    </ul>
+    <p class="ai-quiet" data-i18n="cp.q.ex.n">זה קטלוג הפתיחה. הכללים עצמם נקבעים מול כל לקוח בנפרד.</p>
+    <p data-i18n="cp.q.grow">הקטלוג לא סגור: כשחריגה חוזרת על עצמה, היא הופכת לכלל.</p>
+    <p data-i18n="cp.q.perm">ההתראות יורשות את ההרשאות. איש מכירות רואה רק התראות על הלקוחות שלו.</p>
+    <p data-i18n="cp.q.data"><strong>בניטור לא נעשה שימוש ב-AI.</strong> הבדיקות הן הכללים שלכם, רצות על השרת הקיים שלכם, והנתונים נשארים עליו.</p>
+  </section>
+  <section class="ai-sec">
+    <h2 class="h-l" data-i18n="cp.r.h">המלצות, לא פעולות</h2>
+    <p class="ai-sub" data-i18n="cp.r.sub">המערכת ממליצה. אדם מאשר.</p>
+    <p data-i18n="cp.r.p1">לכל חריגה יש אחראי ופעולה מומלצת. המערכת ממליצה, ואדם מאשר כל כתיבה חזרה ל-ERP.</p>
+    <p class="ai-contrast" data-i18n="cp.r.not">Compass Control הוא לא רובוט שרושם לבד לתוך ה-ERP.</p>
+    <!-- The cost line. A fact, never a heading - decision 3 of 22/09: a
+         structure of cost, no price and no range, which keeps it inside
+         INTENT's "no price list on the site". Cut to setup only on 27/09:
+         the monthly report it used to mention summarised questions and
+         accuracy, and both left this page with the test set. -->
+    <p class="ai-quiet" data-i18n="cp.r.cost">הניטור עצמו אינו משתמש ב-AI ורץ על השרת הקיים, ולכן אין לו עלות הפעלה חודשית נוספת. ההקמה מתומחרת לפי פרויקט.</p>
+  </section>
+  <section class="ai-sec">
+    <h2 class="h-l" data-i18n="cp.ctl.h">בנוי לשליטה</h2>
+    <p class="ai-sub" data-i18n="cp.ctl.sub">שימושי זה לא מספיק. זה צריך להיות מדיד, ובאחריות של מישהו.</p>
+    <ul class="ai-triad">
+      <li data-i18n="cp.ctl.1">לתפוס את החריגה</li>
+      <li data-i18n="cp.ctl.2">לתת לה אחראי</li>
+      <li data-i18n="cp.ctl.3">לסגור אותה</li>
+    </ul>
+  </section>
+  <section class="ai-cta">
+    <h2 class="h-l" data-i18n="cp.cta.h">רוצים להגדיר על מה Compass Control ישמור?</h2>
+    <p data-i18n="cp.cta.p">הדוגמאות שלמעלה הן נקודת פתיחה. שלושה דברים נקבעים איתכם:</p>
+    <ol class="ai-steps">
+      <li data-i18n="cp.cta.1">אילו בעיות צריכות לצוף בזמן שאפשר עוד לפעול</li>
+      <li data-i18n="cp.cta.2">מי מקבל את ההתראה ואיך - צ'אט או מייל</li>
+      <li data-i18n="cp.cta.3">מי אחראי על כל חריגה, ומה הפעולה המומלצת</li>
+    </ol>
+    <a class="btn btn-fill" href="../#contact" data-i18n="cta.talk">דברו איתנו</a>
+  </section>
+</div>
 <footer class="rail">
   <div class="wrap">
     <div class="rail-top">
@@ -2405,14 +2407,59 @@ var LEGAL_PAGE = {
 (function(){
   "use strict";
 
-  /* The strings every legal page shares - the header, the skip link and the
-     footer - copied from the EN table in _source.body.html, which is the
-     text of record for English. (Not from /control/'s copy, which has
-     drifted from it in two footer strings.) The page's own strings come
-     from LEGAL_PAGE.en in its content file and are laid over these. */
+  /* The English side. Same shape as index.html's EN table: Hebrew is read
+     off the markup, English lives here, and every key is the same key the
+     markup carries. Keys shared with the home page (nav.*, cta.talk,
+     footer.*) are repeated here rather than imported - this page does not
+     load that script, and a missing key would render an empty element. */
   var EN = {
-    "ui.skip":"Skip to content",
-    "nav.mark":"Compass BI — home page",
+    "meta.title":"Compass Control for Priority and NetSuite Data — Exceptions, Owners, Action | Compass BI",
+    "meta.desc":"Compass Control checks your data against rules agreed with you, and hands every exception to its owner with a recommended action.",
+    "meta.og.title":"Compass Control flags exceptions — and hands them to an owner",
+    "meta.og.desc":"Compass Control checks your data against rules agreed with you, and hands every exception to its owner with a recommended action.",
+    "meta.og.alt":"Compass BI — Analytics Infrastructure for Priority ERP and NetSuite",
+    "cp.back":"← Back to services",
+    "cp.eyebrow":"Package 2 of 4",
+    "cp.h1":"Compass Control flags exceptions — and hands them to an owner.",
+    "cp.lead":"It checks your data on the required schedule, from every half hour to once a month, against rules agreed with you, and hands every exception to its owner with a recommended action.",
+    "cp.q.h":"From exception to task",
+    "cp.q.sub":"Know about problems in time to act.",
+    "cp.q.contrast":"A report arrives because you scheduled it, even when there is nothing to flag. <strong>An alert works the other way round: it arrives only when something breaks</strong> — which is why it gets read.",
+    "cp.q.p1":"Compass Control checks your data on the required schedule, from every half hour to once a month, against rules agreed with you. When a rule breaks, the exception enters a queue: which rule, what threshold, who owns it, how much money or time is at risk, and the recommended action. The alert reaches the right people and shows the transactions behind it. When everything is in order — silence.",
+    "cp.q.ex.t":"For example, in Priority or NetSuite:",
+    "cp.q.ex.1":"A late shipment against what you promised the customer",
+    "cp.q.ex.2":"An overdue customer with open orders",
+    "cp.q.ex.3":"An item below its reorder point while the supplier's lead time slips",
+    "cp.q.ex.4":"A component shortage against a committed customer order",
+    "cp.q.ex.5":"A work order running late against the customer's date",
+    "cp.q.ex.6":"A service ticket about to breach a contracted customer's SLA",
+    "cp.q.ex.n":"This is the starting catalogue. The rules themselves are set with each customer.",
+    "cp.q.grow":"The catalogue is not closed: when an exception keeps coming back, it becomes a rule.",
+    "cp.q.perm":"Alerts inherit permissions. A sales rep sees only alerts for their own customers.",
+    "cp.q.data":"<strong>No AI is used for monitoring.</strong> The checks are your rules, run on your existing server, and the data stays on it.",
+    "cp.r.h":"Recommendations, not actions",
+    "cp.r.sub":"The system recommends. A person approves.",
+    "cp.r.p1":"Every exception has an owner and a recommended action. The system recommends, and a person approves every write-back into your ERP.",
+    "cp.r.not":"Compass Control is not a robot posting into your ERP on its own.",
+    "cp.r.cost":"Monitoring itself uses no AI and runs on your existing server, so it carries no additional monthly running cost. Setup is priced per project.",
+    "cp.ctl.h":"Built for control",
+    "cp.ctl.sub":"Useful is not enough. It has to be measurable and owned.",
+    "cp.ctl.1":"Catch the exception",
+    "cp.ctl.2":"Give it an owner",
+    "cp.ctl.3":"Close it",
+    "cp.cta.h":"Want to define what Compass Control watches for?",
+    "cp.cta.p":"The examples above are a starting point. We set three things with you:",
+    "cp.cta.1":"Which problems should surface in time to act",
+    "cp.cta.2":"Who gets the alert, and how — chat or email",
+    "cp.cta.3":"Who owns each exception, and what the recommended action is",
+
+
+
+
+
+
+    "cta.talk":"Talk to us",
+    "nav.mark":"Compass BI - to the home page",
     "nav.lang":"Site language",
     "nav.home":"Home",
     "nav.about":"About",
@@ -2420,32 +2467,28 @@ var LEGAL_PAGE = {
     "nav.contact":"Contact",
     "footer.desc":"Analytics infrastructure for Priority ERP and NetSuite — dashboards, alerts and AI agents, with no in-house BI team required.",
     "footer.nav.t":"Navigation",
-    "footer.contact.t":"Contact",
-    "footer.wa.aria":"WhatsApp +972-54-577-8838",
-    "footer.wa.num":"+972-54-577-8838",
+    "footer.contact.t":"Get in touch",
+    "footer.wa.aria":"WhatsApp 054-577-8838",
+    "footer.wa.num":"054-577-8838",
     "footer.rights":"© 2026 Compass BI. All rights reserved.",
     "footer.privacy":"Privacy Policy",
-    "footer.a11y":"Accessibility Statement"
+    "footer.a11y":"Accessibility Statement",
+    "ui.skip":"Skip to content"
   };
-  var page = window.LEGAL_PAGE || {name:"", en:{}};
-  Object.keys(page.en).forEach(function(k){ EN[k] = page.en[k]; });
 
   var HE = {};
   var nodes = { t: [], al: [] };
   var lang = "he";
 
-  function S(k){
-    var v = lang === "en" ? EN[k] : HE[k];
-    // A missing English string would render an empty element. Say so,
-    // loudly, rather than ship a blank line.
-    if(v == null){ if(window.console) console.warn("legal page: no " + lang + " string for " + k); return ""; }
-    return v;
-  }
+  HE["meta.title"] = "Compass Control לנתוני Priority ו-NetSuite - חריגות, אחראים ופעולה | Compass BI";
+  HE["meta.desc"]  = "Compass Control בודק את הנתונים מול כללים שנקבעו איתכם, ומעביר כל חריגה לאחראי עם פעולה מומלצת.";
+
+  function S(k){ return lang === "en" ? (EN[k] != null ? EN[k] : "") : (HE[k] != null ? HE[k] : ""); }
 
   function harvest(){
     [].slice.call(document.querySelectorAll("[data-i18n]")).forEach(function(el){
       var k = el.getAttribute("data-i18n");
-      if(HE[k] == null) HE[k] = el.innerHTML;     // innerHTML, so <strong> and links survive
+      if(HE[k] == null) HE[k] = el.innerHTML;     // innerHTML, so <strong> survives
       nodes.t.push(el);
     });
     [].slice.call(document.querySelectorAll("[data-i18n-al]")).forEach(function(el){
@@ -2453,10 +2496,6 @@ var LEGAL_PAGE = {
       if(HE[k] == null) HE[k] = el.getAttribute("aria-label");
       nodes.al.push(el);
     });
-    // The Hebrew head is the markup's too: read it rather than repeat it.
-    HE["meta.title"] = document.title;
-    var d = document.querySelector('meta[name="description"]');
-    HE["meta.desc"] = d ? d.getAttribute("content") : "";
   }
 
   function apply(){
@@ -2467,11 +2506,9 @@ var LEGAL_PAGE = {
     if(d) d.setAttribute("content", S("meta.desc"));
   }
 
-  /* Keeps "ב-Compass", "ל-WhatsApp" and every other Hebrew word hyphenated
-     to a Latin one on a single line - a copy of keepPrefixes() in
-     _source.body.html, where the reason is written out. A prefix before a
-     number or a link ("ב-29/09", "ל-sales@") is wrapped in .nw in the
-     markup itself, because this only sees a Latin letter after the hyphen. */
+  /* Keeps "ב-NetSuite", "ה-ERP" and every other Hebrew word hyphenated to a
+     Latin one on a single line - a copy of keepPrefixes() in
+     _source.body.html, where the reason is written out. */
   var PREFIXED = /[א-ת]+-[A-Za-z][A-Za-z.]*/g;
   function keepPrefixes(){
     if(lang === "en") return;
@@ -2503,22 +2540,6 @@ var LEGAL_PAGE = {
     });
   }
 
-  /* One page per language, so every link here is written once and stays:
-     "../" is the home page of this page's own language (/ from /privacy/,
-     /en/ from /en/privacy/) and the sibling legal page and /control/ are
-     "../name/" the same way. The footer link for this page marks itself as
-     the current one. Only the switch leaves the page. */
-  function pointLegal(){
-    var cur = document.querySelector('a[data-legal="' + page.name + '"]');
-    if(cur){ cur.setAttribute("href", "./"); cur.setAttribute("aria-current", "page"); }
-  }
-
-  /* The other language's address, relative so it holds on the GitHub Pages
-     preview's subdirectory too. The view travels in the hash. */
-  function langHref(next){
-    return (next === "en" ? "../en/" : "../../") + page.name + "/" + (location.hash || "");
-  }
-
   function setLang(next){
     lang = (next === "en") ? "en" : "he";
     var r = document.documentElement;
@@ -2527,16 +2548,40 @@ var LEGAL_PAGE = {
     apply();
     keepPrefixes();
     mark();
-    r.removeAttribute("data-lang-pending");        // set by the first script
-    pointLegal();
+    r.removeAttribute("data-lang-pending");       // set by the head script
+  }
+
+  /* One page per language since 2026-10-07: /control/ in Hebrew and
+     /en/control/ in English (a copy _build.en.pl writes, with the language
+     already on <html>). So the page's language is its address's, and every
+     link on it is written once and stays: "../" is the home page of the
+     same language from either address (/ from /control/, /en/ from
+     /en/control/), and the two legal pages likewise. Only the switch has to
+     leave the page. */
+  function wanted(){
+    return document.documentElement.getAttribute("lang") === "en" ? "en" : "he";
+  }
+
+  /* The other language's address, relative so it holds on the GitHub Pages
+     preview's subdirectory too. The view travels in the hash. */
+  function langHref(next){
+    return (next === "en" ? "../en/control/" : "../../control/") + (location.hash || "");
   }
 
   harvest();
-  setLang(LEGAL_LANG);
+  setLang(wanted());
 
   [].slice.call(document.querySelectorAll("[data-lang]")).forEach(function(b){
     b.addEventListener("click", function(){ if(b.dataset.lang !== lang) location.href = langHref(b.dataset.lang); });
   });
+
+  /* The footer is shared with the home page, where the Control link is a
+     relative "control/"; _build.sh puts "../" in front on a page one folder
+     down, and on this page it is a self-link, so it says so. An absolute
+     "/control/" would have been simpler and wrong: the preview is served
+     from a subdirectory on GitHub Pages. */
+  var self = document.querySelector('.rail a[href="../control/"]');
+  if(self){ self.setAttribute("href", "./"); self.setAttribute("aria-current", "page"); }
 
   /* The shared footer carries the home page's router buttons. There is no
      router here, so they become links back to the home page's screens. */
