@@ -5139,9 +5139,18 @@ html.still .hero-rain{display:none}
   var clipDemo   = clipFig && clipFig.querySelector(".shot-demo");
   var clipCap    = document.getElementById("heroClipCap");
 
+  /* TEMPORARY EXCEPTION, 2026-10-09 (Elishai's decision, option 1): the
+     English page shows the HEBREW recording until an English one exists
+     (open item 12: assets/hero-clip-en.mp4, 592x1552). This suspends the
+     project rule above for this one asset, on purpose and knowingly. To
+     restore it: set EN_CLIP_GATE = true and the English side goes back to
+     the placeholder and never fetches the file. The caption, the aria
+     label and the demo-data note show in both languages. */
+  var EN_CLIP_GATE = false;
+
   function syncClip(){
     if(!clipVideo) return;
-    var he = lang !== "en";
+    var he = lang !== "en" || !EN_CLIP_GATE;
     clipVideo.hidden  = !he;
     clipHolder.hidden = he;
     if(clipDemo) clipDemo.hidden = !he;   // no figures on screen, no note needed
