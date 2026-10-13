@@ -102,7 +102,7 @@ try{ if(localStorage.getItem("compassbi.motion") === "still") document.documentE
   document.head.appendChild(s);
 })();
 </script>
-<script type="application/ld+json" data-gen="seo">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://compassbi.co.il/en/service/#service","name":"Service and Support Dashboard: Calls, Faults and Handling Time","description":"The life of every call, handling time by team, customer and fault type, and open faults by waiting time. Connect in one day, live within weeks.","url":"https://compassbi.co.il/en/service/","serviceType":"Business intelligence","provider":{"@type":"Organization","@id":"https://compassbi.co.il/#organization","name":"Compass BI","url":"https://compassbi.co.il/"}},{"@type":"BreadcrumbList","@id":"https://compassbi.co.il/en/service/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Compass BI","item":"https://compassbi.co.il/en/"},{"@type":"ListItem","position":2,"name":"Service and Support Dashboard: Calls, Faults and Handling Time","item":"https://compassbi.co.il/en/service/"}]}]}</script>
+<script type="application/ld+json" data-gen="seo">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://compassbi.co.il/en/service/#service","name":"Service and Support Dashboard: Calls, Faults and Handling Time","description":"The life of every call, handling time by team, customer and fault type, and open faults by waiting time. Connect in one day, live within weeks.","url":"https://compassbi.co.il/en/service/","serviceType":"Business intelligence","provider":{"@type":"Organization","@id":"https://compassbi.co.il/#organization","name":"Compass BI","url":"https://compassbi.co.il/"}},{"@type":"BreadcrumbList","@id":"https://compassbi.co.il/en/service/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Compass BI","item":"https://compassbi.co.il/en/"},{"@type":"ListItem","position":2,"name":"Service and Support Dashboard: Calls, Faults and Handling Time","item":"https://compassbi.co.il/en/service/"}]},{"@type":"FAQPage","@id":"https://compassbi.co.il/en/service/#faq","mainEntity":[{"@type":"Question","name":"What does the service dashboard show?","acceptedAnswer":{"@type":"Answer","text":"Calls, faults and downtime faults, average handling time, calls by team, customer and fault type, service metrics by team and open faults by hours open."}},{"@type":"Question","name":"How long until we are live?","acceptedAnswer":{"@type":"Answer","text":"You connect in one day and go live within weeks. You choose what to measure first: handling time, or open faults."}},{"@type":"Question","name":"Who is it for?","acceptedAnswer":{"@type":"Answer","text":"For service and support managers. If your service desk knows how many calls are open but not whether that is a lot, it is missing a trend and a target. Here you see them."}},{"@type":"Question","name":"How do we start?","acceptedAnswer":{"@type":"Answer","text":"Leave your details in the form and we'll get back to you within one business day. You can also start by seeing what it looks like."}}]}]}</script>
 </head><body>
 <!-- ══════════════════════════════════════════════════════════════
      /service/ - landing page of a "companies on Priority" campaign (stage 1:
@@ -2293,6 +2293,21 @@ html{scroll-padding-top:88px}
 .mf-steps strong{display:block;color:var(--ink);margin-bottom:2px}
 @media (min-width:900px){ .mf-steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px} }
 
+/* FAQ: native <details>, so it works with no script and the answers stay in the DOM */
+.mf-faq{display:grid;gap:0;max-width:62ch}
+.mf-q{border-bottom:1px solid var(--hair, #E4E0D8)}
+/* The marker is absolutely placed, not a flex item: keepPrefixes() wraps Latin
+   words in the question in spans, and in a flex row every span became its own
+   item and the question fell apart. */
+.mf-q summary{cursor:pointer;list-style:none;padding:16px 0;padding-inline-end:32px;position:relative;
+  font-weight:700;color:var(--ink)}
+.mf-q summary::-webkit-details-marker{display:none}
+.mf-q summary::after{content:"+";position:absolute;inset-inline-end:2px;top:14px;font-size:1.3rem;line-height:1.4;
+  color:var(--indigo, #21076A)}
+.mf-q[open] summary::after{content:"\2212"}
+.mf-q summary:focus-visible{outline:2px solid var(--indigo, #21076A);outline-offset:2px}
+.mf-q p{margin:0 0 16px;color:var(--ink-dim)}
+
 /* trust */
 .mf-trust{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 .mf-trust li{font-weight:700;color:var(--ink);padding-inline-start:20px;position:relative}
@@ -2405,6 +2420,23 @@ html{scroll-padding-top:88px}
       <li data-i18n="mf.how.2"><strong>בוחרים מה למדוד קודם.</strong> זמן טיפול, או תקלות פתוחות.</li>
       <li data-i18n="mf.how.3"><strong>עולים לאוויר.</strong> דשבורדים מעל מחסן נתונים אחד, עם מספרים עקביים בכל הדוחות.</li>
     </ol>
+  </section>
+
+  <!-- 5b · FAQ. The same 4 questions and answers feed the FAQPage schema
+       (_gen.seo.js reads them back out of this markup and the EN table), so
+       the schema can never say more than the page does. Approved 2026-10-13. -->
+  <section class="wrap mf-sec" aria-labelledby="mfFaq">
+    <h2 class="h-l" id="mfFaq" data-i18n="mf.faq.h">שאלות נפוצות</h2>
+    <div class="mf-faq">
+      <details class="mf-q"><summary data-i18n="mf.faq.1.q">מה רואים בדשבורד השירות?</summary>
+        <p data-i18n="mf.faq.1.a">קריאות, תקלות ותקלות משביתות, זמן טיפול ממוצע, קריאות לפי צוות, לקוח וסוג תקלה, מדדי שירות לפי צוות ותקלות פתוחות לפי שעות פתיחה.</p></details>
+      <details class="mf-q"><summary data-i18n="mf.faq.2.q">כמה זמן עד שעולים לאוויר?</summary>
+        <p data-i18n="mf.faq.2.a">מתחברים ביום אחד ועולים לאוויר תוך שבועות. בוחרים קודם מה למדוד: זמן טיפול, או תקלות פתוחות.</p></details>
+      <details class="mf-q"><summary data-i18n="mf.faq.3.q">למי זה מתאים?</summary>
+        <p data-i18n="mf.faq.3.a">למנהלי שירות ומוקדי תמיכה. אם המוקד יודע כמה קריאות פתוחות אבל לא אם זה הרבה, חסרים לו מגמה ויעד. כאן רואים אותם.</p></details>
+      <details class="mf-q"><summary data-i18n="mf.faq.4.q">איך מתחילים?</summary>
+        <p data-i18n="mf.faq.4.a">משאירים פרטים בטופס, ונחזור אליכם תוך יום עסקים. אפשר גם קודם לראות איך זה נראה.</p></details>
+    </div>
   </section>
 
   <!-- 6 · trust. The quote places stay hidden until a quote is approved. -->
@@ -2595,6 +2627,15 @@ html{scroll-padding-top:88px}
     "mf.how.1":"<strong>Connect to Priority.</strong> No changes to your ERP processes.",
     "mf.how.2":"<strong>Choose what to measure first.</strong> Handling time, or open faults.",
     "mf.how.3":"<strong>Go live.</strong> Dashboards on one data warehouse, with consistent numbers across every report.",
+    "mf.faq.h":"Frequently asked questions",
+    "mf.faq.1.q":"What does the service dashboard show?",
+    "mf.faq.1.a":"Calls, faults and downtime faults, average handling time, calls by team, customer and fault type, service metrics by team and open faults by hours open.",
+    "mf.faq.2.q":"How long until we are live?",
+    "mf.faq.2.a":"You connect in one day and go live within weeks. You choose what to measure first: handling time, or open faults.",
+    "mf.faq.3.q":"Who is it for?",
+    "mf.faq.3.a":"For service and support managers. If your service desk knows how many calls are open but not whether that is a lot, it is missing a trend and a target. Here you see them.",
+    "mf.faq.4.q":"How do we start?",
+    "mf.faq.4.a":"Leave your details in the form and we'll get back to you within one business day. You can also start by seeing what it looks like.",
     "mf.t.1":"An official Priority technology partner since 2021.",
     "mf.t.2":"20+ years of experience.",
     "mf.t.3":"Dozens of managers make decisions through us.",

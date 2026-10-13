@@ -102,7 +102,7 @@ try{ if(localStorage.getItem("compassbi.motion") === "still") document.documentE
   document.head.appendChild(s);
 })();
 </script>
-<script type="application/ld+json" data-gen="seo">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://compassbi.co.il/en/leads/#service","name":"Lead Tracking and Sales Dashboard","description":"Where inquiries come from, what became of them and which source closes deals, alongside sales and collections. Connect in one day, live within weeks.","url":"https://compassbi.co.il/en/leads/","serviceType":"Business intelligence","provider":{"@type":"Organization","@id":"https://compassbi.co.il/#organization","name":"Compass BI","url":"https://compassbi.co.il/"}},{"@type":"BreadcrumbList","@id":"https://compassbi.co.il/en/leads/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Compass BI","item":"https://compassbi.co.il/en/"},{"@type":"ListItem","position":2,"name":"Lead Tracking and Sales Dashboard","item":"https://compassbi.co.il/en/leads/"}]}]}</script>
+<script type="application/ld+json" data-gen="seo">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://compassbi.co.il/en/leads/#service","name":"Lead Tracking and Sales Dashboard","description":"Where inquiries come from, what became of them and which source closes deals, alongside sales and collections. Connect in one day, live within weeks.","url":"https://compassbi.co.il/en/leads/","serviceType":"Business intelligence","provider":{"@type":"Organization","@id":"https://compassbi.co.il/#organization","name":"Compass BI","url":"https://compassbi.co.il/"}},{"@type":"BreadcrumbList","@id":"https://compassbi.co.il/en/leads/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Compass BI","item":"https://compassbi.co.il/en/"},{"@type":"ListItem","position":2,"name":"Lead Tracking and Sales Dashboard","item":"https://compassbi.co.il/en/leads/"}]},{"@type":"FAQPage","@id":"https://compassbi.co.il/en/leads/#faq","mainEntity":[{"@type":"Question","name":"What does the lead dashboard show?","acceptedAnswer":{"@type":"Answer","text":"Registrations against target, leads by source over time, advisor performance against target and a comparison with previous years."}},{"@type":"Question","name":"How long until we are live?","acceptedAnswer":{"@type":"Answer","text":"You connect in one day and go live within weeks. You choose a first module: lead tracking or sales and collections, whichever is more pressing."}},{"@type":"Question","name":"Who is it for?","acceptedAnswer":{"@type":"Answer","text":"For marketing and sales managers. If the source of an inquiry is recorded at the start and forgotten by the close, here you see leads by source over time and performance against target."}},{"@type":"Question","name":"How do we start?","acceptedAnswer":{"@type":"Answer","text":"Leave your details in the form and we'll get back to you within one business day. You can also start by seeing what it looks like."}}]}]}</script>
 </head><body>
 <!-- ══════════════════════════════════════════════════════════════
      /leads/ - landing page of a "companies on Priority" campaign (stage 1:
@@ -2293,6 +2293,21 @@ html{scroll-padding-top:88px}
 .mf-steps strong{display:block;color:var(--ink);margin-bottom:2px}
 @media (min-width:900px){ .mf-steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px} }
 
+/* FAQ: native <details>, so it works with no script and the answers stay in the DOM */
+.mf-faq{display:grid;gap:0;max-width:62ch}
+.mf-q{border-bottom:1px solid var(--hair, #E4E0D8)}
+/* The marker is absolutely placed, not a flex item: keepPrefixes() wraps Latin
+   words in the question in spans, and in a flex row every span became its own
+   item and the question fell apart. */
+.mf-q summary{cursor:pointer;list-style:none;padding:16px 0;padding-inline-end:32px;position:relative;
+  font-weight:700;color:var(--ink)}
+.mf-q summary::-webkit-details-marker{display:none}
+.mf-q summary::after{content:"+";position:absolute;inset-inline-end:2px;top:14px;font-size:1.3rem;line-height:1.4;
+  color:var(--indigo, #21076A)}
+.mf-q[open] summary::after{content:"\2212"}
+.mf-q summary:focus-visible{outline:2px solid var(--indigo, #21076A);outline-offset:2px}
+.mf-q p{margin:0 0 16px;color:var(--ink-dim)}
+
 /* trust */
 .mf-trust{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 .mf-trust li{font-weight:700;color:var(--ink);padding-inline-start:20px;position:relative}
@@ -2425,6 +2440,23 @@ html{scroll-padding-top:88px}
       <li data-i18n="mf.how.2"><strong>בוחרים מודול ראשון.</strong> לידים או מכירות וגבייה, לפי מה שדוחק יותר.</li>
       <li data-i18n="mf.how.3"><strong>עולים לאוויר.</strong> דשבורדים מעל מחסן נתונים אחד, עם מספרים עקביים בכל הדוחות.</li>
     </ol>
+  </section>
+
+  <!-- 5b · FAQ. The same 4 questions and answers feed the FAQPage schema
+       (_gen.seo.js reads them back out of this markup and the EN table), so
+       the schema can never say more than the page does. Approved 2026-10-13. -->
+  <section class="wrap mf-sec" aria-labelledby="mfFaq">
+    <h2 class="h-l" id="mfFaq" data-i18n="mf.faq.h">שאלות נפוצות</h2>
+    <div class="mf-faq">
+      <details class="mf-q"><summary data-i18n="mf.faq.1.q">מה רואים בדשבורד הלידים?</summary>
+        <p data-i18n="mf.faq.1.a">הרשמות מול יעד, לידים לפי מקור לאורך זמן, ביצועי יועצים מול יעד והשוואה לשנים קודמות.</p></details>
+      <details class="mf-q"><summary data-i18n="mf.faq.2.q">כמה זמן עד שעולים לאוויר?</summary>
+        <p data-i18n="mf.faq.2.a">מתחברים ביום אחד ועולים לאוויר תוך שבועות. בוחרים מודול ראשון: לידים או מכירות וגבייה, לפי מה שדוחק יותר.</p></details>
+      <details class="mf-q"><summary data-i18n="mf.faq.3.q">למי זה מתאים?</summary>
+        <p data-i18n="mf.faq.3.a">למנהלי שיווק ומכירות. אם מקור הפנייה נרשם בהתחלה ונשכח עד הסגירה, כאן רואים לידים לפי מקור לאורך זמן וביצועים מול יעד.</p></details>
+      <details class="mf-q"><summary data-i18n="mf.faq.4.q">איך מתחילים?</summary>
+        <p data-i18n="mf.faq.4.a">משאירים פרטים בטופס, ונחזור אליכם תוך יום עסקים. אפשר גם קודם לראות איך זה נראה.</p></details>
+    </div>
   </section>
 
   <!-- 6 · trust. The quote places stay hidden until a quote is approved. -->
@@ -2619,6 +2651,15 @@ html{scroll-padding-top:88px}
     "mf.how.1":"<strong>Connect to Priority.</strong> No changes to your ERP processes.",
     "mf.how.2":"<strong>Choose a first module.</strong> Lead tracking or sales and collections, whichever is more pressing.",
     "mf.how.3":"<strong>Go live.</strong> Dashboards on one data warehouse, with consistent numbers across every report.",
+    "mf.faq.h":"Frequently asked questions",
+    "mf.faq.1.q":"What does the lead dashboard show?",
+    "mf.faq.1.a":"Registrations against target, leads by source over time, advisor performance against target and a comparison with previous years.",
+    "mf.faq.2.q":"How long until we are live?",
+    "mf.faq.2.a":"You connect in one day and go live within weeks. You choose a first module: lead tracking or sales and collections, whichever is more pressing.",
+    "mf.faq.3.q":"Who is it for?",
+    "mf.faq.3.a":"For marketing and sales managers. If the source of an inquiry is recorded at the start and forgotten by the close, here you see leads by source over time and performance against target.",
+    "mf.faq.4.q":"How do we start?",
+    "mf.faq.4.a":"Leave your details in the form and we'll get back to you within one business day. You can also start by seeing what it looks like.",
     "mf.t.1":"An official Priority technology partner since 2021.",
     "mf.t.2":"20+ years of experience.",
     "mf.t.3":"Dozens of managers make decisions through us.",

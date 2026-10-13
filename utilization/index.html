@@ -102,7 +102,7 @@ try{ if(localStorage.getItem("compassbi.motion") === "still") document.documentE
   document.head.appendChild(s);
 })();
 </script>
-<script type="application/ld+json" data-gen="seo">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://compassbi.co.il/utilization/#service","name":"דשבורד ניצולת שעות עובדים ושעות לחיוב","description":"אחוז שעות לחיוב לכל עובד וצוות, והפער מול התקן. מתחברים ביום אחד, עולים לאוויר תוך שבועות.","url":"https://compassbi.co.il/utilization/","serviceType":"Business intelligence","provider":{"@type":"Organization","@id":"https://compassbi.co.il/#organization","name":"Compass BI","url":"https://compassbi.co.il/"}},{"@type":"BreadcrumbList","@id":"https://compassbi.co.il/utilization/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Compass BI","item":"https://compassbi.co.il/"},{"@type":"ListItem","position":2,"name":"דשבורד ניצולת שעות עובדים ושעות לחיוב","item":"https://compassbi.co.il/utilization/"}]}]}</script>
+<script type="application/ld+json" data-gen="seo">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://compassbi.co.il/utilization/#service","name":"דשבורד ניצולת שעות עובדים ושעות לחיוב","description":"אחוז שעות לחיוב לכל עובד וצוות, והפער מול התקן. מתחברים ביום אחד, עולים לאוויר תוך שבועות.","url":"https://compassbi.co.il/utilization/","serviceType":"Business intelligence","provider":{"@type":"Organization","@id":"https://compassbi.co.il/#organization","name":"Compass BI","url":"https://compassbi.co.il/"}},{"@type":"BreadcrumbList","@id":"https://compassbi.co.il/utilization/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Compass BI","item":"https://compassbi.co.il/"},{"@type":"ListItem","position":2,"name":"דשבורד ניצולת שעות עובדים ושעות לחיוב","item":"https://compassbi.co.il/utilization/"}]},{"@type":"FAQPage","@id":"https://compassbi.co.il/utilization/#faq","mainEntity":[{"@type":"Question","name":"מה רואים בדשבורד הניצולת?","acceptedAnswer":{"@type":"Answer","text":"אחוז שעות לחיוב, שעות לחיוב, פנימיות והיעדרות, יחס לתקן, טבלת עובדים ומגמה חודשית."}},{"@type":"Question","name":"כמה זמן עד שעולים לאוויר?","acceptedAnswer":{"@type":"Answer","text":"מתחברים ביום אחד ועולים לאוויר תוך שבועות. בוחרים קודם מה למדוד: אחוז שעות לחיוב, או ניצולת לפי פרויקט ולקוח."}},{"@type":"Question","name":"למי זה מתאים?","acceptedAnswer":{"@type":"Answer","text":"לעסקי שירותים ופרויקטים. אם ההכנסה באה משעות עבודה, כאן רואים איזה חלק מהשעות נזקף לעבודה שמחויבת, לכל עובד, צוות וחודש."}},{"@type":"Question","name":"איך מתחילים?","acceptedAnswer":{"@type":"Answer","text":"משאירים פרטים בטופס, ונחזור אליכם תוך יום עסקים. אפשר גם קודם לראות איך זה נראה."}}]}]}</script>
 </head><body>
 <!-- ══════════════════════════════════════════════════════════════
      /utilization/ - landing page of a "companies on Priority" campaign (stage 1:
@@ -2293,6 +2293,21 @@ html{scroll-padding-top:88px}
 .mf-steps strong{display:block;color:var(--ink);margin-bottom:2px}
 @media (min-width:900px){ .mf-steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px} }
 
+/* FAQ: native <details>, so it works with no script and the answers stay in the DOM */
+.mf-faq{display:grid;gap:0;max-width:62ch}
+.mf-q{border-bottom:1px solid var(--hair, #E4E0D8)}
+/* The marker is absolutely placed, not a flex item: keepPrefixes() wraps Latin
+   words in the question in spans, and in a flex row every span became its own
+   item and the question fell apart. */
+.mf-q summary{cursor:pointer;list-style:none;padding:16px 0;padding-inline-end:32px;position:relative;
+  font-weight:700;color:var(--ink)}
+.mf-q summary::-webkit-details-marker{display:none}
+.mf-q summary::after{content:"+";position:absolute;inset-inline-end:2px;top:14px;font-size:1.3rem;line-height:1.4;
+  color:var(--indigo, #21076A)}
+.mf-q[open] summary::after{content:"\2212"}
+.mf-q summary:focus-visible{outline:2px solid var(--indigo, #21076A);outline-offset:2px}
+.mf-q p{margin:0 0 16px;color:var(--ink-dim)}
+
 /* trust */
 .mf-trust{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 .mf-trust li{font-weight:700;color:var(--ink);padding-inline-start:20px;position:relative}
@@ -2402,6 +2417,23 @@ html{scroll-padding-top:88px}
       <li data-i18n="mf.how.2"><strong>בוחרים מה למדוד קודם.</strong> אחוז שעות לחיוב, או ניצולת לפי פרויקט ולקוח.</li>
       <li data-i18n="mf.how.3"><strong>עולים לאוויר.</strong> דשבורדים מעל מחסן נתונים אחד, עם מספרים עקביים בכל הדוחות.</li>
     </ol>
+  </section>
+
+  <!-- 5b · FAQ. The same 4 questions and answers feed the FAQPage schema
+       (_gen.seo.js reads them back out of this markup and the EN table), so
+       the schema can never say more than the page does. Approved 2026-10-13. -->
+  <section class="wrap mf-sec" aria-labelledby="mfFaq">
+    <h2 class="h-l" id="mfFaq" data-i18n="mf.faq.h">שאלות נפוצות</h2>
+    <div class="mf-faq">
+      <details class="mf-q"><summary data-i18n="mf.faq.1.q">מה רואים בדשבורד הניצולת?</summary>
+        <p data-i18n="mf.faq.1.a">אחוז שעות לחיוב, שעות לחיוב, פנימיות והיעדרות, יחס לתקן, טבלת עובדים ומגמה חודשית.</p></details>
+      <details class="mf-q"><summary data-i18n="mf.faq.2.q">כמה זמן עד שעולים לאוויר?</summary>
+        <p data-i18n="mf.faq.2.a">מתחברים ביום אחד ועולים לאוויר תוך שבועות. בוחרים קודם מה למדוד: אחוז שעות לחיוב, או ניצולת לפי פרויקט ולקוח.</p></details>
+      <details class="mf-q"><summary data-i18n="mf.faq.3.q">למי זה מתאים?</summary>
+        <p data-i18n="mf.faq.3.a">לעסקי שירותים ופרויקטים. אם ההכנסה באה משעות עבודה, כאן רואים איזה חלק מהשעות נזקף לעבודה שמחויבת, לכל עובד, צוות וחודש.</p></details>
+      <details class="mf-q"><summary data-i18n="mf.faq.4.q">איך מתחילים?</summary>
+        <p data-i18n="mf.faq.4.a">משאירים פרטים בטופס, ונחזור אליכם תוך יום עסקים. אפשר גם קודם לראות איך זה נראה.</p></details>
+    </div>
   </section>
 
   <!-- 6 · trust. The quote places stay hidden until a quote is approved. -->
@@ -2591,6 +2623,15 @@ html{scroll-padding-top:88px}
     "mf.how.1":"<strong>Connect to Priority.</strong> No changes to your ERP processes.",
     "mf.how.2":"<strong>Choose what to measure first.</strong> Billable share, or utilization by project and customer.",
     "mf.how.3":"<strong>Go live.</strong> Dashboards on one data warehouse, with consistent numbers across every report.",
+    "mf.faq.h":"Frequently asked questions",
+    "mf.faq.1.q":"What does the utilization dashboard show?",
+    "mf.faq.1.a":"Billable-hours share, billable, internal and absence hours, ratio to standard, an employee table and a monthly trend.",
+    "mf.faq.2.q":"How long until we are live?",
+    "mf.faq.2.a":"You connect in one day and go live within weeks. You choose what to measure first: billable share, or utilization by project and customer.",
+    "mf.faq.3.q":"Who is it for?",
+    "mf.faq.3.a":"For service and project businesses. If your revenue comes from hours of work, here you see the share of hours booked to work that gets billed, for every employee, team and month.",
+    "mf.faq.4.q":"How do we start?",
+    "mf.faq.4.a":"Leave your details in the form and we'll get back to you within one business day. You can also start by seeing what it looks like.",
     "mf.t.1":"An official Priority technology partner since 2021.",
     "mf.t.2":"20+ years of experience.",
     "mf.t.3":"Dozens of managers make decisions through us.",
