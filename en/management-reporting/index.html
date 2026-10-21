@@ -1397,6 +1397,7 @@ html{scroll-padding-top:88px}
 .modal-card.shot-card{padding:26px 26px 22px}
 .mr-frame img{display:block;width:100%;height:auto;max-height:calc(100vh - 140px);object-fit:contain}
 
+.mr-sub{margin:-6px 0 26px;max-width:62ch;color:var(--ink-dim)}
 .mr-rules{display:grid;gap:22px;margin:0;padding:0;list-style:none}
 @media (min-width:900px){ .mr-rules{grid-template-columns:repeat(3,minmax(0,1fr))} }
 .mr-rule{padding:26px 24px 28px;display:grid;gap:12px;align-content:start}
@@ -1508,28 +1509,29 @@ html{scroll-padding-top:88px}
   </section>
 
   <section class="wrap mf-sec" aria-labelledby="mrRules">
-    <h2 class="h-l" id="mrRules" data-i18n="mr.rules.h">Three rules we apply in every report</h2>
+    <h2 class="h-l" id="mrRules" data-i18n="mr.rules.h">Three questions every manager asks of a report</h2>
+    <p class="mr-sub" data-i18n="mr.rules.sub">With us, the answer always looks the same, in every report.</p>
     <ul class="mr-rules">
       <li class="card mr-rule">
         <span class="mr-ico" aria-hidden="true">
           <svg viewBox="0 0 24 24"><rect x="2.5" y="8" width="5" height="13" rx=".6" fill="currentColor"/><rect x="9.75" y="5" width="4.5" height="16" rx=".6" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="16.75" y="10" width="4.5" height="11" rx=".6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="2 1.6"/></svg>
         </span>
-        <h3><span class="n">1</span><span data-i18n="mr.r1.h">The shape tells you what it is.</span></h3>
-        <p data-i18n="mr.r1.p">Actual is solid. Budget is an outline. Forecast is hatched. No legend needed.</p>
+        <h3><span class="n">1</span><span data-i18n="mr.r1.h">"What am I looking at?"</span></h3>
+        <p data-i18n="mr.r1.p">The shape answers: a solid column is actual, an empty outline is budget and a hatched column is forecast. No legend needed.</p>
       </li>
       <li class="card mr-rule">
         <span class="mr-ico" aria-hidden="true">
           <svg viewBox="0 0 24 24"><rect class="mr-good" x="4" y="4" width="6" height="8" rx=".6"/><rect class="mr-bad" x="14" y="12" width="6" height="8" rx=".6"/><path d="M2 12h20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </span>
-        <h3><span class="n">2</span><span data-i18n="mr.r2.h">Green and red only for variances.</span></h3>
-        <p data-i18n="mr.r2.p">Color shows whether a variance is good or bad for the business - not whether a number went up or down. Rising costs are red.</p>
+        <h3><span class="n">2</span><span data-i18n="mr.r2.h">"Is this good or bad?"</span></h3>
+        <p data-i18n="mr.r2.p">The color answers, and only on the variance: green when it's good for the business, red when it's bad. Rising costs are red.</p>
       </li>
       <li class="card mr-rule">
         <span class="mr-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="13" width="2.6" height="8" rx=".5"/><rect x="5.8" y="9" width="2.6" height="12" rx=".5"/><rect x="9.6" y="11" width="2.6" height="10" rx=".5"/><rect x="14.5" y="4" width="7.5" height="2.8" rx=".5"/><rect x="14.5" y="9" width="5.5" height="2.8" rx=".5"/><rect x="14.5" y="14" width="3.5" height="2.8" rx=".5"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M3 3v17h12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="5.5" y="11" width="2.6" height="9" rx=".5" fill="currentColor"/><rect x="9.6" y="7" width="2.6" height="13" rx=".5" fill="currentColor"/><path d="M19.5 3v17" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity=".45"/><path d="M16.5 9l6 6M22.5 9l-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </span>
-        <h3><span class="n">3</span><span data-i18n="mr.r3.h">Time in columns, comparisons in bars.</span></h3>
-        <p data-i18n="mr.r3.p">Months always run in vertical columns. Customers, products and departments always in horizontal bars, largest first.</p>
+        <h3><span class="n">3</span><span data-i18n="mr.r3.h">"Can I trust this chart?"</span></h3>
+        <p data-i18n="mr.r3.p">The scale answers: one axis per chart. Measures on different scales get two charts, because a second axis can make any two numbers look related.</p>
       </li>
     </ul>
   </section>
@@ -1711,13 +1713,14 @@ html{scroll-padding-top:88px}
     "mr.before.alt":"Sales dashboard on demo data, before: a pie, a gauge, columns in nine colors and a color-coded table",
     "mr.after.alt":"The same dashboard, after: actual vs budget in columns, variances in green and red, top five customers in bars",
     "mr.ba.cap":"Exactly the same demo data. The only difference is how it's shown.",
-    "mr.rules.h":"Three rules we apply in every report",
-    "mr.r1.h":"The shape tells you what it is.",
-    "mr.r1.p":"Actual is solid. Budget is an outline. Forecast is hatched. No legend needed.",
-    "mr.r2.h":"Green and red only for variances.",
-    "mr.r2.p":"Color shows whether a variance is good or bad for the business - not whether a number went up or down. Rising costs are red.",
-    "mr.r3.h":"Time in columns, comparisons in bars.",
-    "mr.r3.p":"Months always run in vertical columns. Customers, products and departments always in horizontal bars, largest first.",
+    "mr.rules.h":"Three questions every manager asks of a report",
+    "mr.rules.sub":"With us, the answer always looks the same, in every report.",
+    "mr.r1.h":"\"What am I looking at?\"",
+    "mr.r1.p":"The shape answers: a solid column is actual, an empty outline is budget and a hatched column is forecast. No legend needed.",
+    "mr.r2.h":"\"Is this good or bad?\"",
+    "mr.r2.p":"The color answers, and only on the variance: green when it's good for the business, red when it's bad. Rising costs are red.",
+    "mr.r3.h":"\"Can I trust this chart?\"",
+    "mr.r3.p":"The scale answers: one axis per chart. Measures on different scales get two charts, because a second axis can make any two numbers look related.",
     "mr.who.h":"Who builds the reports",
     "mr.who.1":"Our rules are written for Hebrew: the time axis runs right to left, so the report reads the way your eye does.",
     "mr.who.2":"Elishai Wine, CEO and founder of Compass BI, trained with the IBCS Institute and is a certified <strong>IBCS® Analyst</strong>.",
